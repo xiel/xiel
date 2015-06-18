@@ -1,0 +1,32 @@
+/* ===================================================
+BASE
+=================================================== */
+
+* {
+	&,
+	&:before,
+	&:after {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
+
+body {
+	font-family: sans-serif;
+	background: #CCD1CC;
+	margin: 0;
+	padding: 0;
+}
+
+.section {
+	overflow: hidden;
+	min-height: 100vh;
+	height: 20em;
+	border-bottom: 5px solid white;
+}
+
+.stage {
+	background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
+	background-size: cover;
+}
