@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="39px" height="31px" viewBox="0 0 39 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Twitter</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Centered-Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-HD" sketch:type="MSArtboardGroup" transform="translate(-135.000000, -678.000000)" fill="#696B69">
+            <g id="Welcome-Stage" sketch:type="MSLayerGroup">
+                <g id="Shape-+-Shape" transform="translate(135.000000, 675.000000)" sketch:type="MSShapeGroup">
+                    <path d="M34.4045,7.9019 C36.0563,6.9333 37.3252,5.3997 37.9225,3.5722 C36.3764,4.4691 34.6641,5.1204 32.8415,5.4713 C31.382,3.9503 29.3026,3 27.0012,3 C22.5825,3 18.9998,6.5038 18.9998,10.8257 C18.9998,11.4391 19.0706,12.0364 19.207,12.6093 C12.5572,12.2828 6.6614,9.1672 2.7151,4.4324 C2.0264,5.5882 1.6318,6.9325 1.6318,8.3668 C1.6318,11.082 3.0443,13.4773 5.1913,14.8807 C3.8797,14.8401 2.6459,14.488 1.5672,13.9019 C1.5665,13.9346 1.5665,13.9673 1.5665,14.0003 C1.5665,17.7921 4.3246,20.955 7.9848,21.6741 C7.3135,21.8529 6.6066,21.9486 5.8769,21.9486 C5.3613,21.9486 4.8601,21.8995 4.3714,21.8082 C5.3896,24.9172 8.3445,27.18 11.8459,27.243 C9.1075,29.3421 5.6575,30.5932 1.9087,30.5932 C1.2628,30.5932 0.6259,30.5561 0,30.4836 C3.5409,32.7042 7.7468,34 12.2653,34 C26.9826,34 35.0307,22.0749 35.0307,11.7332 C35.0307,11.3939 35.0229,11.0565 35.0075,10.7207 C36.5709,9.6173 37.9273,8.239 39,6.6696 C37.5651,7.2921 36.023,7.7128 34.4045,7.9019 Z" id="Twitter"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

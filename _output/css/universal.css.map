@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "universal.css",
+	"sources": [
+		"../../universal.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "",
+	"names": []
+}

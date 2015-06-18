@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>xiel-logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Centered-Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-HD" sketch:type="MSArtboardGroup" transform="translate(-645.000000, -75.000000)" fill="#041231">
+            <g id="Welcome-Stage" sketch:type="MSLayerGroup">
+                <path d="M782.870341,99.5098039 L795,99.5098039 L795,75 L770.490196,75 L770.490196,87.2291667 L782.870341,87.2291667 L782.870341,99.5098039 L782.870341,99.5098039 Z M782.870341,200.490196 L782.870341,212.804973 L770.490196,212.804973 L770.490196,225 L795,225 L795,200.490196 L782.870341,200.490196 L782.870341,200.490196 Z M764.607843,124.059014 L746.920132,106.372549 L720.49082,132.803108 L694.059014,106.372549 L676.372549,124.059014 L702.803108,150.489573 L676.372549,176.918884 L694.059014,194.607843 L720.49082,168.176037 L746.920132,194.607843 L764.607843,176.918884 L738.176037,150.489573 L764.607843,124.059014 L764.607843,124.059014 Z M657.294118,200.490196 L645,200.490196 L645,225 L669.509804,225 L669.509804,212.769608 L657.294118,212.769608 L657.294118,200.490196 L657.294118,200.490196 Z M645,75 L645,99.5098039 L657.294118,99.5098039 L657.294118,87.2291667 L669.509804,87.2291667 L669.509804,75 L645,75 L645,75 Z" id="xiel-logo" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

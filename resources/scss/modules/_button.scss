@@ -1,0 +1,23 @@
+/* ===================================================
+BUTTONS
+=================================================== */
+
+.btn {
+	display: inline-block;
+	background: transparent;
+	padding: 10px 20px;
+	width: 270px;
+	color: #fff;
+	font-family: inherit;
+	font-size: 16px;
+	letter-spacing: .05em;
+	border: 4px solid #fff;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: 300ms;
+
+	&:hover, &:focus {
+		color: #fff;
+		background: rgba(#333, .1);
+	}
+}

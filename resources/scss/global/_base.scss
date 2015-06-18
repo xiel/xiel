@@ -13,13 +13,14 @@ BASE
 }
 
 body {
-	font-family: sans-serif;
+	font-family: "Roboto", sans-serif;
 	background: #CCD1CC;
 	margin: 0;
 	padding: 0;
 }
 
 .section {
+	position: relative;
 	overflow: hidden;
 	min-height: 100vh;
 	height: 20em;
@@ -29,4 +30,70 @@ body {
 .stage {
 	background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
 	background-size: cover;
+	overflow: hidden;
+}
+
+.xiel-logo {
+	// position: fixed;
+	// top: 5%;
+	// left: 0;
+	// right: 0;
+	margin: 5% auto;
+	
+	a {
+		@extend %sprites-xiel-logo;
+		display: block;
+		overflow: hidden;
+		margin: 0 auto;
+
+		&:before {
+			display: block;
+			content: ' ';
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+/* ===================================================
+GENERAL TEXT
+=================================================== */
+
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	line-height: 1.45;
+}
+
+em {
+	font-style: normal;
+}
+
+/* ===================================================
+Social Media Links
+=================================================== */
+
+.sm-links {
+	list-style: none;
+
+	li {
+		display: inline-block;
+	}
+}
+
+.sm-link {
+	@extend %ir;
+	display: inline-block;
+}
+
+.sm-link--twitter {
+	@extend %sprites-twitter;
+}
+
+
+.sm-link--github {
+	@extend %sprites-github;
 }
