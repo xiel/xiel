@@ -40,13 +40,14 @@ body {
   font-family: "Roboto", sans-serif;
   background: #CCD1CC;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-size: 1.3rem; }
 
 .section {
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  height: 20em;
+  min-height: 20em;
   border-bottom: 5px solid white; }
 
 .stage {
