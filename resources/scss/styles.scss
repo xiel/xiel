@@ -1,12 +1,8 @@
+@import "utils/mixins/mixins";
+@import "utils/extends/extends";
 @import "global/vars";
-@import "utils/mixins";
-@import "utils/extends";
-@import "utils/bootstrap/grid-mixin-framework";
-@import "utils/bootstrap/grid-mixin";
-@import "utils/bootstrap/grid";
-@import "utils/normalize";
 @import "global/base";
-@import "icons/sprites-icons-sprite";
-@import "modules/stage";
 @import "modules/button";
+@import "modules/stage";
+@import "icons/sprites-icons-sprite";
 @import "global/print";

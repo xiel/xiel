@@ -30,7 +30,9 @@ module.exports = {
 				src: [
 					'utils/mixins/**/*.scss',
 					'utils/extends/**/*.scss',
+					'global/_vars.scss',
 					'global/_base.scss',
+					'modules/**/*.scss',
 					'icons/**/*.scss',
 					'global/_print.scss'
 				]

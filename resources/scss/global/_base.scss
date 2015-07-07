@@ -6,8 +6,6 @@ BASE
 	&,
 	&:before,
 	&:after {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
 }
@@ -71,6 +69,87 @@ p {
 em {
 	font-style: normal;
 }
+
+/* ===================================================
+GENERAL LAYOUT
+=================================================== */
+
+.grid {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+	height: 100%;
+	max-width: 1000px;
+
+	display: flex;
+	flex: 0 1 auto;
+	flex-direction: row;
+	flex-wrap: wrap;
+	transition: 500ms;
+
+	z-index: 9999;
+
+	// pointer-events: none;
+
+	&:hover {
+		// display: none;
+		opacity: 0;
+		// pointer-events: none;
+
+	}
+}
+
+.grid, .grid__col, .grid__inner {
+	height: 100%;
+}
+
+.grid__col {
+	flex: 1 0 auto;
+	padding: 0 .5rem;
+	min-width: 3rem;
+}
+
+.grid__inner {
+	background: rgba(hotpink, .33);
+	border: solid rgba(hotpink, .4);
+	border-width: 0 1px;
+}
+
+
+.container {
+	padding: 0 .5rem;
+	max-width: 1000px;
+	margin: 2rem auto;
+}
+
+.flexbox-wrapper {
+	box-sizing: border-box;
+	display: flex;
+	flex: 0 1 auto;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+
+
+	// margin-right: -.5rem;
+	// margin-left: -.5rem;
+}
+
+.flexbox {
+	background: red;
+
+	flex: 1 0 auto;
+	min-width: 300px;
+	// padding: 0 .5rem;
+}
+
+.flexbox-3 {
+	flex: 0 2 auto;
+}
+
 
 /* ===================================================
 Social Media Links

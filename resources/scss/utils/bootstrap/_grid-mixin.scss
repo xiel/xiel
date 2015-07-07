@@ -9,8 +9,8 @@
 	padding-left:  ($gutter / 2);
 	padding-right: ($gutter / 2);
 
-	@include rem('padding-left', ($grid-gutter-width / 2) );
-	@include rem('padding-right', ($grid-gutter-width / 2) );
+	// @include rem('padding-left', ($grid-gutter-width / 2) );
+	// @include rem('padding-right', ($grid-gutter-width / 2) );
 
 	@include clearfix();
 }
@@ -20,8 +20,8 @@
 	margin-left:  ($gutter / -2);
 	margin-right: ($gutter / -2);
 
-	@include rem('margin-left', ($gutter / -2) );
-	@include rem('margin-right', ($gutter / -2) );
+	// @include rem('margin-left', ($gutter / -2) );
+	// @include rem('margin-right', ($gutter / -2) );
 
 	@include clearfix();
 }
