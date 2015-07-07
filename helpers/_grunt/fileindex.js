@@ -28,10 +28,10 @@ module.exports = {
 				cwd: '<%= paths.src %>/scss/',
 				// here you can build your styles.scss like you would do in styles.scss with sass-globbing
 				src: [
-					'utils/*.scss',
+					'global/_vars.scss',
 					'utils/mixins/**/*.scss',
 					'utils/extends/**/*.scss',
-					'global/_vars.scss',
+					'utils/*.scss',
 					'global/_base.scss',
 					'modules/**/*.scss',
 					'icons/**/*.scss',

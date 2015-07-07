@@ -1,8 +1,8 @@
-@import "utils/flx-grid";
-@import "utils/normalize";
+@import "global/vars";
 @import "utils/mixins/mixins";
 @import "utils/extends/extends";
-@import "global/vars";
+@import "utils/flx-grid";
+@import "utils/normalize";
 @import "global/base";
 @import "modules/button";
 @import "modules/section-contact";

@@ -2,45 +2,90 @@
 FLX GRID
 =================================================== */
 
-%flx {
+
+$flx-slug: flx !default;
+
+// mixins
+@mixin flx-col(){
 	background: rgba(cyan, .1);
 	padding: 0 .5rem;
-	flex: 1;
-	// flex-basis: 33.33%;
-	// max-width: 33.33%;
+	flex: 1 0 auto;
+	width: 100%;
 	background-clip: content-box;
+}
+
+%flx {
+	@include flx-col();
 }
 
 .flx {
 	@extend %flx;
 }
 
-$flx-slug: flx !default;
+@mixin loop-grid-columns($columns, $class) {
+	@for $i from 1 through $columns {
 
-@for $i from 1 through 12 {
-	$j: 12 - $i;
+		.#{$flx-slug}-#{$class}-#{$i} {
+			@extend %flx;
+			max-width: percentage(($i / $grid-columns));
+		}
 
-	.#{$flx-slug}-#{$i}of12 {
-		width: (100% / 12 * $i);
 	}
 }
 
-@for $i from 1 through 4 {
-	.#{$flx-slug}-#{$i}of4 {
-		width: (100% / 4 * $i);
-	}
+@mixin make-grid($class) {
+	@include loop-grid-columns($grid-columns, $class);
 }
 
-@for $i from 1 through 3 {
-	.#{$flx-slug}-#{$i}of3 {
-		width: (100% / 3 * $i);
-	}
+@include make-grid(xs);
+
+@media (min-width: $screen-sm-min) {
+	@include make-grid(sm);
+}
+
+@media (min-width: $screen-md-min) {
+	@include make-grid(md);
+}
+
+@media (min-width: $screen-lg-min) {
+	@include make-grid(lg);
+}
+
+// @for $i from 1 through 11 {
+// 	.#{$flx-slug}-#{$i}of12 {
+// 		// @extend %flx;
+// 		width: (100% / 12 * $i);
+// 	}
+// }
+
+// @for $i from 1 through 3 {
+// 	.#{$flx-slug}-#{$i}of4 {
+// 		// @extend %flx;
+// 		width: (100% / 4 * $i);
+// 	}
+// }
+
+// @for $i from 1 through 2 {
+	
+// 	@media (max-width: 700px) {
+// 		.#{$flx-slug}-#{$i}of3 {
+// 			@extend %flx;
+// 			width: (100% / 3 * $i);
+// 		}
+// 	}
+
+// }
+
+.flx-full {
+	@extend %flx;
+	width: 100%;
 }
 
 .flx-group {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 -.5rem;
+	align-items: flex-top;
 }
 
 .flx-group--centered {
@@ -50,8 +95,6 @@ $flx-slug: flx !default;
 .flx-group--end {
 	justify-content: center;
 }
-
-
 
 //visual helper grid
 .grid {

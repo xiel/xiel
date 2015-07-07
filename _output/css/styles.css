@@ -1,70 +1,162 @@
+/******************************************
+	Responsive min-height based on width
+******************************************/
+/******************************************
+	Breakpoints
+******************************************/
+/******************************************
+	Grunticon mixin
+	usage: @include grunticon(icon-my-svg);
+******************************************/
+/******************************************
+	rem mixin
+******************************************/
+/******************************************
+	% (percent) mixin
+******************************************/
+/* ==========================================================================
+   Be sure how to use extends in @media:
+   https://github.com/nex3/sass/issues/915
+   ========================================================================== */
+.sm-link {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px; }
+  .sm-link:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%; }
+
 /* ===================================================
 FLX GRID
 =================================================== */
-.flx {
+.flx, .flx-xs-1, .flx-xs-2, .flx-xs-3, .flx-xs-4, .flx-xs-5, .flx-xs-6, .flx-xs-7, .flx-xs-8, .flx-xs-9, .flx-xs-10, .flx-xs-11, .flx-xs-12, .flx-sm-1, .flx-sm-2, .flx-sm-3, .flx-sm-4, .flx-sm-5, .flx-sm-6, .flx-sm-7, .flx-sm-8, .flx-sm-9, .flx-sm-10, .flx-sm-11, .flx-sm-12, .flx-md-1, .flx-md-2, .flx-md-3, .flx-md-4, .flx-md-5, .flx-md-6, .flx-md-7, .flx-md-8, .flx-md-9, .flx-md-10, .flx-md-11, .flx-md-12, .flx-lg-1, .flx-lg-2, .flx-lg-3, .flx-lg-4, .flx-lg-5, .flx-lg-6, .flx-lg-7, .flx-lg-8, .flx-lg-9, .flx-lg-10, .flx-lg-11, .flx-lg-12, .flx-full {
   background: rgba(0, 255, 255, 0.1);
   padding: 0 .5rem;
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  width: 100%;
   background-clip: content-box; }
 
-.flx-1of12 {
-  width: 8.3333333333%; }
+.flx-xs-1 {
+  max-width: 8.3333333333%; }
 
-.flx-2of12 {
-  width: 16.6666666667%; }
+.flx-xs-2 {
+  max-width: 16.6666666667%; }
 
-.flx-3of12 {
-  width: 25%; }
+.flx-xs-3 {
+  max-width: 25%; }
 
-.flx-4of12 {
-  width: 33.3333333333%; }
+.flx-xs-4 {
+  max-width: 33.3333333333%; }
 
-.flx-5of12 {
-  width: 41.6666666667%; }
+.flx-xs-5 {
+  max-width: 41.6666666667%; }
 
-.flx-6of12 {
-  width: 50%; }
+.flx-xs-6 {
+  max-width: 50%; }
 
-.flx-7of12 {
-  width: 58.3333333333%; }
+.flx-xs-7 {
+  max-width: 58.3333333333%; }
 
-.flx-8of12 {
-  width: 66.6666666667%; }
+.flx-xs-8 {
+  max-width: 66.6666666667%; }
 
-.flx-9of12 {
-  width: 75%; }
+.flx-xs-9 {
+  max-width: 75%; }
 
-.flx-10of12 {
-  width: 83.3333333333%; }
+.flx-xs-10 {
+  max-width: 83.3333333333%; }
 
-.flx-11of12 {
-  width: 91.6666666667%; }
+.flx-xs-11 {
+  max-width: 91.6666666667%; }
 
-.flx-12of12 {
-  width: 100%; }
+.flx-xs-12 {
+  max-width: 100%; }
 
-.flx-1of4 {
-  width: 25%; }
+@media (min-width: 640px) {
+  .flx-sm-1 {
+    max-width: 8.3333333333%; }
+  .flx-sm-2 {
+    max-width: 16.6666666667%; }
+  .flx-sm-3 {
+    max-width: 25%; }
+  .flx-sm-4 {
+    max-width: 33.3333333333%; }
+  .flx-sm-5 {
+    max-width: 41.6666666667%; }
+  .flx-sm-6 {
+    max-width: 50%; }
+  .flx-sm-7 {
+    max-width: 58.3333333333%; }
+  .flx-sm-8 {
+    max-width: 66.6666666667%; }
+  .flx-sm-9 {
+    max-width: 75%; }
+  .flx-sm-10 {
+    max-width: 83.3333333333%; }
+  .flx-sm-11 {
+    max-width: 91.6666666667%; }
+  .flx-sm-12 {
+    max-width: 100%; } }
 
-.flx-2of4 {
-  width: 50%; }
+@media (min-width: 1024px) {
+  .flx-md-1 {
+    max-width: 8.3333333333%; }
+  .flx-md-2 {
+    max-width: 16.6666666667%; }
+  .flx-md-3 {
+    max-width: 25%; }
+  .flx-md-4 {
+    max-width: 33.3333333333%; }
+  .flx-md-5 {
+    max-width: 41.6666666667%; }
+  .flx-md-6 {
+    max-width: 50%; }
+  .flx-md-7 {
+    max-width: 58.3333333333%; }
+  .flx-md-8 {
+    max-width: 66.6666666667%; }
+  .flx-md-9 {
+    max-width: 75%; }
+  .flx-md-10 {
+    max-width: 83.3333333333%; }
+  .flx-md-11 {
+    max-width: 91.6666666667%; }
+  .flx-md-12 {
+    max-width: 100%; } }
 
-.flx-3of4 {
-  width: 75%; }
+@media (min-width: 1230px) {
+  .flx-lg-1 {
+    max-width: 8.3333333333%; }
+  .flx-lg-2 {
+    max-width: 16.6666666667%; }
+  .flx-lg-3 {
+    max-width: 25%; }
+  .flx-lg-4 {
+    max-width: 33.3333333333%; }
+  .flx-lg-5 {
+    max-width: 41.6666666667%; }
+  .flx-lg-6 {
+    max-width: 50%; }
+  .flx-lg-7 {
+    max-width: 58.3333333333%; }
+  .flx-lg-8 {
+    max-width: 66.6666666667%; }
+  .flx-lg-9 {
+    max-width: 75%; }
+  .flx-lg-10 {
+    max-width: 83.3333333333%; }
+  .flx-lg-11 {
+    max-width: 91.6666666667%; }
+  .flx-lg-12 {
+    max-width: 100%; } }
 
-.flx-4of4 {
-  width: 100%; }
-
-.flx-1of3 {
-  width: 33.3333333333%; }
-
-.flx-2of3 {
-  width: 66.6666666667%; }
-
-.flx-3of3 {
+.flx-full {
   width: 100%; }
 
 .flx-group {
@@ -75,7 +167,11 @@ FLX GRID
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  margin: 0 -.5rem; }
+  margin: 0 -.5rem;
+  -webkit-box-align: flex-top;
+  -webkit-align-items: flex-top;
+      -ms-flex-align: flex-top;
+          align-items: flex-top; }
 
 .flx-group--centered {
   -webkit-box-pack: center;
@@ -457,37 +553,6 @@ table {
 
 td, th {
   padding: 0; }
-
-/******************************************
-	Responsive min-height based on width
-******************************************/
-/******************************************
-	Breakpoints
-******************************************/
-/******************************************
-	Grunticon mixin
-	usage: @include grunticon(icon-my-svg);
-******************************************/
-/******************************************
-	rem mixin
-******************************************/
-/******************************************
-	% (percent) mixin
-******************************************/
-/* ==========================================================================
-   Be sure how to use extends in @media:
-   https://github.com/nex3/sass/issues/915
-   ========================================================================== */
-.sm-link {
-  background-color: transparent;
-  border: 0;
-  overflow: hidden;
-  *text-indent: -9999px; }
-  .sm-link:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 150%; }
 
 /* ===================================================
 BASE
