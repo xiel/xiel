@@ -1,7 +1,7 @@
 module.exports = {
 	options: {
 		outputStyle: 'nested',
-		sourceMap: true
+		sourceMap: false
 	},
 	dist: {
 		files: {

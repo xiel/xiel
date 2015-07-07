@@ -43,7 +43,7 @@ module.exports = {
 	},
 	scss: {
 		files: '<%= paths.src %>/scss/**/*',
-		tasks: 'sass:dist'
+		tasks: ['sass:dist', 'autoprefixer']
 	},
 	universal: {
 		files: '<%= paths.src %>/scss/universal.scss',
