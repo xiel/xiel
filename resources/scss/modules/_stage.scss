@@ -2,9 +2,18 @@
 STAGE
 =================================================== */
 
+.stage {
+
+}
+
+.welcoming {
+	font-size: 1.3rem;
+}
+
 .stage-hello {
 	display: block;
 	color: $color-key;
 	color: blue;
 	font-size: 64px;
+	font-weight: 100;
 }

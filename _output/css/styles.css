@@ -38,23 +38,16 @@ BASE
 body {
   position: relative;
   font-family: "Roboto", sans-serif;
+  color: #636462;
   background: #CCD1CC;
   margin: 0;
   padding: 0;
-  font-size: 1.3rem; }
-
-.section {
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  min-height: 20em;
-  border-bottom: 5px solid white; }
+  font-size: 1rem; }
 
 .stage {
   background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
-  background-size: cover;
-  overflow: hidden;
-  background-attachment: fixed; }
+  background-size: contain;
+  overflow: hidden; }
 
 .xiel-logo {
   margin: 5% auto; }
@@ -81,9 +74,30 @@ p {
 em {
   font-style: normal; }
 
+h2 {
+  font-size: 3rem; }
+
+.section__header {
+  text-align: center;
+  margin: 0 auto 3rem;
+  max-width: 40rem; }
+  .section__header h2, .section__header p {
+    margin-bottom: .25em; }
+  .section__header h2 {
+    font-weight: 100; }
+  .section__header p {
+    font-weight: 300; }
+
 /* ===================================================
 GENERAL LAYOUT
 =================================================== */
+.section {
+  position: relative;
+  overflow: hidden;
+  min-height: 20em;
+  min-height: 100vh;
+  padding: 3rem 0; }
+
 .grid {
   position: absolute;
   top: 0;
@@ -109,11 +123,10 @@ GENERAL LAYOUT
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  -webkit-transition: 500ms;
-          transition: 500ms;
   z-index: 9999;
   pointer-events: none; }
   body:hover .grid {
+    visibility: hidden;
     opacity: 0; }
 
 .grid, .grid__col, .grid__inner {
@@ -169,7 +182,6 @@ GENERAL LAYOUT
           justify-content: center; }
 
 .flexbox {
-  background: orange;
   padding: 0 .5rem;
   -webkit-box-flex: 1;
   -webkit-flex: 1 0 auto;
@@ -220,13 +232,24 @@ BUTTONS
     background: rgba(51, 51, 51, 0.1); }
 
 /* ===================================================
+SECTION DEVELOPMENT
+=================================================== */
+.development {
+  color: #CCD1CC;
+  background: #333; }
+
+/* ===================================================
 STAGE
 =================================================== */
+.welcoming {
+  font-size: 1.3rem; }
+
 .stage-hello {
   display: block;
   color: #041231;
   color: blue;
-  font-size: 64px; }
+  font-size: 64px;
+  font-weight: 100; }
 
 .sm-link--github, .sm-link--twitter, .xiel-logo a {
   background-image: url("../img/sprites/sprites-icons-sprite.svg"); }
