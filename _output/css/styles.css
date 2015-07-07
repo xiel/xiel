@@ -239,6 +239,28 @@ SECTION DEVELOPMENT
   background: #333; }
 
 /* ===================================================
+SECTION PROJECTS
+=================================================== */
+.projects {
+  color: #636462;
+  background: #fff;
+  background: -webkit-linear-gradient(top, #fff, #D9D9D9);
+  background: linear-gradient(to bottom, #fff, #D9D9D9);
+  background: -webkit-radial-gradient(50% 10%, circle farthest-corner, #fff, #D9D9D9);
+  background: radial-gradient(circle farthest-corner at 50% 10%, #fff, #D9D9D9); }
+
+.project-teasers .project-teaser {
+  margin-bottom: 1rem;
+  padding-top: 66%;
+  background: #fff;
+  -webkit-transition: 200ms;
+          transition: 200ms;
+  cursor: pointer;
+  box-shadow: 0 .25rem .5rem -.25rem rgba(0, 0, 0, 0.2); }
+  .project-teasers .project-teaser:hover {
+    box-shadow: 0 .25rem .5rem -.25rem rgba(0, 0, 0, 0.85); }
+
+/* ===================================================
 STAGE
 =================================================== */
 .welcoming {
