@@ -2,10 +2,43 @@
 FLX GRID
 =================================================== */
 
+%flx {
+	background: rgba(cyan, .1);
+	padding: 0 .5rem;
+	flex: 1;
+	// flex-basis: 33.33%;
+	// max-width: 33.33%;
+	background-clip: content-box;
+}
+
+.flx {
+	@extend %flx;
+}
+
+$flx-slug: flx !default;
+
+@for $i from 1 through 12 {
+	$j: 12 - $i;
+
+	.#{$flx-slug}-#{$i}of12 {
+		width: (100% / 12 * $i);
+	}
+}
+
+@for $i from 1 through 4 {
+	.#{$flx-slug}-#{$i}of4 {
+		width: (100% / 4 * $i);
+	}
+}
+
+@for $i from 1 through 3 {
+	.#{$flx-slug}-#{$i}of3 {
+		width: (100% / 3 * $i);
+	}
+}
+
 .flx-group {
 	display: flex;
-	flex: 0 1 auto;
-	flex-direction: row;
 	flex-wrap: wrap;
 	margin: 0 -.5rem;
 }
@@ -18,14 +51,6 @@ FLX GRID
 	justify-content: center;
 }
 
-.flx-box {
-	background: rgba(cyan, .1);
-	padding: 0 .5rem;
-	flex: 1 0 auto;
-	flex-basis: 33.33%;
-	max-width: 33.33%;
-	background-clip: content-box;
-}
 
 
 //visual helper grid
