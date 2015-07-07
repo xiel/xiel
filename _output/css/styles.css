@@ -36,6 +36,7 @@ BASE
   box-sizing: border-box; }
 
 body {
+  position: relative;
   font-family: "Roboto", sans-serif;
   background: #CCD1CC;
   margin: 0;
@@ -51,7 +52,8 @@ body {
 .stage {
   background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
   background-size: cover;
-  overflow: hidden; }
+  overflow: hidden;
+  background-attachment: fixed; }
 
 .xiel-logo {
   margin: 5% auto; }
@@ -95,8 +97,9 @@ GENERAL LAYOUT
   flex-direction: row;
   flex-wrap: wrap;
   transition: 500ms;
-  z-index: 9999; }
-  .grid:hover {
+  z-index: 9999;
+  pointer-events: none; }
+  body:hover .grid {
     opacity: 0; }
 
 .grid, .grid__col, .grid__inner {
@@ -104,8 +107,7 @@ GENERAL LAYOUT
 
 .grid__col {
   flex: 1 0 auto;
-  padding: 0 .5rem;
-  min-width: 3rem; }
+  padding: 0 .5rem; }
 
 .grid__inner {
   background: rgba(255, 105, 180, 0.33);
@@ -122,12 +124,22 @@ GENERAL LAYOUT
   display: flex;
   flex: 0 1 auto;
   flex-direction: row;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin: 0 -.5rem; }
+
+.flexbox-wrapper--centered {
+  justify-content: center; }
+
+.flexbox-wrapper--end {
+  justify-content: center; }
 
 .flexbox {
   background: red;
+  padding: 0 .5rem;
   flex: 1 0 auto;
-  min-width: 300px; }
+  flex-basis: 33.33%;
+  max-width: 33.33%;
+  background-clip: content-box; }
 
 .flexbox-3 {
   flex: 0 2 auto; }
