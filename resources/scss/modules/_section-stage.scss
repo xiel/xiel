@@ -1,10 +1,14 @@
 /* ===================================================
-STAGE
+SECTION STAGE
 =================================================== */
 
 .stage {
-
+	background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
+	background-size: auto 100%;
+	overflow: hidden;
+	// background-attachment: fixed;
 }
+
 
 .welcoming {
 	font-size: 1.3rem;

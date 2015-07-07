@@ -44,11 +44,6 @@ body {
   padding: 0;
   font-size: 1rem; }
 
-.stage {
-  background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
-  background-size: contain;
-  overflow: hidden; }
-
 .xiel-logo {
   margin: 5% auto; }
   .xiel-logo a {
@@ -232,11 +227,26 @@ BUTTONS
     background: rgba(51, 51, 51, 0.1); }
 
 /* ===================================================
+SECTION CONTACT
+=================================================== */
+.contact {
+  background: #2C2C2C; }
+
+/* ===================================================
 SECTION DEVELOPMENT
 =================================================== */
 .development {
   color: #CCD1CC;
-  background: #333; }
+  background: #333;
+  -webkit-transform: matrix(1, -.075, 0, 1, 1, 1);
+      -ms-transform: matrix(1, -.075, 0, 1, 1, 1);
+          transform: matrix(1, -.075, 0, 1, 1, 1);
+  z-index: 1;
+  margin: -1% 0; }
+  .development .container {
+    -webkit-transform: matrix(1, .075, 0, 1, 1, 1);
+        -ms-transform: matrix(1, .075, 0, 1, 1, 1);
+            transform: matrix(1, .075, 0, 1, 1, 1); }
 
 /* ===================================================
 SECTION PROJECTS
@@ -261,8 +271,13 @@ SECTION PROJECTS
     box-shadow: 0 .25rem .5rem -.25rem rgba(0, 0, 0, 0.85); }
 
 /* ===================================================
-STAGE
+SECTION STAGE
 =================================================== */
+.stage {
+  background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
+  background-size: auto 100%;
+  overflow: hidden; }
+
 .welcoming {
   font-size: 1.3rem; }
 
