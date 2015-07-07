@@ -82,6 +82,8 @@ h2 {
     font-weight: 100; }
   .section__header p {
     font-weight: 300; }
+    .section__header p span {
+      display: block; }
 
 /* ===================================================
 GENERAL LAYOUT
@@ -144,7 +146,7 @@ GENERAL LAYOUT
   max-width: 1000px;
   margin: 2rem auto; }
 
-.flexbox-wrapper {
+.flx-group {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -164,19 +166,20 @@ GENERAL LAYOUT
           flex-wrap: wrap;
   margin: 0 -.5rem; }
 
-.flexbox-wrapper--centered {
+.flx-group--centered {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
 
-.flexbox-wrapper--end {
+.flx-group--end {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
 
 .flexbox {
+  background: rgba(0, 255, 255, 0.1);
   padding: 0 .5rem;
   -webkit-box-flex: 1;
   -webkit-flex: 1 0 auto;
@@ -211,13 +214,13 @@ BUTTONS
 .btn {
   display: inline-block;
   background: transparent;
-  padding: 10px 20px;
+  padding: 1rem 20px;
   width: 270px;
   color: #fff;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 1.2rem;
   letter-spacing: .05em;
-  border: 4px solid #fff;
+  border: 2px solid #fff;
   text-transform: uppercase;
   cursor: pointer;
   -webkit-transition: 300ms;
@@ -231,7 +234,9 @@ SECTION CONTACT
 =================================================== */
 .contact {
   color: #CCD1CC;
-  background: #2C2C2C; }
+  background: #111;
+  background: -webkit-linear-gradient(70deg, #121212 50%, transparent 50.1%), -webkit-linear-gradient(110deg, #121212 50%, #1a1a1a 50.1%, #121212), #121212;
+  background: linear-gradient(20deg, #121212 50%, transparent 50.1%), linear-gradient(-20deg, #121212 50%, #1a1a1a 50.1%, #121212), #121212; }
 
 /* ===================================================
 SECTION DEVELOPMENT

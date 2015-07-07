@@ -4,5 +4,10 @@ SECTION CONTACT
 
 .contact {
 	color: $color-text-light;
-	background: $color-gray-dark;
+	background: #111;
+	background: 
+		linear-gradient(20deg, hsl(0, 0%, 7%) 50%, transparent 50.1%),
+		linear-gradient(-20deg, hsl(0, 0%, 7%) 50%, hsl(0, 0%, 10%) 50.1%, hsl(0, 0%, 7%)),
+		hsl(0, 0%, 7%)
+	;
 }

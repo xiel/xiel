@@ -78,6 +78,10 @@ h2 {
 
 	p {
 		font-weight: 300; //light
+
+		span {
+			display: block;
+		}
 	}
 }
 
@@ -108,12 +112,10 @@ GENERAL LAYOUT
 	flex: 0 1 auto;
 	flex-direction: row;
 	flex-wrap: wrap;
-	// transition: 500ms;
 	z-index: 9999;
 	pointer-events: none;
 
 	body:hover & {
-		// display: none;
 		visibility: hidden;
 		opacity: 0;
 	}
@@ -142,7 +144,7 @@ GENERAL LAYOUT
 	margin: 2rem auto;
 }
 
-.flexbox-wrapper {
+.flx-group {
 	box-sizing: border-box;
 	display: flex;
 	flex: 0 1 auto;
@@ -157,16 +159,16 @@ GENERAL LAYOUT
 	// margin-left: -.5rem;
 }
 
-.flexbox-wrapper--centered {
+.flx-group--centered {
 	justify-content: center;
 }
 
-.flexbox-wrapper--end {
+.flx-group--end {
 	justify-content: center;
 }
 
 .flexbox {
-	// background: rgba(orange, .1);
+	background: rgba(cyan, .1);
 	padding: 0 .5rem;
 	flex: 1 0 auto;
 	flex-basis: 33.33%;
