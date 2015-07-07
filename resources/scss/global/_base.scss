@@ -98,87 +98,10 @@ GENERAL LAYOUT
 	// border-bottom: 5px solid white;
 }
 
-.grid {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: 0 auto;
-	height: 100%;
-	max-width: 1000px;
-
-	display: flex;
-	flex: 0 1 auto;
-	flex-direction: row;
-	flex-wrap: wrap;
-	z-index: 9999;
-	pointer-events: none;
-
-	body:hover & {
-		visibility: hidden;
-		opacity: 0;
-	}
-}
-
-.grid, .grid__col, .grid__inner {
-	height: 100%;
-}
-
-.grid__col {
-	flex: 1 0 auto;
-	padding: 0 .5rem;
-	// min-width: 3rem;
-}
-
-.grid__inner {
-	background: rgba(hotpink, .33);
-	border: solid rgba(hotpink, .4);
-	border-width: 0 1px;
-}
-
-
 .container {
 	padding: 0 .5rem;
 	max-width: 1000px;
 	margin: 2rem auto;
-}
-
-.flx-group {
-	box-sizing: border-box;
-	display: flex;
-	flex: 0 1 auto;
-	flex-direction: row;
-	flex-wrap: wrap;
-
-	margin: 0 -.5rem;
-
-
-
-	// margin-right: -.5rem;
-	// margin-left: -.5rem;
-}
-
-.flx-group--centered {
-	justify-content: center;
-}
-
-.flx-group--end {
-	justify-content: center;
-}
-
-.flexbox {
-	background: rgba(cyan, .1);
-	padding: 0 .5rem;
-	flex: 1 0 auto;
-	flex-basis: 33.33%;
-	max-width: 33.33%;
-	background-clip: content-box;
-	// padding: 0 .5rem;
-}
-
-.flexbox-3 {
-	flex: 0 2 auto;
 }
 
 

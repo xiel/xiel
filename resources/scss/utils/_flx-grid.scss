@@ -1,0 +1,73 @@
+/* ===================================================
+FLX GRID
+=================================================== */
+
+.flx-group {
+	display: flex;
+	flex: 0 1 auto;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 0 -.5rem;
+}
+
+.flx-group--centered {
+	justify-content: center;
+}
+
+.flx-group--end {
+	justify-content: center;
+}
+
+.flx-box {
+	background: rgba(cyan, .1);
+	padding: 0 .5rem;
+	flex: 1 0 auto;
+	flex-basis: 33.33%;
+	max-width: 33.33%;
+	background-clip: content-box;
+}
+
+
+//visual helper grid
+.grid {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+	height: 100%;
+	max-width: 1000px;
+
+	display: flex;
+	flex: 0 1 auto;
+	flex-direction: row;
+	flex-wrap: wrap;
+	z-index: 9999;
+	pointer-events: none;
+
+	body:hover & {
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+.grid, .grid__col, .grid__inner {
+	height: 100%;
+}
+
+.grid__col {
+	flex: 1 0 auto;
+	min-width: (100% / 12);
+	padding: 0 .5rem;
+
+	@media (max-width: 600px) {
+		min-width: (100% / 6);
+	}
+}
+
+.grid__inner {
+	background: rgba(hotpink, .33);
+	border: solid rgba(hotpink, .4);
+	border-width: 0 1px;
+}
