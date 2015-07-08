@@ -6,8 +6,14 @@ SECTION CONTACT
 	color: $color-text-light;
 	background: #111;
 	background: 
-		linear-gradient(20deg, hsl(0, 0%, 7%) 50%, transparent 50.1%),
-		linear-gradient(-20deg, hsl(0, 0%, 7%) 50%, hsl(0, 0%, 10%) 50.1%, hsl(0, 0%, 7%)),
-		hsl(0, 0%, 7%)
+		linear-gradient(20deg, hsl(0, 0%, 8%) 50%, hsla(0, 0%, 0%, 0) 50.1%),
+		linear-gradient(-20deg, hsl(0, 0%, 7%) 50%, hsl(214, 13%, 15%) 50.1%, hsl(0, 0%, 7%)),
+		hsl(0, 0%, 8%)
 	;
+	background-size: 100% 45rem;
+	background-repeat: no-repeat;
+
+	border-radius: 5em;
+  width: 90%;
+  margin: 0 auto;
 }

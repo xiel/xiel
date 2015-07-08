@@ -22,6 +22,8 @@ FORMS
 	textarea {
 		padding: 1em;
 		resize: none;
+		border: 1px solid rgba(#fff, .25);
+		// border-left: 1px solid;
 	}
 
 }
@@ -34,8 +36,9 @@ FORMS
 		}
 
 		textarea {
-			background: #262626;
-			background: rgba(#262626, .5);
+			background: transparent;
+			// background: #262626;
+			// background: rgba(#000, .1);
 		}
 	}
 }

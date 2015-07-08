@@ -9,7 +9,7 @@ $flx-slug: flx !default;
 @mixin flx-col(){
 	// background: rgba(cyan, .1);
 	padding: 0 1rem;
-	flex: 1 0 auto;
+	flex: 1;
 	width: 100%;
 	background-clip: content-box;
 }
@@ -27,6 +27,7 @@ $flx-slug: flx !default;
 
 		.#{$flx-slug}-#{$class}-#{$i} {
 			@extend %flx;
+			min-width: percentage(($i / $grid-columns));
 			max-width: percentage(($i / $grid-columns));
 		}
 

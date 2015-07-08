@@ -35,124 +35,172 @@ FLX GRID
 .flx, .flx-xs-1, .flx-xs-2, .flx-xs-3, .flx-xs-4, .flx-xs-5, .flx-xs-6, .flx-xs-7, .flx-xs-8, .flx-xs-9, .flx-xs-10, .flx-xs-11, .flx-xs-12, .flx-sm-1, .flx-sm-2, .flx-sm-3, .flx-sm-4, .flx-sm-5, .flx-sm-6, .flx-sm-7, .flx-sm-8, .flx-sm-9, .flx-sm-10, .flx-sm-11, .flx-sm-12, .flx-md-1, .flx-md-2, .flx-md-3, .flx-md-4, .flx-md-5, .flx-md-6, .flx-md-7, .flx-md-8, .flx-md-9, .flx-md-10, .flx-md-11, .flx-md-12, .flx-lg-1, .flx-lg-2, .flx-lg-3, .flx-lg-4, .flx-lg-5, .flx-lg-6, .flx-lg-7, .flx-lg-8, .flx-lg-9, .flx-lg-10, .flx-lg-11, .flx-lg-12, .flx-full {
   padding: 0 1rem;
   -webkit-box-flex: 1;
-  -webkit-flex: 1 0 auto;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   width: 100%;
   background-clip: content-box; }
 
 .flx-xs-1 {
+  min-width: 8.3333333333%;
   max-width: 8.3333333333%; }
 
 .flx-xs-2 {
+  min-width: 16.6666666667%;
   max-width: 16.6666666667%; }
 
 .flx-xs-3 {
+  min-width: 25%;
   max-width: 25%; }
 
 .flx-xs-4 {
+  min-width: 33.3333333333%;
   max-width: 33.3333333333%; }
 
 .flx-xs-5 {
+  min-width: 41.6666666667%;
   max-width: 41.6666666667%; }
 
 .flx-xs-6 {
+  min-width: 50%;
   max-width: 50%; }
 
 .flx-xs-7 {
+  min-width: 58.3333333333%;
   max-width: 58.3333333333%; }
 
 .flx-xs-8 {
+  min-width: 66.6666666667%;
   max-width: 66.6666666667%; }
 
 .flx-xs-9 {
+  min-width: 75%;
   max-width: 75%; }
 
 .flx-xs-10 {
+  min-width: 83.3333333333%;
   max-width: 83.3333333333%; }
 
 .flx-xs-11 {
+  min-width: 91.6666666667%;
   max-width: 91.6666666667%; }
 
 .flx-xs-12 {
+  min-width: 100%;
   max-width: 100%; }
 
 @media (min-width: 640px) {
   .flx-sm-1 {
+    min-width: 8.3333333333%;
     max-width: 8.3333333333%; }
   .flx-sm-2 {
+    min-width: 16.6666666667%;
     max-width: 16.6666666667%; }
   .flx-sm-3 {
+    min-width: 25%;
     max-width: 25%; }
   .flx-sm-4 {
+    min-width: 33.3333333333%;
     max-width: 33.3333333333%; }
   .flx-sm-5 {
+    min-width: 41.6666666667%;
     max-width: 41.6666666667%; }
   .flx-sm-6 {
+    min-width: 50%;
     max-width: 50%; }
   .flx-sm-7 {
+    min-width: 58.3333333333%;
     max-width: 58.3333333333%; }
   .flx-sm-8 {
+    min-width: 66.6666666667%;
     max-width: 66.6666666667%; }
   .flx-sm-9 {
+    min-width: 75%;
     max-width: 75%; }
   .flx-sm-10 {
+    min-width: 83.3333333333%;
     max-width: 83.3333333333%; }
   .flx-sm-11 {
+    min-width: 91.6666666667%;
     max-width: 91.6666666667%; }
   .flx-sm-12 {
+    min-width: 100%;
     max-width: 100%; } }
 
 @media (min-width: 1024px) {
   .flx-md-1 {
+    min-width: 8.3333333333%;
     max-width: 8.3333333333%; }
   .flx-md-2 {
+    min-width: 16.6666666667%;
     max-width: 16.6666666667%; }
   .flx-md-3 {
+    min-width: 25%;
     max-width: 25%; }
   .flx-md-4 {
+    min-width: 33.3333333333%;
     max-width: 33.3333333333%; }
   .flx-md-5 {
+    min-width: 41.6666666667%;
     max-width: 41.6666666667%; }
   .flx-md-6 {
+    min-width: 50%;
     max-width: 50%; }
   .flx-md-7 {
+    min-width: 58.3333333333%;
     max-width: 58.3333333333%; }
   .flx-md-8 {
+    min-width: 66.6666666667%;
     max-width: 66.6666666667%; }
   .flx-md-9 {
+    min-width: 75%;
     max-width: 75%; }
   .flx-md-10 {
+    min-width: 83.3333333333%;
     max-width: 83.3333333333%; }
   .flx-md-11 {
+    min-width: 91.6666666667%;
     max-width: 91.6666666667%; }
   .flx-md-12 {
+    min-width: 100%;
     max-width: 100%; } }
 
 @media (min-width: 1230px) {
   .flx-lg-1 {
+    min-width: 8.3333333333%;
     max-width: 8.3333333333%; }
   .flx-lg-2 {
+    min-width: 16.6666666667%;
     max-width: 16.6666666667%; }
   .flx-lg-3 {
+    min-width: 25%;
     max-width: 25%; }
   .flx-lg-4 {
+    min-width: 33.3333333333%;
     max-width: 33.3333333333%; }
   .flx-lg-5 {
+    min-width: 41.6666666667%;
     max-width: 41.6666666667%; }
   .flx-lg-6 {
+    min-width: 50%;
     max-width: 50%; }
   .flx-lg-7 {
+    min-width: 58.3333333333%;
     max-width: 58.3333333333%; }
   .flx-lg-8 {
+    min-width: 66.6666666667%;
     max-width: 66.6666666667%; }
   .flx-lg-9 {
+    min-width: 75%;
     max-width: 75%; }
   .flx-lg-10 {
+    min-width: 83.3333333333%;
     max-width: 83.3333333333%; }
   .flx-lg-11 {
+    min-width: 91.6666666667%;
     max-width: 91.6666666667%; }
   .flx-lg-12 {
+    min-width: 100%;
     max-width: 100%; } }
 
 .flx-full {
@@ -561,6 +609,55 @@ BASE
   box-sizing: border-box;
   outline: 0 none; }
 
+html {
+  font-size: 1em;
+  line-height: 1.4; }
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+audio, canvas, img, video {
+  vertical-align: middle; }
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical; }
+
 body {
   position: relative;
   font-family: "Roboto", sans-serif;
@@ -581,6 +678,15 @@ body {
       content: ' ';
       width: 100%;
       height: 100%; }
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0; }
 
 /* ===================================================
 GENERAL TEXT
@@ -671,13 +777,13 @@ FORMS
   border-bottom: 2px solid; }
 .field textarea {
   padding: 1em;
-  resize: none; }
+  resize: none;
+  border: 1px solid rgba(255, 255, 255, 0.25); }
 
 .contactform .field input {
   background: transparent; }
 .contactform .field textarea {
-  background: #262626;
-  background: rgba(38, 38, 38, 0.5); }
+  background: transparent; }
 
 /* ===================================================
 SECTION CONTACT
@@ -685,8 +791,13 @@ SECTION CONTACT
 .contact {
   color: #CCD1CC;
   background: #111;
-  background: -webkit-linear-gradient(70deg, #121212 50%, transparent 50.1%), -webkit-linear-gradient(110deg, #121212 50%, #1a1a1a 50.1%, #121212), #121212;
-  background: linear-gradient(20deg, #121212 50%, transparent 50.1%), linear-gradient(-20deg, #121212 50%, #1a1a1a 50.1%, #121212), #121212; }
+  background: -webkit-linear-gradient(70deg, #141414 50%, transparent 50.1%), -webkit-linear-gradient(110deg, #121212 50%, #21262b 50.1%, #121212), #141414;
+  background: linear-gradient(20deg, #141414 50%, transparent 50.1%), linear-gradient(-20deg, #121212 50%, #21262b 50.1%, #121212), #141414;
+  background-size: 100% 45rem;
+  background-repeat: no-repeat;
+  border-radius: 5em;
+  width: 90%;
+  margin: 0 auto; }
 
 /* ===================================================
 SECTION DEVELOPMENT
