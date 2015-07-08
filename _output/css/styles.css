@@ -32,179 +32,15 @@
 /* ===================================================
 FLX GRID
 =================================================== */
-.flx, .flx-xs-1, .flx-xs-2, .flx-xs-3, .flx-xs-4, .flx-xs-5, .flx-xs-6, .flx-xs-7, .flx-xs-8, .flx-xs-9, .flx-xs-10, .flx-xs-11, .flx-xs-12, .flx-sm-1, .flx-sm-2, .flx-sm-3, .flx-sm-4, .flx-sm-5, .flx-sm-6, .flx-sm-7, .flx-sm-8, .flx-sm-9, .flx-sm-10, .flx-sm-11, .flx-sm-12, .flx-md-1, .flx-md-2, .flx-md-3, .flx-md-4, .flx-md-5, .flx-md-6, .flx-md-7, .flx-md-8, .flx-md-9, .flx-md-10, .flx-md-11, .flx-md-12, .flx-lg-1, .flx-lg-2, .flx-lg-3, .flx-lg-4, .flx-lg-5, .flx-lg-6, .flx-lg-7, .flx-lg-8, .flx-lg-9, .flx-lg-10, .flx-lg-11, .flx-lg-12, .flx-full {
-  padding: 0 1rem;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+.flx, .flx--fit, .flx--xs-1, .flx--xs-2, .flx--xs-3, .flx--xs-4, .flx--xs-5, .flx--xs-6, .flx--xs-7, .flx--xs-8, .flx--xs-9, .flx--xs-10, .flx--xs-11, .flx--xs-12, .flx--xs-fit, .flx--sm-1, .flx--sm-2, .flx--sm-3, .flx--sm-4, .flx--sm-5, .flx--sm-6, .flx--sm-7, .flx--sm-8, .flx--sm-9, .flx--sm-10, .flx--sm-11, .flx--sm-12, .flx--sm-fit, .flx--md-1, .flx--md-2, .flx--md-3, .flx--md-4, .flx--md-5, .flx--md-6, .flx--md-7, .flx--md-8, .flx--md-9, .flx--md-10, .flx--md-11, .flx--md-12, .flx--md-fit, .flx--lg-1, .flx--lg-2, .flx--lg-3, .flx--lg-4, .flx--lg-5, .flx--lg-6, .flx--lg-7, .flx--lg-8, .flx--lg-9, .flx--lg-10, .flx--lg-11, .flx--lg-12, .flx--lg-fit, .flx-full {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+      -ms-flex: none;
+          flex: none;
   width: 100%;
+  padding: 0 1rem;
+  background: rgba(0, 255, 255, 0.1);
   background-clip: content-box; }
-
-.flx-xs-1 {
-  min-width: 8.3333333333%;
-  max-width: 8.3333333333%; }
-
-.flx-xs-2 {
-  min-width: 16.6666666667%;
-  max-width: 16.6666666667%; }
-
-.flx-xs-3 {
-  min-width: 25%;
-  max-width: 25%; }
-
-.flx-xs-4 {
-  min-width: 33.3333333333%;
-  max-width: 33.3333333333%; }
-
-.flx-xs-5 {
-  min-width: 41.6666666667%;
-  max-width: 41.6666666667%; }
-
-.flx-xs-6 {
-  min-width: 50%;
-  max-width: 50%; }
-
-.flx-xs-7 {
-  min-width: 58.3333333333%;
-  max-width: 58.3333333333%; }
-
-.flx-xs-8 {
-  min-width: 66.6666666667%;
-  max-width: 66.6666666667%; }
-
-.flx-xs-9 {
-  min-width: 75%;
-  max-width: 75%; }
-
-.flx-xs-10 {
-  min-width: 83.3333333333%;
-  max-width: 83.3333333333%; }
-
-.flx-xs-11 {
-  min-width: 91.6666666667%;
-  max-width: 91.6666666667%; }
-
-.flx-xs-12 {
-  min-width: 100%;
-  max-width: 100%; }
-
-@media (min-width: 640px) {
-  .flx-sm-1 {
-    min-width: 8.3333333333%;
-    max-width: 8.3333333333%; }
-  .flx-sm-2 {
-    min-width: 16.6666666667%;
-    max-width: 16.6666666667%; }
-  .flx-sm-3 {
-    min-width: 25%;
-    max-width: 25%; }
-  .flx-sm-4 {
-    min-width: 33.3333333333%;
-    max-width: 33.3333333333%; }
-  .flx-sm-5 {
-    min-width: 41.6666666667%;
-    max-width: 41.6666666667%; }
-  .flx-sm-6 {
-    min-width: 50%;
-    max-width: 50%; }
-  .flx-sm-7 {
-    min-width: 58.3333333333%;
-    max-width: 58.3333333333%; }
-  .flx-sm-8 {
-    min-width: 66.6666666667%;
-    max-width: 66.6666666667%; }
-  .flx-sm-9 {
-    min-width: 75%;
-    max-width: 75%; }
-  .flx-sm-10 {
-    min-width: 83.3333333333%;
-    max-width: 83.3333333333%; }
-  .flx-sm-11 {
-    min-width: 91.6666666667%;
-    max-width: 91.6666666667%; }
-  .flx-sm-12 {
-    min-width: 100%;
-    max-width: 100%; } }
-
-@media (min-width: 1024px) {
-  .flx-md-1 {
-    min-width: 8.3333333333%;
-    max-width: 8.3333333333%; }
-  .flx-md-2 {
-    min-width: 16.6666666667%;
-    max-width: 16.6666666667%; }
-  .flx-md-3 {
-    min-width: 25%;
-    max-width: 25%; }
-  .flx-md-4 {
-    min-width: 33.3333333333%;
-    max-width: 33.3333333333%; }
-  .flx-md-5 {
-    min-width: 41.6666666667%;
-    max-width: 41.6666666667%; }
-  .flx-md-6 {
-    min-width: 50%;
-    max-width: 50%; }
-  .flx-md-7 {
-    min-width: 58.3333333333%;
-    max-width: 58.3333333333%; }
-  .flx-md-8 {
-    min-width: 66.6666666667%;
-    max-width: 66.6666666667%; }
-  .flx-md-9 {
-    min-width: 75%;
-    max-width: 75%; }
-  .flx-md-10 {
-    min-width: 83.3333333333%;
-    max-width: 83.3333333333%; }
-  .flx-md-11 {
-    min-width: 91.6666666667%;
-    max-width: 91.6666666667%; }
-  .flx-md-12 {
-    min-width: 100%;
-    max-width: 100%; } }
-
-@media (min-width: 1230px) {
-  .flx-lg-1 {
-    min-width: 8.3333333333%;
-    max-width: 8.3333333333%; }
-  .flx-lg-2 {
-    min-width: 16.6666666667%;
-    max-width: 16.6666666667%; }
-  .flx-lg-3 {
-    min-width: 25%;
-    max-width: 25%; }
-  .flx-lg-4 {
-    min-width: 33.3333333333%;
-    max-width: 33.3333333333%; }
-  .flx-lg-5 {
-    min-width: 41.6666666667%;
-    max-width: 41.6666666667%; }
-  .flx-lg-6 {
-    min-width: 50%;
-    max-width: 50%; }
-  .flx-lg-7 {
-    min-width: 58.3333333333%;
-    max-width: 58.3333333333%; }
-  .flx-lg-8 {
-    min-width: 66.6666666667%;
-    max-width: 66.6666666667%; }
-  .flx-lg-9 {
-    min-width: 75%;
-    max-width: 75%; }
-  .flx-lg-10 {
-    min-width: 83.3333333333%;
-    max-width: 83.3333333333%; }
-  .flx-lg-11 {
-    min-width: 91.6666666667%;
-    max-width: 91.6666666667%; }
-  .flx-lg-12 {
-    min-width: 100%;
-    max-width: 100%; } }
-
-.flx-full {
-  width: 100%; }
 
 .flx-group {
   display: -webkit-box;
@@ -214,7 +50,7 @@ FLX GRID
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  margin: 0 -.5rem;
+  margin: 0 -1rem;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
@@ -232,6 +68,141 @@ FLX GRID
       -ms-flex-pack: center;
           justify-content: center; }
 
+.flx--fit {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+
+@media (min-width: 480px) {
+  .flx--xs-1 {
+    width: 8.3333333333%; }
+  .flx--xs-2 {
+    width: 16.6666666667%; }
+  .flx--xs-3 {
+    width: 25%; }
+  .flx--xs-4 {
+    width: 33.3333333333%; }
+  .flx--xs-5 {
+    width: 41.6666666667%; }
+  .flx--xs-6 {
+    width: 50%; }
+  .flx--xs-7 {
+    width: 58.3333333333%; }
+  .flx--xs-8 {
+    width: 66.6666666667%; }
+  .flx--xs-9 {
+    width: 75%; }
+  .flx--xs-10 {
+    width: 83.3333333333%; }
+  .flx--xs-11 {
+    width: 91.6666666667%; }
+  .flx--xs-12 {
+    width: 100%; }
+  .flx--xs-fit {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; } }
+
+@media (min-width: 640px) {
+  .flx--sm-1 {
+    width: 8.3333333333%; }
+  .flx--sm-2 {
+    width: 16.6666666667%; }
+  .flx--sm-3 {
+    width: 25%; }
+  .flx--sm-4 {
+    width: 33.3333333333%; }
+  .flx--sm-5 {
+    width: 41.6666666667%; }
+  .flx--sm-6 {
+    width: 50%; }
+  .flx--sm-7 {
+    width: 58.3333333333%; }
+  .flx--sm-8 {
+    width: 66.6666666667%; }
+  .flx--sm-9 {
+    width: 75%; }
+  .flx--sm-10 {
+    width: 83.3333333333%; }
+  .flx--sm-11 {
+    width: 91.6666666667%; }
+  .flx--sm-12 {
+    width: 100%; }
+  .flx--sm-fit {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; } }
+
+@media (min-width: 1024px) {
+  .flx--md-1 {
+    width: 8.3333333333%; }
+  .flx--md-2 {
+    width: 16.6666666667%; }
+  .flx--md-3 {
+    width: 25%; }
+  .flx--md-4 {
+    width: 33.3333333333%; }
+  .flx--md-5 {
+    width: 41.6666666667%; }
+  .flx--md-6 {
+    width: 50%; }
+  .flx--md-7 {
+    width: 58.3333333333%; }
+  .flx--md-8 {
+    width: 66.6666666667%; }
+  .flx--md-9 {
+    width: 75%; }
+  .flx--md-10 {
+    width: 83.3333333333%; }
+  .flx--md-11 {
+    width: 91.6666666667%; }
+  .flx--md-12 {
+    width: 100%; }
+  .flx--md-fit {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; } }
+
+@media (min-width: 1230px) {
+  .flx--lg-1 {
+    width: 8.3333333333%; }
+  .flx--lg-2 {
+    width: 16.6666666667%; }
+  .flx--lg-3 {
+    width: 25%; }
+  .flx--lg-4 {
+    width: 33.3333333333%; }
+  .flx--lg-5 {
+    width: 41.6666666667%; }
+  .flx--lg-6 {
+    width: 50%; }
+  .flx--lg-7 {
+    width: 58.3333333333%; }
+  .flx--lg-8 {
+    width: 66.6666666667%; }
+  .flx--lg-9 {
+    width: 75%; }
+  .flx--lg-10 {
+    width: 83.3333333333%; }
+  .flx--lg-11 {
+    width: 91.6666666667%; }
+  .flx--lg-12 {
+    width: 100%; }
+  .flx--lg-fit {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; } }
+
+.flx-full {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%; }
+
 .grid {
   position: absolute;
   top: 0;
@@ -239,8 +210,10 @@ FLX GRID
   right: 0;
   bottom: 0;
   margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
   height: 100%;
-  padding: 0 .5rem;
+  padding: 0;
   max-width: 1200px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -259,10 +232,10 @@ FLX GRID
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   z-index: 9999;
-  pointer-events: none; }
-  body:hover .grid {
-    visibility: hidden;
-    opacity: 0; }
+  pointer-events: none;
+  visibility: hidden; }
+  .grid-visible .grid {
+    visibility: visible; }
 
 .grid, .grid__col, .grid__inner {
   height: 100%; }
@@ -663,21 +636,10 @@ body {
   font-family: "Roboto", sans-serif;
   color: #636462;
   background: #CCD1CC;
+  background: red;
   margin: 0;
   padding: 0;
   font-size: 1rem; }
-
-.xiel-logo {
-  margin: 5% auto; }
-  .xiel-logo a {
-    display: block;
-    overflow: hidden;
-    margin: 0 auto; }
-    .xiel-logo a:before {
-      display: block;
-      content: ' ';
-      width: 100%;
-      height: 100%; }
 
 /* ==========================================================================
    Browse Happy prompt
@@ -720,15 +682,31 @@ h2 {
 /* ===================================================
 GENERAL LAYOUT
 =================================================== */
+.wrapper {
+  overflow: hidden; }
+
 .section {
   position: relative;
   overflow: hidden;
   min-height: 20em;
   min-height: 100vh;
-  padding: 3rem 0; }
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
 
 .container {
   padding: 0 1rem;
+  width: 100%;
   max-width: 1200px;
   margin: 2rem auto; }
 
@@ -795,9 +773,7 @@ SECTION CONTACT
   background: linear-gradient(20deg, #141414 50%, transparent 50.1%), linear-gradient(-20deg, #121212 50%, #21262b 50.1%, #121212), #141414;
   background-size: 100% 45rem;
   background-repeat: no-repeat;
-  border-radius: 5em;
-  width: 90%;
-  margin: 0 auto; }
+  border-radius: 1rem; }
 
 /* ===================================================
 SECTION DEVELOPMENT
@@ -842,8 +818,25 @@ SECTION STAGE
 =================================================== */
 .stage {
   background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
-  background-size: auto 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  background-size: 100% auto;
+  min-height: 200vh; }
+
+.xiel-logo {
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 5% auto;
+  z-index: 9999; }
+  .xiel-logo a {
+    display: block;
+    overflow: hidden;
+    margin: 0 auto; }
+    .xiel-logo a:before {
+      display: block;
+      content: ' ';
+      width: 100%;
+      height: 100%; }
 
 .welcoming {
   font-size: 1.3rem; }
@@ -851,7 +844,6 @@ SECTION STAGE
 .stage-hello {
   display: block;
   color: #041231;
-  color: blue;
   font-size: 64px;
   font-weight: 100; }
 

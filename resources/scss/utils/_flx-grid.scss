@@ -2,33 +2,25 @@
 FLX GRID
 =================================================== */
 
-
 $flx-slug: flx !default;
 
 // mixins
 @mixin flx-col(){
-	// background: rgba(cyan, .1);
-	padding: 0 1rem;
-	flex: 1;
+	flex: none;
 	width: 100%;
+	padding: 0 1rem;
+
+	background: rgba(cyan, .1);
 	background-clip: content-box;
-}
-
-%flx {
-	@include flx-col();
-}
-
-.flx {
-	@extend %flx;
 }
 
 @mixin loop-grid-columns($columns, $class) {
 	@for $i from 1 through $columns {
 
-		.#{$flx-slug}-#{$class}-#{$i} {
+		.#{$flx-slug}--#{$class}-#{$i} {
 			@extend %flx;
-			min-width: percentage(($i / $grid-columns));
-			max-width: percentage(($i / $grid-columns));
+			// flex: none;
+			width: percentage(($i / $grid-columns));
 		}
 
 	}
@@ -36,9 +28,46 @@ $flx-slug: flx !default;
 
 @mixin make-grid($class) {
 	@include loop-grid-columns($grid-columns, $class);
+
+	.#{$flx-slug}--#{$class}-fit {
+		@extend %flx;
+		flex: 1;
+	}
 }
 
-@include make-grid(xs);
+//extends
+%flx {
+	@include flx-col();
+}
+
+//flx-group
+.flx-group {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -1rem;
+	align-items: flex-start;
+}
+
+.flx-group--centered {
+	justify-content: center;
+}
+
+.flx-group--end {
+	justify-content: center;
+}
+
+.flx {
+	@extend %flx;
+}
+
+.flx--fit {
+	@extend %flx;
+	flex: 1;
+}
+
+@media (min-width: $screen-xs-min) {
+	@include make-grid(xs);
+}
 
 @media (min-width: $screen-sm-min) {
 	@include make-grid(sm);
@@ -55,21 +84,8 @@ $flx-slug: flx !default;
 .flx-full {
 	@extend %flx;
 	width: 100%;
-}
-
-.flx-group {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 -.5rem;
-	align-items: flex-start;
-}
-
-.flx-group--centered {
-	justify-content: center;
-}
-
-.flx-group--end {
-	justify-content: center;
+	min-width: 100%;
+	max-width: 100%;
 }
 
 //visual helper grid
@@ -80,8 +96,10 @@ $flx-slug: flx !default;
 	right: 0;
 	bottom: 0;
 	margin: 0 auto;
+	width: 100%;
+	overflow: hidden;
 	height: 100%;
-	padding: 0 .5rem;
+	padding: 0;
 	max-width: $content-container-max;
 
 	display: flex;
@@ -90,10 +108,10 @@ $flx-slug: flx !default;
 	flex-wrap: wrap;
 	z-index: 9999;
 	pointer-events: none;
+	visibility: hidden;
 
-	body:hover & {
-		visibility: hidden;
-		opacity: 0;
+	.grid-visible & {
+		visibility: visible;
 	}
 }
 
