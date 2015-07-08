@@ -7,8 +7,8 @@ $flx-slug: flx !default;
 
 // mixins
 @mixin flx-col(){
-	background: rgba(cyan, .1);
-	padding: 0 .5rem;
+	// background: rgba(cyan, .1);
+	padding: 0 1rem;
 	flex: 1 0 auto;
 	width: 100%;
 	background-clip: content-box;
@@ -51,31 +51,6 @@ $flx-slug: flx !default;
 	@include make-grid(lg);
 }
 
-// @for $i from 1 through 11 {
-// 	.#{$flx-slug}-#{$i}of12 {
-// 		// @extend %flx;
-// 		width: (100% / 12 * $i);
-// 	}
-// }
-
-// @for $i from 1 through 3 {
-// 	.#{$flx-slug}-#{$i}of4 {
-// 		// @extend %flx;
-// 		width: (100% / 4 * $i);
-// 	}
-// }
-
-// @for $i from 1 through 2 {
-	
-// 	@media (max-width: 700px) {
-// 		.#{$flx-slug}-#{$i}of3 {
-// 			@extend %flx;
-// 			width: (100% / 3 * $i);
-// 		}
-// 	}
-
-// }
-
 .flx-full {
 	@extend %flx;
 	width: 100%;
@@ -85,7 +60,7 @@ $flx-slug: flx !default;
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 -.5rem;
-	align-items: flex-top;
+	align-items: flex-start;
 }
 
 .flx-group--centered {
@@ -105,7 +80,8 @@ $flx-slug: flx !default;
 	bottom: 0;
 	margin: 0 auto;
 	height: 100%;
-	max-width: 1000px;
+	padding: 0 .5rem;
+	max-width: $content-container-max;
 
 	display: flex;
 	flex: 0 1 auto;
@@ -127,7 +103,7 @@ $flx-slug: flx !default;
 .grid__col {
 	flex: 1 0 auto;
 	min-width: (100% / 12);
-	padding: 0 .5rem;
+	padding: 0 1rem;
 
 	@media (max-width: 600px) {
 		min-width: (100% / 6);

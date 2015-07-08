@@ -33,8 +33,7 @@
 FLX GRID
 =================================================== */
 .flx, .flx-xs-1, .flx-xs-2, .flx-xs-3, .flx-xs-4, .flx-xs-5, .flx-xs-6, .flx-xs-7, .flx-xs-8, .flx-xs-9, .flx-xs-10, .flx-xs-11, .flx-xs-12, .flx-sm-1, .flx-sm-2, .flx-sm-3, .flx-sm-4, .flx-sm-5, .flx-sm-6, .flx-sm-7, .flx-sm-8, .flx-sm-9, .flx-sm-10, .flx-sm-11, .flx-sm-12, .flx-md-1, .flx-md-2, .flx-md-3, .flx-md-4, .flx-md-5, .flx-md-6, .flx-md-7, .flx-md-8, .flx-md-9, .flx-md-10, .flx-md-11, .flx-md-12, .flx-lg-1, .flx-lg-2, .flx-lg-3, .flx-lg-4, .flx-lg-5, .flx-lg-6, .flx-lg-7, .flx-lg-8, .flx-lg-9, .flx-lg-10, .flx-lg-11, .flx-lg-12, .flx-full {
-  background: rgba(0, 255, 255, 0.1);
-  padding: 0 .5rem;
+  padding: 0 1rem;
   -webkit-box-flex: 1;
   -webkit-flex: 1 0 auto;
       -ms-flex: 1 0 auto;
@@ -168,10 +167,10 @@ FLX GRID
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   margin: 0 -.5rem;
-  -webkit-box-align: flex-top;
-  -webkit-align-items: flex-top;
-      -ms-flex-align: flex-top;
-          align-items: flex-top; }
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
 
 .flx-group--centered {
   -webkit-box-pack: center;
@@ -193,7 +192,8 @@ FLX GRID
   bottom: 0;
   margin: 0 auto;
   height: 100%;
-  max-width: 1000px;
+  padding: 0 .5rem;
+  max-width: 1200px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -225,7 +225,7 @@ FLX GRID
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
   min-width: 8.3333333333%;
-  padding: 0 .5rem; }
+  padding: 0 1rem; }
   @media (max-width: 600px) {
     .grid__col {
       min-width: 16.6666666667%; } }
@@ -558,7 +558,8 @@ td, th {
 BASE
 =================================================== */
 *, *:before, *:after {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  outline: 0 none; }
 
 body {
   position: relative;
@@ -621,8 +622,8 @@ GENERAL LAYOUT
   padding: 3rem 0; }
 
 .container {
-  padding: 0 .5rem;
-  max-width: 1000px;
+  padding: 0 1rem;
+  max-width: 1200px;
   margin: 2rem auto; }
 
 /* ===================================================
@@ -656,6 +657,27 @@ BUTTONS
   .btn:hover, .btn:focus {
     color: #fff;
     background: rgba(51, 51, 51, 0.1); }
+
+/* ===================================================
+FORMS
+=================================================== */
+.field input, .field textarea {
+  display: block;
+  width: 100%;
+  border: 0 none;
+  margin: 0 0 2rem; }
+.field input {
+  line-height: 2;
+  border-bottom: 2px solid; }
+.field textarea {
+  padding: 1em;
+  resize: none; }
+
+.contactform .field input {
+  background: transparent; }
+.contactform .field textarea {
+  background: #262626;
+  background: rgba(38, 38, 38, 0.5); }
 
 /* ===================================================
 SECTION CONTACT

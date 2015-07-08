@@ -7,6 +7,7 @@ BASE
 	&:before,
 	&:after {
 		box-sizing: border-box;
+		outline: 0 none;
 	}
 }
 
@@ -99,8 +100,8 @@ GENERAL LAYOUT
 }
 
 .container {
-	padding: 0 .5rem;
-	max-width: 1000px;
+	padding: 0 1rem;
+	max-width: $content-container-max;
 	margin: 2rem auto;
 }
 

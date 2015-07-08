@@ -1,0 +1,41 @@
+/* ===================================================
+FORMS
+=================================================== */
+
+
+.field {
+
+	input,
+	textarea {
+		display: block;
+		width: 100%;
+		border: 0 none;
+		margin: 0 0 2rem;
+	}
+
+	input {
+		line-height: 2;
+		border-bottom: 2px solid;
+		// background: #000;
+	}
+
+	textarea {
+		padding: 1em;
+		resize: none;
+	}
+
+}
+
+.contactform {
+	.field {
+
+		input {
+			background: transparent;
+		}
+
+		textarea {
+			background: #262626;
+			background: rgba(#262626, .5);
+		}
+	}
+}
