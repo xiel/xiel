@@ -38,9 +38,7 @@ FLX GRID
       -ms-flex: none;
           flex: none;
   width: 100%;
-  padding: 0 1rem;
-  background: rgba(0, 255, 255, 0.1);
-  background-clip: content-box; }
+  padding: 0 1rem; }
 
 .flx-group {
   display: -webkit-box;
@@ -682,12 +680,21 @@ h2 {
 /* ===================================================
 GENERAL LAYOUT
 =================================================== */
+.scrollpos {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  padding: .5em 1em;
+  z-index: 9999; }
+
 .wrapper {
   overflow: hidden; }
 
 .section {
   position: relative;
   overflow: hidden;
+  width: 100%;
   min-height: 20em;
   min-height: 100vh;
   display: -webkit-box;

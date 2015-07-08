@@ -1,3 +1,7 @@
+<script src="js/libs/velocity.js"></script>
+<script src="js/libs/ScrollMagic.js"></script>
+<script src="js/libs/animation.velocity.js"></script>
+
 <script type="text/javascript">
 	document.ondblclick = function(event){
 		document.body.classList.toggle('grid-visible');
@@ -6,4 +10,56 @@
 	}
 </script>
 
+<script>
+	document.addEventListener("DOMContentLoaded", function(event) { // wait for document ready
 
+		var start = null;
+		var element = document.getElementById("SomeElementYouWantToAnimate");
+		
+		element = document.querySelector(".scrollpos");
+
+		console.log(element);
+
+		function step(timestamp) {
+			if (!start) start = timestamp;
+
+			var progress = timestamp - start;
+			// var right = Math.min(progress/10, 200) + "px";
+
+
+			// console.log(progress / 10);
+
+			element.textContent = window.scrollY;
+
+			// element.style.right = right;
+
+			// if (progress < 2000) {
+				window.requestAnimationFrame(step);
+			// }
+		}
+
+		setTimeout(function(){
+			window.requestAnimationFrame(step);
+		}, 500);
+
+		// // init
+		// var controller = new ScrollMagic.Controller({
+		// 	globalSceneOptions: {
+		// 		triggerHook: 'onLeave'
+		// 	}
+		// });
+
+		// // get all slides
+		// var slides = document.querySelectorAll(".section.stage");
+
+		// // create scene for every slide
+		// for (var i=0; i<slides.length; i++) {
+		// 	new ScrollMagic.Scene({
+		// 			triggerElement: slides[i]
+		// 		})
+		// 		.setPin(slides[i])
+		// 		.setTween("#stage > .welcoming", {y: "80%"})
+		// 		.addTo(controller);
+		// }
+	});
+</script>

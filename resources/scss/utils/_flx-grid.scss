@@ -10,8 +10,8 @@ $flx-slug: flx !default;
 	width: 100%;
 	padding: 0 1rem;
 
-	background: rgba(cyan, .1);
-	background-clip: content-box;
+	// background: rgba(cyan, .1);
+	// background-clip: content-box;
 }
 
 @mixin loop-grid-columns($columns, $class) {

@@ -145,6 +145,15 @@ h2 {
 GENERAL LAYOUT
 =================================================== */
 
+.scrollpos {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	background: #fff;
+	padding: .5em 1em;
+	z-index: 9999;
+}
+
 .wrapper {
 	overflow: hidden;
 }
@@ -152,6 +161,7 @@ GENERAL LAYOUT
 .section {
 	position: relative;
 	overflow: hidden;
+	width: 100%;
 	min-height: 20em;
 	min-height: 100vh;
 	// padding: 3rem 0;
