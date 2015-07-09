@@ -16,10 +16,11 @@
 
 		//skrollr
 		var s = skrollr.init({
+			smoothScrolling: false,
 			render: function(data) {
 				//Log the current scroll position.
 				// console.log(data.curTop);
-				scrollScroll.textContent = data.curTop;
+				// scrollScroll.textContent = data.curTop;
 			},
 			mobileCheck: function() {
 				return false
@@ -47,7 +48,7 @@
 		}
 
 		setTimeout(function(){
-			window.requestAnimationFrame(step);
+			// window.requestAnimationFrame(step);
 		}, 500);
 
 		// // init

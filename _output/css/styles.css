@@ -841,10 +841,12 @@ SECTION PROJECTS
 SECTION STAGE
 =================================================== */
 .stage {
-  background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
+  position: relative;
   background: #CCD1CC;
   overflow: hidden;
-  background-size: 100% auto; }
+  background-size: 100% auto;
+  -webkit-transform: translateZ(0.00001px);
+          transform: translateZ(0.00001px); }
 
 .xiel-logo {
   position: fixed;
@@ -870,6 +872,18 @@ SECTION STAGE
   color: #041231;
   font-size: 64px;
   font-weight: 100; }
+
+.stage-hero {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: blue;
+  border: 2px green solid; }
+  .stage-hero img {
+    display: block;
+    width: 100%;
+    height: auto; }
 
 .sm-link--github, .sm-link--twitter, .xiel-logo a {
   background-image: url("../img/sprites/sprites-icons-sprite.svg"); }
