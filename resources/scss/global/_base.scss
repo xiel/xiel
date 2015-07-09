@@ -145,6 +145,24 @@ h2 {
 GENERAL LAYOUT
 =================================================== */
 
+.scrollpos-raf {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	background: #fff;
+	padding: .5em 1em;
+	z-index: 9999;
+}
+.scrollpos-scroll {
+	position: fixed;
+	bottom: 2em;
+	right: 0;
+	color: #fff;
+	background: #000;
+	padding: .5em 1em;
+	z-index: 9999;
+}
+
 .scrollpos {
 	position: fixed;
 	bottom: 0;

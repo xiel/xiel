@@ -1,6 +1,4 @@
-<script src="js/libs/velocity.js"></script>
-<script src="js/libs/ScrollMagic.js"></script>
-<script src="js/libs/animation.velocity.js"></script>
+<script src="js/libs/skrollr.js"></script>
 
 <script type="text/javascript">
 	document.ondblclick = function(event){
@@ -13,23 +11,33 @@
 <script>
 	document.addEventListener("DOMContentLoaded", function(event) { // wait for document ready
 
-		var start = null;
-		var element = document.getElementById("SomeElementYouWantToAnimate");
-		
-		element = document.querySelector(".scrollpos");
+		var scrollRaf = document.querySelector(".scrollpos-raf");
+		var scrollScroll = document.querySelector(".scrollpos-scroll");
 
-		console.log(element);
+		//skrollr
+		var s = skrollr.init({
+			render: function(data) {
+				//Log the current scroll position.
+				// console.log(data.curTop);
+				scrollScroll.textContent = data.curTop;
+			},
+			mobileCheck: function() {
+				return false
+				// return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
+			}
+		});
+
 
 		function step(timestamp) {
-			if (!start) start = timestamp;
+			// if (!start) start = timestamp;
 
-			var progress = timestamp - start;
+			// var progress = timestamp - start;
 			// var right = Math.min(progress/10, 200) + "px";
 
 
 			// console.log(progress / 10);
 
-			element.textContent = window.scrollY;
+			scrollRaf.textContent = window.scrollY;
 
 			// element.style.right = right;
 

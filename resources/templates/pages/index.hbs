@@ -4,7 +4,8 @@ menuLink: Home
 sortOrder: 01
 ---
 
-<div class="scrollpos">0</div>
+<div class="scrollpos-raf">0</div>
+<div class="scrollpos-scroll">0</div>
 
 <h1 class="xiel-logo">
 	<a href="#">
@@ -13,15 +14,25 @@ sortOrder: 01
 </h1>
 
 <section class="section stage" id="stage">
-	
+
+	<div>
+		<img src="img/stage/felix-leupold-stage.jpg" alt="">
+	</div>
 
 	<div class="container">
 
 		<div class="flx-group">
 			<div class="flx--md-12">
-				<div class="welcoming">
+				<div class="welcoming" 
+					data-anchor-target="#stage"
+					data-0="transform:translateY(0vh);"
+					data-top-bottom="transform:translateY(-50vh);"
+				>
 					<p>
-						<em class="stage-hello">Hallo!</em>
+						<em class="stage-hello"
+						>
+							Hallo!
+						</em>
 						I am Felix – a freelance FrontEnd web developer from Berlin.<br>
 						HTML, CSS & JavaScript are my passion ♡
 					</p>
