@@ -4,13 +4,14 @@ SECTION STAGE
 
 .stage {
 	position: relative;
-	// background: #CCD1CC url('../img/stage/felix-leupold-stage.jpg') right bottom no-repeat;
 	background: #CCD1CC;
 	overflow: hidden;
-	// background-size: auto 100%;
 	background-size: 100% auto;
-	// background-attachment: fixed;
 	transform: translateZ(0.00001px);
+
+	min-height: initial;
+	height: 50vw;
+	max-height: 90vh;
 }
 
 
@@ -27,6 +28,7 @@ SECTION STAGE
 		display: block;
 		overflow: hidden;
 		margin: 0 auto;
+		transform: scale(.75);
 
 		&:before {
 			display: block;
@@ -38,6 +40,7 @@ SECTION STAGE
 }
 
 .welcoming {
+	position: relative;
 	font-size: 1.3rem;
 }
 
@@ -54,11 +57,17 @@ SECTION STAGE
 	left: 0;
 	width: 100%;
 	background: blue;
+	// visibility: hidden;
 	border: 2px green solid;
 
 	img {
 		display: block;
 		width: 100%;
 		height: auto;
+	}
+
+	.blurred {
+		position: absolute;
+		top: 0;
 	}
 }

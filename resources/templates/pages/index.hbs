@@ -17,10 +17,15 @@ sortOrder: 01
 
 	<div class="stage-hero"
 		data-anchor-target="#stage"
-		data-0="transform:translateY(0vh); filter: blur(0px); opacity: 1"
-		data-top-bottom="transform:translateY(15vh); filter: blur(10px); opacity: 0.5"
+		data-top="transform:translateY(0vh); opacity[swing]: 1"
+		data-top-bottom="transform:translateY(15vh); opacity: 0" {{!-- filter: blur(0px); --}}
 	>
 		<img src="img/stage/felix-leupold-stage.jpg" alt="">
+		{{!-- <img src="img/stage/felix-leupold-stage-blurred-2.jpg" class="blurred" alt=""
+			data-anchor-target="#stage"
+			data-40p="opacity: 0"
+			data-50p="opacity: 1"
+		> --}}
 	</div>
 
 	<div class="container">
@@ -29,8 +34,8 @@ sortOrder: 01
 			<div class="flx--md-12">
 				<div class="welcoming" 
 					data-anchor-target="#stage"
-					data-0="transform:translateY(0vh); opacity: 1"
-					data-top-bottom="transform:translateY(-25vh); opacity: 0"
+					data-0="transform[swing]:translateY(0vh); opacity: 1"
+					data-top-bottom="transform:translateY(-5vh); opacity: 0"
 				>
 					<p>
 						<em class="stage-hello"
