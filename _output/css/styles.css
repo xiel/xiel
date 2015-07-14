@@ -803,13 +803,17 @@ SECTION CONTACT
 SECTION DEVELOPMENT
 =================================================== */
 .development {
-  color: #CCD1CC;
-  background: #333;
+  -webkit-transform: translateZ(0.00001px);
+          transform: translateZ(0.00001px);
+  background: #fff;
   -webkit-transform: matrix(1, -.075, 0, 1, 1, 1);
       -ms-transform: matrix(1, -.075, 0, 1, 1, 1);
           transform: matrix(1, -.075, 0, 1, 1, 1);
   z-index: 1;
-  margin: -1% 0; }
+  margin: -4% 0;
+  padding: 4% 0; }
+  .development + .section {
+    padding-top: 4%; }
   .development .container {
     -webkit-transform: matrix(1, .075, 0, 1, 1, 1);
         -ms-transform: matrix(1, .075, 0, 1, 1, 1);
@@ -846,7 +850,10 @@ SECTION STAGE
   overflow: hidden;
   background-size: 100% auto;
   -webkit-transform: translateZ(0.00001px);
-          transform: translateZ(0.00001px); }
+          transform: translateZ(0.00001px);
+  min-height: initial;
+  height: 50vw;
+  max-height: 90vh; }
 
 .xiel-logo {
   position: fixed;
@@ -857,7 +864,10 @@ SECTION STAGE
   .xiel-logo a {
     display: block;
     overflow: hidden;
-    margin: 0 auto; }
+    margin: 0 auto;
+    -webkit-transform: scale(.75);
+        -ms-transform: scale(.75);
+            transform: scale(.75); }
     .xiel-logo a:before {
       display: block;
       content: ' ';
@@ -865,6 +875,7 @@ SECTION STAGE
       height: 100%; }
 
 .welcoming {
+  position: relative;
   font-size: 1.3rem; }
 
 .stage-hello {
@@ -884,6 +895,9 @@ SECTION STAGE
     display: block;
     width: 100%;
     height: auto; }
+  .stage-hero .blurred {
+    position: absolute;
+    top: 0; }
 
 .sm-link--github, .sm-link--twitter, .xiel-logo a {
   background-image: url("../img/sprites/sprites-icons-sprite.svg"); }
