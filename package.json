@@ -31,7 +31,7 @@
 		"grunt-htmlhint": "~0.4.0",
 		"grunt-jsbeautifier": "~0.2.6",
 		"grunt-newer": "~0.8.0",
-		"grunt-sass": "~0.18.0",
+		"grunt-sass": "^1.0.0",
 		"grunt-sync": "~0.2.0",
 		"grunt-text-replace": "~0.3.11",
 		"handlebars-helper-autolink": "^0.1.1",
