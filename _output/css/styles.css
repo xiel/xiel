@@ -850,18 +850,17 @@ SECTION DEVELOPMENT
   -webkit-transform: translateZ(0.00001px);
           transform: translateZ(0.00001px);
   background: #fff;
-  -webkit-transform: matrix(1, -0.075, 0, 1, 1, 1);
-      -ms-transform: matrix(1, -0.075, 0, 1, 1, 1);
-          transform: matrix(1, -0.075, 0, 1, 1, 1);
   z-index: 1;
   margin: -4% 0;
   padding: 4% 0; }
   .development + .section {
     padding-top: 4%; }
-  .development .container {
-    -webkit-transform: matrix(1, 0.075, 0, 1, 1, 1);
-        -ms-transform: matrix(1, 0.075, 0, 1, 1, 1);
-            transform: matrix(1, 0.075, 0, 1, 1, 1); }
+  .development svg {
+    display: block;
+    margin: auto;
+    width: 70%;
+    max-width: 100%;
+    height: auto; }
 
 /* ===================================================
 SECTION PROJECTS

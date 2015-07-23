@@ -18,7 +18,7 @@ $(function(){
 	ctx.strokeStyle = color;
 
 	var mousePosition = { x: .5 * canvas.width, y: .5 * canvas.height },
-		dots          = { nb: (canvas.width < 640 ? 35 : 75), distance: 80, d_radius: 150, array: [] };
+		dots          = { nb: (canvas.width < 640 ? 35 : 200), distance: 50, d_radius: 150, array: [] };
 
 	function Dot(){
 		this.x = Math.random() * canvas.width;
@@ -27,7 +27,7 @@ $(function(){
 		this.vx = -.5 + Math.random();
 		this.vy = -.5 + Math.random();
 
-		this.radius = Math.random();
+		this.radius = Math.random() + 1;
 	}
 
 	Dot.prototype = {
@@ -52,6 +52,10 @@ $(function(){
 				}
 				dot.x += dot.vx;
 				dot.y += dot.vy;
+
+				ctx.beginPath();
+				ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2, false);
+				ctx.fill();
 			}
 		},
 
@@ -62,13 +66,13 @@ $(function(){
 					j_dot = dots.array[j];
 
 					if((i_dot.x - j_dot.x) < dots.distance && (i_dot.y - j_dot.y) < dots.distance && (i_dot.x - j_dot.x) > - dots.distance && (i_dot.y - j_dot.y) > - dots.distance){
-						if((i_dot.x - mousePosition.x) < dots.d_radius && (i_dot.y - mousePosition.y) < dots.d_radius && (i_dot.x - mousePosition.x) > - dots.d_radius && (i_dot.y - mousePosition.y) > - dots.d_radius){
+						// if((i_dot.x - mousePosition.x) < dots.d_radius && (i_dot.y - mousePosition.y) < dots.d_radius && (i_dot.x - mousePosition.x) > - dots.d_radius && (i_dot.y - mousePosition.y) > - dots.d_radius){
 							ctx.beginPath();
 							ctx.moveTo(i_dot.x, i_dot.y);
 							ctx.lineTo(j_dot.x, j_dot.y);
 							ctx.stroke();
 							ctx.closePath();
-						}
+						// }
 					}
 				}
 			}
@@ -77,18 +81,34 @@ $(function(){
 
 	function createDots(){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		for(var i = 0; i < dots.nb; i++){
-			dots.array.push(new Dot());
-			dot = dots.array[i];
 
-			dot.create();
+		if(dots.array.length < dots.nb){
+			for(var i = 0; i < dots.nb; i++){
+				dots.array.push(new Dot());
+				dot = dots.array[i];
+
+				console.log('dot created');
+
+				dot.create();
+			}
 		}
+		
 
 		dot.line();
 		dot.animate();
+
+		// console.log(dots.array.length);
+
+		requestAnimationFrame(createDots);
 	}
 
-	idle = setInterval(createDots, 1000/100);
+
+
+	// idle = setInterval(createDots, 1000/100);
+
+	requestAnimationFrame(createDots);
+
+
 
 	// $(canvas).on('mousemove mouseleave', function(e){
 	//     if(e.type == 'mousemove'){
