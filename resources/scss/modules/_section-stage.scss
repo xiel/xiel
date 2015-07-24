@@ -12,6 +12,8 @@ SECTION STAGE
 	min-height: initial;
 	height: 50vw;
 	max-height: 90vh;
+
+	justify-content: center;
 }
 
 
@@ -41,7 +43,7 @@ SECTION STAGE
 
 .welcoming {
 	position: relative;
-	font-size: 1.3rem;
+	font-size: 2rem;
 }
 
 .stage-hello {

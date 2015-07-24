@@ -29,6 +29,11 @@
     width: 0;
     height: 150%; }
 
+.development:after {
+  content: '';
+  display: block;
+  position: absolute; }
+
 /* ===================================================
 FLX GRID
 =================================================== */
@@ -678,7 +683,7 @@ body {
   background: red;
   margin: 0;
   padding: 0;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 300; }
 
 /* ==========================================================================
@@ -756,7 +761,6 @@ GENERAL LAYOUT
 
 .section {
   position: relative;
-  overflow: hidden;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -795,7 +799,7 @@ BUTTONS
   width: 270px;
   color: #fff;
   font-family: inherit;
-  font-size: 1.2rem;
+  font-size: 2rem;
   letter-spacing: .05em;
   border: 2px solid #fff;
   text-transform: uppercase;
@@ -851,8 +855,19 @@ SECTION DEVELOPMENT
           transform: translateZ(0.00001px);
   background: #fff;
   z-index: 1;
-  margin: -4% 0;
   padding: 4% 0; }
+  .development:after {
+    top: 0;
+    left: 0;
+    margin-top: -4%;
+    width: 100%;
+    height: 0;
+    padding-bottom: 8%;
+    background: #fff;
+    opacity: 1;
+    -webkit-transform: matrix(1, -0.075, 0, 1, 1, 1);
+        -ms-transform: matrix(1, -0.075, 0, 1, 1, 1);
+            transform: matrix(1, -0.075, 0, 1, 1, 1); }
   .development + .section {
     padding-top: 4%; }
   .development svg {
@@ -901,7 +916,11 @@ SECTION STAGE
           transform: translateZ(0.00001px);
   min-height: initial;
   height: 50vw;
-  max-height: 90vh; }
+  max-height: 90vh;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
 
 .xiel-logo {
   position: fixed;
@@ -924,7 +943,7 @@ SECTION STAGE
 
 .welcoming {
   position: relative;
-  font-size: 1.3rem; }
+  font-size: 2rem; }
 
 .stage-hello {
   display: block;
