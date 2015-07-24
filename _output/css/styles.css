@@ -38,7 +38,7 @@ FLX GRID
       -ms-flex: none;
           flex: none;
   width: 100%;
-  padding: 0 1rem; }
+  padding: 0 2rem; }
 
 .flx-group {
   display: -webkit-box;
@@ -48,7 +48,7 @@ FLX GRID
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  margin: 0 -1rem;
+  margin: 0 -2rem;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
@@ -212,7 +212,8 @@ FLX GRID
   overflow: hidden;
   height: 100%;
   padding: 0;
-  max-width: 1200px;
+  max-width: 1300px;
+  padding: 0 2rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -244,7 +245,7 @@ FLX GRID
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
   min-width: 8.3333333333%;
-  padding: 0 1rem; }
+  padding: 0 2rem; }
   @media (max-width: 600px) {
     .grid__col {
       min-width: 16.6666666667%; } }
@@ -618,7 +619,7 @@ BASE
   outline: 0 none; }
 
 html {
-  font-size: 1em;
+  font-size: 62.5%;
   line-height: 1.4; }
 
 /*
@@ -677,7 +678,8 @@ body {
   background: red;
   margin: 0;
   padding: 0;
-  font-size: 1rem; }
+  font-size: 1.6rem;
+  font-weight: 300; }
 
 /* ==========================================================================
    Browse Happy prompt
@@ -702,12 +704,16 @@ em {
   font-style: normal; }
 
 h2 {
-  font-size: 3rem; }
+  font-size: 4.8rem; }
+
+h3 {
+  font-size: 2.5rem;
+  font-weight: 100; }
 
 .section__header {
   text-align: center;
-  margin: 0 auto 3rem;
-  max-width: 40rem; }
+  margin: 0 auto 6rem;
+  max-width: 64rem; }
   .section__header h2, .section__header p {
     margin-bottom: .25em; }
   .section__header h2 {
@@ -752,8 +758,6 @@ GENERAL LAYOUT
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-height: 20em;
-  min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -762,16 +766,12 @@ GENERAL LAYOUT
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
+          flex-direction: column; }
 
 .container {
-  padding: 0 1rem;
+  padding: 0 4rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 2rem auto; }
 
 /* ===================================================
@@ -861,6 +861,11 @@ SECTION DEVELOPMENT
     width: 70%;
     max-width: 100%;
     height: auto; }
+  .development h3 {
+    text-align: center; }
+
+.dev-feature {
+  text-align: center; }
 
 /* ===================================================
 SECTION PROJECTS

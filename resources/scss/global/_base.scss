@@ -13,7 +13,7 @@ BASE
 
 
 html {
-	font-size: 1em;
+	font-size: 62.5%;
 	line-height: 1.4;
 }
 
@@ -84,7 +84,8 @@ body {
 	background: red;
 	margin: 0;
 	padding: 0;
-	font-size: 1rem;
+	font-size: 1.6rem;
+	font-weight: 300; //light
 }
 
 /* ==========================================================================
@@ -116,13 +117,18 @@ em {
 }
 
 h2 {
-	font-size: 3rem;
+	font-size: 4.8rem;
+}
+
+h3 {
+	font-size: 2.5rem;
+	font-weight: 100; //thin
 }
 
 .section__header {
 	text-align: center;
-	margin: 0 auto 3rem;
-	max-width: 40rem;
+	margin: 0 auto 6rem;
+	max-width: 64rem;
 
 	h2, p {
 		margin-bottom: .25em;
@@ -180,19 +186,19 @@ GENERAL LAYOUT
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-	min-height: 20em;
-	min-height: 100vh;
+	// min-height: 20em;
+	// min-height: 100vh;
 	// padding: 3rem 0;
 
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	// justify-content: center;
 	// align-content: center;
 	// border-bottom: 5px solid white;
 }
 
 .container {
-	padding: 0 1rem;
+	padding: 0 4rem;
 	width: 100%;
 	max-width: $content-container-max;
 	margin: 2rem auto;
