@@ -310,6 +310,7 @@
 
 
 		    var paths = $(_parentElement).find('path');
+		    var previousDuration = 0;
 
 		    //for each PATH..
 		    $.each( paths, function(i) {
@@ -324,15 +325,20 @@
 		            'stroke-dasharray': totalLength + ' ' + totalLength
 		        });
 
+		        var duration = Math.max(_timeMin, totalLength * 2);
+
 		        //animate
 		        $(this).velocity({
 		            'stroke-dashoffset': 0
 		        }, {
-		        	delay: _timeDelay*i,
+		        	// delay: _timeDelay*i,
+		        	delay: previousDuration,
 		            // duration: Math.floor(Math.random() * _timeMax) + _timeMin
-		            duration: Math.max(_timeMin, totalLength * 3)
+		            duration: duration
 		            ,easing: 'easeInOutQuad'
 		        });
+
+		        previousDuration += duration;
 		    });
 		}
 
@@ -347,7 +353,7 @@
 		}
 
 		function startSVGAnimation(parentElement) {
-		    drawSVGPaths(parentElement, 50, 2000, 100);
+		    drawSVGPaths(parentElement, 100, 2000, 100);
 		}
 
 		replaceWithPaths($('svg'));
