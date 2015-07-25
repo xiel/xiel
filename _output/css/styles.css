@@ -795,13 +795,14 @@ BUTTONS
 .btn {
   display: inline-block;
   background: transparent;
-  padding: 1rem 20px;
+  padding: 0.75em 2em;
   width: 270px;
   color: #fff;
   font-family: inherit;
   font-size: 2rem;
+  font-weight: 400;
   letter-spacing: .05em;
-  border: 2px solid #fff;
+  border: 0.3rem solid #fff;
   text-transform: uppercase;
   cursor: pointer;
   -webkit-transition: 300ms;
@@ -809,6 +810,12 @@ BUTTONS
   .btn:hover, .btn:focus {
     color: #fff;
     background: rgba(51, 51, 51, 0.1); }
+
+.btn-group {
+  margin: 2.5rem 0; }
+
+.btn-group--right {
+  text-align: right; }
 
 /* ===================================================
 FORMS
@@ -841,9 +848,9 @@ SECTION CONTACT
 .contact {
   color: #CCD1CC;
   background: #111;
-  background: -webkit-linear-gradient(70deg, #141414 50%, transparent 50.1%), -webkit-linear-gradient(110deg, #121212 50%, #21262b 50.1%, #121212), #141414;
-  background: linear-gradient(20deg, #141414 50%, transparent 50.1%), linear-gradient(-20deg, #121212 50%, #21262b 50.1%, #121212), #141414;
-  background-size: 100% 45rem;
+  background: -webkit-linear-gradient(110deg, #181c20, #101214 50%, transparent 50.1%), -webkit-linear-gradient(70deg, #0d0f11 40%, #0b0d0e 50%, #21262b 50.1%, #121212), #141414;
+  background: linear-gradient(-20deg, #181c20, #101214 50%, transparent 50.1%), linear-gradient(20deg, #0d0f11 40%, #0b0d0e 50%, #21262b 50.1%, #121212), #141414;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   border-radius: 1rem; }
 

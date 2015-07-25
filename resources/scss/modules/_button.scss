@@ -5,13 +5,14 @@ BUTTONS
 .btn {
 	display: inline-block;
 	background: transparent;
-	padding: 1rem 20px;
+	padding: .75em 2em;
 	width: 270px;
 	color: #fff;
 	font-family: inherit;
 	font-size: 2rem;
+	font-weight: 400;
 	letter-spacing: .05em;
-	border: 2px solid #fff;
+	border: 0.3rem solid #fff;
 	text-transform: uppercase;
 	cursor: pointer;
 	transition: 300ms;
@@ -20,4 +21,12 @@ BUTTONS
 		color: #fff;
 		background: rgba(#333, .1);
 	}
+}
+
+.btn-group {
+	margin: $margin-default 0;
+}
+
+.btn-group--right {
+	text-align: right;
 }
