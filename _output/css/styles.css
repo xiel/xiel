@@ -796,7 +796,7 @@ BUTTONS
   display: inline-block;
   background: transparent;
   padding: 0.75em 2em;
-  width: 270px;
+  min-width: 27.5rem;
   color: #fff;
   font-family: inherit;
   font-size: 2rem;
@@ -811,11 +811,17 @@ BUTTONS
     color: #fff;
     background: rgba(51, 51, 51, 0.1); }
 
+.btn--block {
+  width: 100%; }
+
 .btn-group {
-  margin: 2.5rem 0; }
+  margin: 4rem 0; }
 
 .btn-group--right {
   text-align: right; }
+
+.btn-group--center {
+  text-align: center; }
 
 /* ===================================================
 FORMS
@@ -848,8 +854,8 @@ SECTION CONTACT
 .contact {
   color: #CCD1CC;
   background: #111;
-  background: -webkit-linear-gradient(110deg, #181c20, #101214 50%, transparent 50.1%), -webkit-linear-gradient(70deg, #0d0f11 40%, #0b0d0e 50%, #21262b 50.1%, #121212), #141414;
-  background: linear-gradient(-20deg, #181c20, #101214 50%, transparent 50.1%), linear-gradient(20deg, #0d0f11 40%, #0b0d0e 50%, #21262b 50.1%, #121212), #141414;
+  background: -webkit-linear-gradient(110deg, #181c20, #101214 50%, transparent 50.1%), -webkit-linear-gradient(70deg, #14171a 35%, #101214 50%, #1b1e23 50.1%, #121417 90%), #141414;
+  background: linear-gradient(-20deg, #181c20, #101214 50%, transparent 50.1%), linear-gradient(20deg, #14171a 35%, #101214 50%, #1b1e23 50.1%, #121417 90%), #141414;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border-radius: 1rem; }
@@ -930,7 +936,7 @@ SECTION STAGE
           justify-content: center; }
 
 .xiel-logo {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   margin: 5% auto;

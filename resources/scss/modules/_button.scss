@@ -6,7 +6,7 @@ BUTTONS
 	display: inline-block;
 	background: transparent;
 	padding: .75em 2em;
-	width: 270px;
+	min-width: 27.5rem;
 	color: #fff;
 	font-family: inherit;
 	font-size: 2rem;
@@ -23,10 +23,18 @@ BUTTONS
 	}
 }
 
+.btn--block {
+	width: 100%;
+}
+
 .btn-group {
 	margin: $margin-default 0;
 }
 
 .btn-group--right {
 	text-align: right;
+}
+
+.btn-group--center {
+	text-align: center;
 }
