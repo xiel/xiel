@@ -681,7 +681,6 @@ body {
   font-family: "Roboto", sans-serif;
   color: #636462;
   background: #CCD1CC;
-  background: red;
   margin: 0;
   padding: 0;
   font-size: 1.7rem;
@@ -699,6 +698,12 @@ body {
 /* ===================================================
 GENERAL TEXT
 =================================================== */
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-transition: 200ms;
+          transition: 200ms; }
+
 ul, li {
   margin: 0;
   padding: 0; }
@@ -732,31 +737,6 @@ h3 {
 /* ===================================================
 GENERAL LAYOUT
 =================================================== */
-.scrollpos-raf {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background: #fff;
-  padding: 0.5em 1em;
-  z-index: 9999; }
-
-.scrollpos-scroll {
-  position: fixed;
-  bottom: 2em;
-  right: 0;
-  color: #fff;
-  background: #000;
-  padding: 0.5em 1em;
-  z-index: 9999; }
-
-.scrollpos {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background: #fff;
-  padding: 0.5em 1em;
-  z-index: 9999; }
-
 .wrapper {
   overflow: hidden; }
 
@@ -786,7 +766,9 @@ Social Media Links
 .sm-links {
   list-style: none; }
   .sm-links li {
-    display: inline-block; }
+    display: inline-block;
+    width: 50px;
+    height: 50px; }
 
 .sm-link {
   display: inline-block; }
@@ -831,7 +813,7 @@ FORMS
   display: block;
   width: 100%;
   border: 0 none;
-  margin: 0 0 2rem; }
+  margin: 2rem 0; }
 
 .field input {
   line-height: 2;
@@ -857,8 +839,7 @@ SECTION CONTACT
   background: -webkit-linear-gradient(110deg, #181c20, #101214 50%, transparent 50.1%), -webkit-linear-gradient(70deg, #14171a 35%, #101214 50%, #1b1e23 50.1%, #121417 90%), #141414;
   background: linear-gradient(-20deg, #181c20, #101214 50%, transparent 50.1%), linear-gradient(20deg, #14171a 35%, #101214 50%, #1b1e23 50.1%, #121417 90%), #141414;
   background-size: 100% 100%;
-  background-repeat: no-repeat;
-  border-radius: 1rem; }
+  background-repeat: no-repeat; }
 
 /* ===================================================
 SECTION DEVELOPMENT
@@ -903,6 +884,30 @@ SECTION DEVELOPMENT
   text-align: center; }
 
 /* ===================================================
+SECTION CONTACT
+=================================================== */
+.section--imprint {
+  color: #CCD1CC;
+  color: #737e8c;
+  padding: 1% 0;
+  background: #21262b; }
+
+.legal {
+  text-align: right;
+  font-size: 1.4rem; }
+  .legal ul, .legal li {
+    list-style: none; }
+  .legal li {
+    display: inline-block; }
+    .legal li + li:before {
+      content: ' | ';
+      font-weight: bold;
+      margin: 0 0.5em; }
+  .legal a:hover,
+  .legal a:focus {
+    color: #CCD1CC; }
+
+/* ===================================================
 SECTION PROJECTS
 =================================================== */
 .projects {
@@ -936,18 +941,6 @@ SECTION PROJECTS
       -webkit-transform: translatex(5%) scale(1.1);
           -ms-transform: translatex(5%) scale(1.1);
               transform: translatex(5%) scale(1.1); }
-  .project-teaser__media:after {
-    top: 1rem;
-    right: 1rem;
-    left: 1rem;
-    bottom: 1rem;
-    background: #111;
-    opacity: 0;
-    -webkit-transition: 500ms ease-in-out;
-            transition: 500ms ease-in-out; }
-    a:hover .project-teaser__media:after,
-    a:focus .project-teaser__media:after {
-      opacity: .5; }
 
 .project-teaser__desc {
   position: absolute;
@@ -958,10 +951,8 @@ SECTION PROJECTS
   padding: 0 3rem;
   color: #fff;
   background: rgba(255, 0, 0, 0.3);
-  background: -webkit-linear-gradient(top, #75c4c4 20%, rgba(117, 196, 196, 0));
-  background: linear-gradient(to bottom, #75c4c4 20%, rgba(117, 196, 196, 0));
-  background: -webkit-linear-gradient(top, rgba(51, 51, 51, 0.8) 30%, rgba(51, 51, 51, 0.1));
-  background: linear-gradient(to bottom, rgba(51, 51, 51, 0.8) 30%, rgba(51, 51, 51, 0.1));
+  background: -webkit-linear-gradient(top, rgba(51, 51, 51, 0.7) 20%, rgba(51, 51, 51, 0));
+  background: linear-gradient(to bottom, rgba(51, 51, 51, 0.7) 20%, rgba(51, 51, 51, 0));
   -webkit-transition: 300ms ease-out;
           transition: 300ms ease-out; }
   .project-teaser__desc h3 {
@@ -970,7 +961,8 @@ SECTION PROJECTS
     margin: 1.2em 0 1em;
     padding-bottom: .5em;
     -webkit-transition: inherit;
-            transition: inherit; }
+            transition: inherit;
+    text-shadow: 0 0.1em 0.5em #111; }
   .project-teaser__desc ul, .project-teaser__desc li {
     list-style: none;
     padding: 0;
@@ -985,70 +977,58 @@ SECTION PROJECTS
             transform: translateY(0.0001%); }
 
 .project-teaser__services li {
-  -webkit-transform: translateX(10%);
-      -ms-transform: translateX(10%);
-          transform: translateX(10%);
-  -webkit-transition: 100ms ease-in;
-          transition: 100ms ease-in;
+  -webkit-transform: translateX(1rem);
+      -ms-transform: translateX(1rem);
+          transform: translateX(1rem);
   opacity: 0;
   display: inline-block;
   float: left;
   clear: both;
   color: #333;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1;
   text-transform: uppercase;
   background: #fff;
   padding: 0.3em 0.25em;
-  margin: .25em 0; }
+  margin: .25em 0;
+  -webkit-transition: 300ms ease-in-out;
+          transition: 300ms ease-in-out; }
+  .project-teaser__services li:nth-child(1) {
+    -webkit-transition-delay: 0ms;
+            transition-delay: 0ms; }
+  .project-teaser__services li:nth-child(2) {
+    -webkit-transition-delay: 75ms;
+            transition-delay: 75ms; }
+  .project-teaser__services li:nth-child(3) {
+    -webkit-transition-delay: 150ms;
+            transition-delay: 150ms; }
+  .project-teaser__services li:nth-child(4) {
+    -webkit-transition-delay: 225ms;
+            transition-delay: 225ms; }
+  .project-teaser__services li:nth-child(5) {
+    -webkit-transition-delay: 300ms;
+            transition-delay: 300ms; }
+  .project-teaser__services li:nth-child(6) {
+    -webkit-transition-delay: 375ms;
+            transition-delay: 375ms; }
+  .project-teaser__services li:nth-child(7) {
+    -webkit-transition-delay: 450ms;
+            transition-delay: 450ms; }
+  .project-teaser__services li:nth-child(8) {
+    -webkit-transition-delay: 525ms;
+            transition-delay: 525ms; }
+  .project-teaser__services li:nth-child(9) {
+    -webkit-transition-delay: 600ms;
+            transition-delay: 600ms; }
+  .project-teaser__services li:nth-child(10) {
+    -webkit-transition-delay: 675ms;
+            transition-delay: 675ms; }
   a:hover .project-teaser__services li,
   a:focus .project-teaser__services li {
     -webkit-transform: translateY(0.0001%);
         -ms-transform: translateY(0.0001%);
             transform: translateY(0.0001%);
-    -webkit-transition: 300ms ease-in-out;
-            transition: 300ms ease-in-out;
     opacity: 1; }
-    a:hover .project-teaser__services li:nth-child(1),
-    a:focus .project-teaser__services li:nth-child(1) {
-      -webkit-transition-delay: 150ms;
-              transition-delay: 150ms; }
-    a:hover .project-teaser__services li:nth-child(2),
-    a:focus .project-teaser__services li:nth-child(2) {
-      -webkit-transition-delay: 300ms;
-              transition-delay: 300ms; }
-    a:hover .project-teaser__services li:nth-child(3),
-    a:focus .project-teaser__services li:nth-child(3) {
-      -webkit-transition-delay: 450ms;
-              transition-delay: 450ms; }
-    a:hover .project-teaser__services li:nth-child(4),
-    a:focus .project-teaser__services li:nth-child(4) {
-      -webkit-transition-delay: 600ms;
-              transition-delay: 600ms; }
-    a:hover .project-teaser__services li:nth-child(5),
-    a:focus .project-teaser__services li:nth-child(5) {
-      -webkit-transition-delay: 750ms;
-              transition-delay: 750ms; }
-    a:hover .project-teaser__services li:nth-child(6),
-    a:focus .project-teaser__services li:nth-child(6) {
-      -webkit-transition-delay: 900ms;
-              transition-delay: 900ms; }
-    a:hover .project-teaser__services li:nth-child(7),
-    a:focus .project-teaser__services li:nth-child(7) {
-      -webkit-transition-delay: 1050ms;
-              transition-delay: 1050ms; }
-    a:hover .project-teaser__services li:nth-child(8),
-    a:focus .project-teaser__services li:nth-child(8) {
-      -webkit-transition-delay: 1200ms;
-              transition-delay: 1200ms; }
-    a:hover .project-teaser__services li:nth-child(9),
-    a:focus .project-teaser__services li:nth-child(9) {
-      -webkit-transition-delay: 1350ms;
-              transition-delay: 1350ms; }
-    a:hover .project-teaser__services li:nth-child(10),
-    a:focus .project-teaser__services li:nth-child(10) {
-      -webkit-transition-delay: 1500ms;
-              transition-delay: 1500ms; }
 
 /* ===================================================
 SECTION STAGE

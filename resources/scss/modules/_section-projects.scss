@@ -18,7 +18,6 @@ SECTION PROJECTS
 	overflow: hidden;
 	display: block;
 	margin: $margin-default 0;
-	
 }
 
 .project-teaser__media {
@@ -39,23 +38,42 @@ SECTION PROJECTS
 		}
 	}
 
-	&:after {
-		// @extend %pseudo;
-		// width: 100%;
-		// height: 100%;
-		top: 1rem;
-		right: 1rem;
-		left: 1rem;
-		bottom: 1rem;
-		background: #111;
-		opacity: 0;
-		transition: 500ms ease-in-out;
+	// &:after {
+	// 	// @extend %pseudo;
+	// 	// width: 100%;
+	// 	// height: 100%;
+	// 	top: 1rem;
+	// 	right: 1rem;
+	// 	left: 1rem;
+	// 	bottom: 1rem;
+	// 	background: #111;
+	// 	opacity: 0;
+	// 	transition: 500ms ease-in-out;
 
-		a:hover &,
-		a:focus & {
-			opacity: .5;
-		}
-	}
+	// 	a:hover &,
+	// 	a:focus & {
+	// 		opacity: .5;
+	// 	}
+	// }
+
+	// &:before {
+	// 	@extend %pseudo;
+	// 	width: 100%;
+	// 	height: 50%;
+	// 	// top: 100%;
+	// 	bottom: -50%;
+	// 	left: 0;
+	// 	background: #fff;
+	// 	opacity: 1;
+	// 	transition: 500ms ease-in-out;
+	// 	transform: matrix(1,-.075,0,1,1,1);
+	// 	z-index: 1;
+
+	// 	a:hover &,
+	// 	a:focus & {
+	// 		opacity: .5;
+	// 	}
+	// }
 }
 
 .project-teaser__desc {
@@ -66,13 +84,9 @@ SECTION PROJECTS
 	width: 100%;
 	padding: 0 3rem;
 	color: #fff;
-	// text-align: center;
-	// margin-top: -6rem;
 	background: rgba(red, .3);
-	background: linear-gradient(to bottom, rgba(#75c4c4, 1) 20%, rgba(#75c4c4, 0));
-	background: linear-gradient(to bottom, rgba(#333, .8) 30%, rgba(#333, .1));
+	background: linear-gradient(to bottom, rgba(#333, .7) 20%, rgba(#333, 0));
 	transition: 300ms ease-out;
-	// transform: translateY(27%);
 
 	h3 {
 		position: relative;
@@ -80,6 +94,7 @@ SECTION PROJECTS
 		margin: 1.2em 0 1em;
 		padding-bottom: .5em;
 		transition: inherit;
+		text-shadow: 0 .1em .5em #111;
 		
 		// Underline
 		// &:after {
@@ -117,31 +132,30 @@ SECTION PROJECTS
 .project-teaser__services {
 	
 	li {
-		transform: translateX(10%);
-		transition: 100ms ease-in;
+		transform: translateX(1rem);
 		opacity: 0;
 		display: inline-block;
 		float: left;
 		clear: both;
 		color: #333;
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 		line-height: 1;
 		text-transform: uppercase;
 		background: #fff;
 		padding: .3em .25em;
 		margin: .25em 0;
+		transition: 300ms ease-in-out;
+
+		@for $i from 1 through 10 {
+			&:nth-child(#{$i}){
+				transition-delay: ($i - 1) * 75ms;
+			}
+		}
 
 		a:hover &,
 		a:focus & {
 			transform: translateY(0.0001%);
-			transition: 300ms ease-in-out;
 			opacity: 1;
-
-			@for $i from 1 through 10 {
-				&:nth-child(#{$i}){	
-					transition-delay: $i * 150ms;
-				}
-			}
 		}
 		
 	}

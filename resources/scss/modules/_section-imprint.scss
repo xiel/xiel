@@ -1,0 +1,41 @@
+/* ===================================================
+SECTION CONTACT
+=================================================== */
+
+.section--imprint {
+	color: $color-text-light;
+	color: hsl(214, 10%, 50%);
+	padding: 1% 0;
+	background: hsl(214, 13%, 15%);
+}
+
+.legal {
+	text-align: right;
+	font-size: 1.4rem;
+	// background: red;
+
+	ul, li {
+		list-style: none;
+	}
+
+	li {
+		display: inline-block;
+		// color: $color-text-default;
+		// margin: 0 .5em;
+
+		+ li {
+			&:before {
+				content: ' | ';
+				font-weight: bold;
+				margin: 0 .5em;
+			}
+		}
+	}
+
+	a {
+		&:hover,
+		&:focus {
+			color: $color-text-light;
+		}
+	}
+}

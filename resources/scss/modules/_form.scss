@@ -10,7 +10,7 @@ FORMS
 		display: block;
 		width: 100%;
 		border: 0 none;
-		margin: 0 0 2rem;
+		margin: $margin-default 0;
 	}
 
 	input {
@@ -23,7 +23,6 @@ FORMS
 		padding: 1em;
 		resize: none;
 		border: 1px solid rgba(#fff, .25);
-		// border-left: 1px solid;
 	}
 
 }
@@ -37,8 +36,6 @@ FORMS
 
 		textarea {
 			background: transparent;
-			// background: #262626;
-			// background: rgba(#000, .1);
 		}
 	}
 }
