@@ -5,6 +5,7 @@ BUTTONS
 .btn {
 	display: inline-block;
 	background: transparent;
+	margin: $margin-default 0;
 	padding: .75em 2em;
 	min-width: 27.5rem;
 	color: #fff;
@@ -28,7 +29,7 @@ BUTTONS
 }
 
 .btn-group {
-	margin: $margin-default 0;
+	// display: inline-block;
 }
 
 .btn-group--right {

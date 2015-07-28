@@ -29,6 +29,7 @@
     width: 0;
     height: 150%; }
 
+.development:before,
 .development:after {
   content: '';
   display: block;
@@ -762,6 +763,7 @@ GENERAL LAYOUT
 .section {
   position: relative;
   width: 100%;
+  padding: 4% 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -795,6 +797,7 @@ BUTTONS
 .btn {
   display: inline-block;
   background: transparent;
+  margin: 2rem 0;
   padding: 0.75em 2em;
   min-width: 27.5rem;
   color: #fff;
@@ -813,9 +816,6 @@ BUTTONS
 
 .btn--block {
   width: 100%; }
-
-.btn-group {
-  margin: 4rem 0; }
 
 .btn-group--right {
   text-align: right; }
@@ -869,9 +869,11 @@ SECTION DEVELOPMENT
   background: #fff;
   z-index: 1;
   padding: 4% 0; }
+  .development:before,
   .development:after {
     top: 0;
     left: 0;
+    margin: 0;
     margin-top: -4%;
     width: 100%;
     height: 0;
@@ -881,8 +883,13 @@ SECTION DEVELOPMENT
     -webkit-transform: matrix(1, -0.075, 0, 1, 1, 1);
         -ms-transform: matrix(1, -0.075, 0, 1, 1, 1);
             transform: matrix(1, -0.075, 0, 1, 1, 1); }
+  .development:after {
+    top: auto;
+    bottom: 0;
+    margin: 0;
+    margin-bottom: -4%; }
   .development + .section {
-    padding-top: 4%; }
+    padding-top: 8%; }
   .development svg {
     display: block;
     margin: auto;
@@ -906,16 +913,142 @@ SECTION PROJECTS
   background: -webkit-radial-gradient(50% 10%, circle farthest-corner, #fff, #D9D9D9);
   background: radial-gradient(circle farthest-corner at 50% 10%, #fff, #D9D9D9); }
 
-.project-teasers .project-teaser {
-  margin-bottom: 1rem;
-  padding-top: 66%;
+.project-teaser {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 2rem 0; }
+
+.project-teaser__media {
+  position: relative;
+  overflow: hidden; }
+  .project-teaser__media img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    -webkit-transition: 2000ms ease-in-out;
+            transition: 2000ms ease-in-out;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); }
+    a:hover .project-teaser__media img,
+    a:focus .project-teaser__media img {
+      -webkit-transform: translatex(5%) scale(1.1);
+          -ms-transform: translatex(5%) scale(1.1);
+              transform: translatex(5%) scale(1.1); }
+  .project-teaser__media:after {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+    bottom: 1rem;
+    background: #111;
+    opacity: 0;
+    -webkit-transition: 500ms ease-in-out;
+            transition: 500ms ease-in-out; }
+    a:hover .project-teaser__media:after,
+    a:focus .project-teaser__media:after {
+      opacity: .5; }
+
+.project-teaser__desc {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0 3rem;
+  color: #fff;
+  background: rgba(255, 0, 0, 0.3);
+  background: -webkit-linear-gradient(top, #75c4c4 20%, rgba(117, 196, 196, 0));
+  background: linear-gradient(to bottom, #75c4c4 20%, rgba(117, 196, 196, 0));
+  background: -webkit-linear-gradient(top, rgba(51, 51, 51, 0.8) 30%, rgba(51, 51, 51, 0.1));
+  background: linear-gradient(to bottom, rgba(51, 51, 51, 0.8) 30%, rgba(51, 51, 51, 0.1));
+  -webkit-transition: 300ms ease-out;
+          transition: 300ms ease-out; }
+  .project-teaser__desc h3 {
+    position: relative;
+    font-weight: 400;
+    margin: 1.2em 0 1em;
+    padding-bottom: .5em;
+    -webkit-transition: inherit;
+            transition: inherit; }
+  .project-teaser__desc ul, .project-teaser__desc li {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+  .project-teaser__desc .agency {
+    display: block;
+    font-size: .5em; }
+  a:hover .project-teaser__desc,
+  a:focus .project-teaser__desc {
+    -webkit-transform: translateY(0.0001%);
+        -ms-transform: translateY(0.0001%);
+            transform: translateY(0.0001%); }
+
+.project-teaser__services li {
+  -webkit-transform: translateX(10%);
+      -ms-transform: translateX(10%);
+          transform: translateX(10%);
+  -webkit-transition: 100ms ease-in;
+          transition: 100ms ease-in;
+  opacity: 0;
+  display: inline-block;
+  float: left;
+  clear: both;
+  color: #333;
+  font-size: 1.2rem;
+  line-height: 1;
+  text-transform: uppercase;
   background: #fff;
-  -webkit-transition: 200ms;
-          transition: 200ms;
-  cursor: pointer;
-  box-shadow: 0 0.25rem 0.5rem -0.25rem rgba(0, 0, 0, 0.2); }
-  .project-teasers .project-teaser:hover {
-    box-shadow: 0 0.25rem 0.5rem -0.25rem rgba(0, 0, 0, 0.85); }
+  padding: 0.3em 0.25em;
+  margin: .25em 0; }
+  a:hover .project-teaser__services li,
+  a:focus .project-teaser__services li {
+    -webkit-transform: translateY(0.0001%);
+        -ms-transform: translateY(0.0001%);
+            transform: translateY(0.0001%);
+    -webkit-transition: 300ms ease-in-out;
+            transition: 300ms ease-in-out;
+    opacity: 1; }
+    a:hover .project-teaser__services li:nth-child(1),
+    a:focus .project-teaser__services li:nth-child(1) {
+      -webkit-transition-delay: 150ms;
+              transition-delay: 150ms; }
+    a:hover .project-teaser__services li:nth-child(2),
+    a:focus .project-teaser__services li:nth-child(2) {
+      -webkit-transition-delay: 300ms;
+              transition-delay: 300ms; }
+    a:hover .project-teaser__services li:nth-child(3),
+    a:focus .project-teaser__services li:nth-child(3) {
+      -webkit-transition-delay: 450ms;
+              transition-delay: 450ms; }
+    a:hover .project-teaser__services li:nth-child(4),
+    a:focus .project-teaser__services li:nth-child(4) {
+      -webkit-transition-delay: 600ms;
+              transition-delay: 600ms; }
+    a:hover .project-teaser__services li:nth-child(5),
+    a:focus .project-teaser__services li:nth-child(5) {
+      -webkit-transition-delay: 750ms;
+              transition-delay: 750ms; }
+    a:hover .project-teaser__services li:nth-child(6),
+    a:focus .project-teaser__services li:nth-child(6) {
+      -webkit-transition-delay: 900ms;
+              transition-delay: 900ms; }
+    a:hover .project-teaser__services li:nth-child(7),
+    a:focus .project-teaser__services li:nth-child(7) {
+      -webkit-transition-delay: 1050ms;
+              transition-delay: 1050ms; }
+    a:hover .project-teaser__services li:nth-child(8),
+    a:focus .project-teaser__services li:nth-child(8) {
+      -webkit-transition-delay: 1200ms;
+              transition-delay: 1200ms; }
+    a:hover .project-teaser__services li:nth-child(9),
+    a:focus .project-teaser__services li:nth-child(9) {
+      -webkit-transition-delay: 1350ms;
+              transition-delay: 1350ms; }
+    a:hover .project-teaser__services li:nth-child(10),
+    a:focus .project-teaser__services li:nth-child(10) {
+      -webkit-transition-delay: 1500ms;
+              transition-delay: 1500ms; }
 
 /* ===================================================
 SECTION STAGE
