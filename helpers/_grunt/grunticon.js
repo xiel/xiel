@@ -18,8 +18,8 @@ module.exports = {
 
 			// CSS filenames
 			datasvgcss: "_icons-data-svg.scss",
-			datapngcss: false,
-			urlpngcss: false,
+			datapngcss: "_icons-data-png.scss",
+			urlpngcss: "_icons-fallback.scss",
 
 			// grunticon loader code snippet filename
 			// loadersnippet: "grunticon.loader.js
