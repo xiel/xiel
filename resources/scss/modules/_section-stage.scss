@@ -26,18 +26,14 @@ SECTION STAGE
 	z-index: 9999;
 	
 	a {
-		@extend %sprites-xiel-logo;
+		@extend %ir;
+		@extend %icon-xiel-logo;
 		display: block;
 		overflow: hidden;
 		margin: 0 auto;
 		transform: scale(.75);
-
-		&:before {
-			display: block;
-			content: ' ';
-			width: 100%;
-			height: 100%;
-		}
+		width: 12rem;
+		height: 12rem;
 	}
 }
 

@@ -69,6 +69,7 @@ module.exports = function(grunt) {
 	// Sprites Task
 	grunt.registerTask('icons', [
 		'grunticon',
+		'replace'
 	]); 
 	
 	
@@ -109,6 +110,7 @@ module.exports = function(grunt) {
 	
 	grunt.registerTask('build', [
 		'clean:dev',
+		'icons',
 		'jsbeautifier',
 		'concurrent:syncing',  
 		'watchCSS',

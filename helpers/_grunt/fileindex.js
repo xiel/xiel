@@ -29,12 +29,12 @@ module.exports = {
 				// here you can build your styles.scss like you would do in styles.scss with sass-globbing
 				src: [
 					'global/_vars.scss',
+					'icons/_icons-data-svg.scss',
 					'utils/mixins/**/*.scss',
 					'utils/extends/**/*.scss',
 					'utils/*.scss',
 					'global/_base.scss',
 					'modules/**/*.scss',
-					'icons/**/*.scss',
 					'global/_print.scss'
 				]
 			}

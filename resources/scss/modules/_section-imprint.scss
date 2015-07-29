@@ -5,17 +5,19 @@ SECTION CONTACT
 .section--imprint {
 	color: $color-text-light;
 	color: hsl(214, 10%, 50%);
-	padding: 1% 0;
+	padding: 1% 0 .5%;
+	border-top: 2px solid;
 	background: hsl(214, 13%, 15%);
+	background: #181c20;
 
-	h4[itemprop="name"] {
-		margin: 0;
+	h4 {
+		margin: 0 0 1em;
 	}
 }
 
 .legal {
+	@extend %small-font;
 	text-align: right;
-	font-size: 1.4rem;
 	// background: red;
 
 	ul, li {
