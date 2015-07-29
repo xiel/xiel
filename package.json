@@ -26,8 +26,8 @@
 		"grunt-contrib-htmlmin": "~0.3.0",
 		"grunt-contrib-jshint": "~0.8.0",
 		"grunt-contrib-watch": "~0.6.1",
-		"grunt-dr-svg-sprites": "^0.9.15",
 		"grunt-fileindex": "^0.1.0",
+		"grunt-grunticon": "~1.0.0-beta.0",
 		"grunt-htmlhint": "~0.4.0",
 		"grunt-jsbeautifier": "~0.2.6",
 		"grunt-newer": "~0.8.0",
@@ -40,12 +40,10 @@
 		"lodash": "*",
 		"time-grunt": "*"
 	},
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "https://github.com///blob/master/LICENSE-MIT"
-		}
-	],
+	"license": {
+		"type": "MIT",
+		"url": "http://spdx.org/licenses/MIT.html"
+	},
 	"keywords": [
 		"handlebars-helper-autolink"
 	]

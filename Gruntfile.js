@@ -68,8 +68,7 @@ module.exports = function(grunt) {
 	
 	// Sprites Task
 	grunt.registerTask('icons', [
-		'dr-svg-sprites',
-		'replace:spriteUrl'
+		'grunticon',
 	]); 
 	
 	

@@ -1094,30 +1094,6 @@ SECTION STAGE
     position: absolute;
     top: 0; }
 
-.sm-link--github, .sm-link--twitter, .xiel-logo a {
-  background-image: url("../img/sprites/sprites-icons-sprite.svg"); }
-
-.sm-link--github, .sm-link--twitter, .xiel-logo a {
-  background-size: 225px 125px; }
-
-.no-svg .sm-link--github, .no-svg .sm-link--twitter, .no-svg .xiel-logo a, .xiel-logo .no-svg a {
-  background-image: url("../img/sprites/sprites-icons-sprite-medium.png"); }
-
-.sm-link--github {
-  width: 46px;
-  height: 36px;
-  background-position: 0 0; }
-
-.sm-link--twitter {
-  width: 39px;
-  height: 31px;
-  background-position: -55px 0; }
-
-.xiel-logo a {
-  width: 120px;
-  height: 120px;
-  background-position: -100px 0; }
-
 @media print {
   * {
     background: transparent !important;
