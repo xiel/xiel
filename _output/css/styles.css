@@ -785,7 +785,7 @@ BUTTONS
   color: #fff;
   font-family: inherit;
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: .05em;
   border: 0.3rem solid #fff;
   text-transform: uppercase;
@@ -891,6 +891,8 @@ SECTION CONTACT
   color: #737e8c;
   padding: 1% 0;
   background: #21262b; }
+  .section--imprint h4[itemprop="name"] {
+    margin: 0; }
 
 .legal {
   text-align: right;
