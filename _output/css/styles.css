@@ -41,7 +41,7 @@
     width: 0;
     height: 150%; }
 
-.development:before,
+.btn:after, .btn:before, .development:before,
 .development:after {
   content: '';
   display: block;
@@ -810,6 +810,7 @@ Social Media Links
 BUTTONS
 =================================================== */
 .btn {
+  position: relative;
   display: inline-block;
   background: transparent;
   margin: 2rem 0;
@@ -821,13 +822,43 @@ BUTTONS
   font-weight: 500;
   letter-spacing: .05em;
   border: 0.3rem solid #fff;
+  border-color: transparent;
   text-transform: uppercase;
   cursor: pointer;
-  -webkit-transition: 300ms;
-          transition: 300ms; }
+  -webkit-transition: 700ms;
+          transition: 700ms;
+  box-shadow: inset 0 0 0 2px #666; }
+  .btn:after {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: solid #fff;
+    border-width: 2px 0 0 2px;
+    -webkit-transition: width 500ms 0ms, height 100ms 500ms;
+            transition: width 500ms 0ms, height 100ms 500ms; }
+  .btn:before {
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 0%;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    -webkit-transition: width 500ms 0ms, height 100ms 500ms;
+            transition: width 500ms 0ms, height 100ms 500ms; }
   .btn:hover, .btn:focus {
     color: #fff;
     background: rgba(51, 51, 51, 0.1); }
+    .btn:hover:after, .btn:focus:after {
+      width: 0;
+      height: 0;
+      -webkit-transition: height 100ms 0ms, width 500ms 100ms;
+              transition: height 100ms 0ms, width 500ms 100ms; }
+    .btn:hover:before, .btn:focus:before {
+      width: 100%;
+      height: 100%;
+      -webkit-transition: height 100ms 0ms, width 500ms 100ms;
+              transition: height 100ms 0ms, width 500ms 100ms; }
 
 .btn--block {
   width: 100%; }
