@@ -3,6 +3,9 @@
 <!-- <script src="js/libs/dotsandlines.js"></script> -->
 <script src="js/libs/skrollr.js"></script> --}}
 <script src="js/base-modules.js"></script>
+<script>
+	document.write('<script src="//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1"><\/script>')
+</script>
 
 <script type="text/javascript">
 	document.ondblclick = function(event){
@@ -15,120 +18,37 @@
 <script>
 	document.addEventListener("DOMContentLoaded", function(event) { // wait for document ready
 
-
-		var scrollRaf = document.querySelector(".scrollpos-raf");
-		var scrollScroll = document.querySelector(".scrollpos-scroll");
-
-		//skrollr
-		var s = skrollr.init({
-			smoothScrolling: false,
-			render: function(data) {
-				//Log the current scroll position.
-				// console.log(data.curTop);
-				// scrollScroll.textContent = data.curTop;
-			},
-			mobileCheck: function() {
-				return false
-				// return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
-			}
-		});
-
-
-		function step(timestamp) {
-			// if (!start) start = timestamp;
-
-			// var progress = timestamp - start;
-			// var right = Math.min(progress/10, 200) + "px";
-
-
-			// console.log(progress / 10);
-
-			scrollRaf.textContent = window.scrollY;
-
-			// element.style.right = right;
-
-			// if (progress < 2000) {
-				window.requestAnimationFrame(step);
-			// }
-		}
-
-		setTimeout(function(){
-			// window.requestAnimationFrame(step);
-		}, 500);
-
-		// // init
-		// var controller = new ScrollMagic.Controller({
-		// 	globalSceneOptions: {
-		// 		triggerHook: 'onLeave'
-		// 	}
-		// });
-
-		// // get all slides
-		// var slides = document.querySelectorAll(".section.stage");
-
-		// // create scene for every slide
-		// for (var i=0; i<slides.length; i++) {
-		// 	new ScrollMagic.Scene({
-		// 			triggerElement: slides[i]
-		// 		})
-		// 		.setPin(slides[i])
-		// 		.setTween("#stage > .welcoming", {y: "80%"})
-		// 		.addTo(controller);
-		// }
-
-		//inspired by http://product.voxmedia.com/post/68085482982/polygon-feature-design-svg-animations-for-fun-and
-
-		//Depends on jQuery
-
-
-
-		// Easing excerpt from George McGinley Smith 
-		// http://gsgd.co.uk/sandbox/jquery/easing/
-		// jQuery.extend( jQuery.easing,
-		// {
-		// 	easeInOutQuad: function (x, t, b, c, d) {
-		// 		if ((t/=d/2) < 1) return c/2*t*t + b;
-		// 		return -c/2 * ((--t)*(t-2) - 1) + b;
-		//   }
-		// });
-
-
-
 		//If you want to add SVG to the DOM, jQuery won't do
 		//http://www.benknowscode.com/2012/09/using-svg-elements-with-jquery_6812.html
 
 		function SVG(tag) {
-		    return document.createElementNS('http://www.w3.org/2000/svg', tag);
+			return document.createElementNS('http://www.w3.org/2000/svg', tag);
 		}
 
-
-
 		function replaceRectsWithPaths(parentElement) {
+			var rects = $(parentElement).find('rect');
+
+			$.each(rects, function() {
+
+				var rectX = $(this).attr('x');
+				var rectY = $(this).attr('y');
+
+				var rectX2 = parseFloat(rectX) + parseFloat($(this).attr('width'));
+				var rectY2 = parseFloat(rectY) + parseFloat($(this).attr('height'));
+
+				var convertedPath = 'M' + rectX + ',' + rectY + ' ' + rectX2 + ',' + rectY + ' ' + rectX2 + ',' + rectY2 + ' ' + rectX + ',' + rectY2 + ' ' + rectX + ',' + rectY;
 
 
-		    var rects = $(parentElement).find('rect');
+				$(SVG('path'))
+				.attr('d', convertedPath)
+				.attr('fill', $(this).attr('fill'))
+				.attr('stroke', $(this).attr('stroke'))
+				.attr('stroke-width', $(this).attr('stroke-width'))
+				.insertAfter(this);
 
-		    $.each(rects, function() {
+			});
 
-		        var rectX = $(this).attr('x');
-		        var rectY = $(this).attr('y');
-
-		        var rectX2 = parseFloat(rectX) + parseFloat($(this).attr('width'));
-		        var rectY2 = parseFloat(rectY) + parseFloat($(this).attr('height'));
-
-		        var convertedPath = 'M' + rectX + ',' + rectY + ' ' + rectX2 + ',' + rectY + ' ' + rectX2 + ',' + rectY2 + ' ' + rectX + ',' + rectY2 + ' ' + rectX + ',' + rectY;
-
-
-		        $(SVG('path'))
-		        .attr('d', convertedPath)
-		        .attr('fill', $(this).attr('fill'))
-		        .attr('stroke', $(this).attr('stroke'))
-		        .attr('stroke-width', $(this).attr('stroke-width'))
-		        .insertAfter(this);
-
-		    });
-
-		    $(rects).remove();
+			$(rects).remove();
 		}
 
 
@@ -136,110 +56,106 @@
 		function replaceLinesWithPaths(parentElement) {
 
 
-		    var lines = $(parentElement).find('line');
+			var lines = $(parentElement).find('line');
 
-		    $.each(lines, function() {
+			$.each(lines, function() {
 
-		        var lineX1 = $(this).attr('x1');
-		        var lineY1 = $(this).attr('y1');
+				var lineX1 = $(this).attr('x1');
+				var lineY1 = $(this).attr('y1');
 
-		        var lineX2 = $(this).attr('x2');
-		        var lineY2 = $(this).attr('y2');
+				var lineX2 = $(this).attr('x2');
+				var lineY2 = $(this).attr('y2');
 
-		        var convertedPath = 'M' + lineX1 + ',' + lineY1 + ' ' + lineX2 + ',' + lineY2;
+				var convertedPath = 'M' + lineX1 + ',' + lineY1 + ' ' + lineX2 + ',' + lineY2;
 
 
-		        $(SVG('path'))
-		        .attr('d', convertedPath)
-		        .attr('fill', $(this).attr('fill'))
-		        .attr('stroke', $(this).attr('stroke'))
-		        .attr('stroke-width', $(this).attr('stroke-width'))
-		        .insertAfter(this);
+				$(SVG('path'))
+				.attr('d', convertedPath)
+				.attr('fill', $(this).attr('fill'))
+				.attr('stroke', $(this).attr('stroke'))
+				.attr('stroke-width', $(this).attr('stroke-width'))
+				.insertAfter(this);
 
-		    });
+			});
 
-		    $(lines).remove();
+			$(lines).remove();
 		}
 
 
 
 		function replaceCirclesWithPaths(parentElement) {
 
-		    var circles = $(parentElement).find('circle');
+			var circles = $(parentElement).find('circle');
 
-		    $.each(circles, function() {
+			$.each(circles, function() {
 
-		        var cX = $(this).attr('cx');
-		        var cY = $(this).attr('cy');
-		        var r = $(this).attr('r');
-		        var r2 = parseFloat(r * 2);
+				var cX = $(this).attr('cx');
+				var cY = $(this).attr('cy');
+				var r = $(this).attr('r');
+				var r2 = parseFloat(r * 2);
 
-		        var convertedPath = 'M' + cX + ', ' + cY + ' m' + (-r) + ', 0 ' + 'a ' + r + ', ' + r + ' 0 1,0 ' + r2 + ',0 ' + 'a ' + r + ', ' + r + ' 0 1,0 ' + (-r2) + ',0 ';
+				var convertedPath = 'M' + cX + ', ' + cY + ' m' + (-r) + ', 0 ' + 'a ' + r + ', ' + r + ' 0 1,0 ' + r2 + ',0 ' + 'a ' + r + ', ' + r + ' 0 1,0 ' + (-r2) + ',0 ';
 
-		        $(SVG('path'))
-		        .attr('d', convertedPath)
-		        .attr('fill', $(this).attr('fill'))
-		        .attr('stroke', $(this).attr('stroke'))
-		        .attr('stroke-width', $(this).attr('stroke-width'))
-		        .insertAfter(this);
+				$(SVG('path'))
+				.attr('d', convertedPath)
+				.attr('fill', $(this).attr('fill'))
+				.attr('stroke', $(this).attr('stroke'))
+				.attr('stroke-width', $(this).attr('stroke-width'))
+				.insertAfter(this);
 
-		    });
+			});
 
-		    $(circles).remove();
+			$(circles).remove();
 		}
 
 
 
 		function replaceEllipsesWithPaths(parentElement) {
+			var ellipses = $(parentElement).find('ellipse');
 
+			$.each(ellipses, function() {
 
-		    var ellipses = $(parentElement).find('ellipse');
+				var cX = $(this).attr('cx');
+				var cY = $(this).attr('cy');
+				var rX = $(this).attr('rx');
+				var rY = $(this).attr('ry');
 
-		    $.each(ellipses, function() {
+				var convertedPath = 'M' + cX + ', ' + cY + ' m' + (-rX) + ', 0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + rX*2 + ',0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + (-rX*2) + ',0 ';
 
-		        var cX = $(this).attr('cx');
-		        var cY = $(this).attr('cy');
-		        var rX = $(this).attr('rx');
-		        var rY = $(this).attr('ry');
+				$(SVG('path'))
+				.attr('d', convertedPath)
+				.attr('fill', $(this).attr('fill'))
+				.attr('stroke', $(this).attr('stroke'))
+				.attr('stroke-width', $(this).attr('stroke-width'))
+				.insertAfter(this);
 
-		        var convertedPath = 'M' + cX + ', ' + cY + ' m' + (-rX) + ', 0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + rX*2 + ',0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + (-rX*2) + ',0 ';
+			});
 
-		        $(SVG('path'))
-		        .attr('d', convertedPath)
-		        .attr('fill', $(this).attr('fill'))
-		        .attr('stroke', $(this).attr('stroke'))
-		        .attr('stroke-width', $(this).attr('stroke-width'))
-		        .insertAfter(this);
-
-		    });
-
-		    $(ellipses).remove();
+			$(ellipses).remove();
 		}
 
 
 
 
 		function replacePolygonsWithPaths(parentElement) {
+			var polygons = $(parentElement).find('polygon');
 
+			$.each(polygons, function() {
 
-		    var polygons = $(parentElement).find('polygon');
+				var points = $(this).attr('points');
+				var polyPoints = points.split(/[ ,]+/);
+				var endPoint = polyPoints[0] + ', ' + polyPoints[1];
 
-		    $.each(polygons, function() {
+				$(SVG('path'))
+				.attr('d', 'M' + points + ' ' + endPoint)
+				.attr('fill', $(this).attr('fill'))
+				.attr('stroke', $(this).attr('stroke'))
+				.attr('stroke-width', $(this).attr('stroke-width'))
+				.insertAfter(this);
 
-		        var points = $(this).attr('points');
-		        var polyPoints = points.split(/[ ,]+/);
-		        var endPoint = polyPoints[0] + ', ' + polyPoints[1];
+			});
 
-		        $(SVG('path'))
-		        .attr('d', 'M' + points + ' ' + endPoint)
-		        .attr('fill', $(this).attr('fill'))
-		        .attr('stroke', $(this).attr('stroke'))
-		        .attr('stroke-width', $(this).attr('stroke-width'))
-		        .insertAfter(this);
-
-		    });
-
-		    $(polygons).remove();
+			$(polygons).remove();
 		}
 
 
@@ -248,90 +164,90 @@
 		function replacePolylinesWithPaths(parentElement) {
 
 
-		    var polylines = $(parentElement).find('polyline');
+			var polylines = $(parentElement).find('polyline');
 
-		    $.each(polylines, function() {
+			$.each(polylines, function() {
 
-		        var points = $(this).attr('points');
+				var points = $(this).attr('points');
 
-		        $(SVG('path'))
-		        .attr('d', 'M' + points)
-		        .attr('fill', $(this).attr('fill'))
-		        .attr('stroke', $(this).attr('stroke'))
-		        .attr('stroke-width', $(this).attr('stroke-width'))
-		        .insertAfter(this);
+				$(SVG('path'))
+				.attr('d', 'M' + points)
+				.attr('fill', $(this).attr('fill'))
+				.attr('stroke', $(this).attr('stroke'))
+				.attr('stroke-width', $(this).attr('stroke-width'))
+				.insertAfter(this);
 
-		    });
+			});
 
-		    $(polylines).remove();
+			$(polylines).remove();
 		}
 
 		function hideSVGPaths(parentElement) {
 
-		    var paths = $(parentElement).find('path');
+			var paths = $(parentElement).find('path');
 
-		    //for each PATH..
-		    $.each( paths, function() {
+			//for each PATH..
+			$.each( paths, function() {
 
-		        //get the total length
-		        var totalLength = this.getTotalLength();
+				//get the total length
+				var totalLength = this.getTotalLength();
 
-		        //set PATHs to invisible
-		        $(this).css({
-		            'stroke-dashoffset': totalLength,
-		            'stroke-dasharray': totalLength + ' ' + totalLength
-		        });
-		    });
+				//set PATHs to invisible
+				$(this).css({
+					'stroke-dashoffset': totalLength,
+					'stroke-dasharray': totalLength + ' ' + totalLength
+				});
+			});
 		}
 
 		function drawSVGPaths(_parentElement, _timeMin, _timeMax, _timeDelay) {
 
 
-		    var paths = $(_parentElement).find('path');
-		    var previousDuration = 0;
+			var paths = $(_parentElement).find('path');
+			var previousDuration = 0;
 
-		    //for each PATH..
-		    $.each( paths, function(i) {
+			//for each PATH..
+			$.each( paths, function(i) {
 
-		        //get the total length
-		        var totalLength = this.getTotalLength();
+				//get the total length
+				var totalLength = this.getTotalLength();
 
 
-		        //set PATHs to invisible
-		        $(this).css({
-		            'stroke-dashoffset': totalLength,
-		            'stroke-dasharray': totalLength + ' ' + totalLength
-		        });
+				//set PATHs to invisible
+				$(this).css({
+					'stroke-dashoffset': totalLength,
+					'stroke-dasharray': totalLength + ' ' + totalLength
+				});
 
-		        var duration = Math.floor(Math.max(_timeMin, totalLength * 2));
+				var duration = Math.floor(Math.max(_timeMin, totalLength * 2));
 
-		        //animate
-		        $(this).velocity({
-		            'stroke-dashoffset': 0
-		        }, {
-		        	// delay: _timeDelay*i,
-		        	delay: previousDuration,
-		            // duration: Math.floor(Math.random() * _timeMax) + _timeMin
-		            duration: duration
-		            ,easing: 'easeInOutQuad'
-		        });
+				//animate
+				$(this).velocity({
+					'stroke-dashoffset': 0
+				}, {
+					// delay: _timeDelay*i,
+					delay: previousDuration,
+					// duration: Math.floor(Math.random() * _timeMax) + _timeMin
+					duration: duration
+					,easing: 'easeInOutQuad'
+				});
 
-		        previousDuration += duration;
-		    });
+				previousDuration += duration;
+			});
 		}
 
 		function replaceWithPaths(parentElement) {
 
-		    replaceRectsWithPaths(parentElement);
-		    replaceLinesWithPaths(parentElement);
-		    replaceEllipsesWithPaths(parentElement);
-		    replaceCirclesWithPaths(parentElement);
-		    replacePolygonsWithPaths(parentElement);
-		    replacePolylinesWithPaths(parentElement);    
+			replaceRectsWithPaths(parentElement);
+			replaceLinesWithPaths(parentElement);
+			replaceEllipsesWithPaths(parentElement);
+			replaceCirclesWithPaths(parentElement);
+			replacePolygonsWithPaths(parentElement);
+			replacePolylinesWithPaths(parentElement);    
 		}
 
 		function startSVGAnimation(parentElement) {
-		    drawSVGPaths(parentElement, 150, 2000, 100);
+			drawSVGPaths(parentElement, 150, 2000, 100);
 		}
 
 		replaceWithPaths($('svg'));
