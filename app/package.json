@@ -1,0 +1,14 @@
+{
+  "name": "xielserver",
+  "version": "1.0.0",
+  "description": "hosts my portfolio",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felix Leupold",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
