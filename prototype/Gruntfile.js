@@ -1,10 +1,6 @@
 /*
- * Generated on 2015-06-17
- * generator-prototype v0.5.11
- * http://prototype-generator.com/
- *
- * Copyright (c) 2015 Sebastian Fitzner
- * Licensed under the MIT license.
+ * XIEL web development
+ * created: august 2015
  */
 
 'use strict';
@@ -79,14 +75,15 @@ module.exports = function(grunt) {
 	]);
 	
 	// Build HTML Task
-	grunt.registerTask('build-html', [
-		'assemble'
-	]);
+	// grunt.registerTask('build-html', [
+	// 	'assemble'
+	// ]);
 	
 	// HTML Hint Task (Check your HTML)
-	grunt.registerTask('check-html', [
-		'htmlhint'
-	]);
+	// grunt.registerTask('check-html', [
+	// 	'htmlhint'
+	// ]);
+
 	// JS Hint Task (Check you JS)
 	grunt.registerTask('check-js', [
 		'jshint'
@@ -100,7 +97,7 @@ module.exports = function(grunt) {
 	 *	ADVANCED TASKS
 	 */
 	grunt.registerTask('server', [
-		'newer:assemble',
+		// 'newer:assemble',
 		'concurrent:syncing',
 		'watchCSS',
 		'autoprefixer',
@@ -117,7 +114,7 @@ module.exports = function(grunt) {
 		'sass:universal',
 		'combine_mq',
 		'cssmin',
-        'assemble',
+        // 'assemble',
 		'concurrent:build'
 	]);
 
