@@ -4,6 +4,7 @@ console.log('-  -  -  -  -  -     RESTART     -  -  -  -  -  -  -  -  -  -  -  -
 console.log('-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -');
 
 //require modules
+var path = require('path');
 var express = require('express');
 
 //init
@@ -13,14 +14,15 @@ var exphbs  = require('express-handlebars');
 //add templating engine
 app.engine('hbs', 
 	exphbs({
-		// layoutsDir: __dirname + '/views/layouts',
-		// partialsDir: __dirname + '/views/partials',
 		defaultLayout: 'default',
 		extname: '.hbs'
 	})
 );
 app.set('views', __dirname + '/views/pages');
 app.set('view engine', 'hbs');
+
+//serve resources statics
+app.use( express.static( path.join(__dirname, '../prototype/_output') ) );
 
 //route
 app.get('/', function(req, res){
