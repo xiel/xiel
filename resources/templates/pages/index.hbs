@@ -42,15 +42,10 @@ sortOrder: 01
 						I am Felix – a freelance FrontEnd web developer from Berlin.<br>
 						HTML, CSS & JavaScript are my passion ♡
 					</p>
+					
 					<button class="btn">
 						Say hello!
 					</button>
-					
-					<div class="btn-group">
-						<button class="btn btn--2">
-							Say hello!
-						</button>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -344,17 +339,18 @@ sortOrder: 01
 		<form class="contactform">
 			<div class="flx-group flx-group--centered">
 				<div class="field flx--sm-4 flx--md-3">
-					<!-- <label for="">Name</label> -->
-					<input type="text" placeholder="Name">
+					<label for="name">Name</label>
+					<input name="name" id="name" type="text" placeholder="Name">
 				</div>
 				<div class="field flx--sm-4 flx--md-3">
-					<!-- <label for="">Email</label> -->
-					<input type="text" placeholder="Email">
+					<label for="email">Email</label>
+					<input name="email" id="email" type="text" placeholder="Email">
 				</div>
 			</div>
 			<div class="flx-group flx-group--centered">
 				<div class="field flx--sm-8 flx--md-6">
-					<textarea name="" id="" cols="30" rows="10" placeholder="Hello Felix!"></textarea>
+					<label for="message">Nachricht</label>
+					<textarea name="message" id="message" cols="30" rows="10" placeholder="Hello Felix!"></textarea>
 					
 					<div class="btn-group btn-group--right">
 						<button class="btn btn--block">
