@@ -43,9 +43,8 @@ app.get('/contactform', function(req, res){
 
 app.post('/contactform', function(req, res){
 	var fields = req.body || {};
+	var errors = false;
 	console.log('post', req.body);
-
-	console.log(fields.message);
 
 	//sanitize
 	req.sanitize('name').stripLow(true);
@@ -54,6 +53,7 @@ app.post('/contactform', function(req, res){
 	req.sanitize('email').trim();
 	req.sanitize('message').stripLow(true);
 	req.sanitize('message').trim();
+	req.sanitize('url').trim();
 
 	//check fields
 	req.assert('email', 'valid email address required').isEmail();
@@ -62,9 +62,7 @@ app.post('/contactform', function(req, res){
 	req.assert('message', 'please write a message').notEmpty();
 
 	// var errors = req.validationErrors();
-	var errors = req.validationErrors(true); //with true = mapped
-
-	console.log(fields.message + "");
+	errors = req.validationErrors(true); //with true = mapped
 
 	console.log('errors:', errors);
 	

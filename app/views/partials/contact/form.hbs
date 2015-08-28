@@ -4,7 +4,7 @@
 
 		<div class="field flx--sm-4 flx--md-3 {{#if errors.name}}field--error{{/if}}">
 			<label for="name">Name</label>
-			<input name="name" id="name" type="text" placeholder="Name" value="{{fields.name}}" {{!-- required --}} >
+			<input name="name" id="name" type="text" placeholder="Name" value="{{fields.name}}" required >
 			{{#if errors.name}}
 			<p class="field__error">{{errors.name.msg}}</p>
 			{{/if}}
@@ -12,7 +12,7 @@
 
 		<div class="field flx--sm-4 flx--md-3 {{#if errors.email}}field--error{{/if}}">
 			<label for="email">Email</label>
-			<input name="email" id="email" type="text" placeholder="Email" value="{{fields.email}}">
+			<input name="email" id="email" type="email" placeholder="Email" value="{{fields.email}}" >
 			{{#if errors.email}}
 			<p class="field__error">{{errors.email.msg}}</p>
 			{{/if}}
@@ -30,6 +30,11 @@
 				{{#if errors.message}}
 				<p class="field__error">{{errors.message.msg}}</p>
 				{{/if}}
+			</div>
+
+			<div class="field field__honey">
+				<label for="url">Please don't fill this</label>
+				<input type="text" name="url" placeholder="Leave this field alone" value="{{fields.url}}" {{!-- pattern=".{0}" --}} />
 			</div>
 			
 			<div class="btn-group btn-group--right">
