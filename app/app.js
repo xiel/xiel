@@ -29,6 +29,15 @@ app.get('/', function(req, res){
 	res.render('index', {});
 })
 
+//contact form
+app.get('/contactform', function(req, res){
+	res.render('contactform', {});
+})
+
+app.post('/contactform', function(req, res){
+	res.render('contactform', {});
+})
+
 // start server
 var server = app.listen(62375, function () {
 	var host = server.address().address;
