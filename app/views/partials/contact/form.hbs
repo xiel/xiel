@@ -1,24 +1,47 @@
 <form class="contactform" action="/contactform" method="post">
+
 	<div class="flx-group flx-group--centered">
+
 		<div class="field flx--sm-4 flx--md-3">
 			<label for="name">Name</label>
-			<input name="name" id="name" type="text" placeholder="Name">
+			<input name="name" id="name" type="text" placeholder="Name" value="{{fields.name}}" {{!-- required --}} >
+			{{#if errors.name}}
+			<p class="field__error">{{errors.name.msg}}</p>
+			{{/if}}
 		</div>
+
 		<div class="field flx--sm-4 flx--md-3">
 			<label for="email">Email</label>
-			<input name="email" id="email" type="text" placeholder="Email">
+			<input name="email" id="email" type="email" placeholder="Email" value="{{fields.email}}">
+			{{#if errors.email}}
+			<p class="field__error">{{errors.email.msg}}</p>
+			{{/if}}
 		</div>
-	</div>
+
+	</div><!-- .flx-group -->
+
 	<div class="flx-group flx-group--centered">
-		<div class="field flx--sm-8 flx--md-6">
-			<label for="message">Nachricht</label>
-			<textarea name="message" id="message" cols="30" rows="10" placeholder="Hello Felix!"></textarea>
+
+		<div class="flx--sm-8 flx--md-6">
+
+			<div class="field">
+				<label for="message">Nachricht</label>
+				<textarea name="message" id="message" cols="30" rows="10" placeholder="Hello Felix!" />
+					{{fields.message}}
+				</textarea>
+				{{#if errors.message}}
+				<p class="field__error">{{errors.message.msg}}</p>
+				{{/if}}
+			</div>
 			
 			<div class="btn-group btn-group--right">
 				<button class="btn btn--block">
 					Say hello 2!
 				</button>
 			</div>
+
 		</div>
-	</div>
+
+	</div><!-- .flx-group -->
+
 </form>

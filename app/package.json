@@ -9,7 +9,9 @@
   "author": "Felix Leupold",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.13.3",
     "express": "^4.13.3",
-    "express-handlebars": "^2.0.1"
+    "express-handlebars": "^2.0.1",
+    "express-validator": "^2.17.0"
   }
 }

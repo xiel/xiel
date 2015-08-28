@@ -3,27 +3,38 @@ FORMS
 =================================================== */
 
 .field {
+	margin: $margin-default 0;
 
 	input,
 	textarea {
 		display: block;
 		width: 100%;
 		border: 0 none;
-		margin: $margin-default 0;
 	}
 
 	input {
 		line-height: 2;
 		border-bottom: 2px solid;
 		// background: #000;
+
+		// &:invalid {
+		// 	border-bottom: 2px solid red;
+		// }
 	}
 
 	textarea {
 		padding: 1em;
 		resize: none;
 		border: 1px solid rgba(#fff, .25);
+		white-space: normal;
 	}
 
+}
+
+.field__error {
+	@extend %small-font;
+	color: $color-error;
+	margin: .5em 0;
 }
 
 .contactform {
