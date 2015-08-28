@@ -18,7 +18,7 @@ module.exports = {
 				dest: '<%= paths.dev %>/ajax'
 			}
 		]
-    },
+	},
 	assets: {
 		files: [
 			// includes files within path and its sub-directories
@@ -30,5 +30,5 @@ module.exports = {
 				dest: '<%= paths.dev %>'
 			}
 		]
-    }
+	}
 };

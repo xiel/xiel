@@ -1,0 +1,19 @@
+{
+	"nolint": [
+		"zepto"
+	],
+	"nopack": [],
+	"includeSmallLoader": [
+		"base-modules"
+	],
+	"packageList": {
+		"base-modules": [
+			"libs/zepto",
+			"libs/skrollr",
+			"libs/velocity",
+			"init/init-basic"
+		]
+	},
+	"name": "nicknight",
+	"obfuscate": true
+}

@@ -49,14 +49,14 @@ module.exports = {
 		files: '<%= paths.src %>/scss/universal.scss',
 		tasks: 'sass:universal'
 	},
-	templates: {
-		files: ['<%= paths.src %>/{templates/data,templates/layouts,templates/partials}/**/{,*/}*.{md,hbs,yml,json}'],
-		tasks: ['newer:assemble']
-	},
-	pages: {
-		files: ['<%= paths.src %>/templates/pages/**/{,*/}*.hbs'],
-		tasks: ['newer:assemble:pages']
-	},
+	// templates: {
+	// 	files: ['<%= paths.src %>/{templates/data,templates/layouts,templates/partials}/**/{,*/}*.{md,hbs,yml,json}'],
+	// 	tasks: ['newer:assemble']
+	// },
+	// pages: {
+	// 	files: ['<%= paths.src %>/templates/pages/**/{,*/}*.hbs'],
+	// 	tasks: ['newer:assemble:pages']
+	// },
 	icons: {
 		files: ['<%= paths.src %>/assets/**/*.svg'],
 		tasks: ['icons']

@@ -68,6 +68,10 @@ module.exports = function(grunt) {
 		'replace'
 	]); 
 	
+	grunt.registerTask('js', [
+		// 'jsbeautifier:js',
+		'packager'
+	]);
 	
 	// Sync JS Task
 	grunt.registerTask('syncJS', [
@@ -88,6 +92,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('check-js', [
 		'jshint'
 	]);
+	
 	// Beautifier Task (Beautify your JS files)
 	grunt.registerTask('beauty-files', [
 		'jsbeautifier'
