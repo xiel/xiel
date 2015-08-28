@@ -8,19 +8,19 @@
 
 <head>
 	
-	{{> _metadata }}
-	{{> _styles }}
+	{{> _global/_metadata }}
+	{{> _global/_styles }}
 	
 	<!-- Scripts
 	================================================== --> 
-	{{> _scripts }}
+	{{> _global/_scripts }}
 	
 </head>
 
 <body class="{{ bodyclass }}">
 	
 	<div class="wrapper">
-		{{> body }}
+		{{{ body }}}
 	</div>
 	
 	<div class="grid">

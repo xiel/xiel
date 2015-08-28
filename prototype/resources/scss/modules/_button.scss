@@ -18,6 +18,7 @@ BUTTONS
 	text-transform: uppercase;
 	cursor: pointer;
 	transition: 300ms;
+	background: blue;
 
 	&:hover, &:focus {
 		color: #fff;
