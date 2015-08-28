@@ -2,7 +2,6 @@
 FORMS
 =================================================== */
 
-
 .field {
 
 	input,
@@ -28,6 +27,7 @@ FORMS
 }
 
 .contactform {
+
 	.field {
 
 		input {
@@ -38,4 +38,9 @@ FORMS
 			background: transparent;
 		}
 	}
+
+	label {
+		@extend %visuallyhidden;
+	}
+	
 }
