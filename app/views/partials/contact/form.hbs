@@ -1,5 +1,14 @@
 <form class="contactform" action="/contactform" method="post">
 
+	{{#if errors}}
+	<div class="flx-group flx-group--centered">
+		<div class="flx--sm-8 flx--md-6">
+			<p class="field__error">Sorry, there was an error while sending!</p>
+			<p class="field__error">{{errors.serverError.response}}</p>
+		</div>
+	</div><!-- .flx-group -->
+	{{/if}}
+
 	<div class="flx-group flx-group--centered">
 
 		<div class="field flx--sm-4 flx--md-3 {{#if errors.name}}field--error{{/if}}">
