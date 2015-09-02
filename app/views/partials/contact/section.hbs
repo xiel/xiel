@@ -1,3 +1,18 @@
+{{#if messageSent}}
+
+<section class="section contact">
+	<div class="container">
+		<header class="section__header">
+			<h2>Thanks {{fields.name}}!</h2>
+			<p>
+				<span>Got your message! I'll come back to you as soon as possible.</span>
+			</p>
+		</header>
+	</div>
+</section>
+
+{{else}}
+
 <section class="section contact">
 	<div class="container">
 		<header class="section__header">
@@ -7,7 +22,8 @@
 				<span>Write me about your plans and we can make it happen!</span>
 			</p>
 		</header>
-	
 		{{> contact/form}}
 	</div>
 </section>
+
+{{/if}}
