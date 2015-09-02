@@ -9,6 +9,8 @@
 	"packageList": {
 		"base-modules": [
 			"libs/zepto",
+			"libs/zepto.callbacks",
+			"libs/zepto.deferred",
 			"libs/skrollr",
 			"libs/velocity",
 			"init/init-basic"

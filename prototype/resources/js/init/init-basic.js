@@ -11,12 +11,39 @@
 
 			startSkrollr();
 			startBasicFormValidation();
+			startMailForm();
 
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function( context ) {
 
 		} //END: projectInit.everyDomReady
 	};
+
+	function startMailForm(){
+
+		$(document).on('submit', '.contactform', function(e){
+			var form = $(e.target);
+			var section = form.closest('.section');
+
+			e.preventDefault();
+
+			$.ajax({
+				url: form.attr('action'),
+				type: form.attr('method') || 'POST',
+				data: form.serialize()
+			})
+			.done(function(_data){
+				var data = $(_data);
+				var newSection = $('.section', data);
+				section.replaceWith(newSection);
+			})
+
+			console.log(e);
+
+			
+		})
+
+	}
 
 	function startSkrollr(){
 		//skrollr
@@ -37,14 +64,12 @@
 			var input = $(e.target);
 			var isValid = input.is(':valid');
 			var fieldContainer = input.closest('.field');
-			console.log(isValid, e.target);
 
 			if(isValid){
 				fieldContainer.removeClass('field--error');
 			} else {
 				fieldContainer.addClass('field--error');
 			}
-			
 		})
 	}
 
