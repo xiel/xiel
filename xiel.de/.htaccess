@@ -1,0 +1,3 @@
+# Forward to node.js server
+RewriteEngine On
+RewriteRule (.*) http://localhost:62375/$1 [P]

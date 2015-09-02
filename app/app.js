@@ -12,15 +12,21 @@ var bodyParser = require('body-parser');
 //init
 var app = express();
 var exphbs  = require('express-handlebars');
+var rootPath = function(pathFromRoot){
+	console.log('rootPath', path.join( __dirname, pathFromRoot ) );
+	return path.join( __dirname, pathFromRoot )
+};
 
 //add templating engine
 app.engine('hbs',
 	exphbs({
+		layoutsDir: rootPath('views/layouts/'),
+		partialsDir: rootPath('views/partials/'),
 		defaultLayout: 'default',
 		extname: '.hbs'
 	})
 );
-app.set('views', __dirname + '/views/pages');
+app.set('views', rootPath('/views/pages') );
 app.set('view engine', 'hbs');
 
 //parse parameters out of (post) requests
@@ -28,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 
 //serve resources statics
-app.use( express.static( path.join(__dirname, '../prototype/_output') ) );
+app.use( express.static( rootPath('../prototype/_output') ) );
 
 //route
 app.get('/', function(req, res){
@@ -60,6 +66,9 @@ app.post('/contactform', function(req, res){
 	req.assert('email', 'please provide your email address').notEmpty();
 	req.assert('name', 'please provide your name').notEmpty();
 	req.assert('message', 'please write a message').notEmpty();
+
+	//check honey pot
+	console.log( 'fields.url', fields.url );
 
 	// var errors = req.validationErrors();
 	errors = req.validationErrors(true); //with true = mapped
