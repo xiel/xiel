@@ -1,7 +1,9 @@
 ( function( $ ) {
 	var devmode = window.jspackager && window.jspackager.devmode;
 
-	window.jspackager.devmode = true;
+	if(location.host === 'xiel.local.de' && !window.jspackager.devmode){
+		location.search += 'devmode';
+	}
 
 	var projectInit = {
 		immediate: function() {
