@@ -72,7 +72,6 @@ app.post('/contactform', function(req, res){
 	var fields = req.body || {};
 	var errors = false;
 	var sendMessage = false;
-	console.log('post', req.body);
 
 	//sanitize
 	req.sanitize('name').stripLow(true);
@@ -100,7 +99,6 @@ app.post('/contactform', function(req, res){
 	}
 
 	if(sendMessage === true){
-
 		// setup e-mail data with unicode symbols
 		var mailOptions = {
 			from: 'Contactform XIEL.de <noreply@xiel.de>', // sender address
@@ -119,8 +117,6 @@ app.post('/contactform', function(req, res){
 				sendMessage = false;
 			}
 
-			console.log('Message sent: ', info && info.response);
-
 			res.render('contactform', {
 				fields: fields,
 				errors: errors,
@@ -128,7 +124,6 @@ app.post('/contactform', function(req, res){
 				layout: !fields.ajax
 			});
 		});
-
 	} else {
 		res.render('contactform', {
 			fields: fields,
