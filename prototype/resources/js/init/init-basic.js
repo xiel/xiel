@@ -15,6 +15,7 @@
 			startBasicFormValidation();
 			startBusyButtons();
 			startMailForm();
+			startGridToggle();
 
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function( context ) {
@@ -112,6 +113,13 @@
 				fieldContainer.addClass('field--error');
 			}
 		})
+	}
+
+	function startGridToggle(){
+		$(document).on('dblclick', function(e){
+			document.body.classList.toggle('grid-visible');
+			e.preventDefault();
+		});
 	}
 
 	// Avoid `console` errors in browsers that lack a console.
