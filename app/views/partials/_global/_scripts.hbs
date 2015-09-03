@@ -8,17 +8,17 @@
 </script>
 
 <script type="text/javascript">
-	// document.ondblclick = function(event){
-	// 	document.body.classList.toggle('grid-visible');
-	// 	console.log(event);
-	// 	return false;
-	// }
+	document.ondblclick = function(event){
+		document.body.classList.toggle('grid-visible');
+		console.log(event);
+		return false;
+	}
 </script>
 
 <script>
 	document.addEventListener("DOMContentLoaded", function(event) { // wait for document ready
 
-		return
+		// return
 
 		//If you want to add SVG to the DOM, jQuery won't do
 		//http://www.benknowscode.com/2012/09/using-svg-elements-with-jquery_6812.html
@@ -221,20 +221,20 @@
 					'stroke-dasharray': totalLength + ' ' + totalLength
 				});
 
-				var duration = Math.floor(Math.max(_timeMin, totalLength * 2));
+				var duration = Math.floor( Math.min(_timeMax, Math.max(_timeMin, totalLength * 4) ) );
 
 				//animate
 				$(this).velocity({
 					'stroke-dashoffset': 0
 				}, {
 					// delay: _timeDelay*i,
-					delay: previousDuration,
+					delay: previousDuration + _timeDelay,
 					// duration: Math.floor(Math.random() * _timeMax) + _timeMin
 					duration: duration
 					,easing: 'easeInOutQuad'
 				});
 
-				previousDuration += duration;
+				previousDuration += duration + _timeDelay;
 			});
 		}
 
@@ -249,7 +249,7 @@
 		}
 
 		function startSVGAnimation(parentElement) {
-			drawSVGPaths(parentElement, 150, 2000, 100);
+			drawSVGPaths(parentElement, 50, 2000, 100);
 		}
 
 		replaceWithPaths($('svg'));
