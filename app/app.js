@@ -104,7 +104,7 @@ app.post('/contactform', function(req, res){
 		// setup e-mail data with unicode symbols
 		var mailOptions = {
 			from: 'Contactform XIEL.de <noreply@xiel.de>', // sender address
-			replyTo: fields.name+' <'+ fields.email +'>',
+			replyTo: fields.name + ' <'+ fields.email +'>',
 			to: 'felix@xiel.de', // list of receivers
 			subject: fields.name + ' via contactform', // Subject line
 			text: fields.message // html body
@@ -124,18 +124,17 @@ app.post('/contactform', function(req, res){
 			res.render('contactform', {
 				fields: fields,
 				errors: errors,
-				messageSent: sendMessage
-				// ,layout: false
+				messageSent: sendMessage,
+				layout: !fields.ajax
 			});
 		});
 
 	} else {
-
 		res.render('contactform', {
 			fields: fields,
 			errors: errors,
-			messageSent: sendMessage
-			// ,layout: false
+			messageSent: sendMessage,
+			layout: !fields.ajax
 		});
 	}
 })

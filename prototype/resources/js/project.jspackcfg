@@ -11,6 +11,7 @@
 			"libs/zepto",
 			"libs/zepto.callbacks",
 			"libs/zepto.deferred",
+			"libs/zepto.data",
 			"libs/skrollr",
 			"libs/velocity",
 			"init/init-basic"

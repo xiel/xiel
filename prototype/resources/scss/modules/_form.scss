@@ -37,9 +37,9 @@ FORMS
 
 }
 
-// .field__honey {
-// 	display: none;
-// }
+.field__honey {
+	display: none;
+}
 
 .field--error {
 	input, textarea {
@@ -70,5 +70,4 @@ FORMS
 	label {
 		@extend %visuallyhidden;
 	}
-	
 }
