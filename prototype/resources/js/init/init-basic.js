@@ -11,38 +11,77 @@
 
 			startSkrollr();
 			startBasicFormValidation();
+			startBusyButtons();
 			startMailForm();
 
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function( context ) {
 
+
+
 		} //END: projectInit.everyDomReady
 	};
 
-	function startMailForm(){
+	function startBusyButtons(){
+		$(document).on('submit', '.contactform', function(e){
+			var form = $(e.target);
+			var busyButtons = $('button[data-busy-text]', form);
 
+			busyButtons.each(function(){
+				var btn = $(this);
+				btn.data('text', btn.text());
+				disable(btn);
+
+				var btnTimeout = setTimeout(function(){
+					reEnable(btn);
+				}, 20 * 1000);
+
+				form.one('submitDone', function(){
+					clearTimeout(btnTimeout);
+					reEnable(btn);
+				});
+			});
+		});
+
+		function disable(btn){
+			btn.addClass('btn--busy');
+			btn.text( btn.data('busyText') );
+			btn.prop( 'disabled', true );
+		}
+
+		function reEnable(btn){
+			btn.removeClass('btn--busy');
+			btn.text( btn.data('text') );
+
+			btn.prop( 'disabled', false );
+		}
+	}
+
+	function startMailForm(){
 		$(document).on('submit', '.contactform', function(e){
 			var form = $(e.target);
 			var section = form.closest('.section');
-
-			e.preventDefault();
-
+			var serializedData = form.serialize() + '&ajax=' + (+new Date());
+			var minHeight = section.height();
+			
 			$.ajax({
 				url: form.attr('action'),
 				type: form.attr('method') || 'POST',
-				data: form.serialize()
+				data: serializedData
 			})
 			.done(function(_data){
-				var data = $(_data);
+				var data = $('<div/>').html(_data);
 				var newSection = $('.section', data);
 				section.replaceWith(newSection);
+				newSection.css({ minHeight: minHeight });
+				newSection.trigger('dommodified');
 			})
+			.always(function(){
+				form.trigger('submitDone');
+			});
 
-			console.log(e);
-
-			
+			e.preventDefault();
 		})
-
 	}
 
 	function startSkrollr(){

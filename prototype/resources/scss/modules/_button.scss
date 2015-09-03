@@ -40,3 +40,13 @@ BUTTONS
 .btn-group--center {
 	text-align: center;
 }
+
+@keyframes textpulse {
+	to {
+		opacity: 0.1;
+	}
+}
+
+.btn--busy {
+	animation: textpulse 1s alternate 399;
+}
