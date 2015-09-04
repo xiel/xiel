@@ -45,18 +45,48 @@ SECTION DEVELOPMENT
 		max-width: 100%;
 		height: auto;
 	}
-
-	// h3 {
-	// 	text-align: center;
-	// }
 }
 
 .dev-feature {
 	text-align: center;
 	margin-bottom: 8%;
+
+	//flex
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+}
+
+.dev-feature--ux {
+	h3 {
+		color: $color-red;
+	}
+	path {
+		stroke: $color-red;
+	}
+}
+
+.dev-feature--design {
+	h3 {
+		color: $color-green;
+	}
+	path {
+		stroke: $color-green;
+	}
+}
+
+.dev-feature--tech {
+	h3 {
+		color: $color-blue;
+	}
+	path {
+		stroke: $color-blue;
+	}
 }
 
 .dev-feature__icon {
+	flex: 0 0 auto;
 	width: 80%;
 	margin: auto;
 
@@ -68,8 +98,10 @@ SECTION DEVELOPMENT
 }
 
 .dev-feature__text {
+	flex: 1;
 	overflow: hidden;
 	text-align: center;
+	min-width: 50%;
 
 	p:last-child {
 		margin-bottom: 0;
