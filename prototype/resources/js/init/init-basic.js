@@ -16,6 +16,7 @@
 			startBusyButtons();
 			startMailForm();
 			startGridToggle();
+			startSoftScroll();
 
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function( context ) {
@@ -55,7 +56,6 @@
 		function reEnable(btn){
 			btn.removeClass('btn--busy');
 			btn.text( btn.data('text') );
-
 			btn.prop( 'disabled', false );
 		}
 	}
@@ -120,6 +120,36 @@
 			document.body.classList.toggle('grid-visible');
 			e.preventDefault();
 		});
+	}
+
+	function startSoftScroll(){
+		var MIN_DURATION = 500;
+		var MAX_DURATION = 3000;
+
+		var slice = Array.prototype.slice;
+
+		$(document).on('click', 'a[data-jump]', function(e){
+			var link = $(this);
+			var selector = link.data('jump') || link.prop('hash') || link.attr('href');
+			var target = $(selector).first();
+			var duration = 0;
+
+			if(!target.length){ return }
+
+			duration = Math.round( Math.abs( (window.scrollY - target.offset().top) * 0.6 ) );
+			duration = Math.max( MIN_DURATION, Math.min( MAX_DURATION, duration ) );
+
+			console.log(duration);
+
+			$(target).velocity("scroll", { 
+				duration: duration,
+				delay: 50,
+				complete: function(){
+					// console.log('complete', slice.call(arguments) , arguments);
+				}
+			});
+			e.preventDefault();
+		})
 	}
 
 	// Avoid `console` errors in browsers that lack a console.

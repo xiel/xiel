@@ -9,6 +9,7 @@ var path = require('path');
 var express = require('express');
 var expressValidator = require('express-validator');
 var bodyParser = require('body-parser');
+var minify = require('html-minifier').minify;
 
 //get routers
 var routes = require('./routes/index');
