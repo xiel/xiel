@@ -14,4 +14,8 @@ router.get('/', function(req, res){
 	});
 });
 
+router.get('/imprint.html', function(req, res){
+	res.render('imprint', {});
+});
+
 module.exports = router;
