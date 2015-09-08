@@ -18,6 +18,7 @@ SECTION PROJECTS
 	overflow: hidden;
 	display: block;
 	margin: $margin-default 0;
+	box-shadow: 0 5px 10px -5px rgba(#000, .75);
 }
 
 .project-teaser__media {
@@ -28,52 +29,15 @@ SECTION PROJECTS
 		display: block;
 		height: auto;
 		max-width: 100%;
-		transition: 2000ms ease-in-out;
-		transform: scale(1);
+		transition: transform 2000ms ease-in-out;
+		transform: scale(1.1);
 
 		a:hover &,
 		a:focus & {
-			transform: translatex(5%) scale(1.1);
-			// filter: blur(2px);
+			transform: scale(1);
+			filter: blur(5px);
 		}
 	}
-
-	// &:after {
-	// 	// @extend %pseudo;
-	// 	// width: 100%;
-	// 	// height: 100%;
-	// 	top: 1rem;
-	// 	right: 1rem;
-	// 	left: 1rem;
-	// 	bottom: 1rem;
-	// 	background: #111;
-	// 	opacity: 0;
-	// 	transition: 500ms ease-in-out;
-
-	// 	a:hover &,
-	// 	a:focus & {
-	// 		opacity: .5;
-	// 	}
-	// }
-
-	// &:before {
-	// 	@extend %pseudo;
-	// 	width: 100%;
-	// 	height: 50%;
-	// 	// top: 100%;
-	// 	bottom: -50%;
-	// 	left: 0;
-	// 	background: #fff;
-	// 	opacity: 1;
-	// 	transition: 500ms ease-in-out;
-	// 	transform: matrix(1,-.075,0,1,1,1);
-	// 	z-index: 1;
-
-	// 	a:hover &,
-	// 	a:focus & {
-	// 		opacity: .5;
-	// 	}
-	// }
 }
 
 .project-teaser__desc {
@@ -84,9 +48,15 @@ SECTION PROJECTS
 	width: 100%;
 	padding: 0 3rem;
 	color: #fff;
+	text-align: center;
 	background: rgba(red, .3);
 	background: linear-gradient(to bottom, rgba(#333, .7) 20%, rgba(#333, 0));
+	background: $color-key;
+	background: rgba($color-key, .9);
+	background: rgba($color-key-cyan, .9);
 	transition: 300ms ease-out;
+	padding-top: 50%;
+	opacity: 0;
 
 	h3 {
 		position: relative;
@@ -94,22 +64,22 @@ SECTION PROJECTS
 		margin: 1.2em 0 1em;
 		padding-bottom: .5em;
 		transition: inherit;
-		text-shadow: 0 .1em .5em #111;
 		
 		// Underline
-		// &:after {
-		// 	@extend %pseudo;
-		// 	bottom: 0;
-		// 	width: 100%;
-		// 	border-bottom: 2px solid;
-		// 	transform: translateX(-150%);
-		// 	transition: inherit;
+		&:after {
+			@extend %pseudo;
+			bottom: 0;
+			width: 100%;
+			border-bottom: 2px solid;
+			// transform: translateX(-150%);
+			transform: rotateY(90deg);
+			transition: 500ms;
 
-		// 	a:hover &,
-		// 	a:focus & {
-		// 		transform: translateY(0.0001%);
-		// 	}
-		// }
+			a:hover &,
+			a:focus & {
+				transform: translateY(0.0001%);
+			}
+		}
 	}
 
 	ul, li {
@@ -125,6 +95,8 @@ SECTION PROJECTS
 
 	a:hover &,
 	a:focus & {
+		padding-top: 20%;
+		opacity: 1;
 		transform: translateY(0.0001%);
 	}
 }
