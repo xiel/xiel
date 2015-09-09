@@ -129,19 +129,20 @@ SECTION PROJECTS
 		font-size: 1.6rem;
 		line-height: 1.2;
 		font-style: italic;
-		transition: 500ms;
+		transition: 400ms;
 		opacity: 0;
-
-		@for $i from 1 through 10 {
-			&:nth-child(#{$i}){
-				transition-delay: ($i - 1) * 75ms;
-			}
-		}
+		transform: translateY(150%);
 
 		a:hover &,
 		a:focus & {
-			// transform: translateY(0.0001%);
+			transform: translateY(0.0001%);
 			opacity: 1;
+
+			@for $i from 1 through 10 {
+				&:nth-child(#{$i}){
+					transition-delay: ($i - 1) * 100 + 200ms;
+				}
+			}
 		}
 		
 	}
