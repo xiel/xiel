@@ -10,7 +10,7 @@ SECTION PROJECTS
 }
 
 .project-teasers {
-
+	transform: scale(1);
 }
 
 .project-teaser {
@@ -18,7 +18,7 @@ SECTION PROJECTS
 	overflow: hidden;
 	display: block;
 	margin: $margin-default 0;
-	padding-bottom: 600/800 * 100%;
+	padding-bottom: 600/800 * 99.99%;
 	box-shadow: 0 3px 10px -3px #666;
 }
 
@@ -33,14 +33,12 @@ SECTION PROJECTS
 		display: block;
 		width: 100%;
 		height: auto;
-		height: auto;
-		max-width: 100%;
-		transform: scale(1);
+		transform: scale(1.001);
 		transition: transform 400ms ease-out;
 
 		a:hover &,
 		a:focus & {
-			transform: scale(1.1);
+			transform: scale(1.05);
 			// filter: blur(5px);
 		}
 	}
