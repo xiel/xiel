@@ -127,7 +127,16 @@ SECTION PROJECTS
 	li {
 		display: inline-block;
 		font-size: 1.6rem;
-		line-height: 1;
+		line-height: 1.2;
+		font-style: italic;
+		transition: 500ms;
+		opacity: 0;
+
+		@for $i from 1 through 10 {
+			&:nth-child(#{$i}){
+				transition-delay: ($i - 1) * 75ms;
+			}
+		}
 
 		a:hover &,
 		a:focus & {
