@@ -7,7 +7,8 @@ router.get('/', function(req, res){
 		if(err) return console.error(err);
 
 		var minifiedHTML = minify(html, {
-			collapseWhitespace: true
+			collapseWhitespace: true,
+			preserveLineBreaks: true
 		});
 
 		return res.send(minifiedHTML);
