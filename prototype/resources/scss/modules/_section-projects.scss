@@ -65,6 +65,7 @@ SECTION PROJECTS
 	a:focus & {
 		// padding-top: 25%;
 		opacity: 1;
+		cursor: pointer;
 		transform: translateY(0.001px);
 	}
 
@@ -75,6 +76,12 @@ SECTION PROJECTS
 		margin: 0 0 .75em;
 		padding-bottom: .75em;
 		transition: inherit;
+		transform: translateY(50%);
+
+		a:hover &,
+		a:focus & {
+			transform: scale(1);
+		}
 		
 		//title kicker
 		em {
@@ -84,7 +91,7 @@ SECTION PROJECTS
 			font-size: .5em;
 			font-weight: 300;
 			line-height: 1.5;
-			text-transform: uppercase;
+			// text-transform: uppercase;
 			letter-spacing: .05em;
 			bottom: 100%;
 			opacity: .75;
@@ -125,9 +132,10 @@ SECTION PROJECTS
 .project-teaser__services {
 	
 	li {
-		display: inline-block;
+		display: block;
 		font-size: 1.6rem;
 		line-height: 1.2;
+		margin: .25em 0;
 		font-style: italic;
 		transition: 400ms;
 		opacity: 0;
