@@ -167,21 +167,38 @@ SECTION PROJECTS
 }
 
 .project-textilien {
-	background: #d2d0cb url('../media/textilien/textilien-hero.jpg') center top no-repeat;
+	background: #e0ddd9 url('../media/textilien/textilien-hero.jpg') center top no-repeat;
 
 	.section__header {
-		padding-bottom: 550px;
+		padding-bottom: 650px;
 	}
 }
 
 .project__details {
-	padding-top: 2 * 1.45rem;
-	background: #fff;
-	background: rgba(#fff, .75);
-	background: rgba(#d2d0cb, .75);
-	box-shadow: 0 0 50px 30px rgba(#d2d0cb, .75);
+	margin: 2*1.45rem 0;
+	// background: rgba(#fff, .75);
 }
 
+.push-headline {
+	display: inline-block;
+	float: left;
+	position: relative;
+	vertical-align: top;
+	background: greenyellow;
+
+	h3, h4 {
+		position: absolute;
+		margin: 0;
+		top: 0;
+		right: 2rem;
+		// background: red;
+
+		font-size: 1.4rem;
+		font-weight: 300;
+		line-height: 1.73;
+		letter-spacing: .05em;
+	}
+}
 
 
 
