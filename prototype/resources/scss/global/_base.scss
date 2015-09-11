@@ -151,7 +151,21 @@ h3 {
 	}
 
 	h2 {
+		position: relative;
 		font-weight: 100; //thin
+		
+		//kicker
+		em {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			font-size: 1.4rem;
+			font-weight: 300;
+			line-height: 1.5;
+			letter-spacing: .05em;
+			bottom: 100%;
+			opacity: .75;
+		}
 	}
 
 	p {

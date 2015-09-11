@@ -139,8 +139,6 @@
 			duration = Math.round( Math.abs( (window.scrollY - target.offset().top) * 0.6 ) );
 			duration = Math.max( MIN_DURATION, Math.min( MAX_DURATION, duration ) );
 
-			console.log(duration);
-
 			$(target).velocity("scroll", { 
 				duration: duration,
 				delay: 50,
@@ -148,6 +146,7 @@
 					// console.log('complete', slice.call(arguments) , arguments);
 				}
 			});
+			
 			e.preventDefault();
 		})
 	}
