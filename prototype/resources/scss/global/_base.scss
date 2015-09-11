@@ -121,6 +121,7 @@ a {
 ul, li {
 	margin: 0;
 	padding: 0;
+	list-style: none;
 }
 
 p {
@@ -139,6 +140,18 @@ h2 {
 h3 {
 	font-size: 2.5rem;
 	font-weight: 100; //thin
+}
+
+h4 {
+	font-size: 1.4rem;
+	font-weight: 300;
+	line-height: 1.2;
+	margin: 1.2em 0;
+	letter-spacing: .05em;
+
+	&:first-child {
+		margin-top: 0;
+	}
 }
 
 .section__header {

@@ -51,3 +51,9 @@ BUTTONS
 .btn--busy {
 	animation: textpulse 1s alternate 399;
 }
+
+.close-btn {
+	position: absolute;
+	top: 4rem;
+	right: 4rem;
+}
