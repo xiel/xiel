@@ -110,6 +110,16 @@ GENERAL TEXT
 	font-size: 1.2rem;
 }
 
+%text-link {
+	color: $color-key-cyan;
+	border-bottom: 2px solid $color-text-light;
+
+	&:hover,
+	&:focus {
+		color: $color-key-cyan-dark;
+	}
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
