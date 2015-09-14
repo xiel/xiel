@@ -20,6 +20,7 @@ SECTION PROJECTS
 	margin: $margin-default 0;
 	padding-bottom: 600/800 * 99.99%;
 	box-shadow: 0 3px 10px -3px #666;
+	transform: scale(1);
 }
 
 .project-teaser__media {
@@ -162,7 +163,7 @@ SECTION PROJECTS
 		display: block;
 		width: 100%;
 		height: auto;
-		background: black;
+		// background: black;
 	}
 
 	figure {
@@ -182,13 +183,10 @@ SECTION PROJECTS
 	@extend %text-link;
 }
 
-.project-nicknight {
+.project-default {
 	@extend .projects;
-	// background: hotpink !important;
-
-	// * {
-	// 	visibility: hidden;
-	// }
+	// background: radial-gradient(circle farthest-corner at 50% 10%, #fff, #D9D9D9);
+	// background: #fff;
 }
 
 .project-textilien {
