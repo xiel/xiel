@@ -89,6 +89,7 @@ SECTION DEVELOPMENT
 	flex: 0 0 auto;
 	width: 80%;
 	margin: auto;
+	margin-bottom: 3rem;
 
 	@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
 		float: left;

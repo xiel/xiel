@@ -85,8 +85,6 @@ body {
 	// background: red;
 	// background: #fff;
 
-	margin: 0;
-	padding: 0;
 	font-size: 17px;
 	font-size: 1.7rem;
 	font-weight: 300; //light
@@ -124,13 +122,25 @@ ul, li {
 	list-style: none;
 }
 
-p {
-	// font-size: 1.6rem;
+p, li {
 	line-height: 1.45;
 }
 
 em {
 	font-style: normal;
+}
+
+h2, h3, h4, h5 {
+	margin: 2em 0 0.75em;
+	line-height: 1.2;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	+ p {
+		margin-top: 1em;
+	}
 }
 
 h2 {
@@ -143,15 +153,7 @@ h3 {
 }
 
 h4 {
-	font-size: 1.4rem;
-	font-weight: 300;
-	line-height: 1.2;
-	margin: 1.2em 0;
 	letter-spacing: .05em;
-
-	&:first-child {
-		margin-top: 0;
-	}
 }
 
 .section__header {
@@ -166,6 +168,7 @@ h4 {
 	h2 {
 		position: relative;
 		font-weight: 100; //thin
+		margin-top: 1.2em;
 		
 		//kicker
 		em {
@@ -192,6 +195,27 @@ h4 {
 
 .upper {
 	text-transform: uppercase;
+}
+
+.text-list {
+	li {
+		position: relative;
+		margin: .5em 0;
+		padding-left: .9em;
+
+
+		&:before {
+			@extend %pseudo;
+			@extend %icon-listitem-dark;
+			top: 0;
+			left: 0;
+			width: .45em;
+			height: 1.2em;
+			background-size: contain;
+			// background-color: greenyellow;
+			background-position: right bottom;
+		}
+	}
 }
 
 /* ===================================================
