@@ -207,13 +207,20 @@ h4 {
 		&:before {
 			@extend %pseudo;
 			@extend %icon-listitem-dark;
-			top: 0;
+			top: .43em;
 			left: 0;
-			width: .45em;
-			height: 1.2em;
+			width: .7em;
+			height: .7em;
 			background-size: contain;
 			// background-color: greenyellow;
-			background-position: right bottom;
+			background-position: center bottom;
+		}
+	}
+
+	li.link {
+		&:before {
+			// @extend %icon-link-dark;
+			// width: 1em;
 		}
 	}
 }
