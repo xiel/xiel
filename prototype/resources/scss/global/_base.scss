@@ -112,7 +112,7 @@ GENERAL TEXT
 
 %text-link {
 	color: $color-key-cyan;
-	border-bottom: 2px solid $color-text-light;
+	border-bottom: 2px solid $color-text-lighter;
 
 	&:hover,
 	&:focus {
@@ -210,7 +210,7 @@ h4 {
 .text-list {
 	li {
 		position: relative;
-		margin: .5em 0;
+		margin: .25em 0;
 		padding-left: .9em;
 
 
@@ -222,7 +222,6 @@ h4 {
 			width: .7em;
 			height: .7em;
 			background-size: contain;
-			// background-color: greenyellow;
 			background-position: center bottom;
 		}
 	}

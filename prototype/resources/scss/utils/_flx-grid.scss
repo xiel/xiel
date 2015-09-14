@@ -9,20 +9,18 @@ $flx-slug: flx !default;
 	flex: none;
 	width: 100%;
 	padding: 0 2rem;
-
-	// background: rgba(cyan, .1);
-	// background-clip: content-box;
 }
 
 @mixin loop-grid-columns($columns, $class) {
 	@for $i from 1 through $columns {
-
 		.#{$flx-slug}--#{$class}-#{$i} {
 			@extend %flx;
-			// flex: none;
 			width: percentage(($i / $grid-columns));
 		}
 
+		.#{$flx-slug}-push--#{$class}-#{$i} {
+			margin-left: percentage(($i / $grid-columns));
+		}
 	}
 }
 
@@ -38,6 +36,10 @@ $flx-slug: flx !default;
 //extends
 %flx {
 	@include flx-col();
+
+	.grid-visible & {
+		outline: 1px solid purple;
+	}
 }
 
 //flx-group

@@ -3,7 +3,7 @@ SECTION CONTACT
 =================================================== */
 
 .section--imprint {
-	color: $color-text-light;
+	color: $color-text-on-dark;
 	color: hsl(214, 10%, 50%);
 	padding: 1% 0 .5%;
 	border-top: 2px solid;
@@ -41,7 +41,7 @@ SECTION CONTACT
 	a {
 		&:hover,
 		&:focus {
-			color: $color-text-light;
+			color: $color-text-on-dark;
 		}
 	}
 }
