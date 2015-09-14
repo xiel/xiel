@@ -167,14 +167,7 @@ SECTION PROJECTS
 }
 
 .project_link {
-	color: $color-key-cyan;
-	border-bottom: 2px solid $color-text-light;
-
-	&:hover,
-	&:focus {
-		color: $color-text-default;
-		border-color: inherit;
-	}
+	@extend %text-link;
 }
 
 .project-textilien {
