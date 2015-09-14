@@ -157,12 +157,24 @@ SECTION PROJECTS
 }
 
 .project__media {
-	width: 100%;
 
 	img, video {
 		display: block;
 		width: 100%;
 		height: auto;
+		background: black;
+	}
+
+	figure {
+		margin: 0;
+	}
+
+	figcaption {
+		color: $color-text-light;
+		// text-transform: uppercase;
+		padding: .5em;
+		font-size: 1.4rem;
+		line-height: 1.3;
 	}
 }
 
@@ -170,8 +182,17 @@ SECTION PROJECTS
 	@extend %text-link;
 }
 
+.project-nicknight {
+	@extend .projects;
+	// background: hotpink !important;
+
+	// * {
+	// 	visibility: hidden;
+	// }
+}
+
 .project-textilien {
-	background: #e0ddd9 url('../media/textilien/textilien-hero.jpg') center top no-repeat;
+	background: #e0ddd9 url('../media/textilien/textilien-hero.jpg') center -100px no-repeat;
 
 	.section__header {
 		padding-bottom: 680px;
@@ -179,8 +200,8 @@ SECTION PROJECTS
 }
 
 .project__details {
-	margin: 2*1.45rem 0;
-	// background: rgba(#fff, .75);
+	margin-top: 2*1.45rem;
+	margin-bottom: 2*1.45rem;
 }
 
 .push-headline {
@@ -195,8 +216,6 @@ SECTION PROJECTS
 		margin: 0;
 		top: 0;
 		right: 2rem;
-		// background: red;
-
 		font-size: 1.4rem;
 		font-weight: 300;
 		line-height: 1.73;

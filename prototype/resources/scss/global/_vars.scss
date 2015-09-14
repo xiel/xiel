@@ -14,9 +14,15 @@ $color-green: #81CF2A; //design
 $color-blue: #3C99C8; //tech
 
 $color-error: #ED4321;
+
 $color-gray-dark: #2C2C2C;
+$color-gray-light: lighten(#636462, 25);
+$color-gray-lighter: lighten(#636462, 35);
+
 $color-text-default: #636462;
-$color-text-light: #CCD1CC;
+$color-text-light: $color-gray-light;
+$color-text-lighter: $color-gray-lighter;
+$color-text-on-dark: #CCD1CC;
 
 //flx grid
 $grid-columns: 12 !default;

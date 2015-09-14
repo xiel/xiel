@@ -53,7 +53,24 @@ BUTTONS
 }
 
 .close-btn {
+	@extend %icon-close;
+	@extend %ir;
 	position: absolute;
-	top: 4rem;
-	right: 4rem;
+	top: 5rem;
+	right: 5rem;
+	width: 40px;
+	height: 40px;
+	width: 4rem;
+	height: 4rem;
+	background-size: contain;
+	opacity: .75;
+
+	&:hover,
+	&:focus {
+		opacity: 1;
+	}
+
+	&:active {
+		transform: scale(.95);
+	}
 }

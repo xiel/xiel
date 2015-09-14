@@ -18,6 +18,11 @@
 			startGridToggle();
 			startSoftScroll();
 
+			$(document).on('dblclick', function(e){
+				$(document.body).toggle('grid-visible');
+				console.log(e);
+			});
+
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function( context ) {
 
@@ -146,7 +151,7 @@
 					// console.log('complete', slice.call(arguments) , arguments);
 				}
 			});
-			
+
 			e.preventDefault();
 		})
 	}
