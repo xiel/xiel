@@ -13,12 +13,12 @@ $flx-slug: flx !default;
 
 @mixin loop-grid-columns($columns, $class) {
 	@for $i from 1 through $columns {
-		.#{$flx-slug}--#{$class}-#{$i} {
+		.#{$flx-slug}--#{$i}°#{$class} {
 			@extend %flx;
 			width: percentage(($i / $grid-columns));
 		}
 
-		.#{$flx-slug}-push--#{$class}-#{$i} {
+		.#{$flx-slug}-push--#{$i}°#{$class} {
 			margin-left: percentage(($i / $grid-columns));
 		}
 	}
@@ -26,6 +26,14 @@ $flx-slug: flx !default;
 
 @mixin make-grid($class) {
 	@include loop-grid-columns($grid-columns, $class);
+
+	.flx--put-first°#{$class} {
+		order: -1;
+	}
+
+	.flx--put-last°#{$class} {
+		order: 999999;
+	}
 
 	.#{$flx-slug}--#{$class}-fit {
 		@extend %flx;
