@@ -2,7 +2,7 @@
 
 	{{#if errors}}
 	<div class="flx-group flx-group--centered">
-		<div class="flx--sm-8 flx--md-6">
+		<div class="flx--8°sm flx--6°md">
 			<p class="field__error">Sorry, there was an error while sending!</p>
 			<p class="field__error">{{errors.serverError.response}}</p>
 		</div>
@@ -11,7 +11,7 @@
 
 	<div class="flx-group flx-group--centered">
 
-		<div class="field flx--sm-4 flx--md-3 {{#if errors.name}}field--error{{/if}}">
+		<div class="field flx--4°sm flx--3°md {{#if errors.name}}field--error{{/if}}">
 			<label for="name">Name</label>
 			<input name="name" id="name" type="text" placeholder="Name" value="{{fields.name}}" required />
 			{{#if errors.name}}
@@ -19,7 +19,7 @@
 			{{/if}}
 		</div>
 
-		<div class="field flx--sm-4 flx--md-3 {{#if errors.email}}field--error{{/if}}">
+		<div class="field flx--4°sm flx--3°md {{#if errors.email}}field--error{{/if}}">
 			<label for="email">Email</label>
 			<input name="email" id="email" type="email" placeholder="Email" value="{{fields.email}}" required />
 			{{#if errors.email}}
@@ -31,7 +31,7 @@
 
 	<div class="flx-group flx-group--centered">
 
-		<div class="flx--sm-8 flx--md-6">
+		<div class="flx--8°sm flx--6°md">
 
 			<div class="field {{#if errors.message}}field--error{{/if}}">
 				<label for="message">Nachricht</label>

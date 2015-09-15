@@ -158,11 +158,13 @@ SECTION PROJECTS
 }
 
 .project__media {
+	margin-bottom: 2.9rem;
 
 	img, video {
 		display: block;
 		width: 100%;
 		height: auto;
+		box-shadow: 0 0 25px -10px rgba(#000, .3);
 		// background: black;
 	}
 
