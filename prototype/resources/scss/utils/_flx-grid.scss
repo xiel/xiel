@@ -35,6 +35,13 @@ $flx-slug: flx !default;
 		order: 999999;
 	}
 
+	.flx--valigned-content°#{$class} {
+		display: flex;
+		align-self: stretch;
+		flex-direction: column;
+		justify-content: center;
+	}
+
 	.#{$flx-slug}--#{$class}-fit {
 		@extend %flx;
 		flex: 1;
