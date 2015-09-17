@@ -5,6 +5,8 @@
 		location.search += 'devmode';
 	}
 
+	sssl( '//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1', function() {});
+
 	var projectInit = {
 		immediate: function() {
 
@@ -142,7 +144,8 @@
 						setTimeout(function(){
 							$('html').velocity("stop").velocity("scroll", { 
 								offset: scrollYBeforeOpen,
-								duration: Math.abs( window.scrollY - scrollYBeforeOpen ) / 2
+								duration: Math.abs( window.scrollY - scrollYBeforeOpen ) / 2,
+								mobileHA: false
 							});
 						}, 10);
 
@@ -282,6 +285,7 @@
 		$('html').velocity("scroll", { 
 			offset: newScrollPos,
 			duration: duration,
+			mobileHA: false,
 			complete: function(){
 				// console.log('complete', target, offsetY, duration);
 			}
