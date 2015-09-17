@@ -34,11 +34,12 @@
 
 	function hideAndShowImages(context) {
 		var mediaToShow = $('img', context);
+		var mediaToLoad = mediaToShow.length;
+		var withTimeout = false;
+
 		mediaToShow.css({opacity: 0});
 		mediaToShow.each(function(){
 			var media = $(this);
-
-			console.log( media, media.prop('complete') )
 
 			if(media.prop('complete')){
 				loaded();
@@ -49,12 +50,29 @@
 				loaded();
 			});
 
+			var loadTimeout = setTimeout(function(){
+				withTimeout = true;
+				loaded();
+			}, 3000);
+
 			function loaded(){
-				media.velocity({ opacity: 1 }, { 
+				clearTimeout(loadTimeout);
+				mediaToLoad--;
+				media.trigger('mediaLoaded');
+
+				if(mediaToLoad < 1){
+					$(context).trigger('allMediaLoaded', [{withTimeout: withTimeout}] );
+				}
+
+				media.velocity({ opacity: 1 }, {
 					duration: 1000
 				});
 			}
 		});
+
+		if(mediaToLoad < 1){
+			$(context).trigger('allMediaLoaded', [{withTimeout: withTimeout}] );
+		}
 	}
 
 	function startProjects(context){
@@ -62,10 +80,11 @@
 		$('.section.projects', context).each(function(){
 			var projectsSection = $(this);
 			var activeSection = undefined;
+			var slideWrapper = $('<div/>').addClass('project-slide-wrapper').insertAfter(projectsSection);
 
 			projectsSection.on('click', 'a.project-teaser', function(e){
 				var link = $(this);
-				console.log('clicked', link);
+				var scrollYBeforeOpen = window.scrollY;
 
 				e.preventDefault();
 
@@ -80,41 +99,52 @@
 					if(activeSection){
 						activeSection.remove();
 						activeSection = undefined;
+					} else {
+						slideWrapper.css({ height: 0 });
 					}
 
-					newSection.insertAfter(projectsSection);
-
-					var newSectionHeight = newSection.height();
+					activeSection = newSection;
+					newSection.appendTo(slideWrapper).addClass('project--active');
+					
+					var newSectionHeight = newSection.height() || 1000;
 
 					softScrollTo(newSection);
 
-					// newSection
-					// 	.css({opacity: 0, height: 0 })
-					// 	.addClass('project--active')
-					// 	.velocity({ opacity: 1, height: newSectionHeight }, { 
-					// 		duration: 1000,
-					// 		complete: function(){
-					// 			console.log('complete', this, arguments);
-					// 		}
-					// 	})
-					// ;
+					newSection.on('allMediaLoaded', function(e){
+						slideWrapper
+							.velocity("stop")
+							.velocity({ height: newSection.height() }, { 
+								duration: Math.abs( slideWrapper.height() - newSection.height() ) / 2,
+								complete: function(){
+									slideWrapper.css({ height: '' })
+								}
+							})
+						;
+					})
 
-					projectsSection.addClass('project--inactive');
-
-					activeSection = newSection;
-					// newSection.css({ minHeight: minHeight });
 					newSection.trigger('dommodified');
 
 					newSection.one('click', '.close-btn', function(e){
 						if(!activeSection){ return false }
+						slideWrapper
+							.velocity("stop")
+							.velocity({ height: 0 }, { 
+								duration: slideWrapper.height() / 3,
+								complete: function(){
+									if(activeSection){
+										activeSection.remove();
+										activeSection = undefined;
+									}
+								}
+							})
+						;
 
-						// projectsSection.show();
-						projectsSection.removeClass('project--inactive');
-
-						if(activeSection){
-							activeSection.remove();
-							activeSection = undefined;
-						}
+						setTimeout(function(){
+							$('html').velocity("stop").velocity("scroll", { 
+								offset: scrollYBeforeOpen,
+								duration: Math.abs( window.scrollY - scrollYBeforeOpen ) / 2
+							});
+						}, 10);
 
 						e.preventDefault();
 					});
@@ -122,8 +152,6 @@
 
 				e.preventDefault();
 			});
-
-			console.log(projectsSection);
 		});
 	}
 
@@ -245,17 +273,17 @@
 		var MIN_DURATION = 500;
 		var MAX_DURATION = 3000;
 
-		var offsetY =  target.offset().top - window.scrollY;
+		var newScrollPos = target.offset().top;
+		var offsetY =  newScrollPos - window.scrollY;
 
 		duration = Math.round( Math.abs( offsetY ) * 0.6 );
 		duration = Math.max( MIN_DURATION, Math.min( MAX_DURATION, duration ) );
 
 		$('html').velocity("scroll", { 
-			offset: target.offset().top,
+			offset: newScrollPos,
 			duration: duration,
-			// delay: 50,
 			complete: function(){
-				console.log('complete', target, offsetY, duration);
+				// console.log('complete', target, offsetY, duration);
 			}
 		});
 	}

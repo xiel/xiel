@@ -12,6 +12,7 @@ FORMS
 		transition: 200ms;
 		border: 0 solid;
 		border-color: #666;
+		border-radius: 0;
 
 		&:focus {
 			border-color: initial;
