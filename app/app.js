@@ -7,6 +7,7 @@ console.log( new Date() );
 //require modules
 var path = require('path');
 var express = require('express');
+var exphbs  = require('express-handlebars');
 var expressValidator = require('express-validator');
 var bodyParser = require('body-parser');
 var htmlMinifyer = require('html-minifier').minify;
@@ -14,10 +15,10 @@ var htmlMinifyer = require('html-minifier').minify;
 //get routers
 var routes = require('./routes/index');
 var contactform = require('./routes/contactform');
+var projects = require('./routes/projects');
 
 //init
 var app = express();
-var exphbs  = require('express-handlebars');
 var rootPath = function(pathFromRoot){
 	console.log('rootPath', path.join( __dirname, pathFromRoot ) );
 	return path.join( __dirname, pathFromRoot )
@@ -45,6 +46,12 @@ app.use( express.static( rootPath('../prototype/_output') ) );
 //routes
 app.use('/', routes);
 app.use('/contactform', contactform);
+app.use('/projects', projects);
+
+app.use(function(err, req, res, next) {
+	console.error(err.stack);
+	res.status(500).send('Something broke!');
+});
 
 // start server
 var server = app.listen(62375, function () {

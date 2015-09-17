@@ -2,6 +2,26 @@
 SECTION PROJECTS
 =================================================== */
 
+.projects-wrapper {
+	position: relative;
+	background: yellowgreen;
+
+	.section {
+		padding-top: 8%;
+	}
+
+	.project--inactive {
+		// position: absolute;
+		// top: 0;
+		// left: 0;
+		// width: 100%;
+	}
+
+	.project--active {
+		position: relative;
+	}
+}
+
 .projects {
 	color: $color-text-default;
 	background: #fff;
