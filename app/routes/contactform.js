@@ -33,6 +33,9 @@ router.post('/', function(req, res){
 	var errors = false;
 	var sendMessage = false;
 
+	var isAjax = 'ajax' in req.query ||  'ajax' in req.body || 'ajax' in req.params;
+	var ajaxDependentLayout = isAjax ? false : 'default';
+
 	//sanitize
 	req.sanitize('name').stripLow(true);
 	req.sanitize('name').trim();
@@ -81,7 +84,7 @@ router.post('/', function(req, res){
 				fields: fields,
 				errors: errors,
 				messageSent: sendMessage,
-				layout: !fields.ajax
+				layout: ajaxDependentLayout
 			});
 		});
 	} else {
@@ -89,7 +92,7 @@ router.post('/', function(req, res){
 			fields: fields,
 			errors: errors,
 			messageSent: sendMessage,
-			layout: !fields.ajax
+			layout: ajaxDependentLayout
 		});
 	}
 });

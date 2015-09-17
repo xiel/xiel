@@ -18,18 +18,114 @@
 			startGridToggle();
 			startSoftScroll();
 
+
 			$(document).on('dblclick', function(e){
 				$(document.body).toggle('grid-visible');
-				console.log(e);
 			});
 
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function( context ) {
 
-
+			startProjects( context );
+			hideAndShowImages( context );
 
 		} //END: projectInit.everyDomReady
 	};
+
+	function hideAndShowImages(context) {
+		var mediaToShow = $('img', context);
+		mediaToShow.css({opacity: 0});
+		mediaToShow.each(function(){
+			var media = $(this);
+
+			console.log( media, media.prop('complete') )
+
+			if(media.prop('complete')){
+				loaded();
+				return
+			}
+
+			media.one('load', function(){
+				loaded();
+			});
+
+			function loaded(){
+				media.velocity({ opacity: 1 }, { 
+					duration: 1000
+				});
+			}
+		});
+	}
+
+	function startProjects(context){
+
+		$('.section.projects', context).each(function(){
+			var projectsSection = $(this);
+			var activeSection = undefined;
+
+			projectsSection.on('click', 'a.project-teaser', function(e){
+				var link = $(this);
+				console.log('clicked', link);
+
+				e.preventDefault();
+
+				$.ajax({
+					url: link.attr('href'),
+					data: { ajax: true }
+				})
+				.done(function(_data){
+					var data = $('<div/>').html(_data);
+					var newSection = $('.section', data);
+
+					if(activeSection){
+						activeSection.remove();
+						activeSection = undefined;
+					}
+
+					newSection.insertAfter(projectsSection);
+
+					var newSectionHeight = newSection.height();
+
+					softScrollTo(newSection);
+
+					// newSection
+					// 	.css({opacity: 0, height: 0 })
+					// 	.addClass('project--active')
+					// 	.velocity({ opacity: 1, height: newSectionHeight }, { 
+					// 		duration: 1000,
+					// 		complete: function(){
+					// 			console.log('complete', this, arguments);
+					// 		}
+					// 	})
+					// ;
+
+					projectsSection.addClass('project--inactive');
+
+					activeSection = newSection;
+					// newSection.css({ minHeight: minHeight });
+					newSection.trigger('dommodified');
+
+					newSection.one('click', '.close-btn', function(e){
+						if(!activeSection){ return false }
+
+						// projectsSection.show();
+						projectsSection.removeClass('project--inactive');
+
+						if(activeSection){
+							activeSection.remove();
+							activeSection = undefined;
+						}
+
+						e.preventDefault();
+					});
+				})
+
+				e.preventDefault();
+			});
+
+			console.log(projectsSection);
+		});
+	}
 
 	function startBusyButtons(){
 		$(document).on('submit', '.contactform', function(e){
@@ -128,32 +224,40 @@
 	}
 
 	function startSoftScroll(){
-		var MIN_DURATION = 500;
-		var MAX_DURATION = 3000;
-
-		var slice = Array.prototype.slice;
+		// var slice = Array.prototype.slice;
 
 		$(document).on('click', 'a[data-jump]', function(e){
 			var link = $(this);
 			var selector = link.data('jump') || link.prop('hash') || link.attr('href');
 			var target = $(selector).first();
-			var duration = 0;
-
+			
 			if(!target.length){ return }
 
-			duration = Math.round( Math.abs( (window.scrollY - target.offset().top) * 0.6 ) );
-			duration = Math.max( MIN_DURATION, Math.min( MAX_DURATION, duration ) );
-
-			$(target).velocity("scroll", { 
-				duration: duration,
-				delay: 50,
-				complete: function(){
-					// console.log('complete', slice.call(arguments) , arguments);
-				}
-			});
+			softScrollTo(target);
 
 			e.preventDefault();
 		})
+	}
+
+	function softScrollTo(_target){
+		var target = $(_target).first();
+		var duration = 0;
+		var MIN_DURATION = 500;
+		var MAX_DURATION = 3000;
+
+		var offsetY =  target.offset().top - window.scrollY;
+
+		duration = Math.round( Math.abs( offsetY ) * 0.6 );
+		duration = Math.max( MIN_DURATION, Math.min( MAX_DURATION, duration ) );
+
+		$('html').velocity("scroll", { 
+			offset: target.offset().top,
+			duration: duration,
+			// delay: 50,
+			complete: function(){
+				console.log('complete', target, offsetY, duration);
+			}
+		});
 	}
 
 	// Avoid `console` errors in browsers that lack a console.
