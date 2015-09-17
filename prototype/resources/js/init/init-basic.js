@@ -78,7 +78,6 @@
 	}
 
 	function startProjects(context){
-
 		$('.section.projects', context).each(function(){
 			var projectsSection = $(this);
 			var activeSection = undefined;
