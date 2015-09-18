@@ -25,39 +25,39 @@
  * 	});
  * });
  */
-( function() {
-	var firstScript = document.getElementsByTagName( 'script' )[ 0 ];
+(function() {
+	var firstScript = document.getElementsByTagName('script')[0];
 	var scriptHead = firstScript.parentNode;
 	var re = /ded|co/;
 	var onload = 'onload';
 	var onreadystatechange = 'onreadystatechange';
 	var readyState = 'readyState';
 
-	var load = function( src, fn ) {
-		var script = document.createElement( 'script' );
-		script[ onload ] = script[ onreadystatechange ] = function() {
-			if ( !this[ readyState ] || re.test( this[ readyState ] ) ) {
-				script[ onload ] = script[ onreadystatechange ] = null;
-				fn && fn( script );
+	var load = function(src, fn) {
+		var script = document.createElement('script');
+		script[onload] = script[onreadystatechange] = function() {
+			if (!this[readyState] || re.test(this[readyState])) {
+				script[onload] = script[onreadystatechange] = null;
+				fn && fn(script);
 				script = null;
 			}
 		};
 		script.async = true;
 		script.src = src;
-		scriptHead.insertBefore( script, firstScript );
+		scriptHead.insertBefore(script, firstScript);
 	};
-	window.sssl = function( srces, fn ) {
-		if ( typeof srces == 'string' ) {
-			load( srces, fn );
+	window.sssl = function(srces, fn) {
+		if (typeof srces == 'string') {
+			load(srces, fn);
 			return;
 		}
 		var src = srces.shift();
-		load( src, function() {
-			if ( srces.length ) {
-				window.sssl( srces, fn );
+		load(src, function() {
+			if (srces.length) {
+				window.sssl(srces, fn);
 			} else {
 				fn && fn();
 			}
-		} );
+		});
 	};
-} )();
+})();

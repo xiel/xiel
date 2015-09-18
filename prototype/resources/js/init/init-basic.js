@@ -1,11 +1,9 @@
-( function( $ ) {
+(function($) {
 	var devmode = window.jspackager && window.jspackager.devmode;
 
-	if(location.host === 'xiel.local.de' && !window.jspackager.devmode){
+	if ( !window.jspackager.devmode && (location.host === 'xiel.local.de' || location.host.split('.').length === 4 ) ) {
 		location.search += 'devmode';
 	}
-
-	sssl( '//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1', function() {});
 
 	var projectInit = {
 		immediate: function() {
@@ -17,21 +15,29 @@
 			startBasicFormValidation();
 			startBusyButtons();
 			startMailForm();
-			startGridToggle();
 			startSoftScroll();
+			startToggleButtons();
 
-
-			$(document).on('ondragend', function(e){
-				$(document.body).toggle('grid-visible');
+			$(document).on('mousedown', function(e) {
+				var startTime = +new Date();
+				$(document).one('mouseup', function(e){
+					if( (+new Date() - startTime) >= 250){
+						console.log('grid-visible', document.body);
+						$(document.body).toggleClass('grid-visible');
+						e.preventDefault();
+					}
+				});
 			});
 
 		}, //END: projectInit.domReadyOnce
-		everyDomReady: function( context ) {
+		everyDomReady: function(context) {
 
-			startProjects( context );
-			hideAndShowImages( context );
+				startProjects(context);
+				hideAndShowImages(context);
 
-		} //END: projectInit.everyDomReady
+				sssl('//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1', function() {});
+
+			} //END: projectInit.everyDomReady
 	};
 
 	function hideAndShowImages(context) {
@@ -39,191 +45,211 @@
 		var mediaToLoad = mediaToShow.length;
 		var withTimeout = false;
 
-		mediaToShow.css({opacity: 0});
-		mediaToShow.each(function(){
+		mediaToShow.css({
+			opacity: 0
+		});
+		mediaToShow.each(function() {
 			var media = $(this);
 
-			if(media.prop('complete')){
+			if (media.prop('complete')) {
 				loaded();
 				return
 			}
 
-			media.one('load', function(){
+			media.one('load', function() {
 				loaded();
 			});
 
-			var loadTimeout = setTimeout(function(){
+			var loadTimeout = setTimeout(function() {
 				withTimeout = true;
 				loaded();
 			}, 3000);
 
-			function loaded(){
+			function loaded() {
 				clearTimeout(loadTimeout);
 				mediaToLoad--;
 				media.trigger('mediaLoaded');
 
-				if(mediaToLoad < 1){
-					$(context).trigger('allMediaLoaded', [{withTimeout: withTimeout}] );
+				if (mediaToLoad < 1) {
+					$(context).trigger('allMediaLoaded', [{
+						withTimeout: withTimeout
+					}]);
 				}
 
-				media.velocity({ opacity: 1 }, {
+				media.velocity({
+					opacity: 1
+				}, {
 					duration: 1000
 				});
 			}
 		});
 
-		if(mediaToLoad < 1){
-			$(context).trigger('allMediaLoaded', [{withTimeout: withTimeout}] );
+		if (mediaToLoad < 1) {
+			$(context).trigger('allMediaLoaded', [{
+				withTimeout: withTimeout
+			}]);
 		}
 	}
 
-	function startProjects(context){
-		$('.section.projects', context).each(function(){
+	function startProjects(context) {
+		$('.section.projects', context).each(function() {
 			var projectsSection = $(this);
 			var activeSection = undefined;
 			var slideWrapper = $('<div/>').addClass('project-slide-wrapper').insertAfter(projectsSection);
 
-			projectsSection.on('click', 'a.project-teaser', function(e){
+			projectsSection.on('click', 'a.project-teaser', function(e) {
 				var link = $(this);
 				var scrollYBeforeOpen = window.scrollY;
 
 				e.preventDefault();
 
 				$.ajax({
-					url: link.attr('href'),
-					data: { ajax: true }
-				})
-				.done(function(_data){
-					var data = $('<div/>').html(_data);
-					var newSection = $('.section', data);
-
-					if(activeSection){
-						activeSection.remove();
-						activeSection = undefined;
-					} else {
-						slideWrapper.css({ height: 0 });
-					}
-
-					activeSection = newSection;
-					newSection.appendTo(slideWrapper).addClass('project--active');
-					
-					var newSectionHeight = newSection.height() || 1000;
-
-					softScrollTo(newSection);
-
-					newSection.on('allMediaLoaded', function(e){
-						slideWrapper
-							.velocity("stop")
-							.velocity({ height: newSection.height() }, { 
-								duration: Math.abs( slideWrapper.height() - newSection.height() ) / 2,
-								complete: function(){
-									slideWrapper.css({ height: '' })
-								}
-							})
-						;
+						url: link.attr('href'),
+						data: {
+							ajax: true
+						}
 					})
+					.done(function(_data) {
+						var data = $('<div/>').html(_data);
+						var newSection = $('.section', data);
 
-					newSection.trigger('dommodified');
-
-					newSection.one('click', '.close-btn', function(e){
-						if(!activeSection){ return false }
-						slideWrapper
-							.velocity("stop")
-							.velocity({ height: 0 }, { 
-								duration: slideWrapper.height() / 3,
-								complete: function(){
-									if(activeSection){
-										activeSection.remove();
-										activeSection = undefined;
-									}
-								}
-							})
-						;
-
-						setTimeout(function(){
-							$('html').velocity("stop").velocity("scroll", { 
-								offset: scrollYBeforeOpen,
-								duration: Math.abs( window.scrollY - scrollYBeforeOpen ) / 2,
-								mobileHA: false
+						if (activeSection) {
+							activeSection.remove();
+							activeSection = undefined;
+						} else {
+							slideWrapper.css({
+								height: 0
 							});
-						}, 10);
+						}
 
-						e.preventDefault();
-					});
-				})
+						activeSection = newSection;
+						newSection.appendTo(slideWrapper).addClass('project--active');
+
+						var newSectionHeight = newSection.height() || 1000;
+
+						softScrollTo(newSection);
+
+						newSection.on('allMediaLoaded', function(e) {
+							slideWrapper
+								.velocity("stop")
+								.velocity({
+									height: newSection.height()
+								}, {
+									duration: Math.abs(slideWrapper.height() - newSection.height()) / 2,
+									complete: function() {
+										slideWrapper.css({
+											height: ''
+										})
+									}
+								});
+						})
+
+						newSection.trigger('dommodified');
+
+						newSection.one('click', '.close-btn', function(e) {
+							if (!activeSection) {
+								return false
+							}
+							slideWrapper
+								.velocity("stop")
+								.velocity({
+									height: 0
+								}, {
+									duration: slideWrapper.height() / 3,
+									complete: function() {
+										if (activeSection) {
+											activeSection.remove();
+											activeSection = undefined;
+										}
+									}
+								});
+
+							setTimeout(function() {
+								$('html').velocity("stop").velocity("scroll", {
+									offset: scrollYBeforeOpen,
+									duration: Math.abs(window.scrollY - scrollYBeforeOpen) / 2,
+									mobileHA: false
+								});
+							}, 10);
+
+							e.preventDefault();
+						});
+					})
 
 				e.preventDefault();
 			});
 		});
 	}
 
-	function startBusyButtons(){
-		$(document).on('submit', '.contactform', function(e){
+	function startBusyButtons() {
+		$(document).on('submit', '.contactform', function(e) {
 			var form = $(e.target);
 			var busyButtons = $('button[data-busy-text]', form);
 
-			busyButtons.each(function(){
+			busyButtons.each(function() {
 				var btn = $(this);
 				btn.data('text', btn.text());
 				disable(btn);
 
-				var btnTimeout = setTimeout(function(){
+				var btnTimeout = setTimeout(function() {
 					reEnable(btn);
 				}, 20 * 1000);
 
-				form.one('submitDone', function(){
+				form.one('submitDone', function() {
 					clearTimeout(btnTimeout);
 					reEnable(btn);
 				});
 			});
 		});
 
-		function disable(btn){
+		function disable(btn) {
 			btn.addClass('btn--busy');
-			btn.text( btn.data('busyText') );
-			btn.prop( 'disabled', true );
+			btn.text(btn.data('busyText'));
+			btn.prop('disabled', true);
 		}
 
-		function reEnable(btn){
+		function reEnable(btn) {
 			btn.removeClass('btn--busy');
-			btn.text( btn.data('text') );
-			btn.prop( 'disabled', false );
+			btn.text(btn.data('text'));
+			btn.prop('disabled', false);
 		}
 	}
 
-	function startMailForm(){
-		$(document).on('submit', '.contactform', function(e){
+	function startMailForm() {
+		$(document).on('submit', '.contactform', function(e) {
 			var form = $(e.target);
 			var section = form.closest('.section');
 			var serializedData = form.serialize() + '&ajax=' + (+new Date());
 			var minHeight = section.height();
-			
-			$.ajax({
-				url: form.attr('action'),
-				type: form.attr('method') || 'POST',
-				data: serializedData
-			})
-			.done(function(_data){
-				var data = $('<div/>').html(_data);
-				var newSection = $('.section', data);
-				section.replaceWith(newSection);
-				newSection.css({ minHeight: minHeight });
-				newSection.trigger('dommodified');
 
-				var invalidInputs = $('input:invalid, textarea:invalid', newSection).first();
-				softScrollTo(invalidInputs.length ? invalidInputs : newSection);
-				invalidInputs.focus();
-				
-			})
-			.always(function(){
-				form.trigger('submitDone');
-			});
+			$.ajax({
+					url: form.attr('action'),
+					type: form.attr('method') || 'POST',
+					data: serializedData
+				})
+				.done(function(_data) {
+					var data = $('<div/>').html(_data);
+					var newSection = $('.section', data);
+					section.replaceWith(newSection);
+					newSection.css({
+						minHeight: minHeight
+					});
+					newSection.trigger('dommodified');
+
+					var invalidInputs = $('input:invalid, textarea:invalid', newSection).first();
+					softScrollTo(invalidInputs.length ? invalidInputs : newSection);
+					invalidInputs.focus();
+
+				})
+				.always(function() {
+					form.trigger('submitDone');
+				});
 
 			e.preventDefault();
 		})
 	}
 
-	function startSkrollr(){
+	function startSkrollr() {
 		//skrollr
 		var s = skrollr.init({
 			smoothScrolling: false,
@@ -232,18 +258,18 @@
 			},
 			mobileCheck: function() {
 				return false
-				// return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
+					// return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
 			}
 		});
 	}
 
-	function startBasicFormValidation(){
-		$(document).on('blur', 'input, textarea', function(e){
+	function startBasicFormValidation() {
+		$(document).on('blur', 'input, textarea', function(e) {
 			var input = $(e.target);
 			var isValid = input.is(':valid');
 			var fieldContainer = input.closest('.field');
 
-			if(isValid){
+			if (isValid) {
 				fieldContainer.removeClass('field--error');
 			} else {
 				fieldContainer.addClass('field--error');
@@ -251,56 +277,106 @@
 		})
 	}
 
-	function startGridToggle(){
-		$(document).on('dblclick', function(e){
-			document.body.classList.toggle('grid-visible');
+	function startToggleButtons(){
+		$(document).on('click', '.toggle-btn', function(e){
+			var link = $(this);
+			var selector = link.prop('hash') || link.attr('href')
+			var target = $(selector).first();
+			var classToToggle = link.data('toggle') || 'toggle';
+			if (!target.length) {
+				return
+			}
+
+			var scrollAnchor = $('.toggle-scroll-anchor', target);
+			scrollAnchor = scrollAnchor.length ? scrollAnchor : target;
+
+			target.toggleClass(classToToggle);
+
+			if(target.height() && !isInView(target) ){
+				softScrollTo(scrollAnchor, true)
+			}
+
 			e.preventDefault();
 		});
 	}
 
-	function startSoftScroll(){
-		// var slice = Array.prototype.slice;
-
-		$(document).on('click', 'a[data-jump]', function(e){
+	function startSoftScroll() {
+		$(document).on('click', 'a[data-jump]', function(e) {
 			var link = $(this);
 			var selector = link.data('jump') || link.prop('hash') || link.attr('href');
 			var target = $(selector).first();
-			
-			if(!target.length){ return }
-
+			if (!target.length) {
+				return
+			}
 			softScrollTo(target);
-
 			e.preventDefault();
 		})
 	}
 
-	function softScrollTo(_target){
+	function isInView(_target){
+		var target = $(_target);
+		var windowHeight = window.innerHeight;
+		var targetHeight = target.height();
+		var offsetY = target.offset().top;
+		var offsetYBottom = offsetY + targetHeight;
+		var scrollPos = window.scrollY;
+		var scrollPosBottom = window.scrollY + windowHeight;
+
+		// if(!target.length){
+		// 	return false
+		// }
+
+		if( (offsetY >= scrollPos && offsetYBottom <= scrollPosBottom) || (targetHeight > windowHeight && scrollPos >= offsetY && scrollPosBottom <= offsetYBottom) ){
+			return true
+		} else {
+			return false
+		}
+	}
+
+	window.isInView = isInView;
+	window.softScrollTo = softScrollTo;
+
+	function softScrollTo(_target, intoView) {
 		var target = $(_target).first();
 		var duration = 0;
 		var MIN_DURATION = 500;
 		var MAX_DURATION = 3000;
 
 		var newScrollPos = target.offset().top;
-		var offsetY =  newScrollPos - window.scrollY;
 
-		duration = Math.round( Math.abs( offsetY ) * 0.6 );
-		duration = Math.max( MIN_DURATION, Math.min( MAX_DURATION, duration ) );
+		if(intoView){
+			var targetHeight = target.height();
+			var windowHeight = window.innerHeight;
 
-		$('html').velocity("scroll", { 
+			//align bottom of element with bottom of window
+			if(targetHeight < windowHeight){
+				newScrollPos = newScrollPos - windowHeight + targetHeight;
+
+				//center in viewport
+				newScrollPos = newScrollPos + (windowHeight - targetHeight) / 2
+			}
+		}
+
+		var scrollOffset = newScrollPos - window.scrollY;
+
+		duration = Math.round(Math.abs(scrollOffset) * 0.7);
+		duration = Math.max(MIN_DURATION, Math.min(MAX_DURATION, duration));
+
+		$('html').velocity("scroll", {
 			offset: newScrollPos,
 			duration: duration,
 			mobileHA: false,
-			complete: function(){
-				// console.log('complete', target, offsetY, duration);
+			complete: function() {
+				// console.log('complete', target, scrollOffset, duration);
 			}
 		});
 	}
 
 	// Avoid `console` errors in browsers that lack a console.
-	( function() {
+	(function() {
 		var method;
 		var noop = function() {
-			window.jspackager && window.jspackager.devmode && console.log( arguments );
+			window.jspackager && window.jspackager.devmode && console.log(arguments);
 		};
 		var methods = [
 			'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
@@ -309,26 +385,26 @@
 			'timeStamp', 'trace', 'warn'
 		];
 		var length = methods.length;
-		var console = ( window.console = window.console || {} );
+		var console = (window.console = window.console || {});
 
-		while ( length-- ) {
-			method = methods[ length ];
+		while (length--) {
+			method = methods[length];
 
 			// Only stub undefined methods.
-			if ( !console[ method ] ) {
-				console[ method ] = noop;
+			if (!console[method]) {
+				console[method] = noop;
 			}
 		}
-	}() );
+	}());
 
 
 	/* starters */
 	projectInit.immediate();
-	$( projectInit.domReadyOnce );
-	$( function() {
-		projectInit.everyDomReady( document );
-	} );
-	$( document ).on( 'dommodified', function( e ) {
-		projectInit.everyDomReady( e.target );
-	} );
-} )( Zepto );
+	$(projectInit.domReadyOnce);
+	$(function() {
+		projectInit.everyDomReady(document);
+	});
+	$(document).on('dommodified', function(e) {
+		projectInit.everyDomReady(e.target);
+	});
+})(Zepto);

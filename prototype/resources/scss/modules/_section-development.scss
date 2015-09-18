@@ -123,13 +123,36 @@ SECTION DEVELOPMENT
 .dev-technologies {
 	position: relative;
 	text-align: center;
+	transition: 500ms;
+}
+
+.dev-technologies--hidden {
+	overflow: hidden;
+	height: 0;
+	opacity: .5;
+	// visibility: hidden;
 }
 
 .dev-technologies__list {
+
 	li {
 		font-size: 1.4rem;
 		margin: 2rem 0;
-		// background: red;
+		transform: scale(1);
+		transition: 1.2s ease-out;
+		transition: 1.2s cubic-bezier(.62,1.37,.52,.95);
+
+		@for $i from 1 through 12 {
+			&:nth-child(#{$i}){
+				transition-delay: ($i - 1) * 150 + 200ms;
+			}
+		}
+
+		.dev-technologies--hidden & {
+			transform: translateX(50vw);
+			transition: 0ms;
+			opacity: 0;
+		}
 
 		&:before {
 			display: block;
@@ -164,6 +187,8 @@ SECTION DEVELOPMENT
 		@extend %icon-tech-silverstripe;
 	}
 }
+
+
 
 
 

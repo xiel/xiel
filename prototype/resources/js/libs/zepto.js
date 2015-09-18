@@ -400,10 +400,10 @@ var Zepto = (function() {
 				value = callback(elements[i], i)
 				if (value != null) values.push(value)
 			} else
-			for (key in elements) {
-				value = callback(elements[key], key)
-				if (value != null) values.push(value)
-			}
+				for (key in elements) {
+					value = callback(elements[key], key)
+					if (value != null) values.push(value)
+				}
 		return flatten(values)
 	}
 
