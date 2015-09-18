@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 
 //serve resources statics
-app.use( express.static( rootPath('../prototype/_output') ) );
+app.use( express.static( rootPath('../prototype/_output/') ) );
 
 //routes
 app.use('/', routes);
