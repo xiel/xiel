@@ -21,7 +21,7 @@
 			startSoftScroll();
 
 
-			$(document).on('dblclick', function(e){
+			$(document).on('ondragend', function(e){
 				$(document.body).toggle('grid-visible');
 			});
 

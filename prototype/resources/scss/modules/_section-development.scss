@@ -3,10 +3,10 @@ SECTION DEVELOPMENT
 =================================================== */
 
 .development {
-	transform: translateZ(0.00001px);
 	background: #fff;
 	z-index: 1;
 	padding: 4% 0;
+	// transform: translateZ(0.00001px);
 
 	&:before,
 	&:after {
@@ -31,6 +31,8 @@ SECTION DEVELOPMENT
 	}
 
 	.container {
+		position: relative;
+		z-index: 1;
 		// transform: matrix(1,.075,0,1,1,1);
 	}
 }
@@ -117,3 +119,70 @@ SECTION DEVELOPMENT
 		}
 	}
 }
+
+.dev-technologies {
+	position: relative;
+	text-align: center;
+}
+
+.dev-technologies__list {
+	li {
+		font-size: 1.4rem;
+		margin: 2rem 0;
+		// background: red;
+
+		&:before {
+			display: block;
+			content: ' ';
+			margin: 0 auto .5em;
+			width: 100%;
+			padding-bottom: 100%;
+			background-size: contain;
+			background-position: center center;
+			border-radius: 50%;
+			border: 1px solid $color-gray-lighter;
+			// background-color: gray;
+		}
+	}
+
+	.grunt:before {
+		@extend %icon-tech-grunt;
+	}
+	.sass:before {
+		@extend %icon-tech-sass;
+	}
+	.es5:before {
+		@extend %icon-tech-es5;
+	}
+	.nodejs:before {
+		@extend %icon-tech-nodejs;
+	}
+	.html5:before {
+		@extend %icon-tech-html5;
+	}
+	.silverstripe:before {
+		@extend %icon-tech-silverstripe;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
