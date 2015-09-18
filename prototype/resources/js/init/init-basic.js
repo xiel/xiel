@@ -308,7 +308,7 @@
 			if (!target.length) {
 				return
 			}
-			softScrollTo(target);
+			softScrollTo(target, true);
 			e.preventDefault();
 		})
 	}
@@ -321,10 +321,6 @@
 		var offsetYBottom = offsetY + targetHeight;
 		var scrollPos = window.scrollY;
 		var scrollPosBottom = window.scrollY + windowHeight;
-
-		// if(!target.length){
-		// 	return false
-		// }
 
 		if( (offsetY >= scrollPos && offsetYBottom <= scrollPosBottom) || (targetHeight > windowHeight && scrollPos >= offsetY && scrollPosBottom <= offsetYBottom) ){
 			return true
@@ -341,7 +337,6 @@
 		var duration = 0;
 		var MIN_DURATION = 500;
 		var MAX_DURATION = 3000;
-
 		var newScrollPos = target.offset().top;
 
 		if(intoView){
@@ -362,7 +357,7 @@
 		duration = Math.round(Math.abs(scrollOffset) * 0.7);
 		duration = Math.max(MIN_DURATION, Math.min(MAX_DURATION, duration));
 
-		$('html').velocity("scroll", {
+		$('html').velocity("stop").velocity("scroll", {
 			offset: newScrollPos,
 			duration: duration,
 			mobileHA: false,
