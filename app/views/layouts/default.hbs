@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="de" class="no-js">
 <head>
-	
 	{{> _global/_metadata }}
 	{{> _global/_styles }}
+
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if(html && html.classList){
+			html.classList.remove('no-js');
+			html.classList.add('js');
+		}
+	</script>
+	
 </head>
 
 <body class="{{ bodyclass }}">
