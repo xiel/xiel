@@ -209,6 +209,11 @@
 				section.replaceWith(newSection);
 				newSection.css({ minHeight: minHeight });
 				newSection.trigger('dommodified');
+
+				var invalidInputs = $('input:invalid, textarea:invalid', newSection).first();
+				softScrollTo(invalidInputs.length ? invalidInputs : newSection);
+				invalidInputs.focus();
+				
 			})
 			.always(function(){
 				form.trigger('submitDone');
