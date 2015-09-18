@@ -149,7 +149,8 @@ SECTION DEVELOPMENT
 		}
 
 		.dev-technologies--hidden & {
-			transform: translateX(50vw);
+			transform: translateX(300%);
+			// transform: translateX(50vw);
 			transition: 0ms;
 			opacity: 0;
 		}
