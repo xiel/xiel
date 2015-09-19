@@ -287,18 +287,17 @@
 				return
 			}
 
-			var scrollAnchor = $('.toggle-scroll-anchor', target);
-			scrollAnchor = scrollAnchor.length ? scrollAnchor : target;
-
 			target.toggleClass(classToToggle);
 
 			if(target.height() && !isInView(target) ){
-				softScrollTo(scrollAnchor, true)
+				softScrollTo(target, true)
 			}
 
 			e.preventDefault();
 		});
 	}
+
+
 
 	function startSoftScroll() {
 		$(document).on('click', 'a[data-jump]', function(e) {
