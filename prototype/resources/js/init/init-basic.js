@@ -282,22 +282,71 @@
 			var link = $(this);
 			var selector = link.prop('hash') || link.attr('href')
 			var target = $(selector).first();
-			var classToToggle = link.data('toggle') || 'toggle';
+			var hideClass = link.data('toggle') || 'toggle';
 			if (!target.length) {
 				return
 			}
 
-			target.toggleClass(classToToggle);
+			slideToggle(target)
+			target.toggleClass(hideClass);
 
-			if(target.height() && !isInView(target) ){
+			if(!target.hasClass(hideClass) && !isInView(target) ){
 				softScrollTo(target, true)
+			}
+
+			if(!target.hasClass(hideClass)){
+				focusElement(target);
 			}
 
 			e.preventDefault();
 		});
 	}
 
+	function focusElement(_target){
+		var target = $(_target);
+		var elements = $('h1, h2, h2, h3, a, p', target);
+		var elementToFocus = elements.first();
 
+		console.log(elements);
+		console.log(elementToFocus);
+
+		setTimeout(function(){
+			elementToFocus.attr('tabindex', -1).focus();
+		}, 100);
+	}
+
+	function slideToggle(_target){
+		var target = $(_target);
+		var isClosed = target.data('slideClosed') || target.height() === 0;
+
+		if(isClosed){
+			slideOpen(target);
+		} else {
+			slideClose(target);
+		}
+	}
+
+	function slideOpen(_target){
+		var target = $(_target);
+		var scrollHeight = target[0].scrollHeight;
+
+		console.log('slideOpen', scrollHeight);
+		target.attr('data-slide-closed', false);
+
+		target.velocity({ height: scrollHeight }, { duration: scrollHeight });
+
+	}
+
+	function slideClose(_target){
+		var target = $(_target);
+		var scrollHeight = target[0].scrollHeight;
+
+		console.log('slideClose', scrollHeight);
+
+		target.attr('data-slide-closed', true);
+		target
+			.velocity({ height: 0 }, { duration: scrollHeight });
+	}
 
 	function startSoftScroll() {
 		$(document).on('click', 'a[data-jump]', function(e) {
@@ -315,7 +364,7 @@
 	function isInView(_target){
 		var target = $(_target);
 		var windowHeight = window.innerHeight;
-		var targetHeight = target.height();
+		var targetHeight = target.height() || target[0].scrollHeight;
 		var offsetY = target.offset().top;
 		var offsetYBottom = offsetY + targetHeight;
 		var scrollPos = window.scrollY;
@@ -328,6 +377,7 @@
 		}
 	}
 
+	window.slideToggle = slideToggle;
 	window.isInView = isInView;
 	window.softScrollTo = softScrollTo;
 
@@ -339,7 +389,7 @@
 		var newScrollPos = target.offset().top;
 
 		if(intoView){
-			var targetHeight = target.height();
+			var targetHeight = target.height() || target[0].scrollHeight;
 			var windowHeight = window.innerHeight;
 
 			//align bottom of element with bottom of window

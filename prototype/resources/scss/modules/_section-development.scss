@@ -126,11 +126,11 @@ SECTION DEVELOPMENT
 	transition: 500ms;
 }
 
-.dev-technologies--hidden {
+.js .dev-technologies--hidden {
 	overflow: hidden;
+	visibility: hidden;
 	height: 0;
-	opacity: .5;
-	// visibility: hidden;
+	opacity: 0;
 }
 
 .dev-technologies__list {
@@ -144,11 +144,11 @@ SECTION DEVELOPMENT
 
 		@for $i from 1 through 12 {
 			&:nth-child(#{$i}){
-				transition-delay: ($i - 1) * 150 + 200ms;
+				transition-delay: ($i - 1) * 150 + 500ms;
 			}
 		}
 
-		.dev-technologies--hidden & {
+		.js .dev-technologies--hidden & {
 			transform: translateX(300%);
 			// transform: translateX(50vw);
 			transition: 0ms;
@@ -165,7 +165,6 @@ SECTION DEVELOPMENT
 			background-position: center center;
 			border-radius: 50%;
 			border: 1px solid $color-gray-lighter;
-			// background-color: gray;
 		}
 	}
 
