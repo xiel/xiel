@@ -3,7 +3,7 @@ module.exports = {
 		files: [
 			{
 				expand: true,
-				cwd: '<%= paths.src %>/assets/img/svg/icons',
+				cwd: '<%= paths.src %>/assets/img/svg/icons-optimized',
 				src: ['*.svg', '*.png'],
 				dest: "<%= paths.src %>/scss/icons"
 			}

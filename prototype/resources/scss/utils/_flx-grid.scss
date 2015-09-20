@@ -82,9 +82,9 @@ $flx-slug: flx !default;
 	flex: 1;
 }
 
-@media (min-width: $screen-xs-min) {
+// @media (min-width: $screen-xs-min) {
 	@include make-grid(xs);
-}
+// }
 
 @media (min-width: $screen-sm-min) {
 	@include make-grid(sm);

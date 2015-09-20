@@ -15,6 +15,18 @@ BASE
 html {
 	font-size: 62.5%;
 	line-height: 1.4;
+
+	@media (max-width: $screen-md-max) {
+		font-size: 60%;
+	}
+
+	@media (max-width: $screen-sm-max) {
+		font-size: 55%;
+	}
+
+	@media (max-width: $screen-xs-max) {
+		font-size: 50%;
+	}
 }
 
 /*
