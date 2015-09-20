@@ -90,7 +90,7 @@ textarea {
 
 body {
 	position: relative;
-	font-family: "Roboto", sans-serif;
+	font-family: "Roboto", "San Francisco", sans-serif;
 	color: $color-text-default;
 
 	background: #CCD1CC;
@@ -263,9 +263,6 @@ GENERAL LAYOUT
 	position: relative;
 	width: 100%;
 	padding: 4% 0;
-	// justify-content: center;
-	// align-content: center;
-	// border-bottom: 5px solid white;
 }
 
 .container {
@@ -303,7 +300,7 @@ Social Media Links
 			content: ' ';
 			width: 5.2rem;
 			height: 5rem;
-			
+			background-size: contain;
 		}
 
 		&:focus,

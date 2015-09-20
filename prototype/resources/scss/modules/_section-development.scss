@@ -123,7 +123,8 @@ SECTION DEVELOPMENT
 .dev-technologies {
 	position: relative;
 	text-align: center;
-	transition: opacity, visibility 500ms;
+	transition: 500ms;
+	transition-property: opacity, visibility;
 }
 
 .js .dev-technologies--hidden {

@@ -2,8 +2,13 @@
 <html lang="de" class="no-js">
 <head>
 	{{> _global/_metadata }}
-	{{> _global/_styles }}
-
+	
+	<style>
+		body, html {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
 	<script>
 		var html = document.getElementsByTagName('html')[0];
 		if(html && html.classList){
@@ -11,7 +16,8 @@
 			html.classList.add('js');
 		}
 	</script>
-	
+
+	{{> _global/_styles }}
 </head>
 
 <body class="{{ bodyclass }}">
