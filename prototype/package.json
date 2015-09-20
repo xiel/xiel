@@ -49,6 +49,6 @@
     "handlebars-helper-autolink"
   ],
   "dependencies": {
-    "grunt-shell": "^1.1.2"
+    "grunt-svgmin": "^2.0.1"
   }
 }
