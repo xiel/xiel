@@ -108,13 +108,14 @@ $flx-slug: flx !default;
 //visual helper grid
 .grid {
 	position: absolute;
+	position: fixed;
+	// overflow: hidden;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	margin: 0 auto;
 	width: 100%;
-	overflow: hidden;
 	height: 100%;
 	padding: 0;
 	max-width: $content-container-max;
@@ -137,13 +138,14 @@ $flx-slug: flx !default;
 }
 
 .grid__col {
-	flex: 1 0 auto;
-	min-width: (100% / 12);
-	padding: 0 2rem;
+	height: 100%;
+	// flex: 1 0 auto;
+	// min-width: (100% / 12);
+	// padding: 0 2rem;
 
-	@media (max-width: 600px) {
-		min-width: (100% / 6);
-	}
+	// @media (max-width: 600px) {
+	// 	min-width: (100% / 6);
+	// }
 }
 
 .grid__inner {

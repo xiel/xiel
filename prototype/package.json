@@ -47,5 +47,8 @@
   },
   "keywords": [
     "handlebars-helper-autolink"
-  ]
+  ],
+  "dependencies": {
+    "grunt-shell": "^1.1.2"
+  }
 }
