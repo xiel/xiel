@@ -1,11 +1,9 @@
 module.exports = {
 	options: {
 		plugins: [
-			{
-				removeViewBox: false
-			}, {
-				removeUselessStrokeAndFill: false
-			}
+			{ removeViewBox: false },
+			{ removeUselessStrokeAndFill: false },
+			{ removeTitle: true }
 		]
 	},
 	dist: {

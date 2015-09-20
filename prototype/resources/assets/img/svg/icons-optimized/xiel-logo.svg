@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
-    <title>xiel-logo</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Centered-Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Desktop-HD" sketch:type="MSArtboardGroup" transform="translate(-660.000000, -75.000000)" fill="#041231">
-            <g id="Welcome-Stage" sketch:type="MSLayerGroup">
-                <path d="M770.296273,94.6078431 L780,94.6078431 L780,75 L760.392157,75 L760.392157,84.7833333 L770.296273,84.7833333 L770.296273,94.6078431 L770.296273,94.6078431 Z M770.296273,175.392157 L770.296273,185.243979 L760.392157,185.243979 L760.392157,195 L780,195 L780,175.392157 L770.296273,175.392157 L770.296273,175.392157 Z M755.686275,114.247211 L741.536105,100.098039 L720.392656,121.242486 L699.247211,100.098039 L685.098039,114.247211 L706.242486,135.391658 L685.098039,156.535108 L699.247211,170.686275 L720.392656,149.54083 L741.536105,170.686275 L755.686275,156.535108 L734.54083,135.391658 L755.686275,114.247211 L755.686275,114.247211 Z M669.835294,175.392157 L660,175.392157 L660,195 L679.607843,195 L679.607843,185.215686 L669.835294,185.215686 L669.835294,175.392157 L669.835294,175.392157 Z M660,75 L660,94.6078431 L669.835294,94.6078431 L669.835294,84.7833333 L679.607843,84.7833333 L679.607843,75 L660,75 L660,75 Z" id="xiel-logo" sketch:type="MSShapeGroup"></path>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M110.296 19.608H120V0h-19.608v9.783h9.904v9.825zm0 80.784v9.852h-9.904V120H120v-19.608h-9.704zm-14.61-61.145l-14.15-14.15-21.143 21.145-21.146-21.144-14.15 14.15L46.243 60.39 25.098 81.535l14.15 14.15 21.145-21.144 21.143 21.146 14.15-14.15L74.54 60.39l21.146-21.145zm-85.85 61.145H0V120h19.608v-9.784H9.835v-9.824zM0 0v19.608h9.835V9.783h9.773V0H0z" fill="#041231" fill-rule="evenodd"/></svg>
