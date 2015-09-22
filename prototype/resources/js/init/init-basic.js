@@ -322,10 +322,20 @@
 		var target = $(_target);
 		var elements = $('h1, h2, h2, h3, a, p, a', target);
 		var elementToFocus = elements.first();
-		// console.log(elementToFocus);
+		var initialTabIndex = elementToFocus.prop('tabIndex');
+		console.log(elementToFocus, initialTabIndex);
 
 		setTimeout(function(){
-			elementToFocus.attr('tabindex', -1).focus();
+
+			if(initialTabIndex === undefined || initialTabIndex === -1 || initialTabIndex === false){
+				elementToFocus.prop('tabindex', -1);
+
+				elementToFocus.one('blur', function(){
+					elementToFocus.prop('tabindex', initialTabIndex);
+				});
+			}
+
+			elementToFocus.focus();
 		}, 100);
 	}
 
