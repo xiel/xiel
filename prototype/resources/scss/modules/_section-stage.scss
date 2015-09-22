@@ -5,15 +5,21 @@ SECTION STAGE
 .stage {
 	position: relative;
 	background: #CCD1CC;
+	background: #d2d2ce;
 	overflow: hidden;
 	background-size: 100% auto;
 	transform: translateZ(0.00001px);
-
-	min-height: initial;
 	height: 50vw;
 	max-height: 90vh;
-
 	justify-content: center;
+
+	@media (max-width: $screen-sm-max) {
+		padding-top: 80px;
+	}
+
+	@media (max-width: $screen-xs-max) {
+		height: auto;
+	}
 }
 
 
@@ -22,9 +28,9 @@ SECTION STAGE
 	top: 0;
 	left: 0;
 	right: 0;
-	width: 10rem;
-	height: 10rem;
-	margin: 5% auto 0;
+	width: 9rem;
+	height: 9rem;
+	margin: 4.5rem auto 0;
 	z-index: 9999;
 
 	a {
@@ -53,14 +59,28 @@ SECTION STAGE
 	}
 
 	@media (max-width: $screen-xs-max) {
+		margin-top: 2rem;
 		width: 6rem;
 		height: 6rem;
+		left: 2rem;
+		right: auto;
 	}
 }
 
 .welcoming {
 	position: relative;
 	font-size: 2rem;
+	width: 62%;
+
+	p {
+		margin: 0;
+	}
+
+	@media (max-width: $screen-xs) {
+		width: auto;
+		padding-bottom: 30%;
+		background: rgba(red, .1);
+	}
 }
 
 .stage-hello {
@@ -68,21 +88,29 @@ SECTION STAGE
 	color: $color-key;
 	font-size: 6.4rem;
 	font-weight: 100;
+
+	@media (max-width: $screen-xs-max) {
+		font-size: 5rem;
+	}
 }
 
 .stage-hero {
 	position: absolute;
 	bottom: 0;
-	left: 0;
+	right: 0;
 	width: 100%;
-	background: blue;
-	// visibility: hidden;
-	border: 2px green solid;
 
 	img {
 		display: block;
-		width: 100%;
+		// width: auto;
 		height: auto;
+		width: 100%;
+		max-width: 100%;
+		margin: 0 auto;
+
+		@media (min-width: 2000px) {
+			width: auto;
+		}
 	}
 
 	.blurred {

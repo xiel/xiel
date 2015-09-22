@@ -80,3 +80,25 @@ BUTTONS
 		transform: scale(.95);
 	}
 }
+
+.text-btn {
+	text-transform: uppercase;
+	font-family: inherit;
+	font-size: 2rem;
+	font-weight: 500;
+	border-bottom: 2px solid;
+
+	&:hover,
+	&:focus {
+		opacity: 0.75;
+	}
+}
+
+.text-btn--small {
+	font-size: 1.4rem;
+	border-width: 2px;
+}
+
+
+
+
