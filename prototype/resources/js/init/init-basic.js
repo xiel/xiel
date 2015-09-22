@@ -18,16 +18,17 @@
 			startSoftScroll();
 			startToggleButtons();
 
-			$(document).on('mousedown', function(e) {
-				var startTime = +new Date();
-				$(document).one('mouseup', function(e){
-					if( (+new Date() - startTime) >= 250){
-						console.log('grid-visible', document.body);
-						$(document.body).toggleClass('grid-visible');
-						e.preventDefault();
-					}
+			if(devmode){
+				$(document).on('mousedown', function(e) {
+					var startTime = +new Date();
+					$(document).one('mouseup', function(e){
+						if( (+new Date() - startTime) >= 1000){
+							$(document.body).toggleClass('grid-visible');
+							e.preventDefault();
+						}
+					});
 				});
-			});
+			}
 
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function(context) {
@@ -101,8 +102,6 @@
 				var link = $(this);
 				var scrollYBeforeOpen = window.scrollY;
 
-				e.preventDefault();
-
 				$.ajax({
 						url: link.attr('href'),
 						data: {
@@ -139,9 +138,11 @@
 									complete: function() {
 										slideWrapper.css({
 											height: ''
-										})
+										});
 									}
-								});
+								})
+							;
+							focusFirstElementIn(newSection);
 						})
 
 						newSection.trigger('dommodified');
@@ -170,11 +171,13 @@
 									duration: Math.abs(window.scrollY - scrollYBeforeOpen) / 2,
 									mobileHA: false
 								});
+								focusFirstElementIn(link);
 							}, 10);
 
 							e.preventDefault();
 						});
 					})
+				;
 
 				e.preventDefault();
 			});
@@ -295,20 +298,18 @@
 			}
 
 			if(!target.hasClass(hideClass)){
-				focusElement(target);
+				focusFirstElementIn(target);
 			}
 
 			e.preventDefault();
 		});
 	}
 
-	function focusElement(_target){
+	function focusFirstElementIn(_target){
 		var target = $(_target);
-		var elements = $('h1, h2, h2, h3, a, p', target);
+		var elements = $('h1, h2, h2, h3, a, p, a', target);
 		var elementToFocus = elements.first();
-
-		console.log(elements);
-		console.log(elementToFocus);
+		// console.log(elementToFocus);
 
 		setTimeout(function(){
 			elementToFocus.attr('tabindex', -1).focus();

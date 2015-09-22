@@ -5,22 +5,23 @@
 			xiel development
 		</a>
 	</h1>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><path fill="#041231" fill-rule="evenodd" d="M110.3 19.6h9.7V0h-19.6v9.8h10v9.8zm0 80.8v9.8h-10v9.8H120v-19.6h-9.7zM95.7 39.2l-14.2-14-21 21-21.3-21-14 14 21 21.2-21 21 14 14.3 21.2-21.2 21 21.2 14.3-14.2-21.2-21L95.7 39zm-86 61.2H0V120h19.6v-9.8H9.8v-9.8zM0 0v19.6h9.8V9.8h9.8V0H0z"/></svg>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><path fill="#222943" fill-rule="evenodd" d="M110.3 19.6h9.7V0h-19.6v9.8h10v9.8zm0 80.8v9.8h-10v9.8H120v-19.6h-9.7zM95.7 39.2l-14.2-14-21 21-21.3-21-14 14 21 21.2-21 21 14 14.3 21.2-21.2 21 21.2 14.3-14.2-21.2-21L95.7 39zm-86 61.2H0V120h19.6v-9.8H9.8v-9.8zM0 0v19.6h9.8V9.8h9.8V0H0z"/></svg>
 </header>
 
 <section class="section stage" id="stage">
 
 	<div class="stage-hero"
-		data-anchor-target="#stage"
+		{{!-- data-anchor-target="#stage"
 		data-top="transform:translateY(0vh); opacity[swing]: 1"
-		data-top-bottom="transform:translateY(10vw); opacity: 0" {{!-- filter: blur(0px); --}}
+		data-top-bottom="transform:translateY(10vw); opacity: 0" --}}
 	>
-		<img src="img/stage/felix-leupold-stage.jpg" alt="">
-		{{!-- <img src="img/stage/felix-leupold-stage-blurred-2.jpg" class="blurred" alt=""
-			data-anchor-target="#stage"
-			data-40p="opacity: 0"
-			data-50p="opacity: 1"
-		> --}}
+		<img src="img/stage/felix-leupold-stage_800.jpg"
+			 srcset="
+					img/stage/felix-leupold-stage_400.jpg 400w,
+					img/stage/felix-leupold-stage_800.jpg 800w,
+					img/stage/felix-leupold-stage_1600.jpg 1600w,
+					img/stage/felix-leupold-stage_2000.jpg 2000w"
+			alt="front end developer in Berlin Felix" />
 	</div>
 
 	<div class="container">
@@ -37,7 +38,7 @@
 						>
 							Hallo!
 						</em>
-						Ich bin Felix – freiberuflicher FrontEnd-Entwickler aus Berlin<br>
+						Ich bin Felix – freiberuflicher FrontEnd-Entwickler aus Berlin
 						und entwickle effektive Webseiten und Apps, die jeder gerne nutzt.
 					</p>
 					{{!-- <p>

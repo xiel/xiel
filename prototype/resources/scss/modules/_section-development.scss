@@ -101,11 +101,9 @@ SECTION DEVELOPMENT
 }
 
 .dev-feature__text {
-	// flex: 1;
 	overflow: hidden;
 	text-align: center;
 	min-width: 50%;
-	// background: greenyellow;
 
 	p:last-child {
 		margin-bottom: 0;
@@ -152,9 +150,12 @@ SECTION DEVELOPMENT
 
 		.js .dev-technologies--hidden & {
 			transform: translateX(300%);
-			// transform: translateX(50vw);
 			transition: 0ms;
 			opacity: 0;
+
+			@media (max-width: $screen-xs-max) {
+				transform: translateY(50%);
+			}
 		}
 
 		&:before {

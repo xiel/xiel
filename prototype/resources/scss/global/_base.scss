@@ -7,7 +7,8 @@ BASE
 	&:before,
 	&:after {
 		box-sizing: border-box;
-		outline: 0 none;
+		// outline: 0 none;
+		// box-shadow: none;
 	}
 }
 
@@ -92,11 +93,7 @@ body {
 	position: relative;
 	font-family: "Roboto", "San Francisco", sans-serif;
 	color: $color-text-default;
-
-	background: #CCD1CC;
-	// background: red;
-	// background: #fff;
-
+	background: #fff;
 	font-size: 17px;
 	font-size: 1.7rem;
 	font-weight: 300; //light
@@ -270,6 +267,10 @@ GENERAL LAYOUT
 	width: 100%;
 	max-width: $content-container-max;
 	margin: 2rem auto;
+
+	@media (max-width: $screen-xs-max) {
+		padding: 0 2rem;
+	}
 }
 
 
