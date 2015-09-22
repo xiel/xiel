@@ -97,10 +97,26 @@
 			var projectsSection = $(this);
 			var activeSection = undefined;
 			var slideWrapper = $('<div/>').addClass('project-slide-wrapper').insertAfter(projectsSection);
+			var focusAfterClose;
+			var scrollYBeforeOpen;
+
+			slideWrapper.on('click', '.close-btn', function(e) {
+				closeSlideWrapper();
+				e.preventDefault();
+			});
+
+			slideWrapper.on( 'keyup', function( e ) {
+				var code = e.keyCode ? e.keyCode : e.which;
+				if ( code === 27 && activeSection ) {
+					closeSlideWrapper();
+					e.preventDefault();
+				}
+			});
 
 			projectsSection.on('click', 'a.project-teaser', function(e) {
 				var link = $(this);
-				var scrollYBeforeOpen = window.scrollY;
+				focusAfterClose = link.parent();
+				scrollYBeforeOpen = window.scrollY;
 
 				$.ajax({
 						url: link.attr('href'),
@@ -146,41 +162,40 @@
 						})
 
 						newSection.trigger('dommodified');
+					})
+				;
+				e.preventDefault();
+			});
 
-						newSection.one('click', '.close-btn', function(e) {
-							if (!activeSection) {
-								return false
+			function closeSlideWrapper(){
+				if (!activeSection) {
+					return false
+				}
+
+				slideWrapper
+					.velocity("stop")
+					.velocity({
+						height: 0
+					}, {
+						duration: slideWrapper.height() / 3,
+						complete: function() {
+							if (activeSection) {
+								activeSection.remove();
+								activeSection = undefined;
 							}
-							slideWrapper
-								.velocity("stop")
-								.velocity({
-									height: 0
-								}, {
-									duration: slideWrapper.height() / 3,
-									complete: function() {
-										if (activeSection) {
-											activeSection.remove();
-											activeSection = undefined;
-										}
-									}
-								});
-
-							setTimeout(function() {
-								$('html').velocity("stop").velocity("scroll", {
-									offset: scrollYBeforeOpen,
-									duration: Math.abs(window.scrollY - scrollYBeforeOpen) / 2,
-									mobileHA: false
-								});
-								focusFirstElementIn(link);
-							}, 10);
-
-							e.preventDefault();
-						});
+						}
 					})
 				;
 
-				e.preventDefault();
-			});
+				setTimeout(function() {
+					$('html').velocity("stop").velocity("scroll", {
+						offset: scrollYBeforeOpen,
+						duration: Math.abs(window.scrollY - scrollYBeforeOpen) / 2,
+						mobileHA: false
+					});
+					focusFirstElementIn(focusAfterClose);
+				}, 10);
+			}
 		});
 	}
 

@@ -37,12 +37,12 @@ html {
  */
 
 ::-moz-selection {
-	background: #b3d4fc;
+	background: #d2d2ce;
 	text-shadow: none;
 }
 
 ::selection {
-	background: #b3d4fc;
+	background: #d2d2ce;
 	text-shadow: none;
 }
 
@@ -143,6 +143,10 @@ ul, li {
 
 p, li {
 	line-height: 1.45;
+
+	&:first-child {
+		margin-top: 0;
+	}
 }
 
 em {
@@ -158,8 +162,9 @@ h2, h3, h4, h5 {
 		margin-top: 0;
 	}
 
-	+ p {
+	+ p, + ul {
 		margin-top: 1em;
+		margin-top: 0;
 	}
 }
 
@@ -173,7 +178,10 @@ h3 {
 }
 
 h4 {
-	letter-spacing: .05em;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	font-size: 1.3rem;
+	font-weight: 600;
 }
 
 .section__header {
@@ -218,11 +226,11 @@ h4 {
 }
 
 .text-list {
-	margin: 1em 0;
+	margin: 0 0 1em;
 
 	li {
 		position: relative;
-		margin: .25em 0;
+		margin: 0 0 .125em;
 		padding-left: .9em;
 
 
