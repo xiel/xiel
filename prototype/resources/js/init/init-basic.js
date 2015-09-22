@@ -152,13 +152,11 @@
 								}, {
 									duration: Math.abs(slideWrapper.height() - newSection.height()) / 2,
 									complete: function() {
-										slideWrapper.css({
-											height: ''
-										});
+										slideWrapper.css({ height: '' });
+										focusFirstElementIn(newSection);
 									}
 								})
 							;
-							focusFirstElementIn(newSection);
 						})
 
 						newSection.trigger('dommodified');
