@@ -68,8 +68,8 @@ BUTTONS
 	height: 40px;
 	width: 4rem;
 	height: 4rem;
-	background-size: contain;
 	opacity: .75;
+	background-size: contain;
 
 	&:hover,
 	&:focus {
@@ -78,6 +78,13 @@ BUTTONS
 
 	&:active {
 		transform: scale(.95);
+	}
+
+	@media (max-width: $screen-xs-max) {
+		top: 3rem;
+		right: 3rem;
+		width: 3rem;
+		height: 3rem;
 	}
 }
 

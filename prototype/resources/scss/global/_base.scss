@@ -196,7 +196,7 @@ h4 {
 	h2 {
 		position: relative;
 		font-weight: 100; //thin
-		margin-top: 1.2em;
+		margin-top: 0;
 		
 		//kicker
 		em {
@@ -243,13 +243,6 @@ h4 {
 			height: .7em;
 			background-size: contain;
 			background-position: center bottom;
-		}
-	}
-
-	li.link {
-		&:before {
-			// @extend %icon-link-dark;
-			// width: 1em;
 		}
 	}
 }

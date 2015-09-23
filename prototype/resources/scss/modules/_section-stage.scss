@@ -53,6 +53,17 @@ SECTION STAGE
 		height: 100%;
 	}
 
+	path.x {
+		transform-origin: 50% 50%;
+	}
+
+	&:hover {
+		path.x {
+			transition: 300ms cubic-bezier(.62,1.37,.52,.95);
+			transform: rotate(90deg);
+		}
+	}
+
 	@media (max-width: $screen-sm-max) {
 		width: 8rem;
 		height: 8rem;
