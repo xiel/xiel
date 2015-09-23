@@ -39,7 +39,7 @@ SECTION DEVELOPMENT
 
 .dev-feature {
 	text-align: center;
-	margin-bottom: 2rem;
+	margin-bottom: 4rem;
 }
 
 .dev-feature--ux {
@@ -139,6 +139,7 @@ SECTION DEVELOPMENT
 		transform: scale(1);
 		transition: 1.2s ease-out;
 		transition: 1.2s cubic-bezier(.62,1.37,.52,.95);
+		transition-property: transform, opacity;
 
 		@for $i from 1 through 12 {
 			&:nth-child(#{$i}){
