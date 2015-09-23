@@ -5,17 +5,6 @@ SECTION PROJECTS
 .projects-wrapper {
 	position: relative;
 
-	.section {
-		padding-top: 8%;
-	}
-
-	.project--inactive {
-		// position: absolute;
-		// top: 0;
-		// left: 0;
-		// width: 100%;
-	}
-
 	.project--active {
 		position: relative;
 	}
@@ -25,11 +14,16 @@ SECTION PROJECTS
 	overflow: hidden;
 }
 
-.projects {
+%project-section {
 	color: $color-text-default;
 	background: #fff;
 	background: linear-gradient(to bottom, #fff, #EDEDED);
 	background: radial-gradient(circle farthest-corner at 50% 10%, #fff, #EDEDED);
+}
+
+.projects {
+	@extend %project-section;
+	padding-top: 8%;
 }
 
 .project-teasers {
@@ -57,13 +51,13 @@ SECTION PROJECTS
 		display: block;
 		width: 100%;
 		height: auto;
-		transform: scale(1.001);
+		transform: scale(1.01);
 		transition: transform 400ms ease-out;
 
 		a:hover &,
 		a:focus & {
 			transform: scale(1.05);
-			// filter: blur(5px);
+			filter: blur(2px);
 		}
 	}
 }
@@ -82,12 +76,10 @@ SECTION PROJECTS
 	background: $color-key-cyan;
 	background: rgba($color-key-cyan, .9);
 	background: linear-gradient(to bottom, rgba($color-key-cyan, .9), rgba($color-key-cyan, .96) );
-	// transform: scale(1.05);
 	transition: 300ms ease-in-out;
 
 	a:hover &,
 	a:focus & {
-		// padding-top: 25%;
 		opacity: 1;
 		cursor: pointer;
 		transform: translateY(0.001px);
@@ -115,7 +107,6 @@ SECTION PROJECTS
 			font-size: .5em;
 			font-weight: 300;
 			line-height: 1.5;
-			// text-transform: uppercase;
 			letter-spacing: .05em;
 			bottom: 100%;
 			opacity: .75;
@@ -188,7 +179,6 @@ SECTION PROJECTS
 		width: 100%;
 		height: auto;
 		box-shadow: 0 0 25px -10px rgba(#000, .3);
-		// background: black;
 	}
 
 	.freeform {
@@ -201,7 +191,6 @@ SECTION PROJECTS
 
 	figcaption {
 		color: $color-text-light;
-		// text-transform: uppercase;
 		padding: .5em;
 		font-size: 1.4rem;
 		line-height: 1.3;
@@ -213,43 +202,24 @@ SECTION PROJECTS
 }
 
 .project-default {
-	@extend .projects;
-	// background: radial-gradient(circle farthest-corner at 50% 10%, #fff, #D9D9D9);
-	// background: #fff;
-}
-
-.project-textilien {
-	background: #e0ddd9 url('../media/textilien/textilien-hero.jpg') center -100px no-repeat;
+	@extend %project-section;
 
 	.section__header {
-		padding-bottom: 680px;
+		padding-top: 3rem;
+
+		@media (max-width: $screen-xs-max) {
+			padding-top: 6rem;
+		}
 	}
 }
 
 .project__details {
 	margin-top: 2*1.45rem;
-	margin-bottom: 2*1.45rem;
-}
 
-.push-headline {
-	display: inline-block;
-	float: left;
-	position: relative;
-	vertical-align: top;
-	background: greenyellow;
-
-	h3, h4 {
-		position: absolute;
-		margin: 0;
-		top: 0;
-		right: 2rem;
-		font-size: 1.4rem;
-		font-weight: 300;
-		line-height: 1.73;
-		letter-spacing: .05em;
+	> div {
+		margin-bottom: 2 * 1.45rem;
 	}
 }
-
 
 
 

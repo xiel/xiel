@@ -31,13 +31,13 @@
 				});
 			}
 
+			sssl('//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1', function() {});
+
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function(context) {
 
 				startProjects(context);
 				hideAndShowImages(context);
-
-				sssl('//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1', function() {});
 
 			} //END: projectInit.everyDomReady
 	};
@@ -106,6 +106,13 @@
 				loadProject(historyAPI.state.projectLoaded, true);
 			}
 
+			$(window).on('popstate', function(e){
+				if(historyAPI && historyAPI.state && historyAPI.state.projectLoaded){
+					scrollYBeforeOpen = historyAPI.state.scrollYBeforeOpen;
+					loadProject(historyAPI.state.projectLoaded, true);
+				}
+			});
+
 			slideWrapper.on('click', '.close-btn', function(e) {
 				closeSlideWrapper();
 				e.preventDefault();
@@ -128,7 +135,7 @@
 				loadProject( link.attr('href') );
 			});
 
-			function loadProject(href, noScroll){
+			function loadProject(href, viaHistory){
 
 				$.ajax({
 						url: href,
@@ -140,7 +147,7 @@
 						var data = $('<div/>').html(_data);
 						var newSection = $('.section', data);
 
-						if ( historyAPI ){
+						if ( historyAPI && !viaHistory ){
 							historyAPI.pushState({
 								projectLoaded: href,
 								scrollYBeforeOpen: scrollYBeforeOpen
@@ -161,7 +168,7 @@
 
 						var newSectionHeight = newSection.height() || 1000;
 
-						if(!noScroll){
+						if(!viaHistory){
 							softScrollTo(newSection);
 						}
 
@@ -169,7 +176,7 @@
 							slideWrapper
 								.velocity("stop")
 								.velocity({
-									height: !noScroll ? newSection.height() : 0
+									height: !viaHistory ? newSection.height() : 0
 								}, {
 									duration: Math.abs(slideWrapper.height() - newSection.height()) / 2,
 									complete: function() {
@@ -351,10 +358,8 @@
 		var elements = $('h1, h2, h2, h3, a, p, a', target);
 		var elementToFocus = elements.first();
 		var initialTabIndex = elementToFocus.prop('tabIndex');
-		console.log(elementToFocus, initialTabIndex);
 
 		setTimeout(function(){
-
 			if(initialTabIndex === undefined || initialTabIndex === -1 || initialTabIndex === false){
 				elementToFocus.prop('tabindex', -1);
 
@@ -382,22 +387,16 @@
 		var target = $(_target);
 		var scrollHeight = target[0].scrollHeight;
 
-		console.log('slideOpen', scrollHeight);
 		target.attr('data-slide-closed', false);
-
 		target.velocity({ height: scrollHeight }, { duration: scrollHeight });
-
 	}
 
 	function slideClose(_target){
 		var target = $(_target);
 		var scrollHeight = target[0].scrollHeight;
 
-		console.log('slideClose', scrollHeight);
-
 		target.attr('data-slide-closed', true);
-		target
-			.velocity({ height: 0 }, { duration: scrollHeight });
+		target.velocity({ height: 0 }, { duration: scrollHeight });
 	}
 
 	function startSoftScroll() {

@@ -39,13 +39,7 @@ SECTION DEVELOPMENT
 
 .dev-feature {
 	text-align: center;
-	margin-bottom: 8%;
-
-	//flex
-	// display: flex;
-	// flex-wrap: wrap;
-	// flex-direction: row;
-	// align-items: center;
+	margin-bottom: 2rem;
 }
 
 .dev-feature--ux {
@@ -123,6 +117,10 @@ SECTION DEVELOPMENT
 	text-align: center;
 	transition: 500ms;
 	transition-property: opacity, visibility;
+
+	h3 {
+		margin-top: 4rem;
+	}
 }
 
 .js .dev-technologies--hidden {
