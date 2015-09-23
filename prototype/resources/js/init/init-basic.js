@@ -3,7 +3,7 @@
 	var historyAPI = 'history' in window && window.history.pushState && window.history;
 
 	if ( !window.jspackager.devmode && (location.host === 'xiel.local.de' || location.host.split('.').length === 4 ) ) {
-		location.search += 'devmode';
+		// location.search = 'devmode';
 	}
 
 	var projectInit = {
@@ -136,7 +136,6 @@
 			});
 
 			function loadProject(href, viaHistory){
-
 				$.ajax({
 						url: href,
 						data: {
@@ -374,7 +373,7 @@
 
 	function slideToggle(_target){
 		var target = $(_target);
-		var isClosed = target.data('slideClosed') || target.height() === 0;
+		var isClosed = target.data('slideClosed') === undefined ? target.height() === 0 : target.data('slideClosed');
 
 		if(isClosed){
 			slideOpen(target);
@@ -388,7 +387,16 @@
 		var scrollHeight = target[0].scrollHeight;
 
 		target.attr('data-slide-closed', false);
-		target.velocity({ height: scrollHeight }, { duration: scrollHeight });
+		target
+			.velocity({
+				height: scrollHeight
+			}, {
+				duration: scrollHeight,
+				complete: function(){
+					target.css('height', '');
+				}
+			})
+		;
 	}
 
 	function slideClose(_target){
@@ -396,7 +404,16 @@
 		var scrollHeight = target[0].scrollHeight;
 
 		target.attr('data-slide-closed', true);
-		target.velocity({ height: 0 }, { duration: scrollHeight });
+		target
+			.velocity({
+				height: 0
+			}, {
+				duration: scrollHeight,
+				complete: function(){
+					target.css('height', '');
+				}
+			})
+		;
 	}
 
 	function startSoftScroll() {

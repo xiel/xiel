@@ -59,7 +59,7 @@ SECTION STAGE
 
 	&:hover {
 		path.x {
-			transition: 300ms cubic-bezier(.62,1.37,.52,.95);
+			transition: 400ms cubic-bezier(.62,1.37,.52,.95);
 			transform: rotate(90deg);
 		}
 	}
