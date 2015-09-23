@@ -1,5 +1,6 @@
 (function($) {
 	var devmode = window.jspackager && window.jspackager.devmode;
+	var historyAPI = 'history' in window && window.history.pushState && window.history;
 
 	if ( !window.jspackager.devmode && (location.host === 'xiel.local.de' || location.host.split('.').length === 4 ) ) {
 		location.search += 'devmode';
@@ -100,6 +101,11 @@
 			var focusAfterClose;
 			var scrollYBeforeOpen;
 
+			if(historyAPI && historyAPI.state && historyAPI.state.projectLoaded){
+				scrollYBeforeOpen = historyAPI.state.scrollYBeforeOpen;
+				loadProject(historyAPI.state.projectLoaded, true);
+			}
+
 			slideWrapper.on('click', '.close-btn', function(e) {
 				closeSlideWrapper();
 				e.preventDefault();
@@ -118,8 +124,14 @@
 				focusAfterClose = link.parent();
 				scrollYBeforeOpen = window.scrollY;
 
+				e.preventDefault();
+				loadProject( link.attr('href') );
+			});
+
+			function loadProject(href, noScroll){
+
 				$.ajax({
-						url: link.attr('href'),
+						url: href,
 						data: {
 							ajax: true
 						}
@@ -127,6 +139,13 @@
 					.done(function(_data) {
 						var data = $('<div/>').html(_data);
 						var newSection = $('.section', data);
+
+						if ( historyAPI ){
+							historyAPI.pushState({
+								projectLoaded: href,
+								scrollYBeforeOpen: scrollYBeforeOpen
+							}, '', '#!'+href);
+						}
 
 						if (activeSection) {
 							activeSection.remove();
@@ -142,13 +161,15 @@
 
 						var newSectionHeight = newSection.height() || 1000;
 
-						softScrollTo(newSection);
+						if(!noScroll){
+							softScrollTo(newSection);
+						}
 
 						newSection.on('allMediaLoaded', function(e) {
 							slideWrapper
 								.velocity("stop")
 								.velocity({
-									height: newSection.height()
+									height: !noScroll ? newSection.height() : 0
 								}, {
 									duration: Math.abs(slideWrapper.height() - newSection.height()) / 2,
 									complete: function() {
@@ -162,12 +183,15 @@
 						newSection.trigger('dommodified');
 					})
 				;
-				e.preventDefault();
-			});
+			}
 
 			function closeSlideWrapper(){
 				if (!activeSection) {
 					return false
+				}
+
+				if ( historyAPI ){
+					historyAPI.pushState({}, '', location.href.replace(location.hash || '#', '') );
 				}
 
 				slideWrapper
@@ -186,12 +210,16 @@
 				;
 
 				setTimeout(function() {
-					$('html').velocity("stop").velocity("scroll", {
-						offset: scrollYBeforeOpen,
-						duration: Math.abs(window.scrollY - scrollYBeforeOpen) / 2,
-						mobileHA: false
-					});
-					focusFirstElementIn(focusAfterClose);
+					if(scrollYBeforeOpen){
+						$('html').velocity("stop").velocity("scroll", {
+							offset: scrollYBeforeOpen,
+							duration: Math.abs(window.scrollY - scrollYBeforeOpen) / 2,
+							mobileHA: false
+						});
+					}
+					if(focusAfterClose){
+						focusFirstElementIn(focusAfterClose);
+					}
 				}, 10);
 			}
 		});
@@ -400,10 +428,6 @@
 			return false
 		}
 	}
-
-	window.slideToggle = slideToggle;
-	window.isInView = isInView;
-	window.softScrollTo = softScrollTo;
 
 	function softScrollTo(_target, intoView) {
 		var target = $(_target).first();
