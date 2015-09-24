@@ -4,7 +4,6 @@ SECTION STAGE
 
 .stage {
 	position: relative;
-	background: #CCD1CC;
 	background: #d2d2ce;
 	overflow: hidden;
 	background-size: 100% auto;
@@ -12,6 +11,10 @@ SECTION STAGE
 	height: 50vw;
 	max-height: 90vh;
 	justify-content: center;
+
+	.btn {
+		background: #d2d2ce;
+	}
 
 	@media (max-width: $screen-sm-max) {
 		padding-top: 80px;
@@ -86,10 +89,15 @@ SECTION STAGE
 	position: relative;
 	font-size: 2rem;
 	width: 62%;
+	max-width: 546px;
 
 	p {
 		margin: 0;
 	}
+
+	// @media (min-width: $screen-md-min) {
+	// 	width: 50%;
+	// }
 
 	@media (max-width: $screen-xs) {
 		width: auto;
