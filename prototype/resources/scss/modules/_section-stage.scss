@@ -19,6 +19,10 @@ SECTION STAGE
 
 	@media (max-width: $screen-xs-max) {
 		height: auto;
+
+		.btn {
+			width: 100%;
+		}
 	}
 }
 
@@ -90,7 +94,6 @@ SECTION STAGE
 	@media (max-width: $screen-xs) {
 		width: auto;
 		padding-bottom: 30%;
-		background: rgba(red, .1);
 	}
 }
 
@@ -111,9 +114,15 @@ SECTION STAGE
 	right: 0;
 	width: 100%;
 
+	@media (max-width: $screen-sm-max) {
+		right: -5%;
+	}
+	@media (max-width: $screen-xs) {
+		right: 0;
+	}
+
 	img {
 		display: block;
-		// width: auto;
 		height: auto;
 		width: 100%;
 		max-width: 100%;

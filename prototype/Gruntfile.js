@@ -104,6 +104,7 @@ module.exports = function(grunt) {
 	 */
 	grunt.registerTask('server', [
 		// 'newer:assemble',
+		'js',
 		'concurrent:syncing',
 		'watchCSS',
 		'autoprefixer',
@@ -120,7 +121,6 @@ module.exports = function(grunt) {
 		'sass:universal',
 		'combine_mq',
 		'cssmin',
-        // 'assemble',
 		'concurrent:build'
 	]);
 
