@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 		'jsbeautifier',
 		'concurrent:syncing',  
 		'watchCSS',
-		'sass:universal',
+		'postcssSeparator',
 		'combine_mq',
 		'cssmin',
 		'concurrent:build'

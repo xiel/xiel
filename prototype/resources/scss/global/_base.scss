@@ -62,6 +62,14 @@ textarea {
 	resize: vertical;
 }
 
+iframe {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 1.45em 0;
+	border: 2px solid;
+}
+
 body {
 	position: relative;
 	font-family: -apple-system, "Roboto", "Helvetica Neue", sans-serif;
@@ -140,7 +148,6 @@ h2, h3, h4, h5 {
 	}
 
 	+ p, + ul {
-		margin-top: 1em;
 		margin-top: 0;
 	}
 }
