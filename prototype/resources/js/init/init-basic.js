@@ -1,6 +1,7 @@
 (function($) {
 	var devmode = window.jspackager && window.jspackager.devmode;
 	var historyAPI = 'history' in window && window.history.pushState && window.history;
+	var tracker = undefined;
 
 	if ( !window.jspackager.devmode && (location.host === 'xiel.local.de' || location.host.split('.').length === 4 ) ) {
 		// location.search = 'devmode';
@@ -8,6 +9,8 @@
 
 	var projectInit = {
 		immediate: function() {
+
+			startTracking();
 
 		}, //END: projectInit.immediate
 		domReadyOnce: function() {
@@ -29,9 +32,10 @@
 						}
 					});
 				});
-			}
 
-			sssl('//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1', function() {});
+				//load live reload
+				sssl('//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1', function() {});
+			}
 
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function(context) {
@@ -300,9 +304,13 @@
 	}
 
 	function startSkrollr() {
+		if( !(window.requestAnimationFrame || window.webkitRequestAnimationFrame) ){ return }
+
+		console.log(window.requestAnimationFrame);
+
 		//skrollr
 		var s = skrollr.init({
-			smoothScrolling: false,
+			// smoothScrolling: false,
 			render: function(data) {
 				// console.log(data.curTop);
 			},
@@ -478,6 +486,36 @@
 				// console.log('complete', target, scrollOffset, duration);
 			}
 		});
+	}
+
+	function startTracking() {
+		//start tracking
+		var _paq = window._paq || [];
+		window._paq = _paq;
+
+		_paq.push(["setCookieDomain", "*.xiel.de"]);
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+
+		(function() {
+			var u="//piwik.xiel.de/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 2]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		})();
+
+		var checkforTracker = function(recheckDelay){
+			var delay = recheckDelay ? recheckDelay + recheckDelay : 10;
+
+			if(window.Piwik && window.Piwik.getAsyncTracker){
+				tracker = window.Piwik.getAsyncTracker();
+			} else {
+				setTimeout(function(){ checkforTracker(delay) }, delay);
+			}
+		}
+
+		checkforTracker();
 	}
 
 	// Avoid `console` errors in browsers that lack a console.

@@ -12,6 +12,14 @@ SECTION CONTACT
 	h4 {
 		margin: 0 0 1em;
 	}
+
+	iframe {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin: 1.45em 0;
+		border: 2px solid;
+	}
 }
 
 .legal {
@@ -25,12 +33,10 @@ SECTION CONTACT
 
 	li {
 		display: inline-block;
-		// color: $color-text-default;
-		// margin: 0 .5em;
 
 		+ li {
 			&:before {
-				content: ' | ';
+				content: ' · ';
 				font-weight: bold;
 				margin: 0 .5em;
 			}

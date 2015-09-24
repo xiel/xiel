@@ -12,7 +12,6 @@ BASE
 	}
 }
 
-
 html {
 	font-size: 62.5%;
 	line-height: 1.4;
@@ -26,30 +25,25 @@ html {
 	}
 
 	@media (max-width: $screen-xs-max) {
-		font-size: 50%;
+		font-size: 51%;
+
+		input, textarea {
+			font-size: 16px;
+		}
 	}
 }
 
-/*
- * Remove text-shadow in selection highlight: h5bp.com/i
- * These selection rule sets have to be separate.
- * Customize the background color to match your design.
- */
-
 ::-moz-selection {
 	background: #d2d2ce;
+	color: #111;
 	text-shadow: none;
 }
 
 ::selection {
 	background: #d2d2ce;
+	color: #111;
 	text-shadow: none;
 }
-
-/*
- * Remove the gap between images, videos, audio and canvas and the bottom of
- * their containers: h5bp.com/i/440
- */
 
 audio,
 canvas,
@@ -58,19 +52,11 @@ video {
 	vertical-align: middle;
 }
 
-/*
- * Remove default fieldset styles.
- */
-
 fieldset {
 	border: 0;
 	margin: 0;
 	padding: 0;
 }
-
-/*
- * Allow only vertical resizing of textareas.
- */
 
 textarea {
 	resize: vertical;
@@ -78,7 +64,7 @@ textarea {
 
 body {
 	position: relative;
-	font-family: "Roboto", "San Francisco", sans-serif;
+	font-family: -apple-system, "Roboto", sans-serif;
 	color: $color-text-default;
 	background: #fff;
 	font-size: 17px;
