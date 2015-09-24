@@ -306,17 +306,15 @@
 	function startSkrollr() {
 		if( !(window.requestAnimationFrame || window.webkitRequestAnimationFrame) ){ return }
 
-		console.log(window.requestAnimationFrame);
-
 		//skrollr
 		var s = skrollr.init({
 			// smoothScrolling: false,
-			render: function(data) {
-				// console.log(data.curTop);
-			},
+			// render: function(data) {
+			// 	// console.log(data.curTop);
+			// },
 			mobileCheck: function() {
 				return false
-					// return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
+				// return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
 			}
 		});
 	}
