@@ -5,12 +5,8 @@ module.exports = {
 	},
 	dist: {
 		files: {
-			'<%= paths.dev %>/css/styles.css': '<%= paths.src %>/scss/styles.scss'
-		}
-	},
-	universal: {
-		files: {
-			'<%= paths.dev %>/css/universal.css': '<%= paths.src %>/scss/universal.scss'
+			'<%= paths.dev %>/css/styles.css': '<%= paths.src %>/scss/styles.scss',
+			'<%= paths.dev %>/css/styles.icons.css': '<%= paths.src %>/scss/styles.icons.scss'
 		}
 	}
 };

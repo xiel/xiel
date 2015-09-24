@@ -24,11 +24,11 @@
 
 
 				$(SVG('path'))
-				.attr('d', convertedPath)
-				.attr('fill', $(this).attr('fill'))
-				.attr('stroke', $(this).attr('stroke'))
-				.attr('stroke-width', $(this).attr('stroke-width'))
-				.insertAfter(this);
+					.attr('d', convertedPath)
+					.attr('fill', $(this).attr('fill'))
+					.attr('stroke', $(this).attr('stroke'))
+					.attr('stroke-width', $(this).attr('stroke-width'))
+					.insertAfter(this);
 
 			});
 
@@ -54,11 +54,11 @@
 
 
 				$(SVG('path'))
-				.attr('d', convertedPath)
-				.attr('fill', $(this).attr('fill'))
-				.attr('stroke', $(this).attr('stroke'))
-				.attr('stroke-width', $(this).attr('stroke-width'))
-				.insertAfter(this);
+					.attr('d', convertedPath)
+					.attr('fill', $(this).attr('fill'))
+					.attr('stroke', $(this).attr('stroke'))
+					.attr('stroke-width', $(this).attr('stroke-width'))
+					.insertAfter(this);
 
 			});
 
@@ -81,11 +81,11 @@
 				var convertedPath = 'M' + cX + ', ' + cY + ' m' + (-r) + ', 0 ' + 'a ' + r + ', ' + r + ' 0 1,0 ' + r2 + ',0 ' + 'a ' + r + ', ' + r + ' 0 1,0 ' + (-r2) + ',0 ';
 
 				$(SVG('path'))
-				.attr('d', convertedPath)
-				.attr('fill', $(this).attr('fill'))
-				.attr('stroke', $(this).attr('stroke'))
-				.attr('stroke-width', $(this).attr('stroke-width'))
-				.insertAfter(this);
+					.attr('d', convertedPath)
+					.attr('fill', $(this).attr('fill'))
+					.attr('stroke', $(this).attr('stroke'))
+					.attr('stroke-width', $(this).attr('stroke-width'))
+					.insertAfter(this);
 
 			});
 
@@ -104,14 +104,14 @@
 				var rX = $(this).attr('rx');
 				var rY = $(this).attr('ry');
 
-				var convertedPath = 'M' + cX + ', ' + cY + ' m' + (-rX) + ', 0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + rX*2 + ',0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + (-rX*2) + ',0 ';
+				var convertedPath = 'M' + cX + ', ' + cY + ' m' + (-rX) + ', 0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + rX * 2 + ',0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + (-rX * 2) + ',0 ';
 
 				$(SVG('path'))
-				.attr('d', convertedPath)
-				.attr('fill', $(this).attr('fill'))
-				.attr('stroke', $(this).attr('stroke'))
-				.attr('stroke-width', $(this).attr('stroke-width'))
-				.insertAfter(this);
+					.attr('d', convertedPath)
+					.attr('fill', $(this).attr('fill'))
+					.attr('stroke', $(this).attr('stroke'))
+					.attr('stroke-width', $(this).attr('stroke-width'))
+					.insertAfter(this);
 
 			});
 
@@ -131,11 +131,11 @@
 				var endPoint = polyPoints[0] + ', ' + polyPoints[1];
 
 				$(SVG('path'))
-				.attr('d', 'M' + points + ' ' + endPoint)
-				.attr('fill', $(this).attr('fill'))
-				.attr('stroke', $(this).attr('stroke'))
-				.attr('stroke-width', $(this).attr('stroke-width'))
-				.insertAfter(this);
+					.attr('d', 'M' + points + ' ' + endPoint)
+					.attr('fill', $(this).attr('fill'))
+					.attr('stroke', $(this).attr('stroke'))
+					.attr('stroke-width', $(this).attr('stroke-width'))
+					.insertAfter(this);
 
 			});
 
@@ -155,23 +155,23 @@
 				var points = $(this).attr('points');
 
 				$(SVG('path'))
-				.attr('d', 'M' + points)
-				.attr('fill', $(this).attr('fill'))
-				.attr('stroke', $(this).attr('stroke'))
-				.attr('stroke-width', $(this).attr('stroke-width'))
-				.insertAfter(this);
+					.attr('d', 'M' + points)
+					.attr('fill', $(this).attr('fill'))
+					.attr('stroke', $(this).attr('stroke'))
+					.attr('stroke-width', $(this).attr('stroke-width'))
+					.insertAfter(this);
 
 			});
 
 			$(polylines).remove();
 		}
 
-		function hideSVGPaths(parentElement) {
+		function hideSVGPaths(parentElement)  {
 
 			var paths = $(parentElement).find('path');
 
 			//for each PATH..
-			$.each( paths, function() {
+			$.each(paths, function() {
 
 				//get the total length
 				var totalLength = this.getTotalLength();
@@ -191,7 +191,7 @@
 			var previousDuration = 0;
 
 			//for each PATH..
-			$.each( paths, function(i) {
+			$.each(paths, function(i) {
 
 				//get the total length
 				var totalLength = this.getTotalLength();
@@ -203,7 +203,7 @@
 					'stroke-dasharray': totalLength + ' ' + totalLength
 				});
 
-				var duration = Math.floor( Math.min(_timeMax, Math.max(_timeMin, totalLength * 5) ) );
+				var duration = Math.floor(Math.min(_timeMax, Math.max(_timeMin, totalLength * 5)));
 
 				//animate
 				$(this).velocity({
@@ -212,8 +212,8 @@
 					// delay: _timeDelay*i,
 					delay: previousDuration + _timeDelay,
 					// duration: Math.floor(Math.random() * _timeMax) + _timeMin
-					duration: duration
-					,easing: 'easeInOutQuad'
+					duration: duration,
+					easing: 'easeInOutQuad'
 				});
 
 				previousDuration += duration + _timeDelay;
@@ -227,7 +227,7 @@
 			replaceEllipsesWithPaths(parentElement);
 			replaceCirclesWithPaths(parentElement);
 			replacePolygonsWithPaths(parentElement);
-			replacePolylinesWithPaths(parentElement);    
+			replacePolylinesWithPaths(parentElement);
 		}
 
 		function startSVGAnimation(parentElement) {

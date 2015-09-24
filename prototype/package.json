@@ -32,6 +32,7 @@
     "grunt-jsbeautifier": "~0.2.6",
     "grunt-newer": "~0.8.0",
     "grunt-packager": "^0.1.0",
+    "grunt-postcss-separator": "^0.1.1",
     "grunt-sass": "^1.0.0",
     "grunt-sync": "~0.2.0",
     "grunt-text-replace": "~0.3.11",

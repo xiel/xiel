@@ -11,6 +11,7 @@ var exphbs  = require('express-handlebars');
 var expressValidator = require('express-validator');
 var bodyParser = require('body-parser');
 var htmlMinifyer = require('html-minifier').minify;
+var compression = require('compression');
 
 //get routers
 var routes = require('./routes/index');
@@ -36,11 +37,15 @@ app.engine('hbs',
 app.set('views', rootPath('views/pages') );
 app.set('view engine', 'hbs');
 
+// compress all requests
+app.use( compression() );
+
 //parse parameters out of (post) requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 
 //serve resources statics
+app.use( express.static( rootPath('resources/') ) );
 app.use( express.static( rootPath('../prototype/_output/') ) );
 
 //routes

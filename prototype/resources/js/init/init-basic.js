@@ -3,7 +3,7 @@
 	var historyAPI = 'history' in window && window.history.pushState && window.history;
 	var tracker = undefined;
 
-	if ( !window.jspackager.devmode && (location.host === 'xiel.local.de' || location.host.split('.').length === 4 ) ) {
+	if (!window.jspackager.devmode && (location.host === 'xiel.local.de' || location.host.split('.').length === 4)) {
 		// location.search = 'devmode';
 	}
 
@@ -22,11 +22,11 @@
 			startSoftScroll();
 			startToggleButtons();
 
-			if(devmode){
+			if (devmode) {
 				$(document).on('mousedown', function(e) {
 					var startTime = +new Date();
-					$(document).one('mouseup', function(e){
-						if( (+new Date() - startTime) >= 1000){
+					$(document).one('mouseup', function(e) {
+						if ((+new Date() - startTime) >= 1000) {
 							$(document.body).toggleClass('grid-visible');
 							e.preventDefault();
 						}
@@ -105,13 +105,13 @@
 			var focusAfterClose;
 			var scrollYBeforeOpen;
 
-			if(historyAPI && historyAPI.state && historyAPI.state.projectLoaded){
+			if (historyAPI && historyAPI.state && historyAPI.state.projectLoaded) {
 				scrollYBeforeOpen = historyAPI.state.scrollYBeforeOpen;
 				loadProject(historyAPI.state.projectLoaded, true);
 			}
 
-			$(window).on('popstate', function(e){
-				if(historyAPI && historyAPI.state && historyAPI.state.projectLoaded){
+			$(window).on('popstate', function(e) {
+				if (historyAPI && historyAPI.state && historyAPI.state.projectLoaded) {
 					scrollYBeforeOpen = historyAPI.state.scrollYBeforeOpen;
 					loadProject(historyAPI.state.projectLoaded, true);
 				}
@@ -122,9 +122,9 @@
 				e.preventDefault();
 			});
 
-			slideWrapper.on( 'keyup', function( e ) {
+			slideWrapper.on('keyup', function(e) {
 				var code = e.keyCode ? e.keyCode : e.which;
-				if ( code === 27 && activeSection ) {
+				if (code === 27 && activeSection) {
 					closeSlideWrapper();
 					e.preventDefault();
 				}
@@ -136,10 +136,10 @@
 				scrollYBeforeOpen = window.scrollY;
 
 				e.preventDefault();
-				loadProject( link.attr('href') );
+				loadProject(link.attr('href'));
 			});
 
-			function loadProject(href, viaHistory){
+			function loadProject(href, viaHistory) {
 				$.ajax({
 						url: href,
 						data: {
@@ -150,11 +150,11 @@
 						var data = $('<div/>').html(_data);
 						var newSection = $('.section', data);
 
-						if ( historyAPI && !viaHistory ){
+						if (historyAPI && !viaHistory) {
 							historyAPI.pushState({
 								projectLoaded: href,
 								scrollYBeforeOpen: scrollYBeforeOpen
-							}, '', '#!'+href);
+							}, '', '#!' + href);
 						}
 
 						if (activeSection) {
@@ -171,7 +171,7 @@
 
 						var newSectionHeight = newSection.height() || 1000;
 
-						if(!viaHistory){
+						if (!viaHistory) {
 							softScrollTo(newSection);
 						}
 
@@ -183,25 +183,25 @@
 								}, {
 									duration: Math.abs(slideWrapper.height() - newSection.height()) / 2,
 									complete: function() {
-										slideWrapper.css({ height: '' });
+										slideWrapper.css({
+											height: ''
+										});
 										focusFirstElementIn(newSection);
 									}
-								})
-							;
+								});
 						})
 
 						newSection.trigger('dommodified');
-					})
-				;
+					});
 			}
 
-			function closeSlideWrapper(){
+			function closeSlideWrapper() {
 				if (!activeSection) {
 					return false
 				}
 
-				if ( historyAPI ){
-					historyAPI.pushState({}, '', location.href.replace(location.hash || '#', '') );
+				if (historyAPI) {
+					historyAPI.pushState({}, '', location.href.replace(location.hash || '#', ''));
 				}
 
 				slideWrapper
@@ -216,18 +216,17 @@
 								activeSection = undefined;
 							}
 						}
-					})
-				;
+					});
 
 				setTimeout(function() {
-					if(scrollYBeforeOpen){
+					if (scrollYBeforeOpen) {
 						$('html').velocity("stop").velocity("scroll", {
 							offset: scrollYBeforeOpen,
 							duration: Math.abs(window.scrollY - scrollYBeforeOpen) / 2,
 							mobileHA: false
 						});
 					}
-					if(focusAfterClose){
+					if (focusAfterClose) {
 						focusFirstElementIn(focusAfterClose);
 					}
 				}, 10);
@@ -304,7 +303,9 @@
 	}
 
 	function startSkrollr() {
-		if( !(window.requestAnimationFrame || window.webkitRequestAnimationFrame) ){ return }
+		if (!(window.requestAnimationFrame || window.webkitRequestAnimationFrame)) {
+			return
+		}
 
 		//skrollr
 		var s = skrollr.init({
@@ -314,7 +315,7 @@
 			// },
 			mobileCheck: function() {
 				return false
-				// return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
+					// return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
 			}
 		});
 	}
@@ -333,12 +334,12 @@
 		})
 	}
 
-	function startToggleButtons(){
-		$(document).on('click', '.toggle-btn', function(e){
+	function startToggleButtons() {
+		$(document).on('click', '.toggle-btn', function(e) {
 			var link = $(this);
 			var selector = link.prop('hash') || link.attr('href')
 			var target = $(selector).first();
-			var hideClass = link.data('toggle') || 'toggle';
+			var hideClass = link.data('toggle') ||  'toggle';
 			if (!target.length) {
 				return
 			}
@@ -346,11 +347,11 @@
 			slideToggle(target)
 			target.toggleClass(hideClass);
 
-			if(!target.hasClass(hideClass) && !isInView(target) ){
+			if (!target.hasClass(hideClass) && !isInView(target)) {
 				softScrollTo(target, true)
 			}
 
-			if(!target.hasClass(hideClass)){
+			if (!target.hasClass(hideClass)) {
 				focusFirstElementIn(target);
 			}
 
@@ -358,17 +359,17 @@
 		});
 	}
 
-	function focusFirstElementIn(_target){
+	function focusFirstElementIn(_target) {
 		var target = $(_target);
 		var elements = $('h1, h2, h2, h3, a, p, a', target);
 		var elementToFocus = elements.first();
 		var initialTabIndex = elementToFocus.prop('tabIndex');
 
-		setTimeout(function(){
-			if(initialTabIndex === undefined || initialTabIndex === -1 || initialTabIndex === false){
+		setTimeout(function() {
+			if (initialTabIndex === undefined || initialTabIndex === -1 || initialTabIndex === false) {
 				elementToFocus.prop('tabindex', -1);
 
-				elementToFocus.one('blur', function(){
+				elementToFocus.one('blur', function() {
 					elementToFocus.prop('tabindex', initialTabIndex);
 				});
 			}
@@ -377,18 +378,18 @@
 		}, 100);
 	}
 
-	function slideToggle(_target){
+	function slideToggle(_target) {
 		var target = $(_target);
 		var isClosed = target.data('slideClosed') === undefined ? target.height() === 0 : target.data('slideClosed');
 
-		if(isClosed){
+		if (isClosed) {
 			slideOpen(target);
 		} else {
 			slideClose(target);
 		}
 	}
 
-	function slideOpen(_target){
+	function slideOpen(_target) {
 		var target = $(_target);
 		var scrollHeight = target[0].scrollHeight;
 
@@ -398,14 +399,13 @@
 				height: scrollHeight
 			}, {
 				duration: scrollHeight,
-				complete: function(){
+				complete: function() {
 					target.css('height', '');
 				}
-			})
-		;
+			});
 	}
 
-	function slideClose(_target){
+	function slideClose(_target) {
 		var target = $(_target);
 		var scrollHeight = target[0].scrollHeight;
 
@@ -415,11 +415,10 @@
 				height: 0
 			}, {
 				duration: scrollHeight,
-				complete: function(){
+				complete: function() {
 					target.css('height', '');
 				}
-			})
-		;
+			});
 	}
 
 	function startSoftScroll() {
@@ -435,7 +434,7 @@
 		})
 	}
 
-	function isInView(_target){
+	function isInView(_target) {
 		var target = $(_target);
 		var windowHeight = window.innerHeight;
 		var targetHeight = target.height() || target[0].scrollHeight;
@@ -444,7 +443,7 @@
 		var scrollPos = window.scrollY;
 		var scrollPosBottom = window.scrollY + windowHeight;
 
-		if( (offsetY >= scrollPos && offsetYBottom <= scrollPosBottom) || (targetHeight > windowHeight && scrollPos >= offsetY && scrollPosBottom <= offsetYBottom) ){
+		if ((offsetY >= scrollPos && offsetYBottom <= scrollPosBottom) || (targetHeight > windowHeight && scrollPos >= offsetY && scrollPosBottom <= offsetYBottom)) {
 			return true
 		} else {
 			return false
@@ -458,12 +457,12 @@
 		var MAX_DURATION = 3000;
 		var newScrollPos = target.offset().top;
 
-		if(intoView){
+		if (intoView) {
 			var targetHeight = target.height() || target[0].scrollHeight;
 			var windowHeight = window.innerHeight;
 
 			//align bottom of element with bottom of window
-			if(targetHeight < windowHeight){
+			if (targetHeight < windowHeight) {
 				newScrollPos = newScrollPos - windowHeight + targetHeight;
 
 				//center in viewport
@@ -496,20 +495,28 @@
 		_paq.push(['enableLinkTracking']);
 
 		(function() {
-			var u="//piwik.xiel.de/";
-			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			var u = "//piwik.xiel.de/";
+			_paq.push(['setTrackerUrl', u + 'piwik.php']);
 			_paq.push(['setSiteId', 2]);
-			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+			var d = document,
+				g = d.createElement('script'),
+				s = d.getElementsByTagName('script')[0];
+			g.type = 'text/javascript';
+			g.async = true;
+			g.defer = true;
+			g.src = u + 'piwik.js';
+			s.parentNode.insertBefore(g, s);
 		})();
 
-		var checkforTracker = function(recheckDelay){
+		var checkforTracker = function(recheckDelay) {
 			var delay = recheckDelay ? recheckDelay + recheckDelay : 10;
 
-			if(window.Piwik && window.Piwik.getAsyncTracker){
+			if (window.Piwik && window.Piwik.getAsyncTracker) {
 				tracker = window.Piwik.getAsyncTracker();
 			} else {
-				setTimeout(function(){ checkforTracker(delay) }, delay);
+				setTimeout(function() {
+					checkforTracker(delay)
+				}, delay);
 			}
 		}
 
