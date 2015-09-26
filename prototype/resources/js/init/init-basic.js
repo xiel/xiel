@@ -4,7 +4,7 @@
 	var tracker = undefined;
 
 	if (!window.jspackager.devmode && (location.host === 'xiel.local.de' || location.host.split('.').length === 4)) {
-		// location.search = 'devmode';
+		location.search = 'devmode';
 	}
 
 	var projectInit = {
@@ -102,6 +102,7 @@
 			var projectsSection = $(this);
 			var activeSection = undefined;
 			var slideWrapper = $('<div/>').addClass('project-slide-wrapper').insertAfter(projectsSection);
+			var progressBar = $('<div/>').addClass('progress-loader').prependTo(slideWrapper);
 			var focusAfterClose;
 			var scrollYBeforeOpen;
 
@@ -140,6 +141,16 @@
 			});
 
 			function loadProject(href, viaHistory) {
+				progressBar
+					.removeClass('done')
+					.velocity("stop", true)
+					.css({
+						width: 0
+					})
+					.velocity({
+						width: '20%'
+					}, 2000);
+
 				$.ajax({
 						url: href,
 						data: {
@@ -175,9 +186,31 @@
 							softScrollTo(newSection);
 						}
 
+						progressBar
+							.velocity("stop", true)
+							.velocity({
+								width: '50%'
+							}, {
+								duration: 300
+							})
+							.velocity({
+								width: '90%'
+							}, 3000);
+
 						newSection.on('allMediaLoaded', function(e) {
+							progressBar
+								.velocity("stop", true)
+								.velocity({
+									width: '100%'
+								}, {
+									duration: 250,
+									complete: function() {
+										progressBar.addClass('done');
+									}
+								});
+
 							slideWrapper
-								.velocity("stop")
+								.velocity("stop", true)
 								.velocity({
 									height: !viaHistory ? newSection.height() : 0
 								}, {
