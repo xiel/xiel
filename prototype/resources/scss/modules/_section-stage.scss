@@ -62,6 +62,8 @@ SECTION STAGE
 
 	path.x {
 		transform-origin: 50% 50%;
+		transition: 0ms;
+		transform: rotate(0.01deg);
 	}
 
 	&:hover {
