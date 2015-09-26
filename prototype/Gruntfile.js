@@ -70,7 +70,6 @@ module.exports = function(grunt) {
 	]); 
 	
 	grunt.registerTask('js', [
-		// 'jsbeautifier:js',
 		'packager'
 	]);
 	
@@ -116,7 +115,8 @@ module.exports = function(grunt) {
 		'clean:dev',
 		'icons',
 		'jsbeautifier',
-		'concurrent:syncing',  
+		'js',
+		'concurrent:syncing',
 		'watchCSS',
 		'postcssSeparator',
 		'combine_mq',
