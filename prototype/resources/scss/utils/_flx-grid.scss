@@ -7,6 +7,7 @@ $flx-slug: flx !default;
 // mixins
 @mixin flx-col(){
 	flex: none;
+	float: left;
 	width: 100%;
 	padding: 0 2rem;
 }
@@ -63,6 +64,12 @@ $flx-slug: flx !default;
 	flex-wrap: wrap;
 	margin: 0 -2rem;
 	align-items: flex-start;
+
+	&:after {
+		display: block;
+		content: ' ';
+		clear: both;
+	}
 }
 
 .flx-group--centered {
