@@ -118,6 +118,7 @@ module.exports = function(grunt) {
 		'js',
 		'concurrent:syncing',
 		'watchCSS',
+		'autoprefixer',
 		'postcssSeparator',
 		'combine_mq',
 		'cssmin',

@@ -203,7 +203,7 @@
 								.velocity({
 									width: '100%'
 								}, {
-									duration: 250,
+									duration: 400,
 									complete: function() {
 										progressBar.addClass('done');
 									}
