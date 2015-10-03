@@ -11,9 +11,11 @@
 			"libs/respimage",
 			"libs/sssl",
 			"libs/zepto",
+			"libs/zepto.selector",
 			"libs/zepto.callbacks",
 			"libs/zepto.deferred",
 			"libs/zepto.data",
+			"libs/jquery.flexslider",
 			"libs/skrollr",
 			"libs/velocity",
 			"init/init-basic"
