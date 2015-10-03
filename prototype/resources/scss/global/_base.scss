@@ -312,3 +312,21 @@ Social Media Links
 		@extend %icon-github;
 	}
 }
+
+.sm-link--dribbble {
+	&:before {
+		@extend %icon-dribbble;
+	}
+}
+
+.sm-link--flickr {
+	&:before {
+		@extend %icon-flickr;
+	}
+}
+
+.sm-link--instagram {
+	&:before {
+		@extend %icon-instagram;
+	}
+}
