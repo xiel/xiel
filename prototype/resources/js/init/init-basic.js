@@ -12,6 +12,15 @@
 
 			startTracking();
 
+			if(!$.data){
+				$.data = function(el, dataAttr, dataVal){
+					$(el).data(dataAttr, dataVal);
+				}
+			}
+			if(!$.fn.animate){
+				$.fn.animate = $.fn.velocity;
+			}
+
 		}, //END: projectInit.immediate
 		domReadyOnce: function() {
 
@@ -37,11 +46,39 @@
 				sssl('//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1', function() {});
 			}
 
+			// $(document).on('touchstart', function(){}, true);
+
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function(context) {
 
 				startProjects(context);
 				hideAndShowImages(context);
+
+				$('.project__slider', context).flexslider({
+					namespace: "project__slider-",
+					animation: "slide",
+					selector: ".project__slider-slides > div",
+					controlNav: false,
+					animationLoop: false,
+					smoothHeight: true,
+					initDelay: 2000
+					// directionNav: false
+				});
+
+				$('.project__slider-slides > div', context).click(function(e){
+					var clickedSlide = $(this);
+					var slider = clickedSlide.closest('.project__slider');
+					var prevSlideIsActive = clickedSlide.prev().hasClass('project__slider-active-slide');
+					var nextSlideIsActive = clickedSlide.next().hasClass('project__slider-active-slide');
+
+					if(prevSlideIsActive){
+						slider.flexslider("next");
+						e.preventDefault();
+					} else if(nextSlideIsActive){
+						slider.flexslider("prev");
+						e.preventDefault();
+					}
+				});
 
 			} //END: projectInit.everyDomReady
 	};
@@ -52,8 +89,9 @@
 		var withTimeout = false;
 
 		mediaToShow.css({
-			opacity: 0
+			opacity: .9
 		});
+
 		mediaToShow.each(function() {
 			var media = $(this);
 
@@ -68,6 +106,7 @@
 
 			var loadTimeout = setTimeout(function() {
 				withTimeout = true;
+				console.error('loadTimeout', loadTimeout, context);
 				loaded();
 			}, 3000);
 
@@ -177,26 +216,6 @@
 							});
 						}
 
-						activeSection = newSection;
-						newSection.appendTo(slideWrapper).addClass('project--active');
-
-						var newSectionHeight = newSection.height() || 1000;
-
-						if (!viaHistory) {
-							softScrollTo(newSection);
-						}
-
-						progressBar
-							.velocity("stop", true)
-							.velocity({
-								width: '50%'
-							}, {
-								duration: 300
-							})
-							.velocity({
-								width: '90%'
-							}, 3000);
-
 						newSection.on('allMediaLoaded', function(e) {
 							progressBar
 								.velocity("stop", true)
@@ -212,9 +231,9 @@
 							slideWrapper
 								.velocity("stop", true)
 								.velocity({
-									height: !viaHistory ? newSection.height() : 0
+									height: newSectionHeight
 								}, {
-									duration: Math.abs(slideWrapper.height() - newSection.height()) / 2,
+									duration: !viaHistory ? Math.min(Math.abs(newSectionHeight) / 2, 2000) : 1,
 									complete: function() {
 										slideWrapper.css({
 											height: ''
@@ -222,7 +241,28 @@
 										focusFirstElementIn(newSection);
 									}
 								});
-						})
+						});
+
+						activeSection = newSection;
+						newSection.appendTo(slideWrapper).addClass('project--active');
+
+						var newSectionHeight = slideWrapper[0].scrollHeight || newSection.height() || 1000;
+
+						if (!viaHistory) {
+							softScrollTo(newSection);
+						}
+
+						progressBar
+							.velocity("stop", true)
+							.velocity({
+								width: '50%'
+							}, {
+								duration: 300
+							})
+							.velocity({
+								width: '90%'
+							}, 3000)
+						;
 
 						newSection.trigger('dommodified');
 					});
