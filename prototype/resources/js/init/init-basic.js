@@ -12,19 +12,19 @@
 
 			startTracking();
 
-			if(!$.data){
-				$.data = function(el, dataAttr, dataVal){
+			if (!$.data) {
+				$.data = function(el, dataAttr, dataVal) {
 					$(el).data(dataAttr, dataVal);
 				}
 			}
-			if(!$.fn.animate){
+			if (!$.fn.animate) {
 				$.fn.animate = $.fn.velocity;
 			}
 
 		}, //END: projectInit.immediate
 		domReadyOnce: function() {
 
-			startSkrollr();
+			// startSkrollr();
 			startBasicFormValidation();
 			startBusyButtons();
 			startMailForm();
@@ -62,19 +62,19 @@
 					animationLoop: false,
 					smoothHeight: true,
 					initDelay: 2000
-					// directionNav: false
+						// directionNav: false
 				});
 
-				$('.project__slider-slides > div', context).click(function(e){
+				$('.project__slider-slides > div', context).click(function(e) {
 					var clickedSlide = $(this);
 					var slider = clickedSlide.closest('.project__slider');
 					var prevSlideIsActive = clickedSlide.prev().hasClass('project__slider-active-slide');
 					var nextSlideIsActive = clickedSlide.next().hasClass('project__slider-active-slide');
 
-					if(prevSlideIsActive){
+					if (prevSlideIsActive) {
 						slider.flexslider("next");
 						e.preventDefault();
-					} else if(nextSlideIsActive){
+					} else if (nextSlideIsActive) {
 						slider.flexslider("prev");
 						e.preventDefault();
 					}
@@ -261,8 +261,7 @@
 							})
 							.velocity({
 								width: '90%'
-							}, 3000)
-						;
+							}, 3000);
 
 						newSection.trigger('dommodified');
 					});
