@@ -23,7 +23,7 @@ BUTTONS
 .btn {
 	@extend %button-normal;
 	background: transparent;
-	border: 2px solid;
+	border: 3px solid;
 	transition: 300ms;
 	
 	&:hover, &:focus {
