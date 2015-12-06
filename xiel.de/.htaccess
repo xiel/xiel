@@ -19,8 +19,8 @@
 <IfModule mod_rewrite.c>
   # Options +FollowSymlinks
   # Options +SymLinksIfOwnerMatch
-    RewriteEngine On
-    RewriteBase /
+	RewriteEngine On
+	RewriteBase /
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -45,12 +45,12 @@
 # Option 1: rewrite www.example.com → example.com
 
 <IfModule mod_rewrite.c>
-    RewriteCond %{HTTPS} !=on
-    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+	RewriteCond %{HTTPS} !=on
+	RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+	RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
 
-    RewriteCond %{HTTP_HOST} ^felixleupold\.de$ [NC]
-    RewriteRule ^(.*)$ http://www.xiel.de/$1 [R=301,L]
+	RewriteCond %{HTTP_HOST} ^felixleupold\.de$ [NC]
+	RewriteRule ^(.*)$ http://www.xiel.de/$1 [R=301,L]
 </IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -68,8 +68,23 @@
 #    RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
+
+# ------------------------------------------------------------------------------
+# | Forward to HTTPS                                                           |
+# ------------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{HTTPS} off
+	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+</IfModule>
+
 # ------------------------------------------------------------------------------
 # | Forward to node.js server                                                  |
 # ------------------------------------------------------------------------------
-RewriteEngine On
-RewriteRule (.*) http://localhost:62375/$1 [P]
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule (.*) http://localhost:62375/$1 [P]
+</IfModule>
+
