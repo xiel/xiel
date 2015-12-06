@@ -17,7 +17,6 @@
 			"libs/zepto.data",
 			"libs/jquery.flexslider",
 			"libs/factory",
-			"libs/skrollr",
 			"libs/velocity",
 			"init/init-basic"
 		]
