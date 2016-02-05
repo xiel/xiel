@@ -21,7 +21,6 @@ var projects = require('./routes/projects');
 //init
 var app = express();
 var rootPath = function(pathFromRoot){
-	console.log('rootPath', path.join( __dirname, pathFromRoot ) );
 	return path.join( __dirname, pathFromRoot )
 };
 
