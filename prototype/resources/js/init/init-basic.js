@@ -46,13 +46,53 @@
 				sssl('//' + (location.hostname || 'localhost') + ':35731/livereload.js?snipver=1', function() {});
 			}
 
-			// $(document).on('touchstart', function(){}, true);
+			(function(){
+				var hero = $('.stage-hero').first();
+				var currentValue = 0;
+				var requestRepaint = false;
+
+				var scrollPos = 0;
+				var waitTillNextTick = 0;
+
+				render();
+				requestAnimationFrame(tick);
+
+				function tick(){
+					var newScrollPos = window.scrollY;
+
+					if(requestRepaint || scrollPos !== newScrollPos){
+						requestAnimationFrame(tick);
+						waitTillNextTick = 0;
+
+						scrollPos = newScrollPos;
+						render();
+					} else {
+						waitTillNextTick = Math.min(200, waitTillNextTick + 10);
+
+						//tick delayed
+						setTimeout(function(){
+							requestAnimationFrame(tick);
+						}, waitTillNextTick)
+					}
+				}
+
+				function render(){
+					var wantedValue = scrollPos / 5;
+					var diffValue = Math.min(30, Math.max(-30, (wantedValue - currentValue) / 10 ));
+					currentValue += diffValue;
+
+					requestRepaint = Math.round(currentValue) !== Math.round(wantedValue);
+
+					hero.css('transform', 'translateY('+ currentValue +'px)');
+				}
+			}())
 
 		}, //END: projectInit.domReadyOnce
 		everyDomReady: function(context) {
 
 				startProjects(context);
 				hideAndShowImages(context);
+
 
 				$('.project__slider', context).flexslider({
 					namespace: "project__slider-",
@@ -77,6 +117,8 @@
 						e.preventDefault();
 					}
 				});
+
+				
 
 			} //END: projectInit.everyDomReady
 	};
