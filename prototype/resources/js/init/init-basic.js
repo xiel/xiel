@@ -55,6 +55,7 @@
 				var waitTillNextTick = 0;
 
 				render();
+				requestAnimationFrame(tick);
 
 				function tick(){
 					var newScrollPos = window.scrollY;
@@ -77,15 +78,13 @@
 
 				function render(){
 					var wantedValue = scrollPos / 5;
-					var diffValue = Math.min(10, Math.max(-10, (wantedValue - currentValue) / 5 ));
+					var diffValue = Math.min(30, Math.max(-30, (wantedValue - currentValue) / 10 ));
 					currentValue += diffValue;
 
 					requestRepaint = Math.round(currentValue) !== Math.round(wantedValue);
 
 					hero.css('transform', 'translateY('+ currentValue +'px)');
 				}
-
-				requestAnimationFrame(tick)
 			}())
 
 		}, //END: projectInit.domReadyOnce
