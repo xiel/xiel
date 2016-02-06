@@ -110,7 +110,10 @@ BUTTONS
 	font-family: inherit;
 	font-size: 2rem;
 	font-weight: 500;
+	border: 0 none;
+	padding: 0;
 	border-bottom: 2px solid;
+	background: none;
 
 	&:hover,
 	&:focus {
