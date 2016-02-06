@@ -1,27 +1,8 @@
 {{> _global/_metadata }}
 
-<link rel="shortcut icon" href="{{assets}}/img/favicon.png" />
-<link rel="stylesheet" href="{{assets}}/css/styles.css"/>
-
-<style>
-	body, html {
-		margin: 0;
-		padding: 0;
-	}
-</style>
-
 <script>
-	var html = document.getElementsByTagName('html')[0];
-	if(html && html.classList){
-		html.classList.remove('no-js');
-		html.classList.add('js');
-	}
-</script>
-
-<script>
-	/** IMPORTANT CONFIGURATION! */
 	window.siteData = {
-		basePath: '',
+		basePath: '/'
 	};
 </script>
 
@@ -39,5 +20,6 @@
 	{{ includeraw '../prototype/_output/js/_inlinehead-behavior.js' }}
 </script>
 
-<link href="css/styles.css" rel="stylesheet"/>
+<link rel="shortcut icon" href="{{assets}}/img/favicon.png" />
+<link rel="stylesheet" href="{{assets}}/css/styles.css"/>
 <script> /* block CSS */ </script>
