@@ -56,6 +56,7 @@ app.use(expressValidator());
 
 //serve resources statics
 app.use( express.static( rootPath('resources/') ) );
+app.use( express.static( rootPath('../prototype/_dev/') ) );
 app.use( express.static( rootPath('../prototype/_output/') ) );
 
 //routes
