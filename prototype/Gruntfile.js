@@ -87,12 +87,31 @@ module.exports = function(grunt) {
 		// 'jshint',
 		'uglify:inline',
 		'concurrent:dev2',
-		'handlebars:dev',
+		// 'handlebars:dev',
 		'jst',
 		'webpack:dev',
 		'sync',
 		'prettify:dev',
 	]);
+
+	grunt.registerTask('dist', [
+        'clean:dist',
+        'clean:tmp',
+        'scssglobbing',
+        'sass:dist',
+        'uglify:inline',
+        // 'assemble:dist',
+        'autoprefixer:dist',
+        'cssmin',
+        'copy:favicon',
+        // 'handlebars:dist',
+        'jst',
+        'webpack:dist',
+        // 'test',
+        'copy:fonts',
+        'prettify:dist',
+        'clean:scssglobbing',
+    ]);
 
 	function old() {
 		// SASS Task
