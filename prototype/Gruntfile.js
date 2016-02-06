@@ -31,9 +31,9 @@ module.exports = function(grunt) {
 
 		// define your path structure
 		paths: {
-			src: 'resources', // resources folder with working files
-			dev: '_output', // dev/working folder
-			dist: '_dist',
+			src: 'sources', // resources folder with working files
+			dev: '_dev', // dev/working folder
+			dist: '_output',
 			tmp: 'temp',
 			helper: 'grunt/configs',
 		},
@@ -75,8 +75,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('css', [
 		'scssglobbing',
 		'sass:dev',
-		'autoprefixer:dev',
-		'clean:scssglobbing',
+		// 'autoprefixer:dev',
+		// 'clean:scssglobbing',
 	]);
 
 	grunt.registerTask('dev', [
@@ -95,21 +95,22 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('dist', [
+        'clean:dev',
         'clean:dist',
         'clean:tmp',
         'scssglobbing',
         'sass:dist',
-        'uglify:inline',
+        // 'uglify:inline',
         // 'assemble:dist',
         'autoprefixer:dist',
         'cssmin',
-        'copy:favicon',
+        // 'copy:favicon',
         // 'handlebars:dist',
         'jst',
         'webpack:dist',
         // 'test',
-        'copy:fonts',
-        'prettify:dist',
+        'copy',
+        // 'prettify:dist',
         'clean:scssglobbing',
     ]);
 
