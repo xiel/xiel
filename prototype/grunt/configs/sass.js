@@ -29,7 +29,7 @@ module.exports = {
 		},
 		files: [{
 			expand: true,
-			cwd: '<%= paths.src %>/sass/',
+			cwd: '<%= paths.src %>/scss/',
 			src: ['*.scss', '!_*.scss'],
 			dest: '<%= paths.dist %>/css/',
 			ext: '.css',
