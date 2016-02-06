@@ -263,7 +263,7 @@ GENERAL LAYOUT
 	max-width: $content-container-max;
 	margin: 2rem auto;
 
-	@media (max-width: $screen-xs-max) {
+	@media (max-width: $screen-md-max) {
 		padding: 0 2rem;
 	}
 }
