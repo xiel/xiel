@@ -112,13 +112,48 @@ SECTION STAGE
 	}
 }
 
+body > .wrapper {
+	padding-top: 150%;
+	background: greenyellow;
+}
+
+.stage {
+	// overflow: visible;
+	outline: 1px solid red;
+	border: 1px solid blue;
+}
+
+/*
+* @prop {String} from='-100eh' Start point of in range position relative to viewport top. 
+* Can be a simple calculation (addition and subtraction) with the following units (vh = viewport height / 100, vw = viewport width / 100, eh = element height  / 100, ew = element width / 100, px).
+* 
+* @prop {String} to='100vh' End point of in range position relative to viewport top.
+* Example: '100vh' places the top of the element at the bottom of the viewport.
+* '100vh - 20eh' Means 20% of the elements top is visible at the bottom of the viewport.
+            
+ */
+$scrollyJSCFG: (
+	switchedOff: false,
+	from: '-90eh+0vh', //-100e
+	to: '-10eh+0vh', //100eh,   -10eh+100vh
+	once: false,
+	restSwitchedOff: true,
+	childSel: 'find(.scrolly-element)',
+	throttleDelay: 0,
+);
+
+.rb-scrolly {
+	@include rb-js-export($scrollyJSCFG);
+}
+
 .stage-hero {
 	position: absolute;
 	bottom: 0;
 	right: 0;
 	width: 100%;
-	transform: translateY(0.0px);
+	// transform: translateY(0.0px);
 	will-change: transform;
+	backface-visibility: hidden;
 
 	@media (max-width: $screen-sm-max) {
 		right: -5%;
@@ -126,15 +161,32 @@ SECTION STAGE
 	@media (max-width: $screen-xs) {
 		right: 0;
 	}
-	
-	// &::before {
-	// 	// content: '{"right":180,"bottom":0,"backgroundColor": "rgba(200, 230, 0, 0.4)","transform":{"value": "rotate(30deg)","start": "rotate(0deg)"},"from":0.3,"to":0.9,"easing": "(0.175, 0.885, 0.320, 1.275)"}' !important;
-	// 	visibility: hidden !important;
-	// 	display: block !important;
-	// 	height: 0 !important;
-	// 	width: 100%;
-	// 	clear: both;
-	// }
+
+	&.scrolly-element {
+		opacity: 1;
+		bottom: 0;
+
+		&::before {
+			// content: '{"opacity": 0, "bottom": "10vw"}' !important;
+			visibility: hidden !important;
+			display: block !important;
+			height: 0 !important;
+			width: 100%;
+			clear: both;
+		}
+
+		@include rb-js-export((
+			right: 180,
+			bottom: 0,
+			opacity: 0,
+			backgroundColor: 'rgba(200, 230, 0, 0.4)',
+			transform: (
+				value: 'rotate(30deg)',
+				start: 'rotate(0deg)',
+			),
+			easing: '(0.175, 0.885, 0.320, 1.275)',
+		));
+	}
 
 	img {
 		display: block;
@@ -151,5 +203,14 @@ SECTION STAGE
 	.blurred {
 		position: absolute;
 		top: 0;
+	}
+
+	&:after {
+		@extend %pseudo;
+		width: 20px;
+		height: 200%;
+		bottom: 0;
+		background: hotpink;
+		z-index: 99;
 	}
 }
