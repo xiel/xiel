@@ -71,8 +71,9 @@ SECTION DEVELOPMENT
 
 .dev-feature__icon {
 	position: relative;
-	width: 70%;
-	padding-bottom: 70%;
+	width: 20rem;
+	padding-top: 1rem;
+	padding-bottom: 20rem;
 	margin: auto;
 	margin-bottom: 3rem;
 
@@ -86,30 +87,29 @@ SECTION DEVELOPMENT
 		max-width: 100%;
 	}
 
-	@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
-		float: left;
-		width: 29%;
-		padding-bottom: 29%;
-		margin-right: 4rem;
+	@media (min-width: $screen-xs-min) and (max-width: $screen-md-max) {
+		width: 15rem;
+		padding-bottom: 15rem;
 	}
 }
 
 .dev-feature__text {
 	overflow: hidden;
 	text-align: center;
-	min-width: 50%;
+	max-width: 35rem;
+	margin: 0 auto;
 
 	p:last-child {
 		margin-bottom: 0;
 	}
 
-	@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
-		text-align: left;
+	// @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+	// 	text-align: left;
 
-		h3 {
-			margin-top: 0;
-		}
-	}
+	// 	h3 {
+	// 		margin-top: 0;
+	// 	}
+	// }
 }
 
 .dev-technologies {
