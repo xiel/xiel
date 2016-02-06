@@ -2,11 +2,9 @@
 $margin-default: 2rem;
 
 // Colors
-$color-key: #041231; //
-// $color-key: #CCD1CC; //
-// $color-key-cyan: #59abc0;
-$color-key-cyan: #3CBCDD;
-$color-key-cyan-dark: darken(#39AAC6, 10);
+$color-key: #3CBCDD;
+$color-key-cyan: $color-key;
+$color-key-cyan-dark: darken($color-key-cyan, 10);
 
 $color-red: #D0011B; //ux
 $color-green: #81CF2A; //design
@@ -17,10 +15,12 @@ $color-error: #ED4321;
 $color-gray-dark: #2C2C2C;
 $color-gray-light: lighten(#636462, 25);
 $color-gray-lighter: lighten(#636462, 35);
+$color-gray-bright: #ffffff;
 
 $color-text-default: #636462;
 $color-text-light: $color-gray-light;
 $color-text-lighter: $color-gray-lighter;
+$color-text-bright: $color-gray-bright;
 $color-text-on-dark: #CCD1CC;
 
 //flx grid
