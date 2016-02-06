@@ -1,23 +1,7 @@
 <!DOCTYPE html>
 <html lang="de" class="no-js">
 <head>
-	{{> _global/_metadata }}
-	
-	<style>
-		body, html {
-			margin: 0;
-			padding: 0;
-		}
-	</style>
-	<script>
-		var html = document.getElementsByTagName('html')[0];
-		if(html && html.classList){
-			html.classList.remove('no-js');
-			html.classList.add('js');
-		}
-	</script>
-
-	{{> _global/_styles }}
+	{{> _global/head_assets }}
 </head>
 
 <body class="{{ bodyclass }}">
@@ -41,6 +25,6 @@
 		<div class="grid__col flx--1°xs"><div class="grid__inner"></div></div>
 	</div> --}}
 	
-	{{> _global/_scripts }}
+	{{> _global/body_assets }}
 </body>
 </html>
