@@ -91,6 +91,11 @@ SECTION DEVELOPMENT
 		width: 15rem;
 		padding-bottom: 15rem;
 	}
+
+	@media (max-width: $screen-sm-max) {
+		width: 10rem;
+		padding-bottom: 10rem;
+	}
 }
 
 .dev-feature__text {
@@ -102,14 +107,6 @@ SECTION DEVELOPMENT
 	p:last-child {
 		margin-bottom: 0;
 	}
-
-	// @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
-	// 	text-align: left;
-
-	// 	h3 {
-	// 		margin-top: 0;
-	// 	}
-	// }
 }
 
 .dev-technologies {
@@ -118,20 +115,57 @@ SECTION DEVELOPMENT
 	transition: 500ms;
 	transition-property: opacity, visibility;
 
+	&:after {
+		@extend %pseudo;
+		top: auto;
+		bottom: 0;
+		left: 0;
+		height: 0%;
+		width: 100%;
+		background: linear-gradient(to top, #fff, transparent);
+		visibility: hidden;
+	}
+
+	&[aria-hidden="true"] {
+		&:after {
+			visibility: visible;
+			height: 100%;
+			transition: height 400ms;
+			z-index: 5;
+		}
+	}
+
 	h3 {
 		margin-top: 4rem;
 	}
 }
 
-.js .dev-technologies--hidden {
-	overflow: hidden;
-	visibility: hidden;
-	height: 0;
-	opacity: 0;
+.rb-panel {
+	transition: opacity 400ms, visibility 400ms;
+
+	.js & {
+		display: block;
+		overflow: hidden;
+		visibility: hidden;
+		height: 0;
+		opacity: 0;
+	}
+
+	&[aria-hidden="false"] {
+		visibility: inherit;
+		overflow: visible;
+		height: auto;
+		opacity: 1;
+	}
+
+	@include rb-js-export((
+		animation: "slide",
+	));
 }
 
 .dev-technologies__list {
-	
+	position: relative;
+	padding-bottom: 3rem;
 
 	li {
 		font-size: 1.4rem;
@@ -147,16 +181,6 @@ SECTION DEVELOPMENT
 			}
 		}
 
-		.js .dev-technologies--hidden & {
-			transform: translateX(300%);
-			transition: 0ms;
-			opacity: 0;
-
-			@media (max-width: $screen-xs-max) {
-				transform: translateY(50%);
-			}
-		}
-
 		&:before {
 			display: block;
 			content: ' ';
@@ -167,6 +191,17 @@ SECTION DEVELOPMENT
 			background-position: center center;
 			border-radius: 50%;
 			border: 1px solid $color-gray-lighter;
+
+			@media screen and (max-width: $screen-md-max) {
+				width: 15rem;
+				height: 15rem;
+				padding-bottom: 0;
+			}
+
+			@media screen and (max-width: $screen-sm-max) {
+				width: 10rem;
+				height: 10rem;
+			}
 		}
 	}
 
@@ -189,27 +224,3 @@ SECTION DEVELOPMENT
 		@extend %icon-tech-silverstripe;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

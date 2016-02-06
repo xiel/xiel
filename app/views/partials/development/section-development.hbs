@@ -6,11 +6,10 @@
 			<p>
 				Leidenschaft für Design, Technologie und Innovation verbindet sich in all meinen Projekten, die ich gerne von der ersten Idee bis zur Veröffentlichung begleite.
 			</p>
-			{{!-- <p>Interdisplinär, Schnittstelle zwischen UX, Design und Technik… ae quidem explicabo consequuntur expedita cupiditate totam facilis, temporibus aspernatur ratione iure.</p> --}}
 		</header>
 		
 		<div class="rb-itemscroller js-rb-life" data-module="itemscroller">
-			<div class="itemscroller-viewport" style="background: #f2f2f2;">
+			<div class="itemscroller-viewport">
 				<div class="itemscroller-content flx-group">
 					<div class="flx--4°sm flx--4°md dev-feature dev-feature--ux">
 						<div class="dev-feature__icon">
@@ -33,10 +32,9 @@
 								Ich gestalte Produkte, die gut strukturiert, zugänglich und effektiv sind. 
 								Bei der Entwicklung von Ideen und Konzepten stehe ich mit meinen Erfahrungen zu bewährten und neuen Technologien beratend zur Seite.
 							</p>
-							{{!-- <p>Devising a solid strategy to support a product’s success is crucial. We can help you plan and execute.</p> --}}
-							{{!-- <p>We design products that are well structured, easy to use, accessible and effective.</p> --}}
 						</div>
 					</div>
+
 					<div class="flx--4°sm flx--4°md dev-feature dev-feature--design">
 
 						<div class="dev-feature__icon">
@@ -56,63 +54,34 @@
 								eine Webseite oder App intuitiv zugänglich.
 								Und durch Responsives Design funktionieren Sie zukunftssicher auf allen Plattformen.
 							</p>
-
-							{{!-- <p>Animation, Motion Grafics, Responsive Design, Einfach, verständlich, intuitiv, schöne, ansprechend</p>
-							<p>We carefully craft stunning yet simple interfaces which are much more than just pretty pixels.</p> --}}
 						</div>
 					</div>
+
 					<div class="flx--4°sm flx--4°md dev-feature dev-feature--tech">
 						<div class="dev-feature__icon">
 							<svg width="272" height="272" viewBox="0 0 272 272" xmlns="http://www.w3.org/2000/svg">
 							  <g stroke="#3C99C8" stroke-width="2" fill="none" fill-rule="evenodd">
-								<path d="M74 108h130v63H74z"/>
-								<path d="M86 108V91.556h30v-14.39H94.57V71"/>
-								<path d="M81 122h8"/>
-								<path d="M93 122h8"/>
-								<path d="M106 122h8"/>
-								<path d="M118 122h8"/>
-								<path d="M130 122h8"/>
-								<path d="M143 122h8"/>
-								<path d="M155 122h8"/>
-								<path d="M168 122h8"/>
-								<path d="M181 122h8"/>
-								<path d="M88 140h8"/>
-								<path d="M101 140h8"/>
-								<path d="M113 140h8"/>
-								<path d="M127 140h8"/>
-								<path d="M139 140h8"/>
-								<path d="M151 140h8"/>
-								<path d="M165 140h8"/>
-								<path d="M177 140h8"/>
-								<path d="M190 140h8"/>
-								<path d="M81 157h8"/>
-								<path d="M93 157h8"/>
-								<path d="M106 157h54"/>
-								<path d="M165 157h8"/>
-								<path d="M177 157h8"/>
-								<path d="M190 157h8"/>
+								<path d="M74 108h130v63H74z"/><path d="M86 108V91.556h30v-14.39H94.57V71"/><path d="M81 122h8"/><path d="M93 122h8"/><path d="M106 122h8"/><path d="M118 122h8"/><path d="M130 122h8"/><path d="M143 122h8"/><path d="M155 122h8"/><path d="M168 122h8"/><path d="M181 122h8"/><path d="M88 140h8"/><path d="M101 140h8"/><path d="M113 140h8"/><path d="M127 140h8"/><path d="M139 140h8"/><path d="M151 140h8"/><path d="M165 140h8"/><path d="M177 140h8"/><path d="M190 140h8"/><path d="M81 157h8"/><path d="M93 157h8"/><path d="M106 157h54"/><path d="M165 157h8"/><path d="M177 157h8"/><path d="M190 157h8"/>
 								<path d="M136 271c74.558 0 135-60.442 135-135 0-54.758-32.602-101.902-79.454-123.08C174.606 5.263 155.8 1 136 1 61.442 1 1 61.442 1 136c0 74.558 60.442 135 135 135z"/>
 							  </g>
 							</svg>
 						</div>
 						<div class="dev-feature__text">
-							{{!-- <h3>Technology</h3> --}}
 							<h3>Development</h3>
 							<p>
 								Mit Hilfe modernster Technologien werden aus statischen Konzepten und Screendesigns lebendige Webseiten & Apps für Smartphones, Tablets und Desktops geschaffen.
 							</p>
 
-							<a href="#dev-technologies" class="toggle-btn text-btn text-btn--small" data-toggle="dev-technologies--hidden">
+							<button aria-controls="dev-technologies" class="toggle-btn text-btn text-btn--small js-rb-life" data-module="panelbutton" >
 								über Technologien
-							</a>
-							{{!-- <p>We specialise in iOS and Mac app development (Objective-C and Cocoa), full-stack Python and PHP web development, cloud infrastructure and deployments (AWS, Heroku, Rackspace), and scaleable, highly available web applications.</p> --}}
+							</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<div id="dev-technologies" class="dev-technologies dev-technologies--hidden">
+		<div id="dev-technologies" class="dev-technologies rb-panel js-rb-life" data-module="panel">
 			<div class="flx-group flx-group--centered">
 				<div class="flx--6°md ">
 					<h3>Technologien</h3>
