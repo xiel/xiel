@@ -1,0 +1,14 @@
+{
+    "default": {
+        "type": "js-rb-life",
+        "attrs": {},
+        "items": [
+            {
+                "title": "Option 1"
+            },
+            {
+                "title": "Option 2"
+            }
+        ]
+    }
+}
