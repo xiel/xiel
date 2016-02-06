@@ -13,10 +13,6 @@ SECTION STAGE
 	transform: translateZ(0.00001px);
 	backface-visibility: hidden;
 
-	.btn {
-		background: #d2d2ce;
-	}
-
 	@include rb-js-export((
 		switchedOff: false,
 		from: '-90eh+0vh', //where does the animation end (value from ::before element)
@@ -112,11 +108,11 @@ SECTION STAGE
 
 .stage-hello {
 	display: block;
-	color: $color-key;
+	color: $color-text-bright;
 	font-size: 6.4rem;
-	font-weight: 100;
 	letter-spacing: -.03em;
 	font-weight: 500;
+	text-shadow: 0 0 .5em rgba(#505850, .5);
 
 	@media (max-width: $screen-xs-max) {
 		font-size: 5rem;

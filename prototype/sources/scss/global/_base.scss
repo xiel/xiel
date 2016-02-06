@@ -82,7 +82,7 @@ iframe {
 
 body {
 	position: relative;
-	font-family: -apple-system, "Roboto", "Helvetica Neue", sans-serif;
+	font-family: "Roboto", "Helvetica Neue", sans-serif;
 	color: $color-text-default;
 	background: #fff;
 	font-size: 17px;
@@ -189,8 +189,9 @@ h4 {
 
 	h2 {
 		position: relative;
-		font-weight: 100; //thin
 		margin-top: 0;
+		font-weight: 500;
+		letter-spacing: -.03em;
 		
 		//kicker
 		em {

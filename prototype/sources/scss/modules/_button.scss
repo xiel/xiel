@@ -22,13 +22,21 @@ BUTTONS
 
 .btn {
 	@extend %button-normal;
-	background: transparent;
-	border: 3px solid;
-	transition: 300ms;
+	// background: transparent;
+	// border: 3px solid;
+	// transition: 300ms;
+	
+	color: $color-text-bright;
+	background: $color-key;
+	border: 0 none;
+	border-bottom: 3px solid;
+	background: $color-gray-dark;
+	background: rgba($color-gray-dark, .25);
 	
 	&:hover, &:focus {
 		color: #fff;
-		background: rgba(#333, .1);
+		background: $color-gray-dark;
+		background: rgba($color-gray-dark, .5);
 	}
 }
 
