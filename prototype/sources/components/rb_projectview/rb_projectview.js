@@ -41,7 +41,7 @@
                 toggle: true,
                 animation: 'adaptHeight', // 'adaptHeight' || 'slide'
                 easing: '',
-                duration: 4000,
+                duration: 400,
                 closeOnFocusout: false,
                 selectedIndex: -1,
                 adjustScroll: false, //true || false
@@ -66,18 +66,15 @@
 
                 this._super(element, initialDefaults);
 
-                // setTimeout(function(){
-                //     console.log('projectview', that);
-                //     console.log('rb.components', rb.components);
-                //     console.log('this.selectedIndexes', that.selectedIndexes);
-                //     console.log('this.selectedItems', that.selectedItems);
-                // });
+                setTimeout(function(){
+                    console.log('projectview', that);
+                    console.log('rb.components', rb.components);
+                    console.log('this.selectedIndexes', that.selectedIndexes);
+                    console.log('this.selectedItems', that.selectedItems);
+                });
             },
 
             _handleAnimation: function(animationData){
-                console.log('_handleAnimation, open?', animationData.panel.isOpen );
-                console.log('animationData', animationData, animationData.panel );
-
                 if(animationData.animation == 'slide' && animationData.panel.isOpen){
                     this.adjustScroll(animationData.panel, animationData.options);
                 } else if(animationData.animation == 'adaptHeight' && animationData.panel.isOpen){
@@ -96,8 +93,6 @@
                 var panelWrapper = this.$panelWrapper.get(0);
                 var nextIndex = panels.indexOf(openedPanel);
                 var closingPanels = [];
-
-                console.log('animateWrapper nextIndex', nextIndex);
 
                 var start = panelWrapper.offsetHeight;
 
@@ -152,22 +147,7 @@
 
             },
 
-            // selectIndex: function (index, options) {
-            //     var component = this.getComponentByIndexOrDOM(index);
-
-            //     console.log('selectIndex', index, options);
-
-            //     return component && component.open(options);
-            // },
-
-            // deselectIndex: function (index, options) {
-            //     var component = this.getComponentByIndexOrDOM(index);
-
-            //     console.log('deselectIndex', index, options);
-
-            //     return component && component.close(options);
-            // },
-
+            //initialize panels with given panelComponentName or default panel component
             _getElements: function () {
                 var panels;
                 var that = this;
@@ -180,7 +160,7 @@
                 var jsPanelName = this.interpolateName(this.options.panelName, true);
                 this.$panelWrapper = $(this.getElementsFromString(options.panelWrapperSel));
 
-                var panelComponentName = this.interpolateName(this.options.panelComponentName);
+                var panelComponentName = this.interpolateName(this.options.panelComponentName || 'panel');
 
                 //check if there is a special sub-class panel for this component, if not, fall back to normal panel
                 if(!(panelComponentName in rb.components)){
@@ -246,10 +226,10 @@
                 duration: 400,
                 easing: '',
                 setFocus: true, // true || false
-                closeOnOutsideClick: false,
+                closeOnOutsideClick: true,
                 resetSwitchedOff: true,
                 switchedOff: false,
-                closeOnEsc: false,
+                closeOnEsc: true,
                 itemWrapper: '',
             },
 
