@@ -6,7 +6,6 @@ SECTION DEVELOPMENT
 	background: #fff;
 	z-index: 1;
 	padding: 4% 0;
-	// transform: translateZ(0.00001px);
 
 	&:before,
 	&:after {
@@ -33,7 +32,6 @@ SECTION DEVELOPMENT
 	.container {
 		position: relative;
 		z-index: 1;
-		// transform: matrix(1,.075,0,1,1,1);
 	}
 }
 
@@ -166,6 +164,7 @@ SECTION DEVELOPMENT
 .dev-technologies__list {
 	position: relative;
 	padding-bottom: 3rem;
+	backface-visibility: hidden;
 
 	li {
 		font-size: 1.4rem;
@@ -174,10 +173,22 @@ SECTION DEVELOPMENT
 		transition: 1.2s ease-out;
 		transition: 1.2s cubic-bezier(.62,1.37,.52,.95);
 		transition-property: transform, opacity;
+		backface-visibility: hidden;
 
 		@for $i from 1 through 12 {
 			&:nth-child(#{$i}){
 				transition-delay: ($i - 1) * 150 + 500ms;
+			}
+		}
+
+		[aria-hidden="true"] & {
+			transform: translateX(75vw);
+			transition: 200ms;
+			transition-delay: 200ms;
+			opacity: 0;
+
+			@media screen and (max-width: $screen-xs-max) {
+				transform: translateY(100%);
 			}
 		}
 

@@ -68,7 +68,7 @@ module.exports = function(grunt) {
 	// Build task
 	grunt.registerTask('build', [
 		'dev',
-		'connect:livereload',
+		// 'connect:livereload',
 		'watch'
 	]);
 
