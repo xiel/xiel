@@ -14,7 +14,16 @@
     var life = rb.life;
     var components = rb.components;
 
-    // var Position = rb.Position;
+    var cleanupCSS = function () {
+        var css = {display: ''};
+
+        if (!this.style.height.startsWith('0')) {
+            css.height = '';
+            css.overflow = '';
+        }
+
+        $(this).css(css);
+    };
 
     components.panelgroup.extend('projectview',
         /** @lends rb.components.projectview.prototype */
@@ -28,56 +37,136 @@
              * @property {String}  defaults.animation='adaptHeight'
              */
             defaults: {
+                multiple: false,
+                toggle: true,
+                animation: 'adaptHeight', // 'adaptHeight' || 'slide'
+                easing: '',
+                duration: 4000,
+                closeOnFocusout: false,
                 selectedIndex: -1,
-                toggle: false,
-                animation: 'adaptHeight',
-                preventDefault: true,
+                adjustScroll: false, //true || false
+                setFocus: true,
+                switchedOff: false,
+                resetSwitchedOff: true,
+                panelName: '{name}-panel',
+                panelSel: 'find(.{name}-panel)',
+                btnSel: 'find(.{name}-btn)',
+                groupBtnSel: 'find(.{name}-ctrl-btn)',
+                panelWrapperSel: 'find(.{name}-panel-wrapper):0',
+                btnWrapperSel: 'find(.{name}-btn-wrapper):0',
+                itemWrapper: '',
+
+                //special options compared to panelgroup
                 panelComponentName: '{name}panel',
+                preventDefault: true,
             },
 
             init: function (element, initialDefaults) {
+                var that = this;
+
                 this._super(element, initialDefaults);
 
-                console.log('projectview- - -  - - - - -', this, this.open);
+                // setTimeout(function(){
+                //     console.log('projectview', that);
+                //     console.log('rb.components', rb.components);
+                //     console.log('this.selectedIndexes', that.selectedIndexes);
+                //     console.log('this.selectedItems', that.selectedItems);
+                // });
             },
 
-            selectIndex: function (index, options) {
-                var component = this.getComponentByIndexOrDOM(index);
+            _handleAnimation: function(animationData){
+                console.log('_handleAnimation, open?', animationData.panel.isOpen );
+                console.log('animationData', animationData, animationData.panel );
 
-                console.log('selectIndex', index, options);
-
-                return component && component.open(options);
+                if(animationData.animation == 'slide' && animationData.panel.isOpen){
+                    this.adjustScroll(animationData.panel, animationData.options);
+                } else if(animationData.animation == 'adaptHeight' && animationData.panel.isOpen){
+                    this.animateWrapper(animationData.panel.element);
+                } else if(animationData.animation == 'adaptHeight') {
+                    this.animateWrapper();
+                }
             },
 
-            deselectIndex: function (index, options) {
-                var component = this.getComponentByIndexOrDOM(index);
+            animateWrapper: function (openedPanel) {
+                var end;
 
-                console.log('deselectIndex', index, options);
+                var that = this;
+                var panels = this.$panels.get();
+                var curIndex = -1;
+                var panelWrapper = this.$panelWrapper.get(0);
+                var nextIndex = panels.indexOf(openedPanel);
+                var closingPanels = [];
 
-                return component && component.close(options);
-            },
+                console.log('animateWrapper nextIndex', nextIndex);
 
-            panelChangeCB: function (panelComponent, action) {
-                var start = +new Date();
-                console.log('panelChangeCB', panelComponent, action, start);
+                var start = panelWrapper.offsetHeight;
 
-                switch (action) {
-                    case 'beforeopen':
+                this.$panelWrapper.stop();
 
-                        // while(+new Date() - start < 1000) {
-                        //     console.log('think', start);
-                        // }
+                panelWrapper.style.height = 'auto';
 
-                        break;
-                    case 'afteropen':
-                    case 'afterclose':
-                        this._updatePanelInformation();
-                        this._triggerOnce();
-                        break;
+                this.selectedItems.forEach(function (panel) {
+                    panel.style.display = 'none';
+                    curIndex = panels.indexOf(panel);
+                    closingPanels.push(panel);
+                });
+
+                if(openedPanel) {
+                    openedPanel.style.display = 'block';
+                    openedPanel.style.position = 'relative';
                 }
 
-                
+                end = panelWrapper.offsetHeight;
+
+                this.selectedItems.forEach(function (panel) {
+                    panel.style.display = '';
+                });
+
+                if(openedPanel) {
+                    openedPanel.style.display = '';
+                    openedPanel.style.position = '';
+                }
+
+                $(closingPanels).addClass(rb.statePrefix + 'closing');
+
+                this.$panelWrapper
+                    .attr({'data-direction': nextIndex > curIndex ? 'up' : 'down'})
+                    .css({
+                        overflow: 'hidden',
+                        height: start + 'px'
+                    })
+                    .animate({height: end}, {
+                        duration: this.options.duration,
+                        easing: this.options.easing,
+                        always: function () {
+                            that.$panels.removeClass(rb.statePrefix + 'closing');
+                            that.$panelWrapper
+                                .removeClass(rb.statePrefix + 'fx')
+                                .attr({'data-direction': ''})
+                            ;
+                            cleanupCSS.call(this);
+                        }
+                    })
+                    .addClass(rb.statePrefix + 'fx')
+                ;
+
             },
+
+            // selectIndex: function (index, options) {
+            //     var component = this.getComponentByIndexOrDOM(index);
+
+            //     console.log('selectIndex', index, options);
+
+            //     return component && component.open(options);
+            // },
+
+            // deselectIndex: function (index, options) {
+            //     var component = this.getComponentByIndexOrDOM(index);
+
+            //     console.log('deselectIndex', index, options);
+
+            //     return component && component.close(options);
+            // },
 
             _getElements: function () {
                 var panels;
@@ -95,12 +184,9 @@
 
                 //check if there is a special sub-class panel for this component, if not, fall back to normal panel
                 if(!(panelComponentName in rb.components)){
+                    console.warn('projectview | did not found given panelComponentName in rb.components', panelComponentName);
                     panelComponentName = 'panel';
                 }
-
-                console.log('rb.components', rb.components, rb.components.panel);
-                console.log('panelName, jsPanelName', panelName, jsPanelName);
-                console.log('panelComponentName:::::::', panelComponentName, panelComponentName in rb.components );
 
                 this.$panels = $(this.getElementsFromString(options.panelSel, this.$panelWrapper.get(0))).each(function (index) {
                     var panel = life.create(this, rb.components[panelComponentName], {
@@ -116,7 +202,7 @@
                     panel.groupComponent = that;
                 });
 
-                components.panel.prototype.name = 'panel';
+                components.panel.prototype.name = panelComponentName;
 
                 panels = this.$panels;
 
@@ -135,7 +221,6 @@
                     btn.setTarget(that.element);
                 });
             },
-
         }
     );
 
@@ -156,23 +241,23 @@
              * @prop {Boolean} defaults.closeOnEsc=false Whether panel should be closed on esc key.
              * @prop {String} defaults.itemWrapper='' Wheter the closest itemWrapper should get the class `is-selected-within'.
              */
-            // defaults: {
-            //     animation: '', // || 'slide'
-            //     duration: 400,
-            //     easing: '',
-            //     setFocus: true, // true || false
-            //     closeOnOutsideClick: false,
-            //     resetSwitchedOff: true,
-            //     switchedOff: false,
-            //     closeOnEsc: false,
-            //     itemWrapper: '',
-            // },
-
-            init: function (element, initialDefaults) {
-                this._super(element, initialDefaults);
-
-                console.log('projectview-panel', this, this.open);
+            defaults: {
+                animation: '', // || 'slide'
+                duration: 400,
+                easing: '',
+                setFocus: true, // true || false
+                closeOnOutsideClick: false,
+                resetSwitchedOff: true,
+                switchedOff: false,
+                closeOnEsc: false,
+                itemWrapper: '',
             },
+
+            // init: function (element, initialDefaults) {
+            //     this._super(element, initialDefaults);
+
+            //     console.log('projectviewpanel', this);
+            // },
 
             /**
              * Opens the panel
@@ -191,7 +276,7 @@
                 var mainOpts = this.options;
                 var changeEvent = this._trigger(this._beforeEvtName, options);
 
-                console.log('projectview-panel OPEN!!!!!', options);
+                // console.log('projectview-panel OPEN!!!!!', options);
 
                 if(!options){
                     options = {};
