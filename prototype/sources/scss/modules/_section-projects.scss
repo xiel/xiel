@@ -336,29 +336,44 @@ SECTION PROJECTS
 //new
 .projectview-panel-wrapper {
 	position: relative;
-	// overflow: hidden;
+	margin: 4rem auto;
+	background: #fff;
+	outline: 2px solid blue;
 }
 
 .projectview-panel {
 	display: block;
-	// height: 0;
-	overflow: hidden;
 	background: #f7f7f7;
-	visibility: hidden;
-	opacity: 0;
-	transition: opacity 400ms, visibility 400ms;
+	// height: 0;
+	// overflow: hidden;
+	// visibility: hidden;
+	// opacity: 0;
+	// transition: opacity 400ms, visibility 400ms;
 
 	.js & {
 		display: none;
+		transition: 2000ms;
 	}
 
 	&.is-open {
 		display: block;
-		visibility: inherit;
-		overflow: visible;
-		height: auto;
-		opacity: 1;
+		// background: green;
 	}
+
+	&.is-closing {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		opacity: 0;
+		background: red;
+	}
+}
+
+.projectview-content {
+	padding: 30px;
+	border: 1px solid red;
 }
 
 

@@ -133,6 +133,7 @@
                     this.setSwitchedOffClass();
                 }
             },
+            
             setSwitchedOffClass: function(){
                 this.element.classList[this.options.switchedOff ? 'add' : 'remove'](rb.statePrefix + 'switched-off');
             },
