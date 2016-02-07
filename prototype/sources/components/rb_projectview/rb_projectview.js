@@ -44,7 +44,7 @@
                 duration: 400,
                 closeOnFocusout: false,
                 selectedIndex: -1,
-                adjustScroll: false, //true || false
+                adjustScroll: true, //true || false
                 setFocus: true,
                 switchedOff: false,
                 resetSwitchedOff: true,
@@ -66,12 +66,12 @@
 
                 this._super(element, initialDefaults);
 
-                setTimeout(function(){
-                    console.log('projectview', that);
-                    console.log('rb.components', rb.components);
-                    console.log('this.selectedIndexes', that.selectedIndexes);
-                    console.log('this.selectedItems', that.selectedItems);
-                });
+                // setTimeout(function(){
+                //     console.log('projectview', that);
+                //     console.log('rb.components', rb.components);
+                //     console.log('this.selectedIndexes', that.selectedIndexes);
+                //     console.log('this.selectedItems', that.selectedItems);
+                // });
             },
 
             _handleAnimation: function(animationData){
@@ -233,11 +233,83 @@
                 itemWrapper: '',
             },
 
-            // init: function (element, initialDefaults) {
-            //     this._super(element, initialDefaults);
+            init: function (element, initialDefaults) {
+                this._super(element, initialDefaults);
 
-            //     console.log('projectviewpanel', this);
-            // },
+                // console.log('projectviewpanel', this);
+                // console.log('element, button', this.element, this.buttonComponent);
+
+                // if(this.buttonComponent && this.buttonComponent.element){
+                //     this.loadPanelContent();
+                // }
+            },
+
+            loadPanelContent: function(){
+                var that = this;
+
+                if(!(this.buttonComponent && this.buttonComponent.element)){
+                    return false
+                }
+
+                var buttonElement = this.buttonComponent.element;
+                var buttonHref = buttonElement.href;
+
+                console.log('href', buttonHref);
+
+                if(buttonHref && buttonHref !== '#'){
+                    this.panelAjaxContent = ajax(buttonHref + '?ajax=true');
+
+                    this.panelAjaxContent.then(function(data) {
+                        // on fulfillment
+                        console.log('NEW DATA!!!', that);
+                        that.$element.html(data);
+
+                    }, function(reason) {
+                        // on rejection
+                        console.log(reason);
+                    });
+                }
+
+                function ajax(url) {
+                    return new Promise(function(resolve, reject){
+                        var xhr = new XMLHttpRequest();
+
+                        xhr.open('GET', url);
+                        xhr.onreadystatechange = handler;
+                        // xhr.responseType = 'json';
+                        // xhr.setRequestHeader('Accept', 'application/json');
+                        xhr.send();
+
+                        function handler() {
+                            if (this.readyState === this.DONE) {
+                                if (this.status === 200) {
+                                    resolve(this.response);
+                                } else {
+                                    reject(new Error('ajax: `' + url + '` failed with status: [' + this.status + ']'));
+                                }
+                            }
+                        };
+                    });
+                }
+            },
+
+            _switchOn: function () {
+                // console.log('_switchOn projectviewpanel', this.buttonComponent);
+
+                if (this.isOpen) {
+                    this.element.classList.add(rb.statePrefix + 'open');
+                }
+
+                this.element.classList.remove(rb.statePrefix + 'switched-off');
+
+                this.element.setAttribute('aria-hidden', '' + (!this.isOpen));
+
+                this.$element.attr({'role': this._role || 'group', tabindex: '-1'});
+
+                if(this.buttonComponent) {
+                    this.loadPanelContent();
+                }
+            },
 
             /**
              * Opens the panel
@@ -255,8 +327,6 @@
                 }
                 var mainOpts = this.options;
                 var changeEvent = this._trigger(this._beforeEvtName, options);
-
-                // console.log('projectview-panel OPEN!!!!!', options);
 
                 if(!options){
                     options = {};
@@ -284,6 +354,7 @@
                 } else {
                     this._opened(options);
                 }
+
                 return true;
             },
 
