@@ -69,9 +69,10 @@ SECTION PROJECTS
 		height: auto;
 		transform: scale(1.01);
 		transition: transform 400ms ease-out;
-
+		
+		a[aria-expanded="true"] &,
 		a:hover &,
-		a:focus & {
+		a.is-keyboardfocus & {
 			transform: scale(1.05);
 			filter: blur(2px);
 		}
@@ -93,9 +94,10 @@ SECTION PROJECTS
 	background: rgba($color-key-cyan, .9);
 	background: linear-gradient(to bottom, rgba($color-key-cyan, .9), rgba($color-key-cyan, .96) );
 	transition: 300ms ease-in-out;
-
+	
+	a[aria-expanded="true"] &,
 	a:hover &,
-	a:focus & {
+	a.is-keyboardfocus & {
 		opacity: 1;
 		cursor: pointer;
 		transform: translateY(0.001px);
@@ -109,9 +111,10 @@ SECTION PROJECTS
 		padding-bottom: .75em;
 		transition: inherit;
 		transform: translateY(50%);
-
+		
+		a[aria-expanded="true"] &,
 		a:hover &,
-		a:focus & {
+		a.is-keyboardfocus & {
 			transform: scale(1);
 		}
 		
@@ -141,8 +144,9 @@ SECTION PROJECTS
 			transition: 500ms;
 			transition-delay: 50ms;
 			
+			a[aria-expanded="true"] &,
 			a:hover &,
-			a:focus & {
+			a.is-keyboardfocus & {
 				transform: translateY(0.0001%);
 			}
 		}
@@ -171,9 +175,10 @@ SECTION PROJECTS
 		transition: 400ms;
 		opacity: 0;
 		transform: translateY(150%);
-
+	
+		a[aria-expanded="true"] &,
 		a:hover &,
-		a:focus & {
+		a.is-keyboardfocus & {
 			transform: translateY(0.0001%);
 			opacity: 1;
 
@@ -299,7 +304,7 @@ SECTION PROJECTS
 		background-size: contain;
 
 		&:hover,
-		&:focus {
+		&.is-keyboardfocus {
 			background-color: rgba(#fff, .75);
 		}
 
@@ -336,7 +341,8 @@ SECTION PROJECTS
 //new
 .projectview-panel-wrapper {
 	position: relative;
-	margin: 4rem auto;
+	overflow: hidden;
+	margin: auto;
 	background: #fff;
 	outline: 2px solid blue;
 	background: #ccc;
