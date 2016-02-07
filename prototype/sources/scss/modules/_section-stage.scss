@@ -109,10 +109,12 @@ SECTION STAGE
 .stage-hello {
 	position: relative;
 	display: block;
-	color: $color-text-bright;
+	margin: 0 0 1rem;
 	font-size: 6.4rem;
+	line-height: .9;
 	letter-spacing: -.03em;
 	font-weight: 500;
+	color: $color-text-bright;
 	z-index: 1;
 
 	@media (max-width: $screen-xs-max) {
