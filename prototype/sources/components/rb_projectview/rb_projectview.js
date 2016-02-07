@@ -59,6 +59,7 @@
                 //special options compared to panelgroup
                 panelComponentName: '{name}panel',
                 preventDefault: true,
+                closeOnEsc: true,
             },
 
             init: function (element, initialDefaults) {
@@ -234,7 +235,7 @@
                 duration: 400,
                 easing: '',
                 setFocus: true, // true || false
-                closeOnOutsideClick: true,
+                closeOnOutsideClick: false,
                 resetSwitchedOff: true,
                 switchedOff: false,
                 closeOnEsc: true,
