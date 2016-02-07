@@ -82,6 +82,14 @@
                 } else if(animationData.animation == 'adaptHeight') {
                     this.animateWrapper();
                 }
+
+                //scroll into view
+                // var panelWrapper = this.$panelWrapper.get(0);
+                // if(false && panelWrapper.scrollIntoViewIfNeeded){
+                //     panelWrapper.scrollIntoViewIfNeeded(true);
+                // } else if(panelWrapper.scrollIntoView){
+                //     panelWrapper.scrollIntoView({behavior: "smooth"});
+                // }
             },
 
             animateWrapper: function (openedPanel) {
