@@ -244,39 +244,32 @@
 
             init: function (element, initialDefaults) {
                 this._super(element, initialDefaults);
-
-                // console.log('projectviewpanel', this);
-                // console.log('element, button', this.element, this.buttonComponent);
-
-                // if(this.buttonComponent && this.buttonComponent.element){
-                //     this.loadPanelContent();
-                // }
             },
 
             loadPanelContent: function(){
                 var that = this;
 
-                if(!(this.buttonComponent && this.buttonComponent.element)){
+                if(this.panelAjaxContent || !(this.buttonComponent && this.buttonComponent.element)){
                     return false
                 }
 
                 var buttonElement = this.buttonComponent.element;
                 var buttonHref = buttonElement.href;
 
-                console.log('href', buttonHref);
-
                 if(buttonHref && buttonHref !== '#'){
-                    this.panelAjaxContent = ajax(buttonHref + '?ajax=true');
+                    
+                    setTimeout(function(){
+                        that.panelAjaxContent = ajax(buttonHref + '?ajax=true');
 
-                    this.panelAjaxContent.then(function(data) {
-                        // on fulfillment
-                        console.log('NEW DATA!!!', that);
-                        that.$element.html(data);
+                        that.panelAjaxContent.then(function(data) {
+                            that.$element.html(data);
 
-                    }, function(reason) {
-                        // on rejection
-                        console.log(reason);
-                    });
+                        }, function(reason) {
+                            // on rejection
+                            console.log(reason);
+                        });
+                    }, 3000);
+                    
                 }
 
                 function ajax(url) {
@@ -367,7 +360,13 @@
                 return true;
             },
 
+            // close: function(){
+            //     console.log('close', arguments);
+            // },
 
+            // _close: function(){
+            //     console.log('_close', arguments);
+            // },
         }
     );
 
