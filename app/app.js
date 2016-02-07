@@ -48,7 +48,7 @@ app.set('views', rootPath('views/pages') );
 app.set('view engine', 'hbs');
 
 // compress all requests
-app.use( compression() );
+// app.use( compression() );
 
 //parse parameters out of (post) requests
 app.use(bodyParser.urlencoded({ extended: false }));
