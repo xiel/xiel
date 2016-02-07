@@ -339,25 +339,25 @@ SECTION PROJECTS
 	margin: 4rem auto;
 	background: #fff;
 	outline: 2px solid blue;
+	background: #ccc;
 }
 
 .projectview-panel {
+	position: relative;
 	display: block;
-	background: #f7f7f7;
-	// height: 0;
-	// overflow: hidden;
-	// visibility: hidden;
-	// opacity: 0;
-	// transition: opacity 400ms, visibility 400ms;
 
 	.js & {
 		display: none;
-		transition: 2000ms;
+		visibility: hidden;
+		opacity: 0;
+		transition: 200ms;
 	}
 
 	&.is-open {
 		display: block;
-		// background: green;
+		visibility: visible;
+		opacity: 1;
+		z-index: 1;
 	}
 
 	&.is-closing {
@@ -366,8 +366,6 @@ SECTION PROJECTS
 		top: 0;
 		left: 0;
 		width: 100%;
-		opacity: 0;
-		background: red;
 	}
 }
 
