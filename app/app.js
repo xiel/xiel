@@ -12,6 +12,7 @@ var expressValidator = require('express-validator');
 var bodyParser = require('body-parser');
 var htmlMinifyer = require('html-minifier').minify;
 var compression = require('compression');
+var grunt = require('grunt');
 
 //get routers
 var routes = require('./routes/index');
@@ -21,19 +22,28 @@ var projects = require('./routes/projects');
 //init
 var app = express();
 var rootPath = function(pathFromRoot){
-	console.log('rootPath', path.join( __dirname, pathFromRoot ) );
 	return path.join( __dirname, pathFromRoot )
 };
 
 //add templating engine
-app.engine('hbs',
-	exphbs({
-		layoutsDir: rootPath('views/layouts/'),
-		partialsDir: rootPath('views/partials/'),
-		defaultLayout: 'default',
-		extname: '.hbs'
-	})
-);
+var handlebarsConfig = {
+	layoutsDir: rootPath('views/layouts/'),
+	partialsDir: rootPath('views/partials/'),
+	defaultLayout: 'default',
+	extname: '.hbs',
+	helpers: {
+		includeraw: function(src){
+			return new Handlebars.SafeString( grunt.file.read(src) );
+		}
+	}
+};
+
+var hbs = exphbs.create(handlebarsConfig);
+var Handlebars = hbs.handlebars;
+
+require('handlebars-helpers').register(hbs.handlebars, {});
+app.engine('hbs', hbs.engine);
+
 app.set('views', rootPath('views/pages') );
 app.set('view engine', 'hbs');
 
@@ -46,6 +56,7 @@ app.use(expressValidator());
 
 //serve resources statics
 app.use( express.static( rootPath('resources/') ) );
+app.use( express.static( rootPath('../prototype/_dev/') ) );
 app.use( express.static( rootPath('../prototype/_output/') ) );
 
 //routes

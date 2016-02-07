@@ -1,0 +1,176 @@
+/* ===================================================
+SECTION STAGE
+=================================================== */
+
+.stage {
+	position: relative;
+	background: #d2d2ce;
+	overflow: hidden;
+	background-size: 100% auto;
+	height: 50vw;
+	max-height: 90vh;
+	justify-content: center;
+	transform: translateZ(0.00001px);
+	backface-visibility: hidden;
+
+	@include rb-js-export((
+		switchedOff: false,
+		from: '-90eh+0vh', //where does the animation end (value from ::before element)
+		to: '-0eh+0vh', //where does it start?
+		childSel: 'find(.scrolly-element)',
+		throttleDelay: 0,
+	));
+
+	@media (max-width: $screen-sm-max) {
+		padding-top: 80px;
+	}
+
+	@media (max-width: $screen-xs-max) {
+		height: auto;
+
+		.btn {
+			width: 100%;
+		}
+	}
+}
+
+
+.xiel-logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 9rem;
+	height: 9rem;
+	margin: 4.5rem auto 0;
+	z-index: 9999;
+
+	a {
+		position: relative;
+		@extend %ir;
+		display: block;
+		overflow: hidden;
+		margin: 0 auto;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+
+	h1, svg {
+		position: absolute;
+		margin: 0;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	path.x {
+		transform-origin: 250px 250px 0px;
+		transition: 0ms;
+		transform: rotate(0.01deg);
+	}
+
+	&:hover {
+		path.x {
+			transition: 400ms cubic-bezier(.62,1.37,.52,.95);
+			transform: rotate(90deg);
+		}
+	}
+
+	@media (max-width: $screen-sm-max) {
+		width: 8rem;
+		height: 8rem;
+	}
+
+	@media (max-width: $screen-xs-max) {
+		margin-top: 2rem;
+		width: 6rem;
+		height: 6rem;
+		left: 2rem;
+		right: auto;
+	}
+}
+
+.welcoming {
+	position: relative;
+	font-size: 2rem;
+	width: 62%;
+	max-width: 546px;
+
+	@media (max-width: $screen-xs) {
+		width: auto;
+		padding-bottom: 30%;
+	}
+
+	
+}
+
+.stage-hello {
+	position: relative;
+	display: block;
+	margin: 0 0 1rem;
+	font-size: 6.4rem;
+	line-height: .9;
+	letter-spacing: -.03em;
+	font-weight: 500;
+	color: $color-text-bright;
+	z-index: 1;
+
+	@media (max-width: $screen-xs-max) {
+		font-size: 5rem;
+	}
+
+	&:before {
+		@extend %pseudo;
+		top: -70%;
+		left: -25%;
+		width: 100%;
+		height: 220%;
+		background: radial-gradient(50% 50%, rgba(#505850, .2), transparent);
+		z-index: -1;
+	}
+}
+
+.stage-hero {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	opacity: 1;
+
+	//performance improvement
+	will-change: transform, opacity;
+	transform: translateY(0.0px);
+	backface-visibility: hidden;
+
+	@include rb-js-export((
+		opacity: .5,
+		transform: (
+			value: 'translateY(10vw)',
+			start: 'translateY(0vw)',
+		),
+		easing: '(.51,.13,.57,.82)', //http://cubic-bezier.com/#.51,.13,.57,.82
+	));
+
+	@media (max-width: $screen-sm-max) {
+		right: -5%;
+	}
+	@media (max-width: $screen-xs) {
+		right: 0;
+	}
+
+	img {
+		display: block;
+		height: auto;
+		width: 100%;
+		max-width: 100%;
+		margin: 0 auto;
+		transform: translateY(0.0px);
+		backface-visibility: hidden;
+
+		@media (min-width: 2000px) {
+			width: auto;
+		}
+	}
+}
