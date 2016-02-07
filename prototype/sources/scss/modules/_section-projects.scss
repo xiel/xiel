@@ -333,7 +333,33 @@ SECTION PROJECTS
 	}
 }
 
+//new
+.projectview-panel-wrapper {
+	position: relative;
+	// overflow: hidden;
+}
 
+.projectview-panel {
+	display: block;
+	// height: 0;
+	overflow: hidden;
+	background: #f7f7f7;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 400ms, visibility 400ms;
+
+	.js & {
+		display: none;
+	}
+
+	&.is-open {
+		display: block;
+		visibility: inherit;
+		overflow: visible;
+		height: auto;
+		opacity: 1;
+	}
+}
 
 
 
