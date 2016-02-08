@@ -247,6 +247,8 @@
                 this.isOpen = true;
                 this._handleAnimation(changeEvent);
 
+                console.log('options.focusElement', options.focusElement);
+
                 if (options.setFocus !== false && (mainOpts.setFocus || options.setFocus) && !options.focusElement) {
                     options.focusElement = this.getFocusElement();
                 }

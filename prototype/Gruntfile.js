@@ -80,6 +80,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('dev', [
+		'clean:dist',
 		'clean:dev',
 		'clean:tmp',
 		//'svg',
@@ -95,7 +96,6 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('dist', [
-        'clean:dev',
         'clean:dist',
         'clean:tmp',
         'scssglobbing',

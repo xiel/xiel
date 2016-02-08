@@ -343,8 +343,9 @@ SECTION PROJECTS
 	position: relative;
 	overflow: hidden;
 	margin: auto;
+	min-height: 50vh;
 	background: red;
-	outline: 2px solid blue;
+	background: #EDEDED;
 }
 
 .projects-wrapper {
@@ -352,8 +353,8 @@ SECTION PROJECTS
 
 	.btns {
 		position: fixed;
-		top: 50%;
-		right: 0;
+		bottom: 2%;
+		right: 2%;
 		background: green;
 		z-index: 10;
 	}
@@ -391,6 +392,11 @@ SECTION PROJECTS
 
 	&.is-closing {
 	}
+}
+
+*:focus {
+	outline: 5px dotted red;
+	outline-offset: 2px;
 }
 
 .projectview-content {
