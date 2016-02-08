@@ -60,6 +60,7 @@
                 panelComponentName: '{name}panel',
                 preventDefault: true,
                 closeOnEsc: true,
+                scrollIntoView: true,
             },
 
             init: function (element, initialDefaults) {
@@ -86,7 +87,7 @@
 
                 //scroll into view
                 var panelWrapper = this.$panelWrapper.get(0);
-                if(false && panelWrapper.scrollIntoViewIfNeeded){
+                if(panelWrapper.scrollIntoViewIfNeeded){
                     panelWrapper.scrollIntoViewIfNeeded(true);
                 } else if(panelWrapper.scrollIntoView){
                     panelWrapper.scrollIntoView({behavior: "smooth"});
