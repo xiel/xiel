@@ -38,12 +38,12 @@
              */
             defaults: {
                 multiple: false,
-                toggle: true,
+                toggle: false,
                 animation: 'adaptHeight', // 'adaptHeight' || 'slide'
                 easing: '',
-                duration: 400,
+                duration: 1000,
                 closeOnFocusout: false,
-                selectedIndex: -1,
+                selectedIndex: 0,
                 adjustScroll: true, //true || false
                 setFocus: true,
                 switchedOff: false,

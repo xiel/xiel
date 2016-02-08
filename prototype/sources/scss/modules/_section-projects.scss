@@ -343,33 +343,53 @@ SECTION PROJECTS
 	position: relative;
 	overflow: hidden;
 	margin: auto;
-	// outline: 2px solid blue;
+	background: red;
+	outline: 2px solid blue;
+}
+
+.projects-wrapper {
+	outline: 2px solid orange;
+
+	.btns {
+		position: fixed;
+		top: 50%;
+		right: 0;
+		background: green;
+		z-index: 10;
+	}
 }
 
 .projectview-panel {
 	position: relative;
 	display: block;
+	min-height: 50vh;
 
-	.js & {
-		display: none;
-		visibility: hidden;
-		opacity: 0;
-		transition: 200ms;
-	}
-
-	&.is-open {
-		display: block;
-		visibility: visible;
-		opacity: 1;
-		z-index: 1;
-	}
-
-	&.is-closing {
-		display: block;
+	&[aria-hidden] {
 		position: absolute;
+		visibility: hidden;
 		top: 0;
 		left: 0;
 		width: 100%;
+		opacity: 0;
+		// height: 0;
+		transition: 1s;
+		// transition-property: opacity, visibility;
+		z-index: 0;
+	}
+
+	&.is-open,
+	&.is-closing {
+		visibility: visible;
+		height: auto;
+	}
+
+	&.is-open {
+		position: relative;
+		z-index: 5;
+		opacity: 1;
+	}
+
+	&.is-closing {
 	}
 }
 

@@ -1,140 +1,141 @@
-<div class="rb-projectview projects-wrapper js-rb-life" data-module="projectview">
+<div class="rb-projectview projects-wrapper js-rb-life" data-module="projectview" data-projectview-selected-index="0">
 
-	<section id="section-projects" class="section projects">
-		<div class="container">
-			<header class="section__header">
-				<h2>Projekte</h2>
-				<p>In den vergangenen Jahren hatte ich die Möglichkeit an einem großen Spektrum von Projekten zu arbeiten, von einnehmenden Touch-Interfaces bis zu komplexen FrontEnd-Anwendungen. Hier sind ein paar meiner Favoriten.</p>
-			</header>
+	<div class="btns">
+		<button type="button" class="projectview-btn">project overview</button>
+		<button type="button" class="projectview-ctrl-btn" data-type="prev">prev</button>
+		<button type="button" class="projectview-ctrl-btn" data-type="close">close</button>
+		<button type="button" class="projectview-ctrl-btn" data-type="closeAll">closeAll</button>
+		<button type="button" class="projectview-ctrl-btn" data-type="next">next</button>
+	</div>
 
-			<div class="flx-group project-teasers">
-				<div class="flx--6°sm flx--6°sm flx--4°md">
-					<a href="/projects/deutschesee" class="project-teaser projectview-btn">
-						<div class="project-teaser__media">
-							<img src="/media/teaser-dsee.jpg" alt="Deutsche See Webseite">
-						</div>
-						<div class="project-teaser__desc">
-							<h3>
-								Deutsche See
-							</h3>
-							<ul class="project-teaser__services">
-								<li>Responsive Design</li>
-								<li>FrontEnd Development Lead</li>
-							</ul>
-						</div>
-					</a>
-				</div>
-				<div class="flx--6°sm flx--6°sm flx--4°md">
-					<a href="/projects/siemens" class="project-teaser projectview-btn">
-						<div class="project-teaser__media">
-							<img src="/media/teaser-siemens-map.jpg" alt="Siemens Webseite" />
-						</div>
-						<div class="project-teaser__desc">
-							<h3>
-								Siemens Hausgeräte
-							</h3>
-							<ul class="project-teaser__services">
-								<li>FrontEnd Development</li>
-							</ul>
-						</div>
-					</a>
-				</div>
-				<div class="flx--6°sm flx--6°sm flx--4°md">
-					<a href="/projects/mutz" class="project-teaser projectview-btn">
-						<div class="project-teaser__media">
-							<img src="/media/teaser-mutz.jpg" alt="MUTZ FrontEnd Responsive Desktop and Mobile">
-						</div>
-						<div class="project-teaser__desc">
-							<h3 class="upper">
-								Mutz
-							</h3>
-							<ul class="project-teaser__services">
-								<li>UX/UI Design</li>
-								<li>Responsive Design</li>
-								<li>Front- & BackEnd Development</li>
-							</ul>
-						</div>
-					</a>
-				</div>
+	<div class="projectview-panel-wrapper">
+		<div id="section-projects" class="projectview-panel">
+			<section  class="section projects">
+				<div class="container">
+					<header class="section__header">
+						<h2>Projekte</h2>
+						<p>In den vergangenen Jahren hatte ich die Möglichkeit an einem großen Spektrum von Projekten zu arbeiten, von einnehmenden Touch-Interfaces bis zu komplexen FrontEnd-Anwendungen. Hier sind ein paar meiner Favoriten.</p>
+					</header>
 
-				<div class="flx--12°sm">
-					<button type="button" class="projectview-ctrl-btn" data-type="prev">prev</button>
-					<button type="button" class="projectview-ctrl-btn" data-type="close">close</button>
-					<button type="button" class="projectview-ctrl-btn" data-type="closeAll">closeAll</button>
-					<button type="button" class="projectview-ctrl-btn" data-type="next">next</button>
-					<div class="projectview-panel-wrapper">
-						<div class="projectview-panel">
+					<div class="flx-group project-teasers">
+						<div class="flx--6°sm flx--6°sm flx--4°md">
+							<a href="/projects/deutschesee" class="project-teaser projectview-btn">
+								<div class="project-teaser__media">
+									<img src="/media/teaser-dsee.jpg" alt="Deutsche See Webseite">
+								</div>
+								<div class="project-teaser__desc">
+									<h3>
+										Deutsche See
+									</h3>
+									<ul class="project-teaser__services">
+										<li>Responsive Design</li>
+										<li>FrontEnd Development Lead</li>
+									</ul>
+								</div>
+							</a>
 						</div>
-						<div class="projectview-panel">
+						<div class="flx--6°sm flx--6°sm flx--4°md">
+							<a href="/projects/siemens" class="project-teaser projectview-btn">
+								<div class="project-teaser__media">
+									<img src="/media/teaser-siemens-map.jpg" alt="Siemens Webseite" />
+								</div>
+								<div class="project-teaser__desc">
+									<h3>
+										Siemens Hausgeräte
+									</h3>
+									<ul class="project-teaser__services">
+										<li>FrontEnd Development</li>
+									</ul>
+								</div>
+							</a>
 						</div>
-						<div class="projectview-panel">
+						<div class="flx--6°sm flx--6°sm flx--4°md">
+							<a href="/projects/mutz" class="project-teaser projectview-btn">
+								<div class="project-teaser__media">
+									<img src="/media/teaser-mutz.jpg" alt="MUTZ FrontEnd Responsive Desktop and Mobile">
+								</div>
+								<div class="project-teaser__desc">
+									<h3 class="upper">
+										Mutz
+									</h3>
+									<ul class="project-teaser__services">
+										<li>UX/UI Design</li>
+										<li>Responsive Design</li>
+										<li>Front- & BackEnd Development</li>
+									</ul>
+								</div>
+							</a>
 						</div>
-						<div class="projectview-panel">
+
+						<div class="flx--6°sm flx--6°sm flx--4°md">
+							<a href="/projects/nicknight" class="project-teaser projectview-btn">
+								<div class="project-teaser__media">
+									<img src="/media/teaser-nicknight-2.jpg" alt="Nicknight by Nickelodeon on iPhone">
+								</div>
+								<div class="project-teaser__desc">
+									<h3>
+										<em>Nickelodeon</em>
+										Nicknight
+									</h3>
+									<ul class="project-teaser__services">
+										<li>Responsive Design</li>
+										<li>FrontEnd Development Lead</li>
+									</ul>
+								</div>
+							</a>
 						</div>
-						<div class="projectview-panel">
+						<div class="flx--6°sm flx--6°sm flx--4°md">
+							<a href="/projects/amstelhouse" class="project-teaser projectview-btn">
+								<div class="project-teaser__media">
+									<img src="/media/teaser-amstelhouse.jpg" alt="AmstelHouse Hostel Webseite">
+								</div>
+								<div class="project-teaser__desc">
+									<h3>
+										AmstelHouse
+									</h3>
+									<ul class="project-teaser__services">
+										<li>Responsive Design</li>
+										<li>FrontEnd Development Lead</li>
+									</ul>
+								</div>
+							</a>
 						</div>
-						<div class="projectview-panel">
+						<div class="flx--6°sm flx--6°sm flx--4°md">
+							<a href="/projects/textilien" class="project-teaser projectview-btn">
+								<div class="project-teaser__media">
+									<img src="/media/teaser-textilien.jpg" alt="Nicknight by Nickelodeon on iPhone">
+								</div>
+								<div class="project-teaser__desc">
+									<h3>
+										Textilien
+									</h3>
+									<ul class="project-teaser__services">
+										<li>UX/UI Design</li>
+										<li>Responsive Design</li>
+										<li>Front- & BackEnd Development</li>
+									</ul>
+								</div>
+							</a>
 						</div>
 					</div>
-				</div>
 
-				<div class="flx--6°sm flx--6°sm flx--4°md">
-					<a href="/projects/nicknight" class="project-teaser projectview-btn">
-						<div class="project-teaser__media">
-							<img src="/media/teaser-nicknight-2.jpg" alt="Nicknight by Nickelodeon on iPhone">
-						</div>
-						<div class="project-teaser__desc">
-							<h3>
-								<em>Nickelodeon</em>
-								Nicknight
-							</h3>
-							<ul class="project-teaser__services">
-								<li>Responsive Design</li>
-								<li>FrontEnd Development Lead</li>
-							</ul>
-						</div>
-					</a>
+					<div class="flx-group flx-group--centered">
+						
+					</div>
 				</div>
-				<div class="flx--6°sm flx--6°sm flx--4°md">
-					<a href="/projects/amstelhouse" class="project-teaser projectview-btn">
-						<div class="project-teaser__media">
-							<img src="/media/teaser-amstelhouse.jpg" alt="AmstelHouse Hostel Webseite">
-						</div>
-						<div class="project-teaser__desc">
-							<h3>
-								AmstelHouse
-							</h3>
-							<ul class="project-teaser__services">
-								<li>Responsive Design</li>
-								<li>FrontEnd Development Lead</li>
-							</ul>
-						</div>
-					</a>
-				</div>
-				<div class="flx--6°sm flx--6°sm flx--4°md">
-					<a href="/projects/textilien" class="project-teaser projectview-btn">
-						<div class="project-teaser__media">
-							<img src="/media/teaser-textilien.jpg" alt="Nicknight by Nickelodeon on iPhone">
-						</div>
-						<div class="project-teaser__desc">
-							<h3>
-								Textilien
-							</h3>
-							<ul class="project-teaser__services">
-								<li>UX/UI Design</li>
-								<li>Responsive Design</li>
-								<li>Front- & BackEnd Development</li>
-							</ul>
-						</div>
-					</a>
-				</div>
-			</div>
-
-			<div class="flx-group flx-group--centered">
-				
-			</div>
+			</section>
 		</div>
-	</section>
-
-
+		<div class="projectview-panel">
+		</div>
+		<div class="projectview-panel">
+		</div>
+		<div class="projectview-panel">
+		</div>
+		<div class="projectview-panel">
+		</div>
+		<div class="projectview-panel">
+		</div>
+		<div class="projectview-panel">
+		</div>
+	</div>
 </div>
