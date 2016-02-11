@@ -41,7 +41,7 @@
                 toggle: false,
                 animation: 'adaptHeight', // 'adaptHeight' || 'slide'
                 easing: '',
-                duration: 2000,
+                duration: 1000,
                 closeOnFocusout: false,
                 selectedIndex: 0,
                 adjustScroll: false, //true || false
@@ -334,7 +334,10 @@
                 var that = this;
 
                 if(options === undefined){
-                    options = { setFocus: true };
+                    options = {
+                        setFocus: true,
+                        focusElement: this.$element,
+                    };
                 }
 
                 if(!this.panelAjaxContent && this.buttonComponent) {
@@ -351,7 +354,6 @@
                             that.panelAjaxContent = {};
 
                             setTimeout(function(){
-                                console.log('real open!!!!!!!!!!');
                                 that.open(options);
                             }, 500);
                         }, function(reason) {

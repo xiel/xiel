@@ -15,6 +15,18 @@ SECTION PROJECTS
 	overflow: hidden;
 }
 
+.projects-overview-scroller {
+	@include rb-js-export((
+		switchedOff: true
+	));
+
+	@media (max-width: $screen-sm-max) {
+		@include rb-js-export((
+			switchedOff: false
+		));
+	}
+}
+
 .progress-loader {
 	position: absolute;
 	position: fixed;
@@ -224,14 +236,7 @@ SECTION PROJECTS
 
 .project-default {
 	@extend %project-section;
-
-	.section__header {
-		padding-top: 3rem;
-
-		@media (max-width: $screen-xs-max) {
-			padding-top: 6rem;
-		}
-	}
+	padding-top: 8%;
 }
 
 .project__details {
@@ -392,11 +397,6 @@ SECTION PROJECTS
 
 	&.is-closing {
 	}
-}
-
-*:focus {
-	outline: 5px dotted red;
-	outline-offset: 2px;
 }
 
 .projectview-content {

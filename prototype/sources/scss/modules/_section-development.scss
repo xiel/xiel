@@ -2,6 +2,18 @@
 SECTION DEVELOPMENT
 =================================================== */
 
+.itemscroller--development {
+	@include rb-js-export((
+		switchedOff: true
+	));
+
+	@media (max-width: $screen-xs-max) {
+		@include rb-js-export((
+			switchedOff: false
+		));
+	}
+}
+
 .development {
 	background: #fff;
 	z-index: 10;
