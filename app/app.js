@@ -41,7 +41,6 @@ var handlebarsConfig = {
 var hbs = exphbs.create(handlebarsConfig);
 var Handlebars = hbs.handlebars;
 
-require('handlebars-helpers').register(hbs.handlebars, {});
 app.engine('hbs', hbs.engine);
 
 app.set('views', rootPath('views/pages') );
