@@ -378,8 +378,8 @@ SECTION PROJECTS
 		width: 100%;
 		opacity: 0;
 		// height: 0;
-		transition: 1s;
-		// transition-property: opacity, visibility;
+		transition: 400ms;
+		transition-property: opacity, visibility;
 		z-index: 0;
 	}
 
