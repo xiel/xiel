@@ -25,3 +25,4 @@ app/auth.js
 
 prototype/sources/assets/img/svg/icons-optimized
 prototype/sources/assets/img/png_icons
+grunticon.loader.js
