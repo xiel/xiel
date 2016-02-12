@@ -335,8 +335,7 @@
 
                 if(options === undefined){
                     options = {
-                        setFocus: true,
-                        focusElement: this.$element,
+                        setFocus: true
                     };
                 }
 
