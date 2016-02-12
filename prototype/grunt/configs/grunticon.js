@@ -25,7 +25,7 @@ module.exports = {
 			// loadersnippet: "grunticon.loader.js
 
 			// folder name (within dest) for png output
-			pngfolder: "../../sources/assets/img/png_icons/",
+			pngfolder: "../../assets/img/png_icons/",
 
 			// prefix for CSS classnames
 			cssprefix: "%icon-",

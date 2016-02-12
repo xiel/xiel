@@ -28,6 +28,16 @@ module.exports = {
 			}
 		]
 	},
+	icons: {
+		files: [
+			{
+				src: [
+					'<%= paths.src %>/assets/img/svg/icons-optimized',
+					'<%= paths.src %>/assets/img/png_icons'
+				]
+			}
+		]
+	},
 	scssglobbing: {
 		files: [
 			{

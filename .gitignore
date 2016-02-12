@@ -23,5 +23,5 @@ build-resources
 old-js
 app/auth.js
 
-prototype/sources/sources/assets/img/png_icons
 prototype/sources/assets/img/svg/icons-optimized
+prototype/sources/assets/img/png_icons

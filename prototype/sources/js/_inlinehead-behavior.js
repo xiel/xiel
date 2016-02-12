@@ -52,8 +52,6 @@
        ss.href = href;
     
        ss.media = 'x';
-
-       console.log(href, ss);
     
        document.head.appendChild(ss);
     
@@ -80,14 +78,14 @@
                 }
             });
         }
-    });
+    }, 10);
 
     //uncomment if you have crucial fonts placed above inline script
-    if (document.fonts && document.fonts.forEach) {
-       setTimeout(function () {
-           document.fonts.forEach(function(font){
-               font.load();
-           });
-       });
-    }
+    // if (document.fonts && document.fonts.forEach) {
+    //    setTimeout(function () {
+    //        document.fonts.forEach(function(font){
+    //            font.load();
+    //        });
+    //    });
+    // }
 })(window);
