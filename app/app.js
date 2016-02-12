@@ -41,14 +41,13 @@ var handlebarsConfig = {
 var hbs = exphbs.create(handlebarsConfig);
 var Handlebars = hbs.handlebars;
 
-require('handlebars-helpers').register(hbs.handlebars, {});
 app.engine('hbs', hbs.engine);
 
 app.set('views', rootPath('views/pages') );
 app.set('view engine', 'hbs');
 
 // compress all requests
-// app.use( compression() );
+app.use( compression() );
 
 //parse parameters out of (post) requests
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -56,8 +55,8 @@ app.use(expressValidator());
 
 //serve resources statics
 app.use( express.static( rootPath('resources/') ) );
-app.use( express.static( rootPath('../prototype/_dev/') ) );
 app.use( express.static( rootPath('../prototype/_output/') ) );
+app.use( express.static( rootPath('../prototype/_dev/') ) );
 
 //routes
 app.use('/', routes);

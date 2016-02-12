@@ -15,6 +15,18 @@ SECTION PROJECTS
 	overflow: hidden;
 }
 
+.projects-overview-scroller {
+	@include rb-js-export((
+		switchedOff: true
+	));
+
+	@media (max-width: $screen-sm-max) {
+		@include rb-js-export((
+			switchedOff: false
+		));
+	}
+}
+
 .progress-loader {
 	position: absolute;
 	position: fixed;
@@ -224,14 +236,7 @@ SECTION PROJECTS
 
 .project-default {
 	@extend %project-section;
-
-	.section__header {
-		padding-top: 3rem;
-
-		@media (max-width: $screen-xs-max) {
-			padding-top: 6rem;
-		}
-	}
+	padding-top: 8%;
 }
 
 .project__details {
@@ -343,33 +348,54 @@ SECTION PROJECTS
 	position: relative;
 	overflow: hidden;
 	margin: auto;
-	// outline: 2px solid blue;
+	min-height: 50vh;
+	background: red;
+	background: #EDEDED;
+}
+
+.projects-wrapper {
+	outline: 2px solid orange;
+
+	.btns {
+		position: fixed;
+		bottom: 2%;
+		right: 2%;
+		background: green;
+		z-index: 10;
+	}
 }
 
 .projectview-panel {
 	position: relative;
 	display: block;
+	min-height: 50vh;
 
-	.js & {
-		display: none;
-		visibility: hidden;
-		opacity: 0;
-		transition: 200ms;
-	}
-
-	&.is-open {
-		display: block;
-		visibility: visible;
-		opacity: 1;
-		z-index: 1;
-	}
-
-	&.is-closing {
-		display: block;
+	&[aria-hidden] {
 		position: absolute;
+		visibility: hidden;
 		top: 0;
 		left: 0;
 		width: 100%;
+		opacity: 0;
+		// height: 0;
+		transition: 400ms;
+		transition-property: opacity, visibility;
+		z-index: 0;
+	}
+
+	&.is-open,
+	&.is-closing {
+		visibility: visible;
+		height: auto;
+	}
+
+	&.is-open {
+		position: relative;
+		z-index: 5;
+		opacity: 1;
+	}
+
+	&.is-closing {
 	}
 }
 

@@ -38,13 +38,13 @@
              */
             defaults: {
                 multiple: false,
-                toggle: true,
+                toggle: false,
                 animation: 'adaptHeight', // 'adaptHeight' || 'slide'
                 easing: '',
-                duration: 400,
+                duration: 1000,
                 closeOnFocusout: false,
-                selectedIndex: -1,
-                adjustScroll: true, //true || false
+                selectedIndex: 0,
+                adjustScroll: false, //true || false
                 setFocus: true,
                 switchedOff: false,
                 resetSwitchedOff: true,
@@ -60,6 +60,7 @@
                 panelComponentName: '{name}panel',
                 preventDefault: true,
                 closeOnEsc: true,
+                scrollIntoView: true,
             },
 
             init: function (element, initialDefaults) {
@@ -85,12 +86,25 @@
                 }
 
                 //scroll into view
-                // var panelWrapper = this.$panelWrapper.get(0);
-                // if(false && panelWrapper.scrollIntoViewIfNeeded){
-                //     panelWrapper.scrollIntoViewIfNeeded(true);
-                // } else if(panelWrapper.scrollIntoView){
-                //     panelWrapper.scrollIntoView({behavior: "smooth"});
-                // }
+                var panelWrapper = this.$panelWrapper.get(0);
+                if(panelWrapper.scrollIntoViewIfNeeded){
+                    panelWrapper.scrollIntoViewIfNeeded(true);
+                } else if(panelWrapper.scrollIntoView){
+                    panelWrapper.scrollIntoView({behavior: "smooth"});
+                }
+            },
+
+            panelChangeCB: function (panelComponent, action) {
+                var options = this.options;
+                this._super(panelComponent, action);
+
+                switch (action) {
+                    case 'afterclose':
+                        if (!this.selectedIndexes.length) {
+                            this.selectIndex(this.options.selectedIndex, {setFocus: options.setFocus});
+                        }
+                        break;
+                }
             },
 
             animateWrapper: function (openedPanel) {
@@ -257,19 +271,14 @@
                 var buttonHref = buttonElement.href;
 
                 if(buttonHref && buttonHref !== '#'){
-                    
-                    setTimeout(function(){
-                        that.panelAjaxContent = ajax(buttonHref + '?ajax=true');
+                    that.panelAjaxContent = ajax(buttonHref + '?ajax=true');
 
-                        that.panelAjaxContent.then(function(data) {
-                            that.$element.html(data);
-
-                        }, function(reason) {
-                            // on rejection
-                            console.log(reason);
-                        });
-                    }, 3000);
-                    
+                    that.panelAjaxContent.then(function(data) {
+                        // that.$element.html(data);
+                    }, function(reason) {
+                        // on rejection
+                        console.error(reason);
+                    });
                 }
 
                 function ajax(url) {
@@ -296,21 +305,15 @@
             },
 
             _switchOn: function () {
-                // console.log('_switchOn projectviewpanel', this.buttonComponent);
+                this._super();
+                var that = this;
 
-                if (this.isOpen) {
-                    this.element.classList.add(rb.statePrefix + 'open');
-                }
-
-                this.element.classList.remove(rb.statePrefix + 'switched-off');
-
-                this.element.setAttribute('aria-hidden', '' + (!this.isOpen));
-
-                this.$element.attr({'role': this._role || 'group', tabindex: '-1'});
-
-                if(this.buttonComponent) {
-                    this.loadPanelContent();
-                }
+                //initially load contents from remote resources
+                requestAnimationFrame(function(){
+                    if(!that.panelAjaxContent && that.buttonComponent) {
+                        that.loadPanelContent();
+                    }
+                });
             },
 
             /**
@@ -327,46 +330,42 @@
                 if (this.isOpen) {
                     return false;
                 }
-                var mainOpts = this.options;
-                var changeEvent = this._trigger(this._beforeEvtName, options);
 
-                if(!options){
-                    options = {};
+                var that = this;
+
+                if(options === undefined){
+                    options = {
+                        setFocus: true,
+                        focusElement: this.$element,
+                    };
                 }
 
-                if (changeEvent.defaultPrevented) {
-                    return false;
+                if(!this.panelAjaxContent && this.buttonComponent) {
+                    this.loadPanelContent();
                 }
 
-                if (this.groupComponent) {
-                    this.groupComponent.panelChangeCB(this, 'beforeopen');
-                }
+                if(this.panelAjaxContent && 'then' in this.panelAjaxContent){
+                    this.panelAjaxContent
+                        .then(function(data) {
+                            //render loaded html
+                            that.$element.html(data);
 
-                clearTimeout(this._closeTimer);
+                            //remove the promise, so next time open gets called, it shows the content
+                            that.panelAjaxContent = {};
 
-                this.isOpen = true;
-                this._handleAnimation(changeEvent);
-
-                if (options.setFocus !== false && (mainOpts.setFocus || options.setFocus) && !options.focusElement) {
-                    options.focusElement = this.getFocusElement();
-                }
-
-                if(options.focusElement && regInputs.test(options.focusElement.nodeName)){
-                    this._opened._rbUnrafedFn.call(this, options);
+                            setTimeout(function(){
+                                that.open(options);
+                            }, 500);
+                        }, function(reason) {
+                            console.error(reason);
+                        })
+                    ;
                 } else {
-                    this._opened(options);
+                    this._super(options);
                 }
 
                 return true;
             },
-
-            // close: function(){
-            //     console.log('close', arguments);
-            // },
-
-            // _close: function(){
-            //     console.log('_close', arguments);
-            // },
         }
     );
 

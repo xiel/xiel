@@ -21,3 +21,4 @@ _output
 _dev
 build-resources
 old-js
+app/auth.js
