@@ -79,6 +79,13 @@ module.exports = function(grunt) {
 		// 'clean:scssglobbing',
 	]);
 
+	// Sprites Task
+	grunt.registerTask('icons', [
+		// 'svgmin',
+		'grunticon',
+		// 'replace'
+	]);
+
 	grunt.registerTask('dev', [
 		'clean:dist',
 		'clean:dev',
