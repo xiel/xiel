@@ -5,20 +5,18 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var htmlToText = require('nodemailer-html-to-text').htmlToText;
+var auth = {};
+
+try {
+	auth = require('../auth');
+} catch(err) { console.error('!!! missing auth file with smtpTransport config information'); }
 
 //mail
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport(
-	smtpTransport({
-		host: 'shaula.uberspace.de',
-		port: 587,
-		secure: false,
-		auth: {
-			user: 'noreply@xiel.de',
-			pass: 'xXxXxXxXxXx'
-		}
-	})
+	smtpTransport(auth.smtpTransport)
 );
+
 //enable htmlToText
 transporter.use('compile', htmlToText());
 
