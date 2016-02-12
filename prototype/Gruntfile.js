@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 		'sass:dev',
 		// 'autoprefixer:dev',
 		// 'clean:scssglobbing',
-		'postcssSeparator:dev',
+		// 'postcssSeparator:dev',
 	]);
 
 	// Sprites Task

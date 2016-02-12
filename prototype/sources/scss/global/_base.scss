@@ -276,13 +276,15 @@ Social Media Links
 
 .sm-links {
 	list-style: none;
+	margin: 1rem 0;
 
 	li {
+		@extend %small-font;
 		display: inline-block;
-		font-size: 1.2rem;
 		text-align: center;
 		white-space: nowrap;
-		margin: 0 1.5em 0 0;
+		margin: 0 0.5%;
+		padding: 0 1rem;
 	}
 
 	a {
