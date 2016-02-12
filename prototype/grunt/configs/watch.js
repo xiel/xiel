@@ -33,9 +33,9 @@ module.exports = {
             livereload: false
         }
     },
-    sync_img: {
-        files: ['<%= paths.src %>/img/{,*/}*.{svg, png, jpg}'],
-        tasks: ['sync:js']
+    syncAssets: {
+        files: ['<%= paths.src %>/assets/**/*'],
+        tasks: ['sync:assets']
     },
     inline_js: {
         files: ['<%= paths.src %>/js/_inlinehead-behavior.js'],
