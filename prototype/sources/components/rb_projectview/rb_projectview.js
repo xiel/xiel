@@ -67,13 +67,6 @@
                 var that = this;
 
                 this._super(element, initialDefaults);
-
-                // setTimeout(function(){
-                //     console.log('projectview', that);
-                //     console.log('rb.components', rb.components);
-                //     console.log('this.selectedIndexes', that.selectedIndexes);
-                //     console.log('this.selectedItems', that.selectedItems);
-                // });
             },
 
             _handleAnimation: function(animationData){
@@ -260,7 +253,7 @@
                 this._super(element, initialDefaults);
             },
 
-            loadPanelContent: function(){
+            loadPanelContent: function(delay){
                 var that = this;
 
                 if(this.panelAjaxContent || !(this.buttonComponent && this.buttonComponent.element)){
@@ -289,7 +282,10 @@
                         xhr.onreadystatechange = handler;
                         // xhr.responseType = 'json';
                         // xhr.setRequestHeader('Accept', 'application/json');
-                        xhr.send();
+                        
+                        setTimeout(function(){
+                            xhr.send();
+                        }, delay || 0);
 
                         function handler() {
                             if (this.readyState === this.DONE) {
@@ -311,7 +307,7 @@
                 //initially load contents from remote resources
                 requestAnimationFrame(function(){
                     if(!that.panelAjaxContent && that.buttonComponent) {
-                        that.loadPanelContent();
+                        that.loadPanelContent(400);
                     }
                 });
             },
