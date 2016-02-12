@@ -77,13 +77,23 @@ module.exports = function(grunt) {
 		'sass:dev',
 		// 'autoprefixer:dev',
 		// 'clean:scssglobbing',
+		// 'postcssSeparator:dev',
+	]);
+
+	// Sprites Task
+	grunt.registerTask('icons', [
+		'clean:icons',
+		'svgmin',
+		'grunticon',
+		// 'replace',
+		'css',
 	]);
 
 	grunt.registerTask('dev', [
 		'clean:dist',
 		'clean:dev',
 		'clean:tmp',
-		//'svg',
+		'icons',
 		'css',
 		// 'jshint',
 		'uglify:inline',
@@ -100,6 +110,7 @@ module.exports = function(grunt) {
         'clean:tmp',
         'scssglobbing',
         'sass:dist',
+        'postcssSeparator:dist',
         // 'uglify:inline',
         // 'assemble:dist',
         'autoprefixer:dist',

@@ -14,10 +14,11 @@ SECTION CONTACT
 	}
 }
 
-.legal {
+.legal-links {
 	@extend %small-font;
-	text-align: right;
-	// background: red;
+	padding: 2rem 0;
+	margin: 2% 0;
+	text-align: center;
 
 	ul, li {
 		list-style: none;

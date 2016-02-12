@@ -22,3 +22,8 @@ _dev
 build-resources
 old-js
 app/auth.js
+
+prototype/sources/assets/img/svg/icons-optimized/**/*
+prototype/sources/assets/img/png_icons/**/*
+grunticon.loader.js
+prototype/sources/scss/icons/*.html
