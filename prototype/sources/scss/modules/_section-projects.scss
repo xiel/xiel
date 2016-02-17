@@ -368,7 +368,7 @@ SECTION PROJECTS
 .projectview-panel {
 	position: relative;
 	display: block;
-	min-height: 50vh;
+	// min-height: 50vh;
 
 	&[aria-hidden] {
 		position: absolute;
@@ -376,8 +376,8 @@ SECTION PROJECTS
 		top: 0;
 		left: 0;
 		width: 100%;
+		height: 100%;
 		opacity: 0;
-		// height: 0;
 		transition: 400ms;
 		transition-property: opacity, visibility;
 		z-index: 0;

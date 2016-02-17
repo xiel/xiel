@@ -342,15 +342,33 @@
                 if(this.panelAjaxContent && 'then' in this.panelAjaxContent){
                     this.panelAjaxContent
                         .then(function(data) {
+                            var loadTimeout = setTimeout(function(){
+                                console.log('timeout', imagesToLoad);
+                                that.open(options);
+                            }, 2000);
+                            
                             //render loaded html
                             that.$element.html(data);
+
+                            var imagesToLoad = that.$element.find('img');
+                            var imagesToLoadCount = imagesToLoad.length;
+
+                            // if(imagesToLoadCount == 0){
+                            //     that.open(options);
+                            // }
+
+                            imagesToLoad.on('load', function(){
+                                imagesToLoadCount--;
+                                console.log('loaded', this, imagesToLoadCount);
+                                if(imagesToLoadCount == 0){
+                                    clearTimeout(loadTimeout);
+                                    that.open(options);
+                                }
+                            })
 
                             //remove the promise, so next time open gets called, it shows the content
                             that.panelAjaxContent = {};
 
-                            setTimeout(function(){
-                                that.open(options);
-                            }, 500);
                         }, function(reason) {
                             console.error(reason);
                         })
