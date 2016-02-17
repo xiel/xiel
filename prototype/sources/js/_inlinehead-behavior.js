@@ -5,7 +5,7 @@
     var docElem = document.documentElement;
     var asyncStylesheets = window.siteData && window.siteData.asyncStylesheets;
     var loadJs = function( src, ordered, cb ){
-        var script = document.createElement( "script" );
+        var script = document.createElement( 'script' );
 
         if(cb){
             script.addEventListener('load', cb);
@@ -81,11 +81,20 @@
     }, 10);
 
     //uncomment if you have crucial fonts placed above inline script
-    // if (document.fonts && document.fonts.forEach) {
-    //    setTimeout(function () {
-    //        document.fonts.forEach(function(font){
-    //            font.load();
-    //        });
-    //    });
-    // }
+    if (document.fonts && document.fonts.forEach) {
+       setTimeout(function () {
+
+           document.fonts.forEach(function(font){
+              console.log(font, font.unicodeRange);
+
+              var latinRange = 'U+0-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000';
+              var defaultRange = 'U+0-10FFFF';
+
+               if(font.unicodeRange === latinRange && (font.weight == '300' || font.weight == '500') ) {
+                  font.load()
+               }
+           });
+           // document.fonts.load('1em Roboto')
+       });
+    }
 })(window);
