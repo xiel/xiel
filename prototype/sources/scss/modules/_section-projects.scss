@@ -55,7 +55,11 @@ SECTION PROJECTS
 }
 
 .project-teasers {
-	transform: scale(1);
+	// transform: scale(1);
+
+	@media (max-width: $screen-sm-max) {
+		flex-wrap: nowrap;
+	}
 }
 
 .project-teaser {
