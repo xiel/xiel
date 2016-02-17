@@ -13,7 +13,6 @@ var expressValidator = require('express-validator');
 var bodyParser = require('body-parser');
 var htmlMinifyer = require('html-minifier').minify;
 var compression = require('compression');
-var grunt = require('grunt');
 
 //get routers
 var routes = require('./routes/index');
@@ -25,6 +24,11 @@ var app = express();
 var rootPath = function(pathFromRoot){
 	return path.join( __dirname, pathFromRoot )
 };
+var staticPaths = [
+	rootPath('resources/'),
+	rootPath('../prototype/_output/'),
+	rootPath('../prototype/_dev/')
+];
 
 //add templating engine
 var handlebarsConfig = {
@@ -33,18 +37,21 @@ var handlebarsConfig = {
 	defaultLayout: 'default',
 	extname: '.hbs',
 	helpers: {
-		includeraw: function(_src){
-			var src = rootPath( '../prototype/_output/' + _src );
+		includeraw: function(src){
+			var foundSource;
 
-			// fs.access(src, function(err){
-			// 	console.log(err ? 'no access!' : 'can read/write');
-			// 	console.log('yay', err)
-			// });
+			for (var i = 0;  i < staticPaths.length; i++){
+				var staticPath = staticPaths[i];
+				var srcInStaticPath = path.join( staticPath, src )
 
-			return new Handlebars.SafeString( fs.readFileSync(src, 'utf8') || '' );
-			
-			//TODO: use fs instead
-			// return new Handlebars.SafeString( grunt.file.read(src) );
+				try {
+					fs.accessSync(srcInStaticPath);
+					foundSource = srcInStaticPath;
+					break
+				} catch(err) {}
+			};
+
+			return new Handlebars.SafeString( fs.readFileSync(foundSource, 'utf8') || '' );
 		}
 	}
 };
@@ -58,16 +65,16 @@ app.set('views', rootPath('views/pages') );
 app.set('view engine', 'hbs');
 
 // compress all requests
-// app.use( compression() );
+app.use( compression() );
 
 //parse parameters out of (post) requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 
 //serve resources statics
-app.use( express.static( rootPath('resources/') ) );
-app.use( express.static( rootPath('../prototype/_output/') ) );
-app.use( express.static( rootPath('../prototype/_dev/') ) );
+staticPaths.forEach(function(staticPath){
+	app.use( express.static( staticPath ) );
+});
 
 //routes
 app.use('/', routes);
