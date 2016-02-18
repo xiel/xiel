@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('css', [
 		'scssglobbing',
 		'sass:dev',
-		// 'autoprefixer:dev',
+		'autoprefixer:dev',
 		// 'clean:scssglobbing',
 		// 'postcssSeparator:dev',
 	]);
@@ -95,13 +95,12 @@ module.exports = function(grunt) {
 		'clean:tmp',
 		'icons',
 		'css',
-		// 'jshint',
-		'uglify:inline',
+		'uglify:dev',
 		'concurrent:dev2',
-		// 'handlebars:dev',
 		'jst',
 		'webpack:dev',
 		'sync',
+		'imagemin:dev',
 		'prettify:dev',
 	]);
 
@@ -111,7 +110,7 @@ module.exports = function(grunt) {
         'scssglobbing',
         'sass:dist',
         'postcssSeparator:dist',
-        // 'uglify:inline',
+        'uglify:dist',
         // 'assemble:dist',
         'autoprefixer:dist',
         'cssmin',
@@ -121,79 +120,8 @@ module.exports = function(grunt) {
         'webpack:dist',
         // 'test',
         'copy',
+        'imagemin:dist',
         // 'prettify:dist',
         'clean:scssglobbing',
     ]);
-
-	function old() {
-		// SASS Task
-		grunt.registerTask('watchCSS', [
-			'fileindex:libsassGlobbing',
-			// Sass Globbing with Grunt (see: http://www.prototype-generator.com/getting-started/features.html)
-			'sass:dist'
-		]); 
-		
-		// Sprites Task
-		grunt.registerTask('icons', [
-			'svgmin',
-			'grunticon',
-			'replace'
-		]); 
-		
-		grunt.registerTask('js', [
-			'packager'
-		]);
-		
-		// Sync JS Task
-		grunt.registerTask('syncJS', [
-			'sync:js'
-		]);
-
-		// JS Hint Task (Check you JS)
-		grunt.registerTask('check-js', [
-			'jshint'
-		]);
-		
-		// Beautifier Task (Beautify your JS files)
-		grunt.registerTask('beauty-files', [
-			'jsbeautifier'
-		]);
-
-		/*
-		 *  ADVANCED TASKS
-		 */
-		grunt.registerTask('server', [
-			// 'newer:assemble',
-			'js',
-			'concurrent:syncing',
-			'watchCSS',
-			'autoprefixer',
-			'connect:livereload',
-			'watch'
-		]);
-		
-		grunt.registerTask('build', [
-			'clean:dev',
-			'icons',
-			'jsbeautifier',
-			'js',
-			'concurrent:syncing',
-			'watchCSS',
-			'autoprefixer',
-			'postcssSeparator',
-			'combine_mq',
-			'cssmin',
-			'concurrent:build'
-		]);
-
-		grunt.registerTask('default', [
-			'server'
-		]);
-		
-		// alias serve by grunt convention
-		grunt.registerTask('serve', [
-			'server'
-		]);
-	}
-
 };

@@ -5,7 +5,7 @@ console.log('-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 console.log( new Date() );
 
 //require modules
-var fs = require('graceful-fs');
+var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var exphbs  = require('express-handlebars');
@@ -42,7 +42,7 @@ var handlebarsConfig = {
 
 			for (var i = 0;  i < staticPaths.length; i++){
 				var staticPath = staticPaths[i];
-				var srcInStaticPath = path.join( staticPath, src )
+				var srcInStaticPath = path.join( staticPath, src );
 
 				try {
 					fs.accessSync(srcInStaticPath);
@@ -51,7 +51,12 @@ var handlebarsConfig = {
 				} catch(err) {}
 			};
 
-			return new Handlebars.SafeString( fs.readFileSync(foundSource, 'utf8') || '' );
+			if(foundSource){
+				return new Handlebars.SafeString( fs.readFileSync(foundSource, 'utf8') || '' );
+			} else {
+				console.error('includeraw src not found', src, foundSource);
+				return '';
+			}
 		}
 	}
 };
