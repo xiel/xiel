@@ -359,14 +359,6 @@ SECTION PROJECTS
 
 .projects-wrapper {
 	outline: 2px solid orange;
-
-	.btns {
-		position: fixed;
-		bottom: 2%;
-		right: 2%;
-		background: green;
-		z-index: 10;
-	}
 }
 
 .projectview-panel {
@@ -402,16 +394,5 @@ SECTION PROJECTS
 	&.is-closing {
 	}
 }
-
-.projectview-content {
-	padding: 30px;
-	border: 1px solid red;
-}
-
-:focus {
-	outline: 3px dotted orange;
-	outline-offset: -1px;
-}
-
 
 

@@ -105,6 +105,11 @@ body {
 GENERAL TEXT
 =================================================== */
 
+.is-keyboardfocus {
+	outline: 2px dotted $color-key-cyan;
+	outline-offset: 1px;
+}
+
 %small-font {
 	font-size: 14px;
 	font-size: 1.4rem;
@@ -269,6 +274,13 @@ GENERAL LAYOUT
 	}
 }
 
+.itemscroller-content.flx-group {
+	flex-wrap: nowrap;
+
+	.is-switched-off & {
+		flex-wrap: wrap;
+	}
+}
 
 /* ===================================================
 Social Media Links

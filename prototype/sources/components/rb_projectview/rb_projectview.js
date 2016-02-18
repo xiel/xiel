@@ -39,9 +39,9 @@
             defaults: {
                 multiple: false,
                 toggle: false,
-                animation: 'adaptHeight', // 'adaptHeight' || 'slide'
+                animation: false, // 'adaptHeight' || 'slide'
                 easing: '',
-                duration: 1000,
+                duration: 500,
                 closeOnFocusout: false,
                 selectedIndex: 0,
                 adjustScroll: false, //true || false
@@ -345,21 +345,21 @@
                             var loadTimeout = setTimeout(function(){
                                 console.log('timeout', imagesToLoad);
                                 that.open(options);
-                            }, 2000);
+                            }, 100);
                             
                             //render loaded html
+                            
                             that.$element.html(data);
 
                             var imagesToLoad = that.$element.find('img');
                             var imagesToLoadCount = imagesToLoad.length;
 
-                            // if(imagesToLoadCount == 0){
-                            //     that.open(options);
-                            // }
+                            if(imagesToLoadCount == 0){
+                                that.open(options);
+                            }
 
                             imagesToLoad.on('load', function(){
                                 imagesToLoadCount--;
-                                console.log('loaded', this, imagesToLoadCount);
                                 if(imagesToLoadCount == 0){
                                     clearTimeout(loadTimeout);
                                     that.open(options);
