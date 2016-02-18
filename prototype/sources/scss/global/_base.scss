@@ -282,6 +282,16 @@ GENERAL LAYOUT
 	}
 }
 
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+
+.lazyloaded {
+	opacity: 1;
+	transition: 2000ms;
+}
+
 /* ===================================================
 Social Media Links
 =================================================== */

@@ -1,11 +1,10 @@
 window.BezierEasing = require('bezier-easing');
 
 var ASSETBASEPATH = window.siteData && siteData.basePath || '';
+
 //load dom or jQuery
 require('./libs/rb_$');
-
 require('./libs/rb_crucial');
-
 require('./libs/rb_main');
 
 /* configuration */

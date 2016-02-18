@@ -39,7 +39,7 @@ module.exports = {
     },
     inline_js: {
         files: ['<%= paths.src %>/js/_inlinehead-behavior.js'],
-        tasks: ['uglify:inline']
+        tasks: ['uglify:dev']
     },
     js: {
         files: ['<%= paths.src %>/**/*.{js,es6,es2015}'],

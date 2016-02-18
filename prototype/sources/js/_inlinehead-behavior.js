@@ -75,7 +75,7 @@
                 }
             });
         }
-    }, 10);
+    }, 200);
 
     //start loading crucial fonts before evaluating stylesheet
     if (document.fonts && document.fonts.forEach) {
