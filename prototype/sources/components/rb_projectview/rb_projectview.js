@@ -79,12 +79,7 @@
                 }
 
                 //scroll into view
-                var panelWrapper = this.$panelWrapper.get(0);
-                if(panelWrapper.scrollIntoViewIfNeeded){
-                    panelWrapper.scrollIntoViewIfNeeded(true);
-                } else if(panelWrapper.scrollIntoView){
-                    panelWrapper.scrollIntoView({behavior: "smooth"});
-                }
+                this.$panelWrapper.scrollIntoView();
             },
 
             panelChangeCB: function (panelComponent, action) {
@@ -342,29 +337,12 @@
                 if(this.panelAjaxContent && 'then' in this.panelAjaxContent){
                     this.panelAjaxContent
                         .then(function(data) {
-                            var loadTimeout = setTimeout(function(){
-                                console.log('timeout', imagesToLoad);
-                                that.open(options);
-                            }, 100);
                             
-                            //render loaded html
-                            
-                            that.$element.html(data);
-
-                            var imagesToLoad = that.$element.find('img');
-                            var imagesToLoadCount = imagesToLoad.length;
-
-                            if(imagesToLoadCount == 0){
+                            requestAnimationFrame(function(){
+                                //render loaded html
+                                that.$element.html(data);
                                 that.open(options);
-                            }
-
-                            imagesToLoad.on('load', function(){
-                                imagesToLoadCount--;
-                                if(imagesToLoadCount == 0){
-                                    clearTimeout(loadTimeout);
-                                    that.open(options);
-                                }
-                            })
+                            });
 
                             //remove the promise, so next time open gets called, it shows the content
                             that.panelAjaxContent = {};
