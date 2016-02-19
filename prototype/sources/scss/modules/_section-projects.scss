@@ -25,6 +25,10 @@ SECTION PROJECTS
 			switchedOff: false
 		));
 	}
+
+	.itemscroller-viewport {
+		overflow: visible !important;
+	}
 }
 
 .progress-loader {
@@ -83,8 +87,8 @@ SECTION PROJECTS
 		display: block;
 		width: 100%;
 		height: auto;
-		transform: scale(1.01);
-		transition: transform 400ms ease-out;
+		// transform: scale(1.01);
+		transition: 400ms ease-out;
 		
 		a[aria-expanded="true"] &,
 		a:hover &,
