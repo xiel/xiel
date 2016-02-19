@@ -6,7 +6,15 @@
 module.exports = {
 
 	options: {
-		//...
+		pngquant: true,
+		optipng: false,
+		zopflipng: true,
+		advpng: true,
+		jpegRecompress: true,
+		jpegoptim: true,
+		mozjpeg: true,
+		gifsicle: true,
+		svgo: true
 	},
 	dev: {
 		files: [{

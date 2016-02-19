@@ -100,7 +100,7 @@ module.exports = function(grunt) {
 		'jst',
 		'webpack:dev',
 		'sync',
-		'imagemin:dev',
+		'image:dev',
 		'prettify:dev',
 	]);
 
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
         'webpack:dist',
         // 'test',
         'copy',
-        'imagemin:dist',
+        'image:dist',
         // 'prettify:dist',
         'clean:scssglobbing',
     ]);
