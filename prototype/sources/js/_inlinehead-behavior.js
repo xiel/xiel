@@ -65,6 +65,19 @@
         loadJs(ASSETBASEPATH + 'js/_main-behavior.js', true);
     });
 
+    //tracking
+    (function(win_pag){
+      var _paq = win_pag  || [];
+      window._pag = _paq;
+      _paq.push(["setDomains", ["*.xiel.de"]]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      _paq.push(['setSiteId', 2]);
+      setTimeout(function(){
+        loadJs('//piwik.xiel.de/piwik.js');
+      }, 200);
+    }(window._paq));
+
     setTimeout(function(){
         if(asyncStylesheets){
             asyncStylesheets.forEach(function(asyncStylesheet){
