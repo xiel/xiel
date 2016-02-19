@@ -274,6 +274,10 @@ GENERAL LAYOUT
 	}
 }
 
+.rb-itemscroller {
+	user-select: none;
+}
+
 .itemscroller-content.flx-group {
 	flex-wrap: nowrap;
 
