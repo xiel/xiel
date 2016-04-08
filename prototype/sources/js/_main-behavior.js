@@ -25,6 +25,7 @@ require('../components/rb_scrolly/rb_scrolly');
 require('../components/rb_itemscroller/rb_itemscroller');
 require('../components/rb_panel/rb_panel');
 require('../components/rb_projectview/rb_projectview');
+require('../components/rb_form/rb_validate');
 
 require('../components/softjumpbutton/softjumpbutton');
 
