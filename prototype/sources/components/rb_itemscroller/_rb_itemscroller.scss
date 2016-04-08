@@ -1,138 +1,155 @@
-/*********************************************************
-
-rb-itemscroller
-----------------------------------------------------------
-
+/*
+ * Component: Itemscroller
 **********************************************************/
 
-//JS Config
-$itemscrollerJSCFG: (
+
+// Variables
+//**********************************************************
+
+
+// JS-Config
+//**********************************************************
+$itemscroller-js-cfg: (
+    name: itemscroller,
+    //queries: "500:100%, 860:50%, 33.333%",
 );
 
+
+// Dependencies (Helpers)
+//**********************************************************
+@import "../../sass/helpers/rb_hide_text";
+@import "../../sass/helpers/rb_arrow_icon";
+@import "../../sass/helpers/rb_px_to_units";
+
+
+//----------------------------------------------------------
+
+
 .rb-itemscroller {
-    //@include rb-js-export((
-    //	queries: '500:100%, 860:50%, 33.333%'
-    //));
+    //@include rb-js-export($itemscroller-js-cfg);
     display: block;
     position: relative;
-    transition: 300ms opacity;
     user-select: none;
+    transition: 300ms opacity;
+}
 
-    @at-root .itemscroller- {
+.itemscroller-viewport {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
 
-        &viewport {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
+.itemscroller-content {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: visible;
+    position: relative;
+    left: 0;
+    width: auto;
+    height: 100%;
+    backface-visibility: hidden;
 
-        &content {
-            display: flex;
-            flex-wrap: nowrap;
-            position: relative;
-            left: 0;
-            overflow: visible;
-            width: auto;
-            height: 100%;
+    // FOUC prevention in case of centerMode:
+    // [1] tranlateX = 50% - (widthOfCell / 2)
+    [data-center-mode="true"] & {
+        transform: translate3d(25%, 0, 0); //[1]
+    }
+}
 
-            //FOUC prevention in case of centerMode:
-            [data-center-mode="true"] & {
-                //tranlateX = 50% - (widthOfCell / 2)
-                transform: translate3d(25%, 0, 0);
-            }
-        }
+.itemscroller-cell {
+    flex-shrink: 0;
+}
 
-        &cell {
-            flex-shrink: 0;
-        }
+//Pagination
+.itemscroller-pagination {
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        //Pagination
-        &pagination {
-            position: absolute;
-            width: 100%;
-            bottom: 20px;
-            margin: 0 auto;
-            z-index: 2;
-            text-align: center;
-        }
+.itemscroller-pagination-btn {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 4px;
+    cursor: pointer;
+    touch-action: manipulation;
+    border-radius: 50%;
+    background: #fff;
+    transition: background 400ms ease-in;
 
-        &pagination-btn {
-            display: inline-block;
-            height: 15px;
-            width: 15px;
-            border-radius: 50%;
-            margin: 0 4px;
-            background: #fff;
-            transition: background 400ms ease-in;
-            cursor: pointer;
-            touch-action: manipulation;
+    &.is-selected {
+        cursor: not-allowed;
+        background: #666;
+    }
+}
 
-            &.is-selected {
-                background: #666;
-                cursor: not-allowed;
-            }
-        }
+//Buttons
+.itemscroller-btn-prev,
+.itemscroller-btn-next {
+    @include rb-hide-text;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    cursor: pointer;
+    touch-action: manipulation;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    background: #000;
+    transition: background 400ms ease-in;
 
-        //Buttons
-        &btn-prev,
-        &btn-next {
-            @include rb-hide-text;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            height: 40px;
-            width: 40px;
-            z-index: 5;
-            margin: auto 0;
-            border: none;
-            cursor: pointer;
-            background: #000;
-            transition: background 400ms ease-in;
-            outline: none;
-            border-radius: 50%;
-            touch-action: manipulation;
+    &:hover,
+    &:focus {
+        background: #666;
+    }
 
-            &:hover,
-            &:focus {
-                background: #666;
-            }
+    &.is-disabled {
+        cursor: not-allowed;
+        background: rgba(0, 0, 0, 0.5);
+    }
 
-            &.is-disabled {
-                cursor: not-allowed;
-                background: rgba(0, 0, 0, 0.5);
-            }
+    &::after {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}
 
-            &:after {
-                top: 0;
-                bottom: 0;
-                margin: auto;
-            }
-        }
+.itemscroller-btn-prev {
+    left: 30px;
 
-        &btn-prev {
-            left: 30px;
+    &::after {
+        @include rb-arrow-icon(15px, 15px, 3px, #fff, left);
+        left: 15px;
+    }
+}
 
-            &:after {
-                @include rb-arrow-icon(15px, 15px, 3px, #fff, left);
-                left: 15px;
-            }
-        }
+.itemscroller-btn-next {
+    right: 30px;
 
-        &btn-next {
-            right: 30px;
-
-            &:after {
-                @include rb-arrow-icon(15px, 15px, 3px, #fff, right);
-                right: 15px;
-            }
-        }
+    &:after {
+        @include rb-arrow-icon(15px, 15px, 3px, #fff, right);
+        right: 15px;
     }
 }
 
 
-
-
-
-
-
-
+//@media (min-width: 800px) {
+//    @include rb-js-export((
+//        switchedOff: true,
+//    ));
+//
+//    @at-root .itemscroller- {
+//        &content {
+//            flex-wrap: wrap;
+//        }
+//    }
+//}

@@ -11,7 +11,9 @@ if (!window.rb) {
 
     /* Begin: global vars end */
     var rb = window.rb;
+    var regnameSeparator = /\{-}/g;
     var regSplit = /\s*?,\s*?|\s+?/g;
+    var slice = Array.prototype.slice;
 
     /**
      * The jQuery or dom.js (rb.$) plugin namespace.
@@ -62,24 +64,44 @@ if (!window.rb) {
     rb.templates = {};
 
     rb.statePrefix = 'is-';
-    rb.uitlPrefix = 'use-';
+    rb.utilPrefix = 'u-';
+    rb.jsPrefix = '';
+    rb.nameSeparator = '-';
+    rb.elementSeparator = '-';
 
     /* End: global vars end */
 
-    /* Begin: rbSlideUp / rbSlideDown */
-
-    /**
-     * Changes state class of an element.
-     * @param element
-     * @param state
-     * @param action
+	/**
+     * Creates a promise with a resolve and a reject method.
+     * @returns promise {Deferred}
      */
-    rb.changeState = function(element, state, action){
-        if(element && element.classList){
-            element.classList[action ? 'add' : 'remove'](rb.statePrefix + state);
-        }
+    rb.deferred = function(){
+        var tmp = {};
+        var promise = new Promise(function(resolve, reject){
+            tmp.resolve = resolve;
+            tmp.reject = reject;
+        });
+
+        Object.assign(promise, tmp);
+
+        return promise;
     };
 
+    /**
+     * A jQuery/rb.$ plugin to add or remove state classes.
+     * @param state {string}
+     * @param [add] {boolean}
+     * @returns {jQueryfiedDOMList}
+     */
+    $.fn.rbChangeState = function(state, add){
+        if(this.length){
+            state = rb.statePrefix + (state.replace(regnameSeparator, rb.nameSeparator));
+            this[add ? 'addClass' : 'removeClass'](state);
+        }
+        return this;
+    };
+
+    /* Begin: rbSlideUp / rbSlideDown */
     /**
      * A jQuery/rb.$ plugin to slideUp content. Difference to $.fn.slideUp: The plugin handles content hiding via height 0; visibility: hidden;
      * Also does not animate padding, margin, borders (use child elements)
@@ -121,10 +143,12 @@ if (!window.rb) {
      * Also does not animate padding, margin, borders (use child elements)
      * @function external:"jQuery.fn".rbSlideDown
      * @param options {object} All jQuery animate options
-     * @returns {jQueryfiedDOMList}
+     * @returns {jQueryfiedDOMList|Number}
      */
     $.fn.rbSlideDown = function (options) {
         var opts;
+        var ret = this;
+
         if (!options) {
             options = {};
         }
@@ -142,7 +166,7 @@ if (!window.rb) {
             });
         }
 
-        return this.each(function () {
+        this.each(function () {
             var endValue;
             var $panel = $(this);
             var startHeight = this.clientHeight + 'px';
@@ -151,15 +175,22 @@ if (!window.rb) {
 
             endValue = this.clientHeight;
 
+            if(options.getHeight){
+                ret = endValue;
+            }
+
             $panel
                 .css({height: startHeight})
                 .animate({height: endValue}, opts)
             ;
         });
+
+        return ret;
     };
 
     /* End: rbSlideUp / rbSlideDown */
 
+    /* Begin: getScrollingElement */
     /**
      * @memberof rb
      * @returns {Element} The DOM element that scrolls the viewport (either html or body)
@@ -173,7 +204,15 @@ if (!window.rb) {
 
         return scrollingElement || rb.root;
     };
-    /* End: getScrollingElement/scrollIntoView */
+
+	/**
+     * Alias to `getScrollingElement` can be used to override scrollingElement for project-specific needs.
+     * @type function
+     * @memberof rb
+     * @type {Element}
+     */
+    rb.getPageScrollingElement = rb.getScrollingElement;
+    /* End: getScrollingElement */
 
     /* Begin: contains */
     var _contains = function (element) {
@@ -284,7 +323,7 @@ if (!window.rb) {
             _setup: function () {
                 if (!installed) {
                     installed = true;
-                    (window.requestIdleCallback || setTimeout)(function () {
+                    rb.rIC(function () {
                         iWidth = innerWidth;
                         cHeight = docElem.clientHeight;
                     });
@@ -374,6 +413,37 @@ if (!window.rb) {
 
     /* End: camelCase */
 
+    /* Begin: memoize */
+
+	/**
+	 * Simple memoize method
+     * @param fn {function}
+     * @param [justOne] {boolean}
+     * @returns {Function}
+     */
+    rb.memoize = function(fn, justOne){
+        var cache = {};
+        return justOne ?
+            function(argsString){
+                if(argsString in cache){
+                    return cache[argsString];
+                }
+                cache[argsString] = fn.call(this, argsString);
+                return cache[argsString];
+            } :
+            function(){
+                var args = slice.call(arguments);
+                var argsString = args.join(',');
+                if(argsString in cache){
+                    return cache[argsString];
+                }
+                cache[argsString] = fn.apply(this, args);
+                return cache[argsString];
+            }
+        ;
+    };
+    /* End: memoize */
+
     /* Begin: parseValue */
     rb.parseValue = (function () {
         var regNumber = /^\-{0,1}\+{0,1}\d+?\.{0,1}\d*?$/;
@@ -406,6 +476,36 @@ if (!window.rb) {
         return parseValue;
     })();
     /* End: parseValue */
+
+    /* Begin: idleCallback */
+    rb.rIC = function(fn){
+        return (window.requestIdleCallback || setTimeout)(fn);
+    };
+    /* End: idleCallback */
+
+    /* Begin: ReadCallback */
+    rb.rRC = (function(){
+        var running;
+        var fns = [];
+        var flush = function(){
+            while (fns.length) {
+                fns.shift()();
+            }
+            running = false;
+        };
+        var rAF = function(){
+            setTimeout(flush);
+        };
+
+        return function(fn){
+            fns.push(fn);
+            if(!running){
+                running = true;
+                rb.rAFQueue(rAF);
+            }
+        };
+    })();
+    /* End: idleCallback */
 
     /* Begin: rAF helpers */
 
@@ -529,7 +629,6 @@ if (!window.rb) {
      * @example
      * rb.rAFs(this, {throttle: true}, 'renderList', 'renderCircle');
      */
-    var slice = Array.prototype.slice;
     rb.rAFs = function (obj) {
         var options;
         var args = slice.call(arguments);
@@ -572,7 +671,7 @@ if (!window.rb) {
     /* End: rbComponent */
 
     /* Begin: addEasing */
-    var isExtended;
+    var isExtended, BezierEasing;
     var copyEasing = function (easing, name) {
         var easObj = BezierEasing.css[easing];
         $.easing[easing] = easObj.get;
@@ -583,7 +682,7 @@ if (!window.rb) {
     };
     var extendEasing = function () {
         var easing;
-        if (!isExtended && window.BezierEasing && $) {
+        if (!isExtended && BezierEasing) {
             isExtended = true;
             for (easing in BezierEasing.css) {
                 copyEasing(easing);
@@ -599,11 +698,12 @@ if (!window.rb) {
      * @returns {Function} Easing a function
      */
     rb.addEasing = function (easing, name) {
-        var bezierArgs, BezierEasing;
+        var bezierArgs;
         if (typeof easing != 'string') {
             return;
         }
-        BezierEasing = window.BezierEasing || rb.BezierEasing;
+
+        BezierEasing = BezierEasing || rb.BezierEasing || window.BezierEasing;
 
         if (BezierEasing && !$.easing[easing] && !BezierEasing.css[easing] && (bezierArgs = easing.match(/([0-9\.]+)/g)) && bezierArgs.length == 4) {
             extendEasing();
@@ -626,35 +726,17 @@ if (!window.rb) {
     setTimeout(extendEasing);
     /* End: addEasing */
 
-    /* Begin: ID/Symbol */
-    /**
-     * Returns a Symbol or unique String
-     * @memberof rb
-     * @param {String} description ID or description of the symbol
-     * @type {Function}
-     * @returns {String|Symbol}
-     */
-    rb.Symbol = window.Symbol;
-    var id = Math.round(Date.now() * Math.random());
-
-    /**
-     * Returns a unique id based on Math.random and Date.now().
-     * @memberof rb
-     * @returns {string}
-     */
-    rb.getID = function () {
-        id += (Math.round(Math.random() * 1000));
-        return id.toString(36);
-    };
-
-    if (!rb.Symbol) {
-        rb.Symbol = function (name) {
-            name = name || '_';
-            return name + rb.getID();
-        };
-    }
-
-    /* End: ID/Symbol */
+    /* Begin: cssSupports */
+    var CSS = window.CSS;
+    rb.cssSupports = CSS && CSS.supports ?
+        function(){
+            return CSS.supports.apply(CSS, arguments);
+        } :
+        function(){
+            return '';
+        }
+    ;
+    /* End: cssSupports */
 
     /* Begin: rb.events */
 
@@ -818,179 +900,6 @@ if (!window.rb) {
 
     /* End: rb.events */
 
-    /* Begin: elementResize */
-    var elementResize = {
-        add: function (element, fn, options) {
-            if (!element[elementResize.expando]) {
-                element[elementResize.expando] = {
-                    width: element.offsetWidth,
-                    height: element.offsetHeight,
-                    cbs: $.Callbacks(),
-                    widthCbs: $.Callbacks(),
-                    heightCbs: $.Callbacks(),
-                    wasStatic: rb.getStyles(element).position == 'static',
-                };
-
-                this.addMarkup(element, element[elementResize.expando]);
-            }
-
-            if (options && options.noWidth) {
-                element[elementResize.expando].heightCbs.add(fn);
-            } else if (options && options.noHeight) {
-                element[elementResize.expando].widthCbs.add(fn);
-            } else {
-                element[elementResize.expando].cbs.add(fn);
-            }
-            return element[elementResize.expando];
-        },
-        remove: function (element, fn) {
-            if (element[elementResize.expando]) {
-                element[elementResize.expando].cbs.remove(fn);
-                element[elementResize.expando].heightCbs.remove(fn);
-                element[elementResize.expando].widthCbs.remove(fn);
-            }
-        },
-        expando: rb.Symbol('_elementResize'),
-        addMarkup: rb.rAF(function (element, data) {
-            var fire, widthChange, heightChange;
-            var first = true;
-            var expandElem, shrinkElem, expandChild, block;
-            var posStyle = 'position:absolute;top:0;left:0;display: block;'; //
-            var wrapperStyle = posStyle + 'bottom:0;right:0;';
-            var wrapper = document.createElement('span');
-
-            var addEvents = function () {
-                expandElem.addEventListener('scroll', onScroll);
-                shrinkElem.addEventListener('scroll', onScroll);
-            };
-
-            var runFire = function () {
-
-                if (heightChange) {
-                    element[elementResize.expando].heightCbs.fire(data);
-                }
-                if (widthChange) {
-                    element[elementResize.expando].widthCbs.fire(data);
-                }
-
-                data.cbs.fire(data);
-
-                heightChange = false;
-                widthChange = false;
-            };
-
-            var scrollWrite = function () {
-                expandElem.scrollLeft = data.exScrollLeft;
-                expandElem.scrollTop = data.exScrollTop;
-                shrinkElem.scrollLeft = data.shrinkScrollLeft;
-                shrinkElem.scrollTop = data.shrinkScrollTop;
-
-                if (fire) {
-                    runFire();
-                }
-
-                if (first) {
-                    first = false;
-                    addEvents();
-                }
-                block = false;
-            };
-
-            var write = rb.rAF(function () {
-                expandChild.style.width = data.exChildWidth;
-                expandChild.style.height = data.exChildHeight;
-                setTimeout(scrollWrite, 20);
-            }, {throttle: true});
-
-            var read = function () {
-                data.exChildWidth = expandElem.offsetWidth + 9 + 'px';
-                data.exChildHeight = expandElem.offsetHeight + 9 + 'px';
-
-                data.exScrollLeft = expandElem.scrollWidth;
-                data.exScrollTop = expandElem.scrollHeight;
-
-                data.shrinkScrollLeft = shrinkElem.scrollWidth;
-                data.shrinkScrollTop = shrinkElem.scrollHeight;
-
-                write();
-            };
-            var onScroll = rb.throttle(function () {
-                if (block) {
-                    return;
-                }
-
-                var width = element.offsetWidth;
-                var height = element.offsetHeight;
-
-                var curWidthChange = width != data.width;
-                var curHeightChange = height != data.height;
-
-                fire = curHeightChange || curWidthChange;
-
-                if (fire) {
-                    widthChange = curWidthChange || widthChange;
-                    heightChange = curHeightChange || heightChange;
-                    data.height = height;
-                    data.width = width;
-                    block = widthChange && heightChange;
-                    read();
-                }
-
-            });
-
-            wrapper.className = 'js-element-resize';
-            wrapper.setAttribute('style', wrapperStyle + 'visibility:hidden;z-index: -1;opacity: 0;');
-            wrapper.innerHTML = '<span style="' + wrapperStyle + 'overflow: scroll;">' +
-                '<span style="' + posStyle + '"><\/span>' +
-                '<\/span>' +
-                '<span style="' + wrapperStyle + 'overflow: scroll;">' +
-                '<span style="' + posStyle + 'width: 200%; height: 200%;"><\/span>' +
-                '<\/span>';
-
-            expandElem = wrapper.children[0];
-            shrinkElem = wrapper.children[1];
-            expandChild = expandElem.children[0];
-
-            if (data.wasStatic) {
-                element.style.position = 'relative';
-            }
-
-            element.appendChild(wrapper);
-            setTimeout(read);
-        }),
-    };
-
-    /**
-     * A jQuery plugin that invokes a callback as soon as the dimension of an element changes
-     * @function external:"jQuery.fn".elementResize
-     * @param action {String} "add" or "remove". Whether the function should be added or removed
-     * @param fn {Function} The resize listener function that should be added or removed.
-     * @param [options] {Object}
-     * @param [options.noWidth=false] {Boolean} Only height changes to this element should fire the callback function.
-     * @param [options.noHeight=false] {Boolean} Only width changes to this element should fire the callback function.
-     * @returns {jQueryfiedObject}
-     */
-    $.fn.elementResize = function (action, fn, options) {
-        if (action != 'remove') {
-            action = 'add';
-        }
-        return this.each(function () {
-            elementResize[action](this, fn, options);
-        });
-    };
-
-    [['elemresize'], ['elemresizewidth', {noHeight: true}], ['elemresizeheight', {noWidth: true}]].forEach(function (evt) {
-        rb.events.special[evt[0]] = {
-            add: function (elem, fn) {
-                elementResize.add(elem, fn, evt[1]);
-            },
-            remove: function (elem, fn) {
-                elementResize.remove(elem, fn, evt[1]);
-            }
-        };
-    });
-    /* End: elementResize */
-
     /**
      * Invokes on the first element in collection the closest method and on the result the querySelector method.
      * @function external:"jQuery.fn".closestFind
@@ -1016,8 +925,9 @@ if (!window.rb) {
     /* Begin: clickarea delegate */
     var initClickArea = function(){
 
-        var clickAreaSel = '.' + rb.statePrefix + 'clickarea';
-        var clickAreaactionSel = '.' + rb.statePrefix + 'clickarea-action';
+        var supportMouse = typeof window.MouseEvent == 'function';
+        var clickAreaSel = '.' + rb.utilPrefix + 'clickarea';
+        var clickAreaactionSel = '.' + rb.utilPrefix + 'clickarea' + rb.nameSeparator + 'action';
         var abortSels = 'a[href], a[href] *, ' + clickAreaactionSel + ', ' + clickAreaactionSel + ' *';
 
         var getSelection = window.getSelection || function () {
@@ -1039,7 +949,7 @@ if (!window.rb) {
                 if (selection.anchorNode && !selection.isCollapsed && item.contains(selection.anchorNode)) {
                     return;
                 }
-                if (window.MouseEvent && link.dispatchEvent) {
+                if (supportMouse && link.dispatchEvent) {
                     event = new MouseEvent('click', {
                         cancelable: true,
                         bubbles: true,
@@ -1158,7 +1068,7 @@ if (!window.rb) {
     /* Begin: focus-within polyfill */
     var initFocusWithin = function(){
         var running = false;
-        var isClass = rb.statePrefix + 'focus-within';
+        var isClass = rb.utilPrefix + 'focus' + rb.nameSeparator + 'within';
         var isClassSelector = '.' + isClass;
 
         var updateFocus = function () {
@@ -1203,21 +1113,18 @@ if (!window.rb) {
     /* * * Begin: keyboard-focus * * */
 
     var initKeyboardFocus = function(){
-        var keyboardBlocktimer, keyboardFocusElem;
+        var keyboardFocusElem;
         var hasKeyboardFocus = false;
         var isKeyboardBlocked = false;
+        var eventOpts = {passive: true, capture: true};
         var root = rb.root;
-        var isClass = rb.statePrefix + 'keyboardfocus';
-        var isWithinClass = rb.statePrefix + 'keyboardfocus-within';
+        var isClass = rb.utilPrefix + 'keyboardfocus';
+        var isWithinClass = rb.utilPrefix + 'keyboardfocus' + rb.nameSeparator + 'within';
 
-        var unblockKeyboardFocus = function () {
-            isKeyboardBlocked = false;
-        };
-
-        var blockKeyboardFocus = function () {
-            isKeyboardBlocked = true;
-            clearTimeout(keyboardBlocktimer);
-            keyboardBlocktimer = setTimeout(unblockKeyboardFocus, 99);
+        var unblockKeyboardFocus = function (e) {
+            if(e.keyCode == 9){
+                isKeyboardBlocked = false;
+            }
         };
 
         var _removeChildFocus = function () {
@@ -1240,10 +1147,10 @@ if (!window.rb) {
         }, {throttle: true});
 
         var removeKeyBoardFocus = function () {
+            isKeyboardBlocked = true;
             if (hasKeyboardFocus) {
                 _removeKeyBoardFocus();
             }
-            blockKeyboardFocus();
         };
 
         var setKeyboardFocus = rb.rAF(function () {
@@ -1252,10 +1159,13 @@ if (!window.rb) {
 
                 if (keyboardFocusElem != document.activeElement) {
                     _removeChildFocus();
+
                     keyboardFocusElem = document.activeElement;
 
                     if (keyboardFocusElem && keyboardFocusElem.classList) {
                         keyboardFocusElem.classList.add(isClass);
+                    } else {
+                        keyboardFocusElem = null;
                     }
                 }
 
@@ -1268,21 +1178,21 @@ if (!window.rb) {
 
         var pointerEvents = (window.PointerEvent) ?
                 ['pointerdown', 'pointerup'] :
-                ['mousedown', 'mouseup', 'touchstart', 'touchend']
+                ['mousedown', 'mouseup']
             ;
 
-        root.addEventListener('blur', removeChildFocus, true);
-        root.addEventListener('focus', setKeyboardFocus, true);
+        root.addEventListener('blur', removeChildFocus, eventOpts);
+        root.addEventListener('focus', function(){
+            if(!isKeyboardBlocked || hasKeyboardFocus){
+                setKeyboardFocus();
+            }
+        }, eventOpts);
+        root.addEventListener('keydown', unblockKeyboardFocus, eventOpts);
+        root.addEventListener('keypress', unblockKeyboardFocus, eventOpts);
 
         pointerEvents.forEach(function (eventName) {
-            document.addEventListener(eventName, removeKeyBoardFocus, true);
+            document.addEventListener(eventName, removeKeyBoardFocus, eventOpts);
         });
-
-        document.addEventListener('click', blockKeyboardFocus, true);
-        window.addEventListener('focus', blockKeyboardFocus);
-        document.addEventListener('focus', blockKeyboardFocus);
-
-        rb.$doc.on('rbscriptfocus', blockKeyboardFocus);
     };
     /* End: keyboard-focus */
 
@@ -1319,6 +1229,8 @@ if (!window.rb) {
 
     var cbs = [];
     var setupClick = function () {
+        var clickClass = ['js', 'click'].join(rb.nameSeparator);
+        var clickSel = '.' + clickClass;
         var applyBehavior = function (clickElem, e) {
             var i, len, attr, found;
             for (i = 0, len = cbs.length; i < len; i++) {
@@ -1332,26 +1244,26 @@ if (!window.rb) {
             }
 
             if (!found) {
-                clickElem.classList.remove('js-click');
+                clickElem.classList.remove(clickClass);
             }
         };
         setupClick = rb.$.noop;
 
         document.addEventListener('keydown', function (e) {
             var elem = e.target;
-            if ((e.keyCode == 40 || e.keyCode == 32 || e.keyCode == 13) && elem.classList.contains('js-click') && elem.getAttribute('data-module')) {
+            if ((e.keyCode == 40 || e.keyCode == 32 || e.keyCode == 13) && elem.classList.contains(clickClass) && elem.getAttribute('data-module')) {
                 applyBehavior(elem, e);
             }
         }, true);
 
         document.addEventListener('click', function (e) {
-            var clickElem = e.target.closest('.js-click');
+            var clickElem = e.target.closest(clickSel);
             while (clickElem) {
                 applyBehavior(clickElem, e);
 
                 clickElem = clickElem.parentNode;
                 if (clickElem && clickElem.closest) {
-                    clickElem = clickElem.closest('.js-click');
+                    clickElem = clickElem.closest(clickSel);
                 }
 
                 if (clickElem && !clickElem.closest) {
@@ -1360,6 +1272,8 @@ if (!window.rb) {
             }
 
         }, true);
+
+        return clickClass;
     };
 
     /**
@@ -1380,7 +1294,7 @@ if (!window.rb) {
                 fn: fn,
             });
             if (cbs.length == 1) {
-                setupClick();
+                this.clickClass = setupClick();
             }
         }
     };
@@ -1518,23 +1432,21 @@ if (!window.rb) {
         return condition ? yes : (no || '');
     };
 
-    rb._uitilsInit = function(){
+    rb._utilsInit = function(){
         initClickArea();
         initFocusWithin();
         initKeyboardFocus();
-        rb._uitilsInit = rb.$.noop;
+        rb._utilsInit = rb.$.noop;
     };
 })(window, document);
 
 (function (window, document) {
     'use strict';
 
-    var elements, useMutationEvents, implicitlyStarted, lifeBatch;
+    var elements, useMutationEvents, implicitlyStarted, lifeBatch, initClass, attachedClass, started;
 
     var life = {};
     var removeElements = [];
-    var initClass = 'js-rb-life';
-    var attachedClass = 'js-rb-attached';
     var rb = window.rb;
     var $ = rb.$;
     var componentExpando = rb.Symbol('_rbComponent');
@@ -1569,7 +1481,7 @@ if (!window.rb) {
                 rb.log('js-click component not found', elem);
             }
             rb.rAFQueue(function () {
-                elem.classList.remove('js-click');
+                elem.classList.remove(rb.click.clickClass);
                 if(!elem.classList.contains(attachedClass)){
                     elem.classList.add(initClass);
                     life.searchModules();
@@ -1590,8 +1502,7 @@ if (!window.rb) {
                 elem = elements[i];
                 component = elem && elem[componentExpando];
 
-                if (component && component.parseOptions && component._afterStyle &&
-                    component._afterStyle.content != component._styleOptsStr) {
+                if (component && component.parseOptions && rb.hasPseudoChanged(elem)) {
                     component.parseOptions();
                 }
             }
@@ -1706,21 +1617,38 @@ if (!window.rb) {
             }
         };
     };
+    var extendOptions = function(obj){
+        if(obj){
+            ['statePrefix', 'utilPrefix', 'jsPrefix', 'nameSeparator', 'elementSeparator'].forEach(function(prefixName){
+                if(prefixName in obj && typeof obj[prefixName] == 'string') {
+                    rb[prefixName] = obj[prefixName];
+                }
+            });
+        }
+    };
 
     var mainInit = function(){
         mainInit = false;
-        if(rb.cssConfig.statePrefix) {
-            rb.statePrefix = rb.cssConfig.statePrefix;
-        }
 
-        rb._uitilsInit();
+        extendOptions(rb.cssConfig);
+
+        initClass = ['js', 'rb', 'life'].join(rb.nameSeparator);
+        attachedClass = ['js', 'rb', 'attached'].join(rb.nameSeparator);
+
+        elements = document.getElementsByClassName(initClass);
+
+        rb._utilsInit();
 
         initObserver();
 
         initClickCreate();
 
         initWatchCss();
+
+        rb.ready.resolve();
     };
+
+    rb.ready = rb.deferred();
 
     rb.life = life;
 
@@ -1741,20 +1669,18 @@ if (!window.rb) {
     life.customElements = false;
 
     life.init = function (options) {
-        if (elements) {
+        if (started) {
             rb.log('only once');
             return;
         }
 
+        started = true;
+
         if (options) {
             useMutationEvents = options.useMutationEvents || false;
-        }
 
-        if(options && options.statePrefix){
-            rb.statePrefix = options.statePrefix;
+            extendOptions(options);
         }
-
-        elements = document.getElementsByClassName(initClass);
 
         lifeBatch = createBatch();
 
@@ -1828,7 +1754,7 @@ if (!window.rb) {
         }
 
         if (!_noCheck) {
-            if (!elements && !implicitlyStarted) {
+            if (!started && !implicitlyStarted) {
                 implicitlyStarted = true;
                 setTimeout(function () {
                     if (!elements && life.autoStart) {
@@ -1985,13 +1911,13 @@ if (!window.rb) {
 
         var findElements = rb.throttle(function () {
 
-            var element, modulePath, moduleId, i, hook, start, deferred;
-
-            var len = elements.length;
+            var element, modulePath, moduleId, i, hook, start, deferred, len;
 
             if(mainInit){
                 mainInit();
             }
+
+            len = elements.length;
 
             if (!len) {
                 return;
@@ -2183,34 +2109,24 @@ if (!window.rb) {
     var componentExpando = life.componentExpando;
     var regData = /^data-/;
     var regWhite = /\s+(?=[^\)]*(?:\(|$))/g;
+    var regComma = /\s*,\s*(?=[^\)]*(?:\(|$))/g;
+    var regColon = /\s*:\s*(?=[^\)]*(?:\(|$))/g;
     var regName = /\{name}/g;
+    var regJsName = /\{jsName}/g;
+    var regHtmlName = /\{htmlName}/g;
+    var regnameSeparator = /\{-}/g;
+    var regElementSeparator = /\{e}/g;
     var regEvtOpts = /^(.+?)(\((.*)\))?$/;
-
     var _setupEventsByEvtObj = function (that) {
-        var evt, namedStr, evtName, selector;
+        var eventsObjs, evt;
         var evts = that.constructor.events;
 
         for (evt in evts) {
-            namedStr = that.interpolateName(evt, true);
-            selector = namedStr.split(regWhite);
-            evtName = selector.shift();
+            eventsObjs = rb.parseEventString(evt);
 
             /* jshint loopfunc: true */
-            (function (evtName, selector, method) {
-                var optMatch, handler, i;
-                var opts = {};
-                var strOpts = evtName.split(':');
-                var evts = strOpts.shift().split(',');
-
-                for (i = 0; i < strOpts.length; i++) {
-                    if ((optMatch = strOpts[i].match(regEvtOpts))) {
-                        opts[optMatch[1]] = optMatch[3] || true;
-                    }
-                }
-
-                if (selector) {
-                    opts.delegate = selector;
-                }
+            (function (eventsObjs, method) {
+                var handler;
 
                 handler = (typeof method == 'string') ?
                     function (e) {
@@ -2221,12 +2137,51 @@ if (!window.rb) {
                     }
                 ;
 
-                for(i = 0; i <  evts.length; i++){
-                    rb.events.add(that.element, evts[i], handler, opts);
-                }
-            })(evtName, selector.join(' '), evts[evt]);
+                eventsObjs.forEach(function(eventObj){
+                    var prop, eventName;
+                    var opts = {};
+                    eventName = that.interpolateName(eventObj.event, true);
+
+                    for(prop in eventObj.opts){
+                        opts[prop] = that.interpolateName(eventObj.opts[prop]);
+                    }
+
+                    rb.events.add(that.element, eventName, handler, opts);
+                });
+            })(eventsObjs, evts[evt]);
         }
     };
+
+    rb.parseEventString = rb.memoize(function(evtStr){
+
+        var evtNames = evtStr.split(regComma);
+        var selector = evtNames[evtNames.length - 1].split(regWhite);
+
+        evtNames[evtNames.length - 1] = selector.shift();
+
+        selector = selector.join(' ');
+
+        return evtNames.map(function(evtName){
+            var optMatch, i;
+            var strOpts = evtName.split(regColon);
+            var data = {
+                event: strOpts.shift(),
+                opts: {}
+            };
+
+            for (i = 0; i < strOpts.length; i++) {
+                if ((optMatch = strOpts[i].match(regEvtOpts))) {
+                    data.opts[optMatch[1]] = optMatch[3] || ' ';
+                }
+            }
+
+            if (selector && !data.opts.closest) {
+                data.opts.closest = selector;
+            }
+            return data;
+        });
+
+    }, true);
 
     /**
      * returns the component instance of an element. If the component is not yet initialized it will be initialized.
@@ -2328,14 +2283,13 @@ if (!window.rb) {
                  * @type {{}}
                  */
                 this.options = {};
-                this._afterStyle = rb.getStyles(element, '::before');
 
                 this._initialDefaults = initialDefaults;
                 element[componentExpando] = this;
 
                 this.parseOptions(this.options);
 
-                this.name = this.options.name || this.name;
+                this.name = this.options.name || rb.jsPrefix + this.name;
                 this.jsName = this.options.jsName || origName;
 
                 this._evtName = this.jsName + 'changed';
@@ -2418,7 +2372,6 @@ if (!window.rb) {
              *
              * The value is either a string representing the name of a component method or a function reference. The function is always executed in context of the component.
              *
-             * As events the following special events can also be used: 'elemresize', 'elemresizewidth' and 'elemresizeheight'.
              *
              * @example
              *
@@ -2434,13 +2387,9 @@ if (!window.rb) {
 			 *          return {
 			 *              'mouseenter': '_onInteraction',
 			 *              'click .{name}__close-button': 'close',
-			 *              'elemresizewidth': function(){
-			 *                  this.readLayout();
-			 *                  this.setLayout();
-			 *              },
 			 *              'focus:capture():matches(input, select)': '_onFocus',
 			 *              'mouseenter:capture():matches(.teaser)': '_delegatedMouseenter',
-			 *              'click .ok-btn': '_ok',
+			 *              'click:closest(.ok-btn)': '_ok',
 			 *              'keypress:keycodes(13 32):matches(.ok-btn)': '_ok',
 			 *          }
 			 *      }
@@ -2610,7 +2559,7 @@ if (!window.rb) {
             },
 
             /**
-             * Interpolates {name} to the name of the component. Helps to generate BEM-style Class-Structure.
+             * Interpolates {name}, {jsName} and {htmlName} to the name of the component. Helps to generate BEM-style Class-Structure.
              * @param {String} str
              * @param {Boolean} [isJs=false]
              * @returns {string}
@@ -2620,7 +2569,12 @@ if (!window.rb) {
              * this.interpolateName('.{name}__button'); //return '.dialog__button'
              */
             interpolateName: function (str, isJs) {
-                return str.replace(regName, isJs ? this.jsName : this.name);
+                return str.replace(regName, isJs ? this.jsName : this.name)
+                    .replace(regJsName, this.jsName)
+                    .replace(regHtmlName, this.name)
+                    .replace(regnameSeparator, rb.nameSeparator)
+                    .replace(regElementSeparator, rb.elementSeparator)
+                ;
             },
 
             /**
@@ -2634,6 +2588,10 @@ if (!window.rb) {
                 return (context || this.element).querySelector(this.interpolateName(selector));
             },
 
+            _qSA: function(selector, context){
+                return (context || this.element).querySelectorAll(this.interpolateName(selector));
+            },
+
             /**
              * Returns Array of matched elements. Interpolates selector with `interpolateName`.
              * @param {String} selector
@@ -2641,7 +2599,17 @@ if (!window.rb) {
              * @returns {Element[]}
              */
             queryAll: function (selector, context) {
-                return Array.from((context || this.element).querySelectorAll(this.interpolateName(selector)));
+                return Array.from(this._qSA(selector, context));
+            },
+
+            /**
+             * Returns jQuery list of matched elements. Interpolates selector with `interpolateName`.
+             * @param {String} selector
+             * @param {Element} [context=this.element]
+             * @returns {jQueryfiedNodeList}
+             */
+            $queryAll: function (selector, context) {
+                return $(this._qSA(selector, context));
             },
 
             /*
@@ -2774,22 +2742,11 @@ if (!window.rb) {
             },
 
             /*
-             * parses the CSS options (::before pseudo) of a given Element. This method is automatically invoked by the constructor or in case of a CSS option change.
-             * @param [element] {Element}
+             * parses the CSS options (::before pseudo) of the component
              * @returns {{}}
              */
-            parseCSSOptions: function (element) {
-                if (element == this.element) {
-                    element = null;
-                }
-                var style = (element ? rb.getStyles(element, '::before') : this._afterStyle).content || '';
-                if (element || !this._styleOptsStr || style != this._styleOptsStr) {
-                    if (!element) {
-                        this._styleOptsStr = style;
-                    }
-                    style = rb.parsePseudo(style);
-                }
-                return style || false;
+            parseCSSOptions: function() {
+                return rb.parsePseudo(this.element) || false;
             },
 
             destroy: function () {

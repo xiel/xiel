@@ -24,7 +24,6 @@
                 autoplay: false,
                 autoplayDelay: 2000,
                 pauseOnHover: true,
-                //pauseOnFocus: false,
                 jumpToStart: true,
             },
             init: function (element, initialDefaults) {
@@ -35,7 +34,7 @@
                 }, {that: this});
             },
             events: {
-                'click .{name}-autoplay-btn': function () {
+                'click:closest(.{name}{e}autoplay{-}btn)': function () {
                     this.setOption('autoplay', !this.options.autoplay);
                 }
             },
@@ -69,6 +68,7 @@
             startAutoplay: function () {
                 var that = this;
                 var options = this.options;
+                var keyboardFocusSel = '.' + rb.utilPrefix + 'keyboardfocus';
                 if (!options.autoplay) {
                     return;
                 }
@@ -93,6 +93,7 @@
 
                 if (!this._autoplayHandler) {
                     this._autoplayHandler = function () {
+                        if(that.element.querySelector(keyboardFocusSel)){return;}
                         if (that.isCarousel || that.selectedIndex + 1 < that.baseLength) {
                             that.selectNext();
                         } else {
@@ -103,7 +104,6 @@
 
                 this.$element.on('mouseenter', this._onenterAutoplay);
                 this.$element.on('mouseleave', this._onleaveAutoplay);
-
 
                 clearInterval(that._autoplayTimer);
                 that._autoplayTimer = setInterval(this._autoplayHandler, options.autoplayDelay);

@@ -19,6 +19,8 @@
              */
             defaults: {
                 focusElement: '',
+                defaultSelected: 0,
+                checkWithSpace: false,
             },
             statics: {
                 regList: /^(?:ol|ul)$/i,
@@ -42,10 +44,10 @@
                 this._super(element, initialDefaults);
 
                 this.selectedIndex = -1;
-                this.selectedItem = -1;
+                this.selectedItem = null;
 
                 this.checkedIndex = -1;
-                this.checkedItem = -1;
+                this.checkedItem = null;
 
                 this.isList = Listbox.regList.test(element.nodeName);
 
@@ -53,8 +55,8 @@
 
                 this._onkeyboardInput = this._onkeyboardInput.bind(this);
 
+                this.setFocusElement();
                 this._getElements();
-                this._setFocusElement();
             },
             setOption: function (name, value) {
 
@@ -62,7 +64,7 @@
 
                 switch (name) {
                     case 'focusElement':
-                        this._setFocusElement();
+                        this.setFocusElement();
                         break;
                     case 'disconnected':
                         this[value ? '_disconnect' : '_connect']();
@@ -70,10 +72,10 @@
                 }
             },
             events: {
-                'mousedown .{name}-item': function (e) {
+                'mousedown:closest(.{name}{e}item)': function (e) {
                     this.select(e.delegatedTarget);
                 },
-                'click .{name}-item:not([aria-disabled="true"])': function (e) {
+                'click .{name}{e}item:not([aria-disabled="true"])': function (e) {
                     this.select(e.delegatedTarget);
                     this.check(e.delegatedTarget);
                 }
@@ -94,14 +96,15 @@
                     this.checkedItem.setAttribute('aria-checked', 'true');
                 }
 
-                if(this.$element.css('position') == 'static'){
+                if(this._isStatic){
                     this.element.style.position = 'relative';
                 }
             },
             _getElements: function () {
-                this.$items = $(this.queryAll('.{name}-item'));
+                this.$items = this.$queryAll('.{name}{e}item');
                 this.checkedItem = this.$items.filter('.' + rb.statePrefix + 'checked').get(0) || null;
                 this.checkedIndex = (this.checkedItem) ? this.$items.index(this.checkedItem) : -1;
+                this._isStatic = this.$element.css('position') == 'static';
                 this._setInitialMarkup();
 
                 if(!this.options.disconnected){
@@ -121,7 +124,7 @@
                     prevent = true;
                     this.selectPrev();
                     this.scrollIntoView(this.selectedItem);
-                } else if (e.keyCode == 32 || e.keyCode == 13) {
+                } else if (this.selectedItem && (e.keyCode == 13 || (e.keyCode == 32 && this.options.checkWithSpace))) {
                     prevent = true;
                     this.checkSelected();
                 }
@@ -138,28 +141,37 @@
                 if(activeItem){
                     activeItem = this.query('#'+ activeItem);
                 }
-                this.select(this.checkedItem || activeItem || 0);
+                this.select(this.checkedItem || activeItem || this.options.defaultSelected);
                 this.scrollIntoView(this.checkedItem || activeItem, true);
             },
-            _setFocusElement: function () {
+            setFocusElement: function(){
                 var value = this.options.focusElement;
-
-                if (this.focusElement) {
-                    this.focusElement.removeAttribute('aria-activedescendant');
-                    this.focusElement.removeAttribute('tabindex');
-                    this.focusElement.removeEventListener('keydown', this._onkeyboardInput);
-                }
+                var old = this.focusElement;
 
                 this.focusElement = typeof value == 'object' ?
                     value :
                     (value && this.getElementsFromString(value)[0] || this.element)
                 ;
 
-                if(this.focusElement.tabIndex == -1 && !this.focusElement.getAttribute('tabindex')){
-                    this.focusElement.setAttribute('tabindex', '0');
+                if(old && old != this.focusElement){
+                    old.removeEventListener('keydown', this._onkeyboardInput);
+                } else {
+                    old = null;
                 }
 
                 this.focusElement.addEventListener('keydown', this._onkeyboardInput);
+
+                this._setFocusElement(old);
+            },
+            _setFocusElement: function (old) {
+                if (old) {
+                    old.removeAttribute('aria-activedescendant');
+                    old.removeAttribute('tabindex');
+                }
+
+                if(this.focusElement.tabIndex == -1 && !this.focusElement.getAttribute('tabindex')){
+                    this.focusElement.setAttribute('tabindex', '0');
+                }
             },
             _selectCheck: function (index, type) {
                 var item;
@@ -254,7 +266,7 @@
             _changeChecked: function () {
                 this.$items
                     .filter('.' + rb.statePrefix + 'checked')
-                    .removeClass(rb.statePrefix + 'checked')
+                    .rbChangeState('checked')
                     .removeAttr('aria-checked')
                 ;
 

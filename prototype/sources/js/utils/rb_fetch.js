@@ -13,13 +13,16 @@
 
     var rb = window.rb;
 
-    var getData = function (oReq) {
-        var data = oReq.responseXML || oReq.responseText;
-        var contentType = oReq.getResponseHeader('Content-Type') || '';
-        if (contentType.endsWith('json')) {
-            data = rb.jsonParse(oReq.responseText) || data;
+    var getData = function (oReq, obj) {
+        obj.xhr = oReq;
+        obj.data = oReq.response || oReq.responseXML || oReq.responseText;
+        obj.text = oReq.responseText;
+        obj.xml = oReq.responseXML;
+
+        if (typeof obj.data != 'object' &&
+            (oReq.getResponseHeader('Content-Type') || '').split(';')[0].endsWith('json')) {
+            obj.data = rb.jsonParse(oReq.responseText) || obj.data;
         }
-        return data;
     };
 
     /**
@@ -54,16 +57,17 @@
             password: null,
         }, options);
 
+        var oReq = new XMLHttpRequest();
         var promise = new Promise(function (resolve, reject) {
             var header;
-            var oReq = new XMLHttpRequest();
+
+            var value = {opts: options};
 
             oReq.addEventListener('load', function () {
-                var value;
                 var status = oReq.status;
                 var isSuccess = status >= 200 && status < 300 || status == 304;
 
-                value = {data: getData(oReq)};
+                getData(oReq, value);
 
                 if (isSuccess) {
                     resolve(value, oReq);
@@ -74,7 +78,7 @@
             });
 
             oReq.addEventListener('error', function () {
-                var value = {data: getData(oReq)};
+                getData(oReq, value);
                 reject(value, oReq);
                 oReq = null;
             });
@@ -93,6 +97,16 @@
 
             oReq.send(options.data || null);
         });
+
+        promise.abort = function(){
+            if(oReq){
+                oReq.abort();
+            }
+        };
+
+        promise.getXhr = function(){
+            return oReq;
+        };
 
         return promise;
     };

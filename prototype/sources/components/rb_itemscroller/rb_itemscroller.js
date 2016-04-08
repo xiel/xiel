@@ -1,17 +1,24 @@
 (function (factory) {
     if (typeof module === 'object' && module.exports) {
         require('../../js/utils/rb_draggy');
+        require('../../js/utils/rb_elemresize');
+        require('../../js/utils/rb_prefixed');
         module.exports = factory();
     } else {
         factory();
     }
 }(function () {
+
     /* jshint eqnull: true */
     'use strict';
     var rb = window.rb;
     var $ = rb.$;
     var regIndex = /\{index}/g;
-    var supports3dTransform = window.CSS && CSS.supports && CSS.supports('(transform: translate3d(0,0,0))');
+    var orderProp = rb.prefixed('order') || rb.prefixed('flexOrder');
+    var supportSomeOrder = !!orderProp;
+    var transformProp = rb.prefixed('transform');
+    var supports3dTransform = rb.cssSupports('transform', 'translate3d(0,0,0)');
+
 
     var ItemScroller = rb.Component.extend('itemscroller',
         /** @lends rb.components.itemscroller.prototype */
@@ -39,10 +46,12 @@
                 mouseDrag: true,
                 easing: '0.1, 0.25, 0.1, 1.03',//0.045, 0.235, 0.025, 1.025
                 duration: 600,
-                paginationItemTpl: '<span class="{name}-pagination-btn"></span>',
+                paginationItemTpl: '<span class="{name}{e}pagination{-}btn"></span>',
                 useTransform: true,
                 carousel: false,
                 mandatorySnap: false,
+                startOrder: -1,
+                endOrder: 99,
             },
             /**
              * @constructs
@@ -117,20 +126,21 @@
             init: function (element, initialDefaults) {
                 this._super(element, initialDefaults);
 
-                this.usesTransform = this.options.useTransform && supports3dTransform;
+                this.usesTransform = this.options.useTransform && !!transformProp;
                 this._pos = 0;
 
                 this._selectedIndex = this.options.selectedIndex;
 
                 this.options.paginationItemTpl = this.interpolateName(this.options.paginationItemTpl);
 
-                this.$scroller = this.$element.find('.' + this.name + '-content');
-                this.scroller = this.$scroller.get(0);
-                this.viewport = this.query('.{name}-viewport');
-                this.$pagination = $(this.query('.{name}-pagination'));
-                this.$pageLength = $(this.query('.{name}-page-length'));
-                this.$currentIndex = $(this.query('.{name}-current-index'));
+                this.scroller = this.query('.{name}{e}content');
+                this.$scroller = $(this.scroller);
+                this.viewport = this.query('.{name}{e}viewport');
+                this.$pagination = $(this.query('.{name}{e}pagination'));
+                this.$pageLength = $(this.query('.{name}{e}page{-}length'));
+                this.$currentIndex = $(this.query('.{name}{e}current{-}index'));
                 this.$paginationBtns = $([]);
+
 
                 this.onslide = $.Callbacks();
 
@@ -149,6 +159,7 @@
                 this._slideProgress = this._slideProgress.bind(this);
                 this._slideComplete = this._slideComplete.bind(this);
 
+                this._generateHelper();
                 this._setupEvents();
 
                 if (!this.options.switchedOff) {
@@ -158,7 +169,7 @@
                 }
             },
             events: {
-                'click .{name}-btn-next': function () {
+                'click:closest(.{name}{e}btn{-}next)': function () {
                     if (this.options.switchedOff) {
                         return;
                     }
@@ -168,7 +179,7 @@
                         this.selectNextIndex();
                     }
                 },
-                'click .{name}-btn-prev': function () {
+                'click:closest(.{name}{e}btn{-}prev)': function () {
                     if (this.options.switchedOff) {
                         return;
                     }
@@ -178,19 +189,14 @@
                         this.selectPrevIndex();
                     }
                 },
-                'click .{name}-pagination-btn': function (e) {
+                'click:closest(.{name}{e}pagination{-}btn)': function (e) {
                     if (this.options.switchedOff) {
                         return;
                     }
                     var index = this.$paginationBtns.index(e.delegatedTarget || e.currentTarget);
                     this.selectedIndex = index;
                 },
-                'elemresizewidth': 'calculateLayout',
-                //'mousewheel': function(e){
-                //    this.log(e);
-                //    this._setRelPos(e.deltaX * -1);
-                //    e.preventDefault();
-                //},
+                elemresizewidth: 'reflow',
             },
             setOption: function (name, value) {
                 this._super(name, value);
@@ -201,8 +207,7 @@
                         this._calculatePages();
                         this._writeLayout();
                         if (name == 'carousel' && value) {
-                            this.$element
-                                .find('.' + this.name + '-btn-next, .' + this.name + '-btn-prev')
+                            this.$queryAll('.{name}{e}btn{-}next, .{name}{e}btn{-}prev')
                                 .prop({disabled: false})
                                 .removeClass(rb.statePrefix + 'disabled')
                             ;
@@ -243,34 +248,35 @@
                 if ($.fn.draggy) {
                     $(this.viewport).draggy('destroy');
                 }
+                var cellCSS = {};
                 this.$cells
-                    .css({left: '', position: ''})
-                    .removeClass(rb.statePrefix + 'active-done')
-                    .removeClass(rb.statePrefix + 'active')
-                    .removeClass(rb.statePrefix + 'activated-done')
-                    .removeClass(rb.statePrefix + 'activated')
+                    .rbChangeState('active{-}done')
+                    .rbChangeState('active')
+                    .rbChangeState('activated{-}done')
+                    .rbChangeState('activated')
                 ;
+
+                cellCSS[orderProp] = '';
+
+                this.$cells.css(cellCSS);
+
                 this.$scroller.css({
                     position: '',
-                    'padding-left': '',
-                    'padding-right': '',
                     left: '',
                     transform: '',
-                    'min-height': '',
                 });
+
                 $(this.viewport).css({
                     position: '',
-                    'border-left-width': '',
-                    'border-right-width': '',
-                    'border-left-style': '',
-                    'border-right-style': '',
-                    overflow: '',
-                    height: '',
                 });
+
+                this.helperElem.style.display = 'none';
+
                 this.setSwitchedOffClass();
             },
             setSwitchedOffClass: function(){
-                this.element.classList[this.options.switchedOff ? 'add' : 'remove'](rb.statePrefix + 'switched-off');
+                this.element.classList
+                    [this.options.switchedOff ? 'add' : 'remove'](rb.statePrefix + 'switched' + rb.nameSeparator + 'off');
             },
             _switchOn: function () {
                 this._mainSetup();
@@ -278,28 +284,35 @@
                 this._setupTouch();
                 this.setSwitchedOffClass();
             },
+            _generateHelper: function(){
+
+                this.helperElem = $(document.createElement('div'))
+                    .attr({
+                        'class': 'js' + rb.nameSeparator + this.name + rb.elementSeparator + 'helper',
+                        style: 'width:0;padding:0;margin:0;visibility:hidden;border:0;height:100%;min-height:9px',
+                    })
+                    .css({
+                        webkitFlexGrow: 0,
+                        flexGrow: 0,
+                        display: this.options.switchedOff ? 'none' : ''
+                    })
+                    .get(0)
+                ;
+
+                this._setOrder(this.helperElem, this.options.startOrder);
+            },
             _mainSetup: function () {
                 var that = this;
                 rb.rAFQueue(function () {
-                    var css = {visibility: 'hidden', position: 'absolute', 'z-index': -1};
-                    if (!that.scrollerClone || !that.viewportClone) {
-                        that.scrollerClone = that.scroller.cloneNode();
-                        that.viewportClone = that.viewport.cloneNode();
-                        $(that.scrollerClone).css(css);
-                        $(that.viewportClone).css(css).addClass('js-size-shadow');
-                        that.viewportClone.appendChild(that.scrollerClone);
-                        $(that.viewport).after(that.viewportClone);
-                    }
-
-                    that.$scroller.css({position: 'relative', 'padding-left': '0px', 'padding-right': '0px'});
                     $(that.viewport).css({
                         position: 'relative',
-                        overflow: 'hidden',
-                        'border-left-color': 'transparent',
-                        'border-right-color': 'transparent',
-                        'border-left-style': 'solid',
-                        'border-right-style': 'solid',
                     });
+                    that.$scroller.css({
+                        position: 'relative',
+                    });
+
+                    that.helperElem.style.display = '';
+
                     that._updateControls();
                     that._slideComplete();
                 }, true);
@@ -310,8 +323,10 @@
             },
             _setupFocusScroll: function () {
                 var that = this;
-                var cellSel = '.' + this.name + '-cell';
+                var cellSel = '.' + this.name + rb.elementSeparator + 'cell';
                 var isTestStopped = false;
+                var keyboardFocusClass = rb.statePrefix + 'keyboardfocus' + rb.nameSeparator + 'within';
+                var evtOpts = {capture: true, passive: true};
                 var resetScrollLeft = function () {
                     that.viewport.scrollLeft = 0;
                 };
@@ -329,7 +344,7 @@
                         }
 
                         if (focusedElement && focusedElement.closest &&
-                            rb.root.classList.contains(rb.statePrefix + 'keyboardfocus-within') &&
+                            rb.root.classList.contains(keyboardFocusClass) &&
                             (cell = focusedElement.closest(cellSel)) &&
                             that.isCellVisible(cell) !== true) {
                             pageIndex = that.getPageIndexOfCell(cell);
@@ -351,11 +366,11 @@
                     }
                 };
 
-                this.scroller.addEventListener('mousedown', stopTest, true);
-                this.scroller.addEventListener('touchstart', stopTest, true);
-                this.scroller.addEventListener('touchend', stopTest, true);
-                this.scroller.addEventListener('click', stopTest, true);
-                this.scroller.addEventListener('focus', scrollIntoView, true);
+                this.scroller.addEventListener('mousedown', stopTest, evtOpts);
+                this.scroller.addEventListener('touchstart', stopTest, evtOpts);
+                this.scroller.addEventListener('touchend', stopTest, evtOpts);
+                this.scroller.addEventListener('click', stopTest, evtOpts);
+                this.scroller.addEventListener('focus', scrollIntoView, evtOpts);
                 this.viewport.addEventListener('scroll', scrollIntoView);
             },
             _snapTo: function (dir, velocity, length) {
@@ -427,12 +442,6 @@
                 var curPos = ((this._pos + (offset || 0)) * -1) + 1;
                 var index = this.pageData.length - 1;
 
-
-                //if(this.isWrap == 'right' && this.minWrapRight * -1 < curPos){
-                //	this._setPos(curPos);
-                //	return this.getNext(offset);
-                //}
-
                 for (i = 0, len = index + 1; i < len; i++) {
                     cellWidth = this._getPosition(i) * -1;
                     if (cellWidth > curPos) {
@@ -461,10 +470,6 @@
                 var curPos = ((this._pos + (offset || 0)) * -1) - 1;
                 var index = 0;
                 var i = this.pageData.length - 1;
-
-                //if(this.isWrap == 'left' && this.minUnwrapRight * -1 > curPos){
-                //
-                //}
 
                 while (i >= 0) {
                     cellWidth = this._getPosition(i) * -1;
@@ -546,13 +551,14 @@
             },
             _slideComplete: function () {
                 var curPage = this.pageData[this._selectedIndex + this.baseIndex];
+                var activeDone = rb.statePrefix + 'active' + rb.nameSeparator + 'done';
                 this.isAnimated = false;
-                this.$cells.removeClass(rb.statePrefix + 'active-done');
+                this.$cells.removeClass(activeDone);
 
                 if (curPage) {
                     ( curPage.$cellElems || (curPage.$cellElems = $(curPage.cellElems)) )
-                        .addClass(rb.statePrefix + 'active-done')
-                        .addClass(rb.statePrefix + 'activated-done')
+                        .addClass(activeDone)
+                        .addClass(rb.statePrefix + 'activated' + rb.nameSeparator + 'done')
                     ;
                 }
                 this._trigger(this._evtName + 'completed');
@@ -688,15 +694,15 @@
                 if (!this.isCarousel) {
                     isEnd = this.isEndReached(pos);
                     isStart = this.isStartReached(pos);
-                    this.$element
-                        .find('.' + this.name + '-btn-next')
+
+                    this.$queryAll('.{htmlName}{e}btn{-}next')
                         .prop({disabled: isEnd})
-                        [isEnd ? 'addClass' : 'removeClass'](rb.statePrefix + 'disabled')
+                        .rbChangeState('disabled', isEnd)
                     ;
-                    this.$element
-                        .find('.' + this.name + '-btn-prev')
+
+                    this.$queryAll('.{htmlName}{e}btn{-}prev')
                         .prop({disabled: isStart})
-                        [isStart ? 'addClass' : 'removeClass'](rb.statePrefix + 'disabled')
+                        .rbChangeState('disabled', isStart)
                     ;
                 }
 
@@ -760,8 +766,12 @@
             _setRelPos: function (relPos) {
                 this.setPos(this._pos + relPos);
             },
+            _setOrder: function(elem, order){
+                elem.style[orderProp] = order;
+            },
             _changeWrap: function (side, prop) {
-                var i, len, curCell;
+                var i, len, curCell, order;
+                var posPages = this.posPages[side];
                 var cells = this.posPages[side].rbCells;
 
                 if (prop == 'ul') {
@@ -770,10 +780,22 @@
                     this.isWrap = '';
                 }
 
+                order = (this.isWrap == 'left') ?
+                    this.options.startOrder :
+                    (this.isWrap == 'right') ?
+                        this.options.endOrder:
+                        ''
+                ;
+
+                this.helperElem.style.marginLeft = this.isWrap ?
+                    posPages._helperLeft + 'px' :
+                    ''
+                ;
+
                 for (i = 0, len = cells.length; i < len; i++) {
                     curCell = cells[i];
                     curCell.isSide = this.isWrap;
-                    curCell.elem.style.left = curCell[prop] + 'px';
+                    this._setOrder(curCell.elem, order);
                 }
             },
             _setPos: function (pos) {
@@ -810,7 +832,10 @@
                 this.scroller.rbItemscrollerPos = this._pos;
 
                 if (this.usesTransform) {
-                    this.scroller.style.transform = 'translate3d(' + pos + 'px, 0, 0)';
+                    this.scroller.style[transformProp] = (supports3dTransform) ?
+                        'translate3d(' + pos + 'px, 0, 0)' :
+                        'translateX(' + pos + 'px)'
+                    ;
                 } else {
                     this.scroller.style.left = pos + 'px';
                 }
@@ -818,16 +843,15 @@
             },
             updateCells: function () {
                 var that = this;
-                this.$cells = this.$scroller.children();
+                this.$cells = this.$scroller.children(':not(.js'+ rb.nameSeparator + this.name + rb.elementSeparator + 'helper)');
                 this.calculateLayout();
-                if (!this.options.switchedOff) {
-                    rb.rAFQueue(function () {
-                        that.$cells.css({position: 'absolute'}).addClass(that.name + '-cell');
-                    });
-                }
+                rb.rAFQueue(function () {
+                    that.$scroller.prepend(that.helperElem);
+                    that.$cells.addClass(that.name + rb.elementSeparator + 'cell');
+                });
             },
             _getCellWidth: function (element) {
-                return rb.getCSSNumbers(element, ['width']);
+                return $(element).outerWidth();
             },
             calculateLayout: function () {
                 if (this.options.switchedOff) {
@@ -838,16 +862,8 @@
                     return;
                 }
 
-                this.viewportCSS = {
-                    'border-left-width': rb.getCSSNumbers(this.scrollerClone || this.scroller, ['padding-left']) + rb.getCSSNumbers(this.viewportClone || this.viewport, ['border-left-width']) + 'px',
-                    'border-right-width': rb.getCSSNumbers(this.scrollerClone || this.scroller, ['padding-right']) + rb.getCSSNumbers(this.viewportClone || this.viewport, ['border-right-width']) + 'px'
-                };
+                this.viewportWidth = this.scroller.offsetWidth - rb.getCSSNumbers(this.scroller, ['padding-right', 'padding-left'], true);
 
-                this.viewportWidth = this.scroller.offsetWidth - rb.getCSSNumbers(this.scroller, ['padding-right'], true);
-
-                if (!this.scrollerClone) {
-                    this.viewportWidth -= rb.getCSSNumbers(this.scroller, ['padding-left'], true);
-                }
 
                 this._calculateCellLayout();
 
@@ -858,43 +874,32 @@
             _calculateCellLayout: function () {
                 var that = this;
                 var lastWidth = 0;
-                var highest = 0;
 
                 this.cellData = this.$cells.map(function (i) {
                     var returnWidth = lastWidth;
-                    var height = rb.getCSSNumbers(this, ['margin-top', 'margin-bottom', 'height'], true);
                     var width = that._getCellWidth(this);
 
                     lastWidth = returnWidth + width + rb.getCSSNumbers(this, ['margin-left', 'margin-right']);
 
-                    if (height > highest) {
-                        highest = height;
-                    }
+
                     return {w: width, elem: this, r: lastWidth, l: returnWidth};
                 }).get();
 
                 this.cellData.push({l: lastWidth, w: 0, r: lastWidth, index: 'last', elem: null});
-                this.highestCell = highest + rb.getCSSNumbers(this.scroller, ['padding-top', 'padding-bottom'], true);
 
                 this.maxWrapRight = (lastWidth - this.viewportWidth) * -1;
 
             },
             _writeLayout: function () {
                 var wasPos = this._pos;
-                var that = this;
 
-                this.scroller.style.minHeight = this.highestCell + 'px';
-
-                this.$cells.each(function (i) {
-                    this.style.left = that.cellData[i].l + 'px';
-                });
-                this.isWrap = '';
-
-                $(this.viewport).css(this.viewportCSS);
+                if(this.isWrap){
+                    this._changeWrap(this.isWrap, 'ul');
+                }
 
                 this.selectIndex(this._selectedIndex, true);
 
-                if (this.isCarousel && wasPos == this._pos) {
+                if (wasPos == this._pos) {
                     this._setPos(wasPos);
                 }
             },
@@ -1019,13 +1024,13 @@
                 };
             },
             _createCarouselPages: function () {
-                var i, len, pageData, curWidth, pageCorrect, negativeIndex;
+                var i, len, pageData, curWidth, pageCorrect, negativeIndex, lastPos;
                 var viewport = this.viewportWidth;
                 this.posPages = {left: [], right: []};
                 this.posPages.right.rbCells = [];
                 this.posPages.left.rbCells = [];
 
-                this.isCarousel = this.options.carousel && (this.cellData[this.cellData.length - 1].l / 2) >= this.viewportWidth;
+                this.isCarousel = supportSomeOrder && this.options.carousel && (this.cellData[this.cellData.length - 1].l / 2) >= this.viewportWidth;
 
                 if (!this.isCarousel) {
                     return;
@@ -1057,9 +1062,18 @@
                 }
 
                 this.minUnwrapRight = viewport;
-                this.maxUnwrapRight = (this.posPages.right[this.posPages.right.length - 1].or * -1) - viewport;
 
-                this.minUnwrapLeft = (this.posPages.left[this.posPages.left.length - 1].ol * -1) + viewport;
+                lastPos = this.posPages.right[this.posPages.right.length - 1];
+
+                this.posPages.right._helperLeft = lastPos.or;
+
+                this.maxUnwrapRight = (lastPos.or * -1) - viewport;
+
+                lastPos = this.posPages.left[this.posPages.left.length - 1];
+
+                this.posPages.left._helperLeft = lastPos.l;
+
+                this.minUnwrapLeft = (lastPos.ol * -1) + viewport;
                 this.maxUnwrapLeft = (this.posPages.left[0].or * -1) - viewport;
 
                 this.pageData.unshift.apply(this.pageData, this.posPages.left.reverse());
@@ -1081,7 +1095,9 @@
                         paginationItems.push(this.options.paginationItemTpl.replace(regIndex, '' + (i + 1)));
                     }
                     this.$pagination.html(paginationItems.join(''));
-                    this.$paginationBtns = this.$pagination.find('.' + this.name + '-pagination-btn');
+                    this.$paginationBtns = this.$pagination
+                        .find('.' + this.name + rb.elementSeparator + 'pagination' + rb.nameSeparator + 'btn')
+                    ;
                     this.$paginationBtns.eq(this._selectedIndex).addClass(rb.statePrefix + 'selected');
                 }
             },

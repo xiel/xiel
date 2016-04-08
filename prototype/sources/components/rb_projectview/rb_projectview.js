@@ -1,6 +1,7 @@
 (function (factory) {
     if (typeof module === 'object' && module.exports) {
-        require('../rb_panel/rb_panel');
+        require('../rb_panelgroup/rb_panelgroup');
+        require('../../js/utils/rb_scrollintoview');
         // require('../../js/utils/rb_position');
         module.exports = factory();
     } else {
@@ -93,69 +94,6 @@
                         }
                         break;
                 }
-            },
-
-            animateWrapper: function (openedPanel) {
-                var end;
-
-                var that = this;
-                var panels = this.$panels.get();
-                var curIndex = -1;
-                var panelWrapper = this.$panelWrapper.get(0);
-                var nextIndex = panels.indexOf(openedPanel);
-                var closingPanels = [];
-
-                var start = panelWrapper.offsetHeight;
-
-                this.$panelWrapper.stop();
-
-                panelWrapper.style.height = 'auto';
-
-                this.selectedItems.forEach(function (panel) {
-                    panel.style.display = 'none';
-                    curIndex = panels.indexOf(panel);
-                    closingPanels.push(panel);
-                });
-
-                if(openedPanel) {
-                    openedPanel.style.display = 'block';
-                    openedPanel.style.position = 'relative';
-                }
-
-                end = panelWrapper.offsetHeight;
-
-                this.selectedItems.forEach(function (panel) {
-                    panel.style.display = '';
-                });
-
-                if(openedPanel) {
-                    openedPanel.style.display = '';
-                    openedPanel.style.position = '';
-                }
-
-                $(closingPanels).addClass(rb.statePrefix + 'closing');
-
-                this.$panelWrapper
-                    .attr({'data-direction': nextIndex > curIndex ? 'up' : 'down'})
-                    .css({
-                        overflow: 'hidden',
-                        height: start + 'px'
-                    })
-                    .animate({height: end}, {
-                        duration: this.options.duration,
-                        easing: this.options.easing,
-                        always: function () {
-                            that.$panels.removeClass(rb.statePrefix + 'closing');
-                            that.$panelWrapper
-                                .removeClass(rb.statePrefix + 'fx')
-                                .attr({'data-direction': ''})
-                            ;
-                            cleanupCSS.call(this);
-                        }
-                    })
-                    .addClass(rb.statePrefix + 'fx')
-                ;
-
             },
 
             //initialize panels with given panelComponentName or default panel component

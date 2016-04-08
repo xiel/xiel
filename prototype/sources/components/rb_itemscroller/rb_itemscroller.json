@@ -4,41 +4,41 @@
       "pagination": false,
       "autoplay": false,
       "itemsIndex": false,
-      "attrs": false,
+      "attrs": {},
       "buttons": {
           "prev": "previous",
           "next": "next"
       },
       "items": [
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-100"
           },
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-100"
           },
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-50"
           },
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-50"
           },
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-50"
           },
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-50"
           },
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-50"
           },
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-50"
           },
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-50"
           },
           {
-              "sizes": "use-size-50"
+              "sizes": "u-size-50"
           }
       ]
   }

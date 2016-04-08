@@ -1,25 +1,38 @@
+/*
+ * Component: Listbox
+**********************************************************/
+
+
+// JS Config
+//**********************************************************
+$listbox-js-cfg: (
+    name: listbox,
+);
+
+
+//----------------------------------------------------------
+
 
 .rb-listbox {
+    width: 100%;
+    font-size: 1rem;
+}
 
-    @at-root .listbox- {
-        &item {
-            margin-bottom: 5px;
-            border: 1px solid #333;
-            padding: 8px 10px;
-            cursor: pointer;
-            transition: all 300ms ease-in;
-            touch-action: manipulation;
+.listbox-item {
+    margin-bottom: 5px;
+    padding: rb-em-calc(8px 10px);
+    cursor: pointer;
+    touch-action: manipulation;
+    border: 1px solid #333;
+    transition: all 300ms ease-in;
 
-            &.is-selected {
-                color: #fff;
-                background: #006da0;
-            }
-
-            &.is-checked {
-                color: #fff;
-                background: #00aaff;
-            }
-        }
+    &.is-selected {
+        color: #fff;
+        background: #006da0;
     }
 
+    &.is-checked {
+        color: #fff;
+        background: #0af;
+    }
 }

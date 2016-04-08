@@ -1,37 +1,44 @@
-/*********************************************************
-
-rb-popover
-----------------------------------------------------------
-
+/*
+ * Component: Popover
 **********************************************************/
-$popoverJSCFG: ();
+
+
+// Variables
+//**********************************************************
 $popover-margin: 10px;
 $popover-bg-color: #111;
 $popover-arrow-size: 10px;
 
+
+// JS Config
+//**********************************************************
+$popover-js-cfg: (
+    name: popover,
+);
+
+
+// Dependencies (Helpers)
+//**********************************************************
+@import "../../sass/helpers/rb_arrow_icon";
+@import "../../sass/settings/rb_zindexes";
+
+
+//----------------------------------------------------------
+
+
 .rb-popover {
-    //@include rb-js-export($popoverJSCFG);
-    position: absolute;
-    width: 200px;
-    z-index: 30;
     visibility: hidden;
+    position: absolute;
+    z-index: $zindex-popover;
+    width: 200px;
     opacity: 0;
     transition: 400ms opacity, 400ms visibility;
 
-    @at-root {
-        .popover-content {
-            position: relative;
-            z-index: 2;
-            padding: 10px;
-            background: #{$popover-bg-color};
-        }
-    }
-
     &::after {
-        content: '';
         position: absolute;
-        height: $popover-arrow-size;
         width: $popover-arrow-size;
+        height: $popover-arrow-size;
+        content: "";
         background: #{$popover-bg-color};
         transform: rotate(45deg);
     }
@@ -41,7 +48,6 @@ $popover-arrow-size: 10px;
         opacity: 1;
     }
 
-
     &,
     &.is-top,
     &.is-bottom.is-flipped-y {
@@ -49,8 +55,8 @@ $popover-arrow-size: 10px;
 
         &::after {
             top: auto;
-            bottom: -$popover-arrow-size / 2;
             right: 0;
+            bottom: -$popover-arrow-size / 2;
             left: 0;
             margin: 0 auto;
         }
@@ -63,8 +69,8 @@ $popover-arrow-size: 10px;
 
         &::after {
             top: -$popover-arrow-size / 2;
-            bottom: auto;
             right: 0;
+            bottom: auto;
             left: 0;
             margin: 0 auto;
         }
@@ -76,8 +82,8 @@ $popover-arrow-size: 10px;
 
         &::after {
             top: 0;
-            bottom: 0;
             right: auto;
+            bottom: 0;
             left: -$popover-arrow-size / 2;
             margin: auto 0;
         }
@@ -89,8 +95,8 @@ $popover-arrow-size: 10px;
 
         &::after {
             top: 0;
-            bottom: 0;
             right: -$popover-arrow-size / 2;
+            bottom: 0;
             left: auto;
             margin: auto 0;
         }
@@ -98,31 +104,37 @@ $popover-arrow-size: 10px;
 
     //Popover JS Configs
     &.is-top {
-        @include rb-js-export(map_merge($popoverJSCFG, (
-            my: 'center bottom',
-            at: 'center top'
+        @include rb-js-export(map_merge($popover-js-cfg, (
+            my: "center bottom",
+            at: "center top"
         )));
     }
 
     &.is-bottom {
-        @include rb-js-export(map_merge($popoverJSCFG, (
-            my: 'center top',
-            at: 'center bottom'
+        @include rb-js-export(map_merge($popover-js-cfg, (
+            my: "center top",
+            at: "center bottom"
         )));
     }
 
     &.is-right {
-        @include rb-js-export(map_merge($popoverJSCFG, (
-            my: 'left middle',
-            at: 'right middle'
+        @include rb-js-export(map_merge($popover-js-cfg, (
+            my: "left middle",
+            at: "right middle"
         )));
     }
 
     &.is-left {
-        @include rb-js-export(map_merge($popoverJSCFG, (
-            my: 'right middle',
-            at: 'left middle'
+        @include rb-js-export(map_merge($popover-js-cfg, (
+            my: "right middle",
+            at: "left middle"
         )));
     }
 }
 
+.popover-content {
+    position: relative;
+    z-index: 2;
+    padding: 10px;
+    background: #{$popover-bg-color};
+}

@@ -1,4 +1,10 @@
-(function () {
+(function (factory) {
+    if (typeof module === 'object' && module.exports) {
+        module.exports = factory();
+    } else {
+        factory();
+    }
+}(function () {
     'use strict';
     /* jshint eqnull: true */
     var rb = window.rb;
@@ -294,11 +300,13 @@
                 var $progress, list, tmp;
                 var that = this;
                 var $rail = $(document.createElement('span'));
-                var progressClass = this.name + '-progress';
-                var thumbClass = this.name + '-thumb';
-                var tooltipClass = this.name + '-tooltip';
-                var tooltipValueClass = tooltipClass + '-value';
-                var trackClass = this.name + '-track';
+                var namePrefix = this.name + rb.elementSeparator;
+                var progressClass = namePrefix + 'progress';
+                var thumbClass = namePrefix + 'thumb';
+                var tooltipClass = namePrefix + 'tooltip';
+                var tooltipValueClass = tooltipClass + rb.nameSeparator + 'value';
+                var trackClass = namePrefix + 'track';
+
                 var handles = '<span class="' + thumbClass + '" role="slider" tabindex="0">' +
                         '<span class="' + tooltipClass + '"> ' +
                         '<span class="' + tooltipValueClass + '"></span>' +
@@ -315,7 +323,7 @@
                 handles = tmp + handles.repeat(this.values.length);
 
                 $rail.prop({
-                    className: this.name + '-rail',
+                    className: namePrefix + 'rail',
                     innerHTML: '<span class="' + trackClass + '">' + handles + '</span>'
                 });
 
@@ -338,7 +346,7 @@
                 this._setThumbValues();
                 this._updateMinMax();
 
-                list = that.element.querySelector(that.name + '-list');
+                list = that.element.querySelector(that.name + rb.elementSeparator + 'list');
                 if (list) {
                     that.track.appendChild(list);
                 }
@@ -661,4 +669,4 @@
             },
         }
     );
-})();
+}));

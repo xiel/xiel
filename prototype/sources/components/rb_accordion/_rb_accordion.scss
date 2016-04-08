@@ -1,91 +1,99 @@
-////
-/// rb-accordion
-/// List of items, allowing each item to hide or reveal additional content by clicking the header/button
-///
-///
-//// -------------------------
-$accordionJSCFG: (
+/*
+ * Component: Accordion
+**********************************************************/
+
+
+
+// settings
+//**********************************************************
+
+
+
+// JS Config
+//**********************************************************
+$accordion-js-cfg: (
+    name: accordion,
     multiple: false,
     selectedIndex: -1,
     toggle: true,
     adjustScroll: 10,
-    animation: 'slide',
+    animation: "slide",
 );
 
+//----------------------------------------------------------
+
+
 .rb-accordion {
+    @include rb-js-export($accordion-js-cfg);
     width: 100%;
-    @include rb-js-export($accordionJSCFG);
-
-    @at-root .accordion- {
-
-        &btn {
-            display: block;
-            width: 100%;
-            border: none;
-            border-bottom: 1px solid #aaa;
-
-            padding: rb-em-calc(20);
-            text-align: left;
-            background: #e6e6e6;
-            touch-action: manipulation;
-
-            &:hover,
-            &:focus {
-                background: #ddd;;
-            }
-        }
-
-        &panel {
-            @include rb-clearfix;
-            display: block;
-            height: 0;
-            overflow: hidden;
-            background: #f7f7f7;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 400ms, visibility 400ms;
-
-            &.is-open {
-                visibility: inherit;
-                overflow: visible;
-                height: auto;
-                opacity: 1;
-            }
-        }
-
-        &content {
-            padding: 20px 20px 0;
-        }
-
-        &controls {
-            margin-bottom: rb-em-calc(15);
-        }
-
-        &ctrl-btn {
-            padding: rb-em-calc(7 10);
-            border: none;
-            transition: background 300ms ease-in;
-            touch-action: manipulation;
-
-            &:hover,
-            &:focus {
-                background: #777;
-            }
-        }
-    }
-
-    @media (max-width: 500px) {
-        @include rb-js-export(map_merge($accordionJSCFG, (
-            switchedOff: true
-        )));
-
-        .accordion-panel {
-            visibility: visible;
-            overflow: visible;
-            height: auto;
-            opacity: 1;
-        }
-    }
-
 }
 
+.accordion-btn {
+    display: block;
+    width: 100%;
+    padding: rb-em-calc(20);
+    text-align: left;
+    touch-action: manipulation;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background: #e6e6e6;
+
+    &:hover,
+    &:focus {
+        background: #ddd;;
+    }
+}
+
+.accordion-panel {
+    @include rb-clearfix;
+    display: block;
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    background: #f7f7f7;
+    transition: opacity 400ms, visibility 400ms;
+
+    &.is-open {
+        visibility: inherit;
+        overflow: visible;
+        height: auto;
+        opacity: 1;
+    }
+}
+
+.accordion-content {
+    padding: 20px 20px 0;
+}
+
+.accordion-controls {
+    margin-bottom: rb-em-calc(15);
+}
+
+.accordion-ctrl-btn {
+    padding: rb-em-calc(7 10);
+    touch-action: manipulation;
+    border: none;
+    transition: background 300ms ease-in;
+
+    &:hover,
+    &:focus {
+        background: #777;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .rb-accordion {
+        @include rb-js-export(map_merge($accordion-js-cfg, (
+            switchedOff: true
+        )));
+    }
+
+    .accordion-panel {
+        visibility: visible;
+        overflow: visible;
+        height: auto;
+        opacity: 1;
+    }
+}
