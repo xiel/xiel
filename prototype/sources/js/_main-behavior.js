@@ -28,6 +28,7 @@ require('../components/rb_projectview/rb_projectview');
 require('../components/rb_form/rb_validate');
 
 require('../components/softjumpbutton/softjumpbutton');
+require('../components/ajaxform/ajaxform');
 
 /* init after all modules are loaded or imports are configured. */
 setTimeout(rb.life.init);
