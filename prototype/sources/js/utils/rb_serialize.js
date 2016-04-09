@@ -13,7 +13,7 @@
     var serializeDefaults = {
         includeDisabled: false,
         fieldTypeExcludes: ['file', 'reset', 'submit', 'button', 'fieldset']
-    }
+    };
 
     /**
      * A jQuery/rb.$ plugin to serialize the form data into a string
@@ -40,7 +40,7 @@
 
         serializedToArray = this.serializeArray(options);
         serializedToString = serializedToArray.map(function(field){
-          return encode(field.name, field.value)
+          return encode(field.name, field.value);
         }).join('&');
 
         return serializedToString;
@@ -76,7 +76,7 @@
 
             //check if field is acceptable
             if(!field.name || opts.fieldTypeExcludes.indexOf(field.type) > -1 || (!opts.includeDisabled && field.disabled) ){
-                return
+                return;
             }
 
             //add values of fields
@@ -96,7 +96,7 @@
         }, []);
 
         return serializedToArray;
-    }
+    };
 
     function encode(name, value) {
         return encodeURIComponent(name) + '=' + encodeURIComponent(value).replace(/%20/g, '+');

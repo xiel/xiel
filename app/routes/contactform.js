@@ -22,7 +22,6 @@ transporter.use('compile', htmlToText());
 
 //contact form
 router.get('/', function(req, res){
-	console.log('get', req.body);
 	res.render('contactform', {});
 })
 
