@@ -46,6 +46,41 @@ SECTION PROJECTS
 	}
 }
 
+.itemscroller-pagination {
+	display: flex;
+	width: 80%;
+	max-width: 150px;
+	margin: 2rem auto;
+	text-align: center;
+	font-size: 0;
+
+	.rb-itemscroller.is-switched-off & {
+		display: none;
+	}
+}
+
+.itemscroller-pagination-btn {
+	position: relative;
+	flex: 1;
+	height: 2px;
+	margin: 0 5%;
+	background: $color-text-lighter;
+	cursor: pointer;
+
+
+	&:after {
+		@extend %pseudo;
+		top: -200%;
+		bottom: -200%;
+		width: 100%;
+	}
+
+	&.is-selected {
+		background: $color-text-default;
+		cursor: default;
+	}
+}
+
 %project-section {
 	color: $color-text-default;
 	background: #fff;

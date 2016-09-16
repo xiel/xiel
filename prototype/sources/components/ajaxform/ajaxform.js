@@ -29,10 +29,14 @@
             this._getElements();
 
             if(window.grecaptcha){
-                window.grecaptcha.render(this.query('.g-recaptcha'), {
-                  'sitekey' : '6Ldm9ikTAAAAALIwOI7tCB8M1Ss9ARYc0XiOXQC5',
-                  'theme' : 'dark'
-                });
+                var placeholder = this.query('.g-recaptcha');
+
+                if(!placeholder.innerHTML.trim()){
+                    window.grecaptcha.render(placeholder, {
+                      'sitekey' : '6Ldm9ikTAAAAALIwOI7tCB8M1Ss9ARYc0XiOXQC5',
+                      'theme' : 'dark'
+                    });
+                }
             }
         },
 
