@@ -57,8 +57,6 @@
             init: function (element, initialDefaults) {
                 var that = this;
 
-                console.log(this);
-
                 this._super(element, initialDefaults);
             },
 
@@ -130,14 +128,10 @@
 
             init: function (element, initialDefaults) {
                 this._super(element, initialDefaults);
-
-                console.log('init', this);
             },
 
             loadPanelContent: function(delay){
                 var that = this;
-
-                console.log('loadPanelContent', this);
 
                 if(this.panelAjaxContent || !(this.buttonComponent && this.buttonComponent.element)){
                     return false
@@ -206,8 +200,6 @@
              * rb.$('.rb-panel').rbComponent().open({animationPrevented: true, setFocus: false});
              */
             open: function (options) {
-                console.log('open', this);
-
                 if (this.isOpen) {
                     return false;
                 }

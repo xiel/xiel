@@ -12,6 +12,7 @@ require('rawblock/sources/js/libs/rb_main');
 // require('../../grunt/webpack/globloader!./glob.paths');
 // require('../../grunt/webpack/lazyglobloader!./lazyglob.paths');
 
+require('lazysizes');
 require('./modules/lazysizes-cfg');
 
 require('rawblock/sources/components/rb__childfx/rb__childfx');
@@ -30,9 +31,38 @@ setTimeout(function(){
 	rb.isDebug = true;
 	rb.live.autoStart = false;
 	rb.live.init();
+
+	document.addEventListener('lazyunveilread', function(e){
+	    var container = e.target;
+	    var module = container.getAttribute('data-module');
+
+	    console.log('module', module, rb.getComponent(container, module) );
+
+	    if(module) {
+	        if(rb.getComponent){
+	            rb.getComponent(container, module);
+	        } else {
+	            lazySizes.rAF(()=>{
+	                container.classList.add('js-rb-live');
+	            });
+	        }
+	    }
+	});
+
+	document.addEventListener('lazyunveil', function(e){
+	    var container = e.target;
+	    var module = container.getAttribute('data-module');
+
+	    console.log('module', module, rb.getComponent(container, module) );
+
+	    if(module) {
+	        if(rb.getComponent){
+	            rb.getComponent(container, module);
+	        } else {
+	            lazySizes.rAF(()=>{
+	                container.classList.add('js-rb-live');
+	            });
+	        }
+	    }
+	});
 });
-
-
-
-
-
