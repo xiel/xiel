@@ -17,6 +17,7 @@
     "html-minifier": "^0.7.2",
     "nodemailer": "^1.4.0",
     "nodemailer-html-to-text": "^1.0.2",
-    "nodemailer-smtp-transport": "^1.0.3"
+    "nodemailer-smtp-transport": "^1.0.3",
+    "recaptcha2": "^1.0.8"
   }
 }
