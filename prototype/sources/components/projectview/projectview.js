@@ -1,8 +1,7 @@
 (function (factory) {
     if (typeof module === 'object' && module.exports) {
-        require('../rb_panelgroup/rb_panelgroup');
-        require('../../js/utils/rb_scrollintoview');
-        // require('../../js/utils/rb_position');
+        require('rawblock/sources/components/rb_panelgroup/rb_panelgroup');
+        require('rawblock/sources/js/utils/rb_scrollintoview');
         module.exports = factory();
     } else {
         factory();
@@ -12,19 +11,8 @@
     /* jshint eqnull: true */
     var rb = window.rb;
     var $ = rb.$;
-    var life = rb.life;
+    var live = rb.live;
     var components = rb.components;
-
-    var cleanupCSS = function () {
-        var css = {display: ''};
-
-        if (!this.style.height.startsWith('0')) {
-            css.height = '';
-            css.overflow = '';
-        }
-
-        $(this).css(css);
-    };
 
     components.panelgroup.extend('projectview',
         /** @lends rb.components.projectview.prototype */
@@ -38,27 +26,29 @@
              * @property {String}  defaults.animation='adaptHeight'
              */
             defaults: {
-                multiple: false,
-                toggle: false,
-                animation: false, // 'adaptHeight' || 'slide'
-                easing: '',
-                duration: 500,
-                closeOnFocusout: false,
-                selectedIndex: 0,
-                adjustScroll: false, //true || false
-                setFocus: true,
-                switchedOff: false,
-                resetSwitchedOff: true,
-                panelName: '{name}-panel',
-                panelSel: 'find(.{name}-panel)',
-                btnSel: 'find(.{name}-btn)',
-                groupBtnSel: 'find(.{name}-ctrl-btn)',
-                panelWrapperSel: 'find(.{name}-panel-wrapper):0',
-                btnWrapperSel: 'find(.{name}-btn-wrapper):0',
-                itemWrapper: '',
+                // multiple: false,
+                // toggle: false,
+                // animation: false, // 'adaptHeight' || 'slide'
+                // easing: '',
+                // duration: 500,
+                // closeOnFocusout: false,
+                // selectedIndex: 0,
+                // adjustScroll: false, //true || false
+                // setFocus: true,
+                // switchedOff: false,
+                // resetSwitchedOff: true,
+                // panelName: '{name}-panel',
+                // panelSel: 'find(.{name}-panel)',
+                // btnSel: 'find(.{name}-btn)',
+                // groupBtnSel: 'find(.{name}-ctrl-btn)',
+                // panelWrapperSel: 'find(.{name}-panel-wrapper):0',
+                // btnWrapperSel: 'find(.{name}-btn-wrapper):0',
+                // itemWrapper: '',
 
                 //special options compared to panelgroup
-                panelComponentName: '{name}panel',
+                name: 'projectview',
+                selectedIndex: 0,
+                panelName: '{name}panel',
                 preventDefault: true,
                 closeOnEsc: true,
                 scrollIntoView: true,
@@ -66,6 +56,8 @@
 
             init: function (element, initialDefaults) {
                 var that = this;
+
+                console.log(this);
 
                 this._super(element, initialDefaults);
             },
@@ -98,58 +90,12 @@
 
             //initialize panels with given panelComponentName or default panel component
             _getElements: function () {
-                var panels;
-                var that = this;
-                var options = this.options;
-
-                var buttonWrapper = this.getElementsFromString(options.btnWrapperSel)[0];
-                var itemWrapper = this.interpolateName(this.options.itemWrapper || '');
-
-                var panelName = this.interpolateName(this.options.panelName);
-                var jsPanelName = this.interpolateName(this.options.panelName, true);
-                this.$panelWrapper = $(this.getElementsFromString(options.panelWrapperSel));
-
-                var panelComponentName = this.interpolateName(this.options.panelComponentName || 'panel');
-
-                //check if there is a special sub-class panel for this component, if not, fall back to normal panel
-                if(!(panelComponentName in rb.components)){
-                    console.warn('projectview | did not found given panelComponentName in rb.components', panelComponentName);
-                    panelComponentName = 'panel';
-                }
-
-                this.$panels = $(this.getElementsFromString(options.panelSel, this.$panelWrapper.get(0))).each(function (index) {
-                    var panel = life.create(this, rb.components[panelComponentName], {
-                        jsName: jsPanelName,
-                        name: panelName,
-                        resetSwitchedOff: options.resetSwitchedOff,
-                        setFocus: options.setFocus,
-                        itemWrapper: itemWrapper,
-                        closeOnEsc: options.closeOnEsc,
-                    });
-
-                    panel.group = that.element;
-                    panel.groupComponent = that;
-                });
-
-                components.panel.prototype.name = panelComponentName;
-
-                panels = this.$panels;
-
-                this.$buttons = $(this.getElementsFromString(options.btnSel, buttonWrapper)).each(function (index) {
-                    var btn = life.create(this, components.panelbutton, {
-                        type: (options.toggle) ? 'toggle' : 'open',
-                        preventDefault: options.preventDefault,
-                    });
-                    btn.setTarget(panels.get(index));
-                });
-
-                this.$groupButtons = $(this.getElementsFromString(options.groupBtnSel)).each(function (index) {
-                    var btn = life.create(this, components.panelgroupbutton, {
-                        preventDefault: options.preventDefault
-                    });
-                    btn.setTarget(that.element);
-                });
-            },
+                var oldPanelComponent = rb.components.panel;
+                rb.components.panel = rb.components.projectviewpanel;
+                var ret = this._super();
+                rb.components.panel = oldPanelComponent;
+                return ret;
+            }
         }
     );
 
@@ -184,10 +130,14 @@
 
             init: function (element, initialDefaults) {
                 this._super(element, initialDefaults);
+
+                console.log('init', this);
             },
 
             loadPanelContent: function(delay){
                 var that = this;
+
+                console.log('loadPanelContent', this);
 
                 if(this.panelAjaxContent || !(this.buttonComponent && this.buttonComponent.element)){
                     return false
@@ -256,6 +206,8 @@
              * rb.$('.rb-panel').rbComponent().open({animationPrevented: true, setFocus: false});
              */
             open: function (options) {
+                console.log('open', this);
+
                 if (this.isOpen) {
                     return false;
                 }
