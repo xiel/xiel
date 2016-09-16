@@ -83,10 +83,9 @@ module.exports = function(grunt) {
 	// Sprites Task
 	grunt.registerTask('icons', [
 		'clean:icons',
-		'svgmin',
-		'grunticon',
-		// 'replace',
-		'css',
+		'svgmin'
+		// 'grunticon',
+		// 'css',
 	]);
 
 	grunt.registerTask('dev', [

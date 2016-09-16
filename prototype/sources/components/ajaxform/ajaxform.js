@@ -16,9 +16,9 @@
     var AjaxForm = rb.Component.extend('ajaxform', {
 
         defaults: {
-            scrollEasing: 'ease-in',
-            scrollDuration: 400,
-            animateError: true,
+            // scrollEasing: 'ease-in',
+            // scrollDuration: 400,
+            // animateError: true,
         },
 
         init: function(element){
@@ -27,6 +27,13 @@
             this.$element = $(element);
 
             this._getElements();
+
+            if(window.grecaptcha){
+                window.grecaptcha.render(this.query('.g-recaptcha'), {
+                  'sitekey' : '6Ldm9ikTAAAAALIwOI7tCB8M1Ss9ARYc0XiOXQC5',
+                  'theme' : 'dark'
+                });
+            }
         },
 
         events: {

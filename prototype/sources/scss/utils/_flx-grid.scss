@@ -15,7 +15,7 @@ $flx-slug: flx !default;
 @mixin loop-grid-columns($columns, $class) {
 	@for $i from 1 through $columns {
 		.#{$flx-slug}--#{$i}°#{$class} {
-			@extend %flx;
+			@include flx-col();
 			width: percentage(($i / $grid-columns));
 		}
 
@@ -44,9 +44,13 @@ $flx-slug: flx !default;
 	}
 
 	.#{$flx-slug}--#{$class}-fit {
-		@extend %flx;
+		@include flx-col();
 		flex: 1;
 	}
+}
+
+[class*="#{$flx-slug}--"] {
+	@include flx-col();
 }
 
 //extends
