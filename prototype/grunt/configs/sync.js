@@ -11,7 +11,7 @@ module.exports = {
 			{
 				cwd: '<%= paths.src %>/assets/',
 				dest: '<%= paths.dev %>/',
-				src: ['**/*']
+				src: ['**/*', '!**/*.{png,jpg,gif}'] //images will be copied and optimized by imagemin
 			}
 		]
 	},
@@ -21,7 +21,7 @@ module.exports = {
 				cwd: '<%= paths.src %>/js/modules/',
 				dest: '<%= paths.dev %>/js/modules/',
 				expand: true,
-				src: ['**/*.js']
+				src: ['**/*.js', '!**/*.{png,jpg,gif}'] //images will be copied and optimized by imagemin
 			}
 		]
 	}

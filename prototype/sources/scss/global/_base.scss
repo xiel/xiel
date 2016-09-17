@@ -105,6 +105,11 @@ body {
 GENERAL TEXT
 =================================================== */
 
+.u-keyboardfocus {
+	outline: 2px dotted $color-key-cyan;
+	outline-offset: 1px;
+}
+
 %small-font {
 	font-size: 14px;
 	font-size: 1.4rem;
@@ -269,6 +274,27 @@ GENERAL LAYOUT
 	}
 }
 
+.rb-itemscroller {
+	user-select: none;
+}
+
+.itemscroller-content.flx-group {
+	flex-wrap: nowrap;
+
+	.is-switched-off & {
+		flex-wrap: wrap;
+	}
+}
+
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+
+.lazyloaded {
+	opacity: 1;
+	transition: 1000ms;
+}
 
 /* ===================================================
 Social Media Links
@@ -276,13 +302,15 @@ Social Media Links
 
 .sm-links {
 	list-style: none;
+	margin: 1rem 0;
 
 	li {
+		@extend %small-font;
 		display: inline-block;
-		font-size: 1.2rem;
 		text-align: center;
 		white-space: nowrap;
-		margin: 0 1.5em 0 0;
+		margin: 0 0.5%;
+		padding: 0 1rem;
 	}
 
 	a {

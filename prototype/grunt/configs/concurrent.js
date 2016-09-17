@@ -5,6 +5,6 @@
  */
 module.exports = {
 	dev1: [],
-	dev2: [], //assemble:dev
+	dev2: [],
 	dist: []
 };

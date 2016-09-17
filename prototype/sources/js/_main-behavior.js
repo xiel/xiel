@@ -1,37 +1,35 @@
 window.BezierEasing = require('bezier-easing');
 
 var ASSETBASEPATH = window.siteData && siteData.basePath || '';
+
 //load dom or jQuery
-require('./libs/rb_$');
+require('rawblock/sources/js/libs/rb_$');
+require('rawblock/sources/js/libs/rb_crucial');
+require('rawblock/sources/js/libs/rb_main');
 
-require('./libs/rb_crucial');
-
-require('./libs/rb_main');
-
-/* configuration */
-rb.isDebug = true;
-rb.life.autoStart = false;
 
 //if webpack is used:
-__webpack_public_path__ = ASSETBASEPATH + 'js/';
+// __webpack_public_path__ = ASSETBASEPATH + 'js/';
+// require('../../grunt/webpack/globloader!./glob.paths');
+// require('../../grunt/webpack/lazyglobloader!./lazyglob.paths');
 
-require('./utils/rb_pubsub');
-require('../../grunt/webpack/globloader!./glob.paths');
+require('lazysizes');
+require('./modules/lazysizes-cfg');
 
-(function(addImportHook){
-    addImportHook(function(moduleName){
-        //declare a map of module name -> paths
-        moduleName = 'rb_' + moduleName;
-        moduleName += '/' + moduleName;
-        require(['../components/' + moduleName +'.lazy.js']);
-    });
-})(rb.life.addImportHook);
+require('rawblock/sources/components/rb__childfx/rb__childfx');
+require('rawblock/sources/components/rb_scrolly/rb_scrolly');
+require('rawblock/sources/components/rb_itemscroller/rb_itemscroller');
+require('rawblock/sources/components/rb_panel/rb_panel');
+require('rawblock/sources/components/rb_form/rb_validate'); 
 
+require('../components/projectview/projectview');
+require('../components/softjumpbutton/softjumpbutton');
+require('../components/ajaxform/ajaxform');
 
 /* init after all modules are loaded or imports are configured. */
-setTimeout(rb.life.init);
-
-
-
-
-
+setTimeout(function(){
+	/* configuration */
+	rb.isDebug = true;
+	rb.live.autoStart = false;
+	rb.live.init();
+});

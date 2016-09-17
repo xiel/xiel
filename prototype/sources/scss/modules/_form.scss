@@ -35,7 +35,21 @@ FORMS
 		border-width: 2px;
 		white-space: normal;
 	}
+}
 
+.g-recaptcha {
+	// position: absolute;
+	bottom: 0;
+	right: 0;
+	// display: flex;
+	// 
+	iframe {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		border: 0 none;
+	}
 }
 
 .field__honey {
@@ -48,11 +62,20 @@ FORMS
 	}
 }
 
-.field__error {
+.field__error,
+.form-errorbox p {
 	@extend %small-font;
 	color: $color-error;
 	margin: .5em 0;
 	text-transform: uppercase;
+}
+
+.form-errorbox {
+    display: none;
+
+    .is-invalid & {
+        display: block;
+    }
 }
 
 .contactform {

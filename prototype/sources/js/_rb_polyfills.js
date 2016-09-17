@@ -4,8 +4,8 @@ var assign = require('object-assign');
 require('dom4');
 require('es6-promise');
 
-require('array.from');
-require('array.prototype.find');
+require('array.from').shim();
+require('array.prototype.find').shim();
 
 require('string.prototype.endswith');
 require('string.prototype.includes');
@@ -23,4 +23,3 @@ if(!Function.prototype.bind){
 if(!Object.assign){
 	Object.assign = assign;
 }
-

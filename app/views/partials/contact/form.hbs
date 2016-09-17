@@ -1,4 +1,4 @@
-<form class="contactform" action="/contactform" method="post">
+<form class="contactform rb-form lazyload" data-module="validate" action="/contactform" method="post">
 
 	{{#if errors}}
 	<div class="flx-group flx-group--centered">
@@ -41,19 +41,14 @@
 				{{/if}}
 			</div>
 
-			<div class="field field__honey">
-				<label for="url">Please don't fill this</label>
-				<input type="text" name="url" placeholder="Leave this field alone" value="{{fields.url}}" {{!-- pattern=".{0}" --}} />
-			</div>
+			<div class="g-recaptcha" data-theme="dark" data-sitekey="6Ldm9ikTAAAAALIwOI7tCB8M1Ss9ARYc0XiOXQC5"></div>
 			
-			<div class="btn-group btn-group--right">
-				<button class="btn btn--block" data-busy-text="Sending…">
-					Sag Hallo!
-				</button>
-			</div>
+			<button class="btn btn--block" data-busy-text="Sending…">
+				Sag Hallo!
+			</button>
 
 		</div>
 
 	</div><!-- .flx-group -->
-
+	
 </form>

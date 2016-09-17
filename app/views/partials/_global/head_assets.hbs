@@ -2,7 +2,10 @@
 
 <script>
 	window.siteData = {
-		basePath: '/'
+		basePath: '/',
+		asyncStylesheets: [
+			'{{assets}}/css/styles.icons.css'
+		]
 	};
 </script>
 
@@ -15,12 +18,29 @@
 	})(document.documentElement);
 </script>
 
-<link href='https://fonts.googleapis.com/css?family=Roboto:300,500' rel='stylesheet' type='text/css' />
+{{!-- <link href='//fonts.googleapis.com/css?family=Roboto:300,500' rel='stylesheet' type='text/css' /> --}}
+<style>
+	@font-face {
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 300;
+		src: local('Roboto Light'), local('Roboto-Light'), url('//fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff') format('woff');
+	}
+	@font-face {
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 500;
+		src: local('Roboto Medium'), local('Roboto-Medium'), url('//fonts.gstatic.com/s/roboto/v15/RxZJdnzeo3R5zSexge8UUbO3LdcAZYWl9Si6vvxL-qU.woff') format('woff');
+	}
+</style>
 
 <script>
-	{{ includeraw '../prototype/_dev/js/_inlinehead-behavior.js' }}
+	{{ includeraw '/js/_inlinehead-behavior.js' }}
 </script>
 
 <link rel="shortcut icon" href="{{assets}}/img/favicon.png" />
-<link rel="stylesheet" href="{{assets}}/css/styles.css" type="text/css" />
+{{!-- <link rel="stylesheet" href="{{assets}}/css/styles.css" type="text/css" /> --}}
+<style>
+	{{ includeraw '/css/styles.css' }}
+</style>
 <script> <!-- rem font-size fix --> </script>

@@ -7,9 +7,14 @@ module.exports = {
     options: {
         screwIE8: true
     },
-    inline: {
+    dev: {
         files: {
             '<%= paths.dev %>/js/_inlinehead-behavior.js': ['<%= paths.src %>/js/_inlinehead-behavior.js']
+        }
+    },
+    dist: {
+        files: {
+            '<%= paths.dist %>/js/_inlinehead-behavior.js': ['<%= paths.src %>/js/_inlinehead-behavior.js']
         }
     }
 };

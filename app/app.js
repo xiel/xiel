@@ -5,6 +5,7 @@ console.log('-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 console.log( new Date() );
 
 //require modules
+var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var exphbs  = require('express-handlebars');
@@ -12,7 +13,6 @@ var expressValidator = require('express-validator');
 var bodyParser = require('body-parser');
 var htmlMinifyer = require('html-minifier').minify;
 var compression = require('compression');
-var grunt = require('grunt');
 
 //get routers
 var routes = require('./routes/index');
@@ -24,6 +24,11 @@ var app = express();
 var rootPath = function(pathFromRoot){
 	return path.join( __dirname, pathFromRoot )
 };
+var staticPaths = [
+	rootPath('resources/'),
+	rootPath('../prototype/_output/'),
+	rootPath('../prototype/_dev/')
+];
 
 //add templating engine
 var handlebarsConfig = {
@@ -33,7 +38,25 @@ var handlebarsConfig = {
 	extname: '.hbs',
 	helpers: {
 		includeraw: function(src){
-			return new Handlebars.SafeString( grunt.file.read(src) );
+			var foundSource;
+
+			for (var i = 0;  i < staticPaths.length; i++){
+				var staticPath = staticPaths[i];
+				var srcInStaticPath = path.join( staticPath, src );
+
+				try {
+					fs.accessSync(srcInStaticPath);
+					foundSource = srcInStaticPath;
+					break
+				} catch(err) {}
+			};
+
+			if(foundSource){
+				return new Handlebars.SafeString( fs.readFileSync(foundSource, 'utf8') || '' );
+			} else {
+				console.error('includeraw src not found', src, foundSource);
+				return '';
+			}
 		}
 	}
 };
@@ -54,9 +77,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 
 //serve resources statics
-app.use( express.static( rootPath('resources/') ) );
-app.use( express.static( rootPath('../prototype/_output/') ) );
-app.use( express.static( rootPath('../prototype/_dev/') ) );
+staticPaths.forEach(function(staticPath){
+	app.use( express.static( staticPath ) );
+});
 
 //routes
 app.use('/', routes);

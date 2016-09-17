@@ -27,7 +27,7 @@ module.exports = {
     },
     scss: {
         files: ['<%= paths.src %>/scss/**/*.scss', '<%= paths.src %>/components/**/*.scss', '!<%= paths.src %>/scss/tmp_*.scss'],
-        tasks: ['scssglobbing', 'sass:dev', 'clean:scssglobbing', 'autoprefixer:dev'],
+        tasks: ['css'],
         options: {
             debounceDelay: 100,
             livereload: false
@@ -39,22 +39,14 @@ module.exports = {
     },
     inline_js: {
         files: ['<%= paths.src %>/js/_inlinehead-behavior.js'],
-        tasks: ['uglify:inline']
+        tasks: ['uglify:dev']
     },
     js: {
         files: ['<%= paths.src %>/**/*.{js,es6,es2015}'],
-        tasks: ['webpack:dev'] //
+        tasks: ['webpack:dev']
     },
-    //test: {
-    //	files: ['<%= paths.src %>/js/**/*.js'],
-    //	tasks: ['test'] //
-    //},
-    templates: {
-        files: ['<%= paths.dev %>/js/_inlinehead-behavior.js', '<%= paths.src %>/templates/**/*.{json,hbs,md}', '<%= paths.src %>/components/**/*.{json,hbs,md}'],
-        tasks: ['newer:assemble:dev', 'prettify:dev']
-    },
-    ejs: {
-        files: ['<%= paths.src %>/_templates/**/*.{ejs}'],
-        tasks: ['ejs']
-    },
+    icons: {
+        files: ['<%= paths.src %>/assets/img/svg/icons/**/*'],
+        tasks: ['icons']
+    }
 };

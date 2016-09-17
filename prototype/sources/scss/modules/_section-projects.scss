@@ -25,6 +25,10 @@ SECTION PROJECTS
 			switchedOff: false
 		));
 	}
+
+	.itemscroller-viewport {
+		overflow: visible !important;
+	}
 }
 
 .progress-loader {
@@ -42,6 +46,41 @@ SECTION PROJECTS
 	}
 }
 
+.itemscroller-pagination {
+	display: flex;
+	width: 80%;
+	max-width: 150px;
+	margin: 2rem auto;
+	text-align: center;
+	font-size: 0;
+
+	.rb-itemscroller.is-switched-off & {
+		display: none;
+	}
+}
+
+.itemscroller-pagination-btn {
+	position: relative;
+	flex: 1;
+	height: 2px;
+	margin: 0 5%;
+	background: $color-text-lighter;
+	cursor: pointer;
+
+
+	&:after {
+		@extend %pseudo;
+		top: -200%;
+		bottom: -200%;
+		width: 100%;
+	}
+
+	&.is-selected {
+		background: $color-text-default;
+		cursor: default;
+	}
+}
+
 %project-section {
 	color: $color-text-default;
 	background: #fff;
@@ -55,7 +94,11 @@ SECTION PROJECTS
 }
 
 .project-teasers {
-	transform: scale(1);
+	// transform: scale(1);
+
+	@media (max-width: $screen-sm-max) {
+		flex-wrap: nowrap;
+	}
 }
 
 .project-teaser {
@@ -79,8 +122,8 @@ SECTION PROJECTS
 		display: block;
 		width: 100%;
 		height: auto;
-		transform: scale(1.01);
-		transition: transform 400ms ease-out;
+		// transform: scale(1.01);
+		transition: 400ms ease-out;
 		
 		a[aria-expanded="true"] &,
 		a:hover &,
@@ -354,21 +397,13 @@ SECTION PROJECTS
 }
 
 .projects-wrapper {
-	outline: 2px solid orange;
-
-	.btns {
-		position: fixed;
-		bottom: 2%;
-		right: 2%;
-		background: green;
-		z-index: 10;
-	}
+	// outline: 2px solid orange;
 }
 
 .projectview-panel {
 	position: relative;
 	display: block;
-	min-height: 50vh;
+	// min-height: 50vh;
 
 	&[aria-hidden] {
 		position: absolute;
@@ -376,8 +411,8 @@ SECTION PROJECTS
 		top: 0;
 		left: 0;
 		width: 100%;
+		height: 100%;
 		opacity: 0;
-		// height: 0;
 		transition: 400ms;
 		transition-property: opacity, visibility;
 		z-index: 0;
@@ -398,16 +433,5 @@ SECTION PROJECTS
 	&.is-closing {
 	}
 }
-
-.projectview-content {
-	padding: 30px;
-	border: 1px solid red;
-}
-
-:focus {
-	outline: 3px dotted orange;
-	outline-offset: -1px;
-}
-
 
 

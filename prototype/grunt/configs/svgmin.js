@@ -42,24 +42,11 @@ module.exports = {
 			{ transformsWithOnePath: false }
 		]
 	},
-	svgLogo: {
-		options: {
-			plugins: [
-				{ removeXMLProcInst: true },
-				{ removeTitle: true },
-			]
-		},
-		files: [
-			{
-				'<%= paths.tmp %>/svgmin/logo/logo.svg': ['<%= paths.src %>/img/logo/*.svg']
-			}
-		]
-	},
 	svgIcons: {
 		files: [
 			{
-				cwd: '<%= paths.src %>/img/icons',
-				dest: '<%= paths.tmp %>/svgmin/icons',
+				cwd: '<%= paths.src %>/assets/img/svg/icons',
+				dest: '<%= paths.src %>/assets/img/svg/icons-optimized',
 				expand: true,
 				ext: '.svg',
 				src: ['*.svg']

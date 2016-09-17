@@ -124,6 +124,13 @@ SECTION DEVELOPMENT
 	text-align: center;
 	transition: 500ms;
 	transition-property: opacity, visibility;
+	
+	&.rb-panel {
+		@include rb-js-export((
+			animation: "slide",
+			scrollIntoView: true
+		));
+	}
 
 	&:after {
 		@extend %pseudo;

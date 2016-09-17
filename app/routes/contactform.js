@@ -1,4 +1,5 @@
 var express = require('express');
+var reCAPTCHA = require('recaptcha2');
 var router = express.Router();
 
 //mail requirements
@@ -17,12 +18,13 @@ var transporter = nodemailer.createTransport(
 	smtpTransport(auth.smtpTransport)
 );
 
+var recaptcha = new reCAPTCHA(auth.recaptcha);
+
 //enable htmlToText
 transporter.use('compile', htmlToText());
 
 //contact form
 router.get('/', function(req, res){
-	console.log('get', req.body);
 	res.render('contactform', {});
 })
 
@@ -41,7 +43,9 @@ router.post('/', function(req, res){
 	req.sanitize('email').trim();
 	req.sanitize('message').stripLow(true);
 	req.sanitize('message').trim();
-	req.sanitize('url').trim();
+	// req.sanitize('url').trim();
+
+	req.sanitize('g-recaptcha-response').trim();
 
 	//check fields
 	req.assert('email', 'valid email address required').isEmail();
@@ -51,40 +55,53 @@ router.post('/', function(req, res){
 
 	errors = req.validationErrors(true); //with true = mapped
 	sendMessage = !errors;
-
-	//check honey pot
-	if(fields.url) {
-		sendMessage = false;
-		errors = errors || {};
-		errors.serverError = { response: ' ' };
-	}
-
+	
 	if(sendMessage === true){
-		// setup e-mail data with unicode symbols
-		var mailOptions = {
-			from: 'Contactform XIEL.de <noreply@xiel.de>', // sender address
-			replyTo: fields.name + ' <'+ fields.email +'>',
-			to: 'felix@xiel.de', // list of receivers
-			subject: fields.name + ' via contactform', // Subject line
-			text: fields.message // html body
-		};
+		recaptcha.validate(fields['g-recaptcha-response'])
+			.then(function(){
+				// validated and secure
+				// setup e-mail data with unicode symbols
+				var mailOptions = {
+					from: 'Contactform XIEL.de <noreply@xiel.de>', // sender address
+					replyTo: fields.name + ' <'+ fields.email +'>',
+					to: 'felix@xiel.de', // list of receivers
+					subject: fields.name + ' via contactform', // Subject line
+					text: fields.message // html body
+				};
 
-		// send mail with defined transport object
-		transporter.sendMail(mailOptions, function(mailingError, info){
-			if(mailingError) {
+				// send mail with defined transport object
+				transporter.sendMail(mailOptions, function(mailingError, info){
+					if(mailingError) {
+						errors = errors || {};
+						errors.serverError = mailingError;
+						console.log( errors );
+						sendMessage = false;
+					}
+
+					res.render('contactform', {
+						fields: fields,
+						errors: errors,
+						messageSent: sendMessage,
+						layout: ajaxDependentLayout
+					});
+				});
+			})
+			.catch(function(errorCodes){
+				// invalid
 				errors = errors || {};
-				errors.serverError = mailingError;
-				console.log( errors );
+				errors.serverError = recaptcha.translateErrors(errorCodes)[0];
 				sendMessage = false;
-			}
 
-			res.render('contactform', {
-				fields: fields,
-				errors: errors,
-				messageSent: sendMessage,
-				layout: ajaxDependentLayout
-			});
-		});
+				res.render('contactform', {
+					fields: fields,
+					errors: errors,
+					messageSent: sendMessage,
+					layout: ajaxDependentLayout
+				});
+				console.log(recaptcha.translateErrors(errorCodes));// translate error codes to human readable text
+			})
+		;
+		
 	} else {
 		res.render('contactform', {
 			fields: fields,

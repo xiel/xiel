@@ -36,6 +36,9 @@
             y: '',
         };
 
+        this.flippedXClass = 'is' + rb.nameSeparator + 'flipped' + rb.nameSeparator + 'x';
+        this.flippedYClass = 'is' + rb.nameSeparator + 'flipped' + rb.nameSeparator + 'y';
+
         this.setOptions(options);
 
         this.position(this.element, {
@@ -94,8 +97,8 @@
                 style[prop] = value;
             }
 
-            this.element.classList[this.flipped.x ? 'add' : 'remove']('is-flipped-x');
-            this.element.classList[this.flipped.y ? 'add' : 'remove']('is-flipped-y');
+            this.element.classList[this.flipped.x ? 'add' : 'remove'](this.flippedXClass);
+            this.element.classList[this.flipped.y ? 'add' : 'remove'](this.flippedYClass);
         },
         parsePosOption: function (str, number) {
             var i;
@@ -197,8 +200,8 @@
                     if (computedPosition != null) {
                         this.flipped[props.axis] = false;
                         position = computedPosition;
-                    } else if ((isOut1 && elementOffset[props.axisIndex] > 75 && targetOffset[props.axisIndex] < 25) ||
-                        (isOut2 && elementOffset[props.axisIndex] < 25 && targetOffset[props.axisIndex] > 75)) {
+                    } else if ((isOut1 && elementOffset[props.axisIndex] > 50 && targetOffset[props.axisIndex] <= 50) ||
+                        (isOut2 && elementOffset[props.axisIndex] < 50 && targetOffset[props.axisIndex] >= 50)) {
                         targetOffset2 = {};
                         elementOffset2 = {};
 
