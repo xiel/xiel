@@ -4,6 +4,7 @@
   "description": "hosts my portfolio",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Felix Leupold",
@@ -19,5 +20,8 @@
     "nodemailer-html-to-text": "^1.0.2",
     "nodemailer-smtp-transport": "^1.0.3",
     "recaptcha2": "^1.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
