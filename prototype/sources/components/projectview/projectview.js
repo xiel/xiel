@@ -51,7 +51,7 @@
                 panelName: '{name}panel',
                 preventDefault: true,
                 closeOnEsc: true,
-                scrollIntoView: true,
+                scrollIntoView: false,
             },
 
             init: function (element, initialDefaults) {
@@ -144,7 +144,7 @@
                     that.panelAjaxContent = ajax(buttonHref + '?ajax=true');
 
                     that.panelAjaxContent.then(function(data) {
-                        // that.$element.html(data);
+                        that.$element.html(data);
                     }, function(reason) {
                         // on rejection
                         console.error(reason);
@@ -159,7 +159,7 @@
                         xhr.onreadystatechange = handler;
                         // xhr.responseType = 'json';
                         // xhr.setRequestHeader('Accept', 'application/json');
-                        
+
                         setTimeout(function(){
                             xhr.send();
                         }, delay || 0);
@@ -219,7 +219,7 @@
                 if(this.panelAjaxContent && 'then' in this.panelAjaxContent){
                     this.panelAjaxContent
                         .then(function(data) {
-                            
+
                             requestAnimationFrame(function(){
                                 //render loaded html
                                 that.$element.html(data);

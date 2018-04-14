@@ -8,11 +8,13 @@ console.log( new Date() );
 var fs = require('fs');
 var path = require('path');
 var express = require('express');
+
 var exphbs  = require('express-handlebars');
 var expressValidator = require('express-validator');
 var bodyParser = require('body-parser');
 var htmlMinifyer = require('html-minifier').minify;
 var compression = require('compression');
+
 
 //get routers
 var routes = require('./routes/index');
@@ -96,4 +98,5 @@ var server = app.listen(62375, function () {
 	var host = server.address().address;
 	var port = server.address().port;
 	console.log('Example app listening at port: %s', port);
+	console.log('http://localhost:'+ port);
 });

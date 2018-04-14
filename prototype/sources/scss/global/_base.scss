@@ -36,7 +36,7 @@ html {
 
 	@media (max-width: $screen-xs-max) {
 		font-size: 51%;
-		
+
 		input, textarea {
 			font-size: 16px;
 		}
@@ -197,7 +197,7 @@ h4 {
 		margin-top: 0;
 		font-weight: 500;
 		letter-spacing: -.03em;
-		
+
 		//kicker
 		em {
 			position: absolute;
@@ -293,7 +293,7 @@ GENERAL LAYOUT
 
 .lazyloaded {
 	opacity: 1;
-	transition: 1000ms;
+	transition: opacity 200ms;
 }
 
 /* ===================================================

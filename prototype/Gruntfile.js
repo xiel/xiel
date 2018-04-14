@@ -7,15 +7,15 @@
 
 /*
  * PERFORMANCE
- * 
- * 1. For performance reasons you should only matching one level down, if possible. 
+ *
+ * 1. For performance reasons you should only matching one level down, if possible.
  * 2. Try to keep your watch task clean. Do NOT watch everything (like icons).
  * 3. Add "spawn: false" to your watch task when you need to speed up your build.
  *
  */
 
 module.exports = function(grunt) {
-	
+
 	// load only used tasks and add fallbacks for those which cannot be find
 	require('jit-grunt')(grunt, {
 		'replace': 'grunt-text-replace'
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 	/*
 	 *  SIMPLE TASKS
 	 */
-	
+
 	grunt.registerTask('default', [
 		'build'
 	]);
@@ -83,8 +83,8 @@ module.exports = function(grunt) {
 	// Sprites Task
 	grunt.registerTask('icons', [
 		'clean:icons',
-		'svgmin'
-		// 'grunticon',
+		'svgmin',
+		'grunticon',
 		// 'css',
 	]);
 

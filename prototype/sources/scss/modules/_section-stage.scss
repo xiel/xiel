@@ -70,7 +70,7 @@ SECTION STAGE
 		transition: 0ms;
 		transform: rotate(0.0001deg);
 	}
-	
+
 	&:hover {
 		path.x {
 			transition: 400ms cubic-bezier(.62,1.37,.52,.95);
@@ -111,7 +111,7 @@ SECTION STAGE
 		padding-bottom: 30%;
 	}
 
-	
+
 }
 
 .stage-hello {
@@ -162,13 +162,16 @@ SECTION STAGE
 		display: block;
 		height: auto;
 		width: 100%;
-		max-width: 100%;
 		margin: 0 auto;
 		transform: translateY(0.0px);
 		backface-visibility: hidden;
 
 		@media (min-width: 2000px) {
-			width: auto;
+			width: 90%;
+		}
+
+		&.lazyloaded {
+			transition: opacity 2000ms;
 		}
 	}
 }

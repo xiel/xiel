@@ -13,7 +13,7 @@
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "express": "^4.13.3",
-    "express-handlebars": "^2.0.1",
+    "express-handlebars": "^3.0.0",
     "express-validator": "^2.17.0",
     "html-minifier": "^0.7.2",
     "nodemailer": "^1.4.0",

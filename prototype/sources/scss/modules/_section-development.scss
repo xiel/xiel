@@ -25,10 +25,10 @@ SECTION DEVELOPMENT
 		top: 0;
 		left: 0;
 		margin: 0;
-		margin-top: -4%;
+		margin-top: -4vw;
 		width: 100%;
 		height: 0;
-		padding-bottom: 8%;
+		padding-bottom: 8vw;
 		background: #fff;
 		opacity: 1;
 		transform: matrix(1,-.075,0,1,1,1);
@@ -38,7 +38,7 @@ SECTION DEVELOPMENT
 		top: auto;
 		bottom: 0;
 		margin: 0;
-		margin-bottom: -4%;
+		margin-bottom: -4vw;
 	}
 
 	.container {
@@ -124,7 +124,7 @@ SECTION DEVELOPMENT
 	text-align: center;
 	transition: 500ms;
 	transition-property: opacity, visibility;
-	
+
 	&.rb-panel {
 		@include rb-js-export((
 			animation: "slide",
@@ -235,22 +235,27 @@ SECTION DEVELOPMENT
 		}
 	}
 
-	.grunt:before {
-		@extend %icon-tech-grunt;
-	}
 	.sass:before {
 		@extend %icon-tech-sass;
 	}
-	.es5:before {
+
+	.es6:before {
 		@extend %icon-tech-es5;
 	}
+
 	.nodejs:before {
 		@extend %icon-tech-nodejs;
 	}
+
 	.html5:before {
 		@extend %icon-tech-html5;
 	}
-	.silverstripe:before {
-		@extend %icon-tech-silverstripe;
+
+	.react:before {
+		@extend %icon-tech-react;
+	}
+
+	.webpack:before {
+		@extend %icon-tech-webpack;
 	}
 }

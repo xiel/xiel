@@ -107,7 +107,7 @@ SECTION PROJECTS
 	display: block;
 	margin: $margin-default 0;
 	padding-bottom: 600/800 * 99.99%;
-	box-shadow: 0 0 0 3px #fff;
+	box-shadow: 0 0.2em 0.5em -0.15em rgba(0, 0, 0, 0.5);
 	transform: scale(1);
 }
 
@@ -124,7 +124,7 @@ SECTION PROJECTS
 		height: auto;
 		// transform: scale(1.01);
 		transition: 400ms ease-out;
-		
+
 		a[aria-expanded="true"] &,
 		a:hover &,
 		a.is-keyboardfocus & {
@@ -149,7 +149,7 @@ SECTION PROJECTS
 	background: rgba($color-key-cyan, .9);
 	background: linear-gradient(to bottom, rgba($color-key-cyan, .9), rgba($color-key-cyan, .96) );
 	transition: 300ms ease-in-out;
-	
+
 	a[aria-expanded="true"] &,
 	a:hover &,
 	a.is-keyboardfocus & {
@@ -166,13 +166,13 @@ SECTION PROJECTS
 		padding-bottom: .75em;
 		transition: inherit;
 		transform: translateY(50%);
-		
+
 		a[aria-expanded="true"] &,
 		a:hover &,
 		a.is-keyboardfocus & {
 			transform: scale(1);
 		}
-		
+
 		//title kicker
 		em {
 			position: absolute;
@@ -198,7 +198,7 @@ SECTION PROJECTS
 			transform: rotateY(90deg);
 			transition: 500ms;
 			transition-delay: 50ms;
-			
+
 			a[aria-expanded="true"] &,
 			a:hover &,
 			a.is-keyboardfocus & {
@@ -220,7 +220,7 @@ SECTION PROJECTS
 }
 
 .project-teaser__services {
-	
+
 	li {
 		display: block;
 		font-size: 1.6rem;
@@ -230,7 +230,7 @@ SECTION PROJECTS
 		transition: 400ms;
 		opacity: 0;
 		transform: translateY(150%);
-	
+
 		a[aria-expanded="true"] &,
 		a:hover &,
 		a.is-keyboardfocus & {
@@ -243,7 +243,7 @@ SECTION PROJECTS
 				}
 			}
 		}
-		
+
 	}
 }
 
@@ -318,7 +318,7 @@ SECTION PROJECTS
 		transition: opacity 500ms;
 		cursor: pointer;
 		padding: 0 1rem;
-		
+
 		&:hover {
 			opacity: .3;
 		}
@@ -379,7 +379,7 @@ SECTION PROJECTS
 			right: -6rem;
 		}
 	}
-	
+
 	.project__slider-disabled {
 		visibility: hidden;
 		display: none;

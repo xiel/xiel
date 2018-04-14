@@ -3,11 +3,9 @@ SECTION CONTACT
 =================================================== */
 
 .section--imprint {
-	color: $color-text-on-dark;
-	color: hsl(214, 10%, 50%);
+	color: $color-text-default;
 	padding: 1% 0 .5%;
-	background: hsl(214, 13%, 15%);
-	background: #181c20;
+	background: #dedede;
 
 	h4 {
 		margin: 0 0 1em;
