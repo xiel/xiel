@@ -220,11 +220,11 @@
                     this.panelAjaxContent
                         .then(function(data) {
 
-                            requestAnimationFrame(function(){
+                            // requestAnimationFrame(function(){
                                 //render loaded html
-                                that.$element.html(data);
+                                // that.$element.html(data);
                                 that.open(options);
-                            });
+                            // });
 
                             //remove the promise, so next time open gets called, it shows the content
                             that.panelAjaxContent = {};
@@ -234,7 +234,9 @@
                         })
                     ;
                 } else {
-                    this._super(options);
+	                requestAnimationFrame(function(){
+	                    this._super(options);
+	                });
                 }
 
                 return true;
