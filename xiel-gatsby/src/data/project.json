@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Title Y1",
+    "slug": "title-1",
+    "desc": "lorem",
+    "image": "./images/siemens/siemens-hero.jpg"
+  },
+  {
+    "title": "Title Y2",
+    "slug": "title-2",
+    "desc": "lorem",
+    "image": "./images/deutschesee.jpg"
+  }
+]
