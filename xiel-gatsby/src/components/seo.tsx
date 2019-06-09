@@ -6,15 +6,21 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
+import Helmet, { HelmetProps } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { SeoQuery } from "../graphqlTypes"
 
-// @ts-ignore
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+interface Props {
+  description?: string
+  lang?: string
+  title?: string
+  meta?: HelmetProps["meta"]
+}
+
+function SEO({ title = "", lang = `en`, meta = [], description = `` }: Props) {
+  const { site } = useStaticQuery<SeoQuery>(
     graphql`
-      query {
+      query Seo {
         site {
           siteMetadata {
             title
@@ -26,7 +32,11 @@ function SEO({ description, lang, meta, title }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  if (!site || !site.siteMetadata) {
+    return null
+  }
+
+  const metaDescription = description || site.siteMetadata.description || ""
 
   return (
     <Helmet
@@ -68,22 +78,10 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        // @ts-ignore
       ].concat(meta)}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
 }
 
 export default SEO

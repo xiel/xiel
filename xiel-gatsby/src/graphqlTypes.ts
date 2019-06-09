@@ -2432,9 +2432,9 @@ export type SiteTitleQueryQuery = { __typename?: "Query" } & {
   >
 }
 
-export type Unnamed_2_QueryVariables = {}
+export type SeoQueryVariables = {}
 
-export type Unnamed_2_Query = { __typename?: "Query" } & {
+export type SeoQuery = { __typename?: "Query" } & {
   site: Maybe<
     { __typename?: "Site" } & {
       siteMetadata: Maybe<
