@@ -2,7 +2,7 @@ import React from "react"
 import { RouteComponentProps } from "@reach/router"
 
 // TODO: can navigate, "*" etc ever be undefined in Gatsby? maybe in SSR rendering phase?
-export interface PageProps extends Omit<RouteComponentProps, 'default'> {
+export interface PageProps extends Omit<RouteComponentProps, "default"> {
   "*"?: string
   children: React.ReactNode
   data?: unknown

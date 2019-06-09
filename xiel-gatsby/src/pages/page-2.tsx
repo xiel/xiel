@@ -9,11 +9,6 @@ import { PageProps } from "../types/PageProps"
 
 interface Props {}
 
-
-
-
-
-
 export default function SecondPage({ navigate }: Props & PageProps) {
   const [count, setCount] = useState(0)
   const { projects } = useStaticQuery<ProjectsQuery>(graphql`
@@ -23,6 +18,7 @@ export default function SecondPage({ navigate }: Props & PageProps) {
           node {
             title
             desc
+
             slug
             image {
               childImageSharp {
@@ -42,7 +38,6 @@ export default function SecondPage({ navigate }: Props & PageProps) {
       <SEO title="Page two" />
       <h1>Hi from the second page asdasd</h1>
       <p>Welcome to page 2</p>
-
       <div>
         <button onClick={() => setCount(c => c + 1)}>{count}</button>
       </div>

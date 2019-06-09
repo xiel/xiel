@@ -19,7 +19,7 @@
     "gatsby-source-filesystem": "^2.0.38",
     "gatsby-transformer-json": "^2.1.11",
     "gatsby-transformer-sharp": "^2.1.21",
-    "prettier": "^1.18.0",
+    "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -36,7 +36,7 @@
     "develop": "yarn prebuild; gatsby develop",
     "gql-generate": "graphql-codegen --config graphql-codegen.yml",
     "gql-generate:watch": "yarn gql-generate --watch",
-    "format": "prettier --write src/**/*.{ts,tsx}",
+    "format": "prettier --write src/**/*.{js,jsx,json,ts,tsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
@@ -45,11 +45,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "pretty-quick --staged"
     }
-  },
-  "lint-staged": {
-    "*": ["yarn format"]
   },
   "repository": {
     "type": "git",
@@ -61,6 +58,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.2.0",
     "@graphql-codegen/typescript-operations": "^1.2.0",
-    "husk": "^0.5.3"
+    "husky": "^2.4.0",
+    "pretty-quick": "^1.11.0"
   }
 }

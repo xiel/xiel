@@ -9,8 +9,12 @@ interface Props {
   imageData?: FluidObject
 }
 
-export default function ProjectPreview({ title, slug, desc, imageData }: Props) {
-
+export default function ProjectPreview({
+  title,
+  slug,
+  desc,
+  imageData,
+}: Props) {
   return (
     <div>
       <Link to={`${slug}`}>
