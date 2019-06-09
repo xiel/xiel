@@ -1,0 +1,11 @@
+schema: schema.graphql
+documents:
+  - ./src/**/*.{ts,tsx}
+  - ./node_modules/gatsby-*/**/*.js
+generates:
+  ./src/graphqlTypes.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      maybeValue: T | undefined

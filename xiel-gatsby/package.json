@@ -32,6 +32,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "gql-generate": "graphql-codegen --config graphql-codegen.yml",
     "format": "prettier --write src/**/*.{ts,tsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
@@ -43,5 +44,9 @@
   },
   "bugs": {
     "url": "https://github.com/xiel/xiel/issues"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.2.0",
+    "@graphql-codegen/typescript-operations": "^1.2.0"
   }
 }
