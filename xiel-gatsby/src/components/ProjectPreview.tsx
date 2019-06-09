@@ -3,9 +3,9 @@ import Image, { FluidObject } from "gatsby-image"
 import { Link } from "gatsby"
 
 interface Props {
-  title: string
-  slug: string
-  desc: string
+  title?: string
+  slug?: string
+  desc?: string
   imageData?: FluidObject
 }
 
