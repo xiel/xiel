@@ -32,11 +32,6 @@ export default function SecondPage({ navigate }: Props & PageProps) {
     }
   `)
 
-  useEffect(() => {
-    console.log('navigate !!!!', navigate)
-    navigate && navigate('/')
-  }, [])
-
   return (
     <Layout>
       <SEO title="Page two" />

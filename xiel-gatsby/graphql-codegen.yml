@@ -2,6 +2,10 @@ schema: schema.graphql
 documents:
   - ./src/**/*.{ts,tsx}
   - ./node_modules/gatsby-*/**/*.js
+config:
+  avoidOptionals: true
+  namingConvention:
+    enumValues: keep
 generates:
   ./src/graphqlTypes.ts:
     plugins:
@@ -9,3 +13,4 @@ generates:
       - typescript-operations
     config:
       maybeValue: T | undefined
+

@@ -8,6 +8,7 @@
     "@types/node": "^12.0.7",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
+    "@types/react-helmet": "^5.0.8",
     "gatsby": "^2.8.6",
     "gatsby-image": "^2.1.2",
     "gatsby-plugin-manifest": "^2.1.1",
@@ -30,13 +31,17 @@
   ],
   "license": "MIT",
   "scripts": {
+    "prebuild": "yarn gql-generate; yarn type-check",
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "yarn prebuild; gatsby develop",
     "gql-generate": "graphql-codegen --config graphql-codegen.yml",
+    "gql-generate:watch": "yarn gql-generate --watch",
     "format": "prettier --write src/**/*.{ts,tsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "yarn type-check --watch"
   },
   "repository": {
     "type": "git",
