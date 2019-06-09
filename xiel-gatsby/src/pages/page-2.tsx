@@ -9,6 +9,11 @@ import { PageProps } from "../types/PageProps"
 
 interface Props {}
 
+
+
+
+
+
 export default function SecondPage({ navigate }: Props & PageProps) {
   const [count, setCount] = useState(0)
   const { projects } = useStaticQuery<ProjectsQuery>(graphql`

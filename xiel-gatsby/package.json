@@ -43,6 +43,14 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check --watch"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*": ["yarn format"]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/xiel/xiel"
@@ -52,6 +60,7 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.2.0",
-    "@graphql-codegen/typescript-operations": "^1.2.0"
+    "@graphql-codegen/typescript-operations": "^1.2.0",
+    "husk": "^0.5.3"
   }
 }

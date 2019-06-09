@@ -1614,6 +1614,13 @@ async-limiter@~1.0.0:
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
   integrity sha512-jp/uFnooOiO+L211eZOoSyzpOITMXx1rBITauYykG3BRYPu8h0UcxsPNB04RR5vo4Tyz3+ay17tR6JVf9qzYWg==
 
+async-stream-flow@~1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/async-stream-flow/-/async-stream-flow-1.0.2.tgz#42db63525c5d116267ea68b0369d9b35caa384db"
+  integrity sha1-QttjUlxdEWJn6miwNp2bNcqjhNs=
+  dependencies:
+    through3 "~1.1.5"
+
 async@1.5.2, async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -4898,6 +4905,14 @@ fs-extra@^7.0.0, fs-extra@^7.0.1:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
+fs-flow@~1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/fs-flow/-/fs-flow-1.0.2.tgz#6b7133d1435a4a94f3dca624d086df2936a533e7"
+  integrity sha1-a3Ez0UNaSpTz3KYk0IbfKTalM+c=
+  dependencies:
+    async-stream-flow "~1.0.1"
+    through3 "~1.1.5"
+
 fs-minipass@^1.2.5:
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-1.2.6.tgz#2c5cc30ded81282bfe8a0d7c7c1853ddeb102c07"
@@ -5955,6 +5970,60 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
+
+husk-async@~1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/husk-async/-/husk-async-1.0.3.tgz#b5a5cae27b3e2641126de07b246ae2a6477fa382"
+  integrity sha1-taXK4ns+JkESbeB7JGripkd/o4I=
+  dependencies:
+    async-stream-flow "~1.0.1"
+
+husk-core@~1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/husk-core/-/husk-core-1.0.4.tgz#870b2619c0283d6a1262b98a9a4b76612292e47d"
+  integrity sha1-hwsmGcAoPWoSYrmKmkt2YSKS5H0=
+  dependencies:
+    husk-print "~1.0.2"
+    husk-through "~1.0.2"
+
+husk-exec@~1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/husk-exec/-/husk-exec-1.0.4.tgz#f81eaffd1580b91da3a13c07ce568fc8a72ce9b4"
+  integrity sha1-+B6v/RWAuR2joTwHzlaPyKcs6bQ=
+  dependencies:
+    process-flow "~1.0.2"
+
+husk-fs@~1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/husk-fs/-/husk-fs-1.0.3.tgz#3c32a96e561753d631b1a8ee5c4a236d1d89e138"
+  integrity sha1-PDKpblYXU9YxsajuXEojbR2J4Tg=
+  dependencies:
+    fs-flow "~1.0.1"
+
+husk-print@~1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/husk-print/-/husk-print-1.0.3.tgz#3dd134b46bc701ccbe8113c8d6cbeb8305656697"
+  integrity sha1-PdE0tGvHAcy+gRPI1svrgwVlZpc=
+  dependencies:
+    print-flow "~1.0.2"
+
+husk-through@~1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/husk-through/-/husk-through-1.0.2.tgz#f7d668be267e1deeb8e285a8687bef391695cabc"
+  integrity sha1-99ZoviZ+He644oWoaHvvORaVyrw=
+  dependencies:
+    through-flow "~1.0.1"
+
+husk@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/husk/-/husk-0.5.3.tgz#8693aa0b164ccb6314dc7cd3478de4f796691458"
+  integrity sha1-hpOqCxZMy2MU3HzTR43k95ZpFFg=
+  dependencies:
+    husk-async "~1.0.2"
+    husk-core "~1.0.4"
+    husk-exec "~1.0.4"
+    husk-fs "~1.0.2"
+    zephyr "~1.2.6"
 
 iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.24"
@@ -9166,6 +9235,13 @@ pretty-error@^2.1.1:
     renderkid "^2.0.1"
     utila "~0.4"
 
+print-flow@~1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/print-flow/-/print-flow-1.0.2.tgz#28753a4e6aea5122397bb5bc85b67f50548b9c67"
+  integrity sha1-KHU6TmrqUSI5e7W8hbZ/UFSLnGc=
+  dependencies:
+    through3 "~1.1.5"
+
 private@^0.1.6:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
@@ -9182,6 +9258,13 @@ probe-image-size@^4.0.0:
     next-tick "^1.0.0"
     request "^2.83.0"
     stream-parser "~0.3.1"
+
+process-flow@~1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/process-flow/-/process-flow-1.0.2.tgz#ed024b2cdf7004193d46103650ca9393067e7ec0"
+  integrity sha1-7QJLLN9wBBk9RhA2UMqTkwZ+fsA=
+  dependencies:
+    through3 "~1.1.5"
 
 process-nextick-args@~2.0.0:
   version "2.0.0"
@@ -10995,6 +11078,13 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+through-flow@~1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/through-flow/-/through-flow-1.0.2.tgz#3e47b310257762e3e9e0f97137432fbe7893bc0c"
+  integrity sha1-PkezECV3YuPp4PlxN0MvvniTvAw=
+  dependencies:
+    through3 "~1.1.5"
+
 through2@^2.0.0, through2@^2.0.1:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -11002,6 +11092,11 @@ through2@^2.0.0, through2@^2.0.1:
   dependencies:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
+
+through3@~1.1.5:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/through3/-/through3-1.1.6.tgz#504aa5175efd54d9c6957784c890664b8685cf77"
+  integrity sha1-UEqlF179VNnGlXeEyJBmS4aFz3c=
 
 through@^2.3.6, through@^2.3.8:
   version "2.3.8"
@@ -12109,3 +12204,8 @@ zen-observable@^0.8.0:
   version "0.8.14"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.14.tgz#d33058359d335bc0db1f0af66158b32872af3bf7"
   integrity sha512-kQz39uonEjEESwh+qCi83kcC3rZJGh4mrZW7xjkSQYXkq//JZHTtKo+6yuVloTgMtzsIWOJrjIrKvk/dqm0L5g==
+
+zephyr@~1.2.6:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/zephyr/-/zephyr-1.2.8.tgz#af734a97dbbd368e2b73597c7e6054dbcbd69a6c"
+  integrity sha1-r3NKl9u9No4rc1l8fmBU28vWmmw=
