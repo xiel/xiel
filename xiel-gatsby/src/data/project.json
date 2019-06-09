@@ -9,6 +9,10 @@
     "title": "Title Y2",
     "slug": "title-2",
     "desc": "lorem",
-    "image": "./images/deutschesee.jpg"
+    "image": "./images/deutschesee.jpg",
+    "link": {
+      "href": "http://google.com",
+      "label": "Link to project"
+    }
   }
 ]

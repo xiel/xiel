@@ -1,13 +1,16 @@
 import React from "react"
 import { RouteComponentProps } from "@reach/router"
 
-// TODO: can navigate, "*" etc ever be undefined in Gatsby? maybe in SSR rendering phase?
-export interface PageProps extends Omit<RouteComponentProps, "default"> {
+export interface PageProps<
+  AdditionalContext = {},
+  PageData = Record<string, unknown> | undefined
+> extends Omit<RouteComponentProps, "default"> {
   "*"?: string
   children: React.ReactNode
-  data?: unknown
+  data: PageData
   pageResources: PageResources
-  pageContext: PageContext
+  pageContext: DefaultContext & AdditionalContext
+  pathContext?: DefaultContext & AdditionalContext
 }
 
 export interface PageResources extends Record<string, unknown> {
@@ -21,6 +24,6 @@ export interface PageResourcesPageInfo extends Record<string, unknown> {
   path: string
 }
 
-export interface PageContext extends Record<string, unknown> {
+export interface DefaultContext extends Record<string, unknown> {
   isCreatedByStatefulCreatePages: boolean
 }

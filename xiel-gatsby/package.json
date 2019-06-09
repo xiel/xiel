@@ -24,6 +24,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "ts-node": "^8.2.0",
     "typescript": "^3.5.1"
   },
   "keywords": [
@@ -33,7 +34,7 @@
   "scripts": {
     "prebuild": "yarn gql-generate; yarn type-check",
     "build": "gatsby build",
-    "develop": "yarn prebuild; gatsby develop",
+    "develop": "gatsby develop",
     "gql-generate": "graphql-codegen --config graphql-codegen.yml",
     "gql-generate:watch": "yarn gql-generate --watch",
     "format": "prettier --write src/**/*.{js,jsx,json,ts,tsx}",

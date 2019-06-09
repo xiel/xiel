@@ -2,14 +2,14 @@ import React, { useState } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ProjectPreview from "../components/ProjectPreview"
+import ProjectTeaser from "../components/ProjectTeaser"
 import { ProjectsQuery } from "../graphqlTypes"
 import { FluidObject } from "gatsby-image"
 import { PageProps } from "../types/PageProps"
 
 interface Props {}
 
-export default function SecondPage({ navigate }: Props & PageProps) {
+export default function Projects({ navigate }: Props & PageProps) {
   const [count, setCount] = useState(0)
   const { projects } = useStaticQuery<ProjectsQuery>(graphql`
     query Projects {
@@ -22,7 +22,7 @@ export default function SecondPage({ navigate }: Props & PageProps) {
             slug
             image {
               childImageSharp {
-                fluid {
+                fluid(maxWidth: 300) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -44,17 +44,19 @@ export default function SecondPage({ navigate }: Props & PageProps) {
 
       <Link to="/">Go back to the homepage</Link>
 
-      {projects!.edges
-        .map(edge => edge.node)
-        .map((p, i) => (
-          <ProjectPreview
-            key={p.slug + "-" + i}
-            title={p.title}
-            desc={p.desc}
-            slug={p.slug}
-            imageData={p.image!.childImageSharp!.fluid as FluidObject}
-          />
-        ))}
+      <div style={{ display: "flex" }}>
+        {projects!.edges
+          .map(edge => edge.node)
+          .map((p, i) => (
+            <ProjectTeaser
+              key={p.slug + "-" + i}
+              title={p.title}
+              desc={p.desc}
+              slug={p.slug}
+              imageData={p.image!.childImageSharp!.fluid as FluidObject}
+            />
+          ))}
+      </div>
     </Layout>
   )
 }
