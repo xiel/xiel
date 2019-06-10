@@ -19,11 +19,13 @@
     "gatsby-source-filesystem": "^2.0.38",
     "gatsby-transformer-json": "^2.1.11",
     "gatsby-transformer-sharp": "^2.1.21",
+    "i18next": "^17.0.3",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-i18next": "^10.11.0",
     "ts-node": "^8.2.0",
     "typescript": "^3.5.1"
   },

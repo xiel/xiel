@@ -3,7 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-import { resolve } from "path"
+import { resolve, join } from "path"
 import { NodePluginArgs } from "gatsby"
 import { ProjectJsonEdge } from "../graphqlTypes"
 
@@ -32,16 +32,50 @@ export default async function createPages({
   }
 
   const projects = result.data.projects.edges as ProjectJsonEdge[]
+  const lanCfgs = [
+    {
+      lngBasePath: "/",
+      lng: "en",
+    },
+    {
+      lngBasePath: "/de",
+      lng: "de",
+    },
+  ]
 
-  projects.map(({ node: { slug } }) => {
-    if (!slug) return
+  lanCfgs.forEach(({ lng, lngBasePath }) => {
+    console.log(resolve(__dirname, "../pageTemplates/projects.tsx"))
 
     createPage({
-      path: `/${slug}/`,
-      component: resolve(__dirname, "../src/pageTemplates/project.tsx"),
+      path: `${join(lngBasePath)}`,
+      component: resolve(__dirname, "../pageTemplates/index.tsx"),
       context: {
-        slug,
+        lng,
+        lngBasePath,
       },
+    })
+
+    createPage({
+      path: `${join(lngBasePath, "projects")}`,
+      component: resolve(__dirname, "../pageTemplates/projects.tsx"),
+      context: {
+        lng,
+        lngBasePath,
+      },
+    })
+
+    projects.map(({ node: { slug } }) => {
+      if (!slug) return
+
+      createPage({
+        path: `${join(lngBasePath, slug)}`,
+        component: resolve(__dirname, "../pageTemplates/project.tsx"),
+        context: {
+          slug,
+          lng,
+          lngBasePath,
+        },
+      })
     })
   })
 }

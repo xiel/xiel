@@ -21,6 +21,14 @@ module.exports = {
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `locales`,
+    //     path: `${__dirname}/src/locales`,
+    //     ignore: [`**/\.*`], // ignore files starting with a dot
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,

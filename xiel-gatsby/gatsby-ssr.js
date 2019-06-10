@@ -1,7 +1,6 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import i18n from "./src/locales/i18n"
 
-// You can delete this file if you're not using it
+export const wrapPageElement = ({ element, props }) => {
+  i18n.changeLanguage(props.pageContext.lng)
+  return element
+}

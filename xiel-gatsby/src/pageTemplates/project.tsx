@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import { ProjectPageWithQuery } from "../graphqlTypes"
 import Image, { FluidObject } from "gatsby-image"
+import { useTranslation } from "react-i18next"
 
 interface Props {}
 
@@ -32,9 +33,12 @@ export default function Project(
 ) {
   const { pageContext } = props
   const { title, desc, image } = props.data.projectJson!
+  const { t } = useTranslation()
 
   return (
     <Layout>
+      <h1>i18n {t("Welcome to React")}</h1>
+      <h1>i18n {t("Subline")}</h1>
       <h1>
         Project Page {title} {pageContext.slug}
       </h1>

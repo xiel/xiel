@@ -1,5 +1,5 @@
 /**
- * Implement Gatsby's Node APIs in this file.
+ * Loads ts-node to be able to load the config files as Typescript
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
@@ -14,5 +14,4 @@ require("ts-node").register({
   },
 })
 
-// typescript files
-exports.createPages = require("./src/lib/createPages").default
+exports.tsnode = tsnode

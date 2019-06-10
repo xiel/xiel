@@ -2447,6 +2447,30 @@ export type SeoQuery = { __typename?: "Query" } & {
   >
 }
 
+export type ProjectPageWithQueryVariables = {
+  slug: Scalars["String"]
+}
+
+export type ProjectPageWithQuery = { __typename?: "Query" } & {
+  projectJson: Maybe<
+    { __typename?: "ProjectJson" } & Pick<ProjectJson, "title" | "desc"> & {
+        image: Maybe<
+          { __typename?: "File" } & {
+            childImageSharp: Maybe<
+              { __typename?: "ImageSharp" } & {
+                fluid: Maybe<
+                  {
+                    __typename?: "ImageSharpFluid"
+                  } & GatsbyImageSharpFluidFragment
+                >
+              }
+            >
+          }
+        >
+      }
+  >
+}
+
 export type ProjectsQueryVariables = {}
 
 export type ProjectsQuery = { __typename?: "Query" } & {
@@ -2475,30 +2499,6 @@ export type ProjectsQuery = { __typename?: "Query" } & {
         }
       >
     }
-  >
-}
-
-export type ProjectPageWithQueryVariables = {
-  slug: Scalars["String"]
-}
-
-export type ProjectPageWithQuery = { __typename?: "Query" } & {
-  projectJson: Maybe<
-    { __typename?: "ProjectJson" } & Pick<ProjectJson, "title" | "desc"> & {
-        image: Maybe<
-          { __typename?: "File" } & {
-            childImageSharp: Maybe<
-              { __typename?: "ImageSharp" } & {
-                fluid: Maybe<
-                  {
-                    __typename?: "ImageSharpFluid"
-                  } & GatsbyImageSharpFluidFragment
-                >
-              }
-            >
-          }
-        >
-      }
   >
 }
 
