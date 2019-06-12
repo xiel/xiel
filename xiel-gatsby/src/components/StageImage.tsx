@@ -13,20 +13,25 @@ import Img from "gatsby-image"
  * - `StaticQuery`: https://gatsby.dev/staticquery
  */
 
-const Image = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-          childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid
+export default function StageImage() {
+  return (
+    <StaticQuery
+      query={graphql`
+        query {
+          placeholderImage: file(
+            relativePath: { eq: "stage/felix-leupold-stage.jpg" }
+          ) {
+            childImageSharp {
+              fluid(maxHeight: 1600) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
-      }
-    `}
-    render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
-  />
-)
-export default Image
+      `}
+      render={data => (
+        <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+      )}
+    />
+  )
+}

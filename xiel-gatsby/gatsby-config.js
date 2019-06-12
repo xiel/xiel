@@ -6,11 +6,15 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    // https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#how-to-query
+    // To filter by the name you specified in the config, use sourceInstanceName:
+    // allFile(filter: { sourceInstanceName: { eq: "data" } })
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `assets`,
+        path: `${__dirname}/src/assets`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     {
@@ -21,14 +25,6 @@ module.exports = {
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `locales`,
-    //     path: `${__dirname}/src/locales`,
-    //     ignore: [`**/\.*`], // ignore files starting with a dot
-    //   },
-    // },
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
@@ -41,7 +37,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
