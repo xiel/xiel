@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
     // https://www.gatsbyjs.org/packages/gatsby-source-filesystem/#how-to-query
     // To filter by the name you specified in the config, use sourceInstanceName:
