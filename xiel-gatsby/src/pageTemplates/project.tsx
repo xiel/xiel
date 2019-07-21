@@ -1,7 +1,7 @@
 import React from 'react'
 import { PageProps } from '../types/PageProps'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/layout'
+import Layout from '../components/Layout/Layout'
 import { ProjectPageWithQuery } from '../graphqlTypes'
 import Image, { FluidObject } from 'gatsby-image'
 import { useTranslation } from 'react-i18next'

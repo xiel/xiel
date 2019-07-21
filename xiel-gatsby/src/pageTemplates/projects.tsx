@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
-import Layout from '../components/layout'
+import Layout from '../components/Layout/Layout'
 import SEO from '../components/seo'
 import ProjectTeaser from '../components/ProjectTeaser'
 import { ProjectsQuery } from '../graphqlTypes'

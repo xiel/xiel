@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { visuallyhidden } from '../../styles/mixins'
-import { screen_sm_max, screen_xs_max } from '../../styles/theme'
+import { screenSmMax, screenXsMax } from '../../styles/theme'
 
 interface Props {
   siteTitle: string
@@ -58,12 +58,12 @@ const logo = css`
     }
   }
 
-  @media (max-width: ${screen_sm_max}px) {
+  @media (max-width: ${screenSmMax}px) {
     width: 8rem;
     height: 8rem;
   }
 
-  @media (max-width: ${screen_xs_max}px) {
+  @media (max-width: ${screenXsMax}px) {
     margin-top: 2rem;
     width: 6rem;
     height: 6rem;
