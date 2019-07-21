@@ -1,4 +1,7 @@
 {
   "Welcome to React": "Willkommen zu React and react-i18next DE",
-  "Subline": "Zwischenüberschrift"
+  "Subline": "Zwischenüberschrift",
+  "Projects": {
+    "Title": "Projekte"
+  }
 }

@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 
 interface Props {}
 
@@ -10,7 +10,7 @@ export default function Impressum(props: Props) {
     <Layout>
       <SEO
         title="Impressum"
-        meta={[{ name: "robots", content: "noindex,nofollow" }]}
+        meta={[{ name: 'robots', content: 'noindex,nofollow' }]}
       />
       <section className="section">
         <div className="container">

@@ -1,16 +1,17 @@
-import React, { useState } from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import ProjectTeaser from "../components/ProjectTeaser"
-import { ProjectsQuery } from "../graphqlTypes"
-import { FluidObject } from "gatsby-image"
-import { PageProps } from "../types/PageProps"
+import React, { useState } from 'react'
+import { graphql, Link, useStaticQuery } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import ProjectTeaser from '../components/ProjectTeaser'
+import { ProjectsQuery } from '../graphqlTypes'
+import { FluidObject } from 'gatsby-image'
+import { PageProps } from '../types/PageProps'
+import { useTranslation } from 'react-i18next'
 
-interface Props {}
-
-export default function Projects({ navigate }: Props & PageProps) {
+export default function Projects({ navigate }: PageProps) {
   const [count, setCount] = useState(0)
+  const { t } = useTranslation()
+
   const { projects } = useStaticQuery<ProjectsQuery>(graphql`
     query Projects {
       projects: allProjectJson {
@@ -35,7 +36,7 @@ export default function Projects({ navigate }: Props & PageProps) {
 
   return (
     <Layout>
-      <SEO title="Page two" />
+      <SEO title={t('Projects.Title')} />
       <h1>Hi from the second page asdasd</h1>
       <p>Welcome to page 2</p>
       <div>
@@ -44,18 +45,21 @@ export default function Projects({ navigate }: Props & PageProps) {
 
       <Link to="/">Go back to the homepage</Link>
 
-      <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {projects!.edges
           .map(edge => edge.node)
           .map((p, i) => (
             <ProjectTeaser
-              key={p.slug + "-" + i}
+              key={p.slug + '-' + i}
               title={p.title}
               desc={p.desc}
               slug={p.slug}
               imageData={p.image!.childImageSharp!.fluid as FluidObject}
             />
           ))}
+        {Array.from(new Array(count)).map((_, i) => (
+          <ProjectTeaser key={i} title={`${i}`} desc={`${i}`} slug={`${i}`} />
+        ))}
       </div>
     </Layout>
   )
