@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import { visuallyhidden } from '../../styles/mixins'
 import { screenSmMax, screenXsMax } from '../../styles/theme'
+import { Link } from 'gatsby'
 
 interface Props {
   siteTitle: string
@@ -76,9 +77,9 @@ export default function Logo({ siteTitle }: Props) {
   return (
     <header css={logo}>
       <h1>
-        <a href="/">
+        <Link to="/">
           <span css={visuallyhidden}>{siteTitle}</span>
-        </a>
+        </Link>
       </h1>
       <svg
         viewBox="0 0 500 500"
