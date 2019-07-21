@@ -65,6 +65,8 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.2.0",
     "@graphql-codegen/typescript-operations": "^1.2.0",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
     "babel-eslint": "9.x",
     "eslint": "5.x",
     "eslint-config-react-app": "^4.0.1",
