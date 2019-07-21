@@ -1,6 +1,11 @@
 {
   "Welcome to React": "Willkommen zu React and react-i18next DE",
   "Subline": "Zwischenüberschrift",
+  "Page": {
+    "Index": {
+      "Title": ""
+    }
+  },
   "Projects": {
     "Title": "Projekte"
   }

@@ -35,11 +35,11 @@ export default async function createPages({
   const lanCfgs = [
     {
       lngBasePath: '/',
-      lng: 'en',
+      lng: 'de',
     },
     {
-      lngBasePath: '/de',
-      lng: 'de',
+      lngBasePath: '/en',
+      lng: 'en',
     },
   ]
 
