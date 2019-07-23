@@ -1,10 +1,11 @@
 import React from 'react'
+import Section from '../Layout/Section'
 
 interface Props {}
 
 export default function DevelopmentSection(props: Props) {
   return (
-    <section className="section development">
+    <Section>
       <div className="container">
         <header className="section__header">
           <h2>Modern Web Development</h2>
@@ -189,6 +190,6 @@ export default function DevelopmentSection(props: Props) {
           </ul>
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

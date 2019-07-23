@@ -186,17 +186,8 @@ type File implements Node {
     #Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
-  birthtime(
-    #Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\".
-    difference: String
-    #Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
-    formatString: String
-    #Returns a string generated with Moment.js' `fromNow` function
-    fromNow: Boolean
-    #Configures the locale Moment.js will use to format the date.
-    locale: String
-  ): Date
-  birthtimeMs: Float
+  birthtime: Date @deprecated(reason: "Use `birthTime` instead")
+  birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
   blksize: Int
   blocks: Int
   changeTime(
@@ -660,7 +651,9 @@ type Query {
     blksize: IntQueryOperatorInput
     blocks: IntQueryOperatorInput
     changeTime: DateQueryOperatorInput
+    childImageSharp: ImageSharpFilterInput
     children: NodeFilterListInput
+    childrenProjectJson: ProjectJsonFilterListInput
     ctime: DateQueryOperatorInput
     ctimeMs: FloatQueryOperatorInput
     dev: IntQueryOperatorInput
@@ -1076,7 +1069,198 @@ enum FileFieldsEnum {
   blksize
   blocks
   changeTime
+  childImageSharp___children
+  childImageSharp___children___children
+  childImageSharp___children___children___children
+  childImageSharp___children___children___id
+  childImageSharp___children___id
+  childImageSharp___children___internal___content
+  childImageSharp___children___internal___contentDigest
+  childImageSharp___children___internal___description
+  childImageSharp___children___internal___fieldOwners
+  childImageSharp___children___internal___ignoreType
+  childImageSharp___children___internal___mediaType
+  childImageSharp___children___internal___owner
+  childImageSharp___children___internal___type
+  childImageSharp___children___parent___children
+  childImageSharp___children___parent___id
+  childImageSharp___fixed___aspectRatio
+  childImageSharp___fixed___base64
+  childImageSharp___fixed___height
+  childImageSharp___fixed___originalName
+  childImageSharp___fixed___src
+  childImageSharp___fixed___srcSet
+  childImageSharp___fixed___srcSetWebp
+  childImageSharp___fixed___srcWebp
+  childImageSharp___fixed___tracedSVG
+  childImageSharp___fixed___width
+  childImageSharp___fluid___aspectRatio
+  childImageSharp___fluid___base64
+  childImageSharp___fluid___originalImg
+  childImageSharp___fluid___originalName
+  childImageSharp___fluid___presentationHeight
+  childImageSharp___fluid___presentationWidth
+  childImageSharp___fluid___sizes
+  childImageSharp___fluid___src
+  childImageSharp___fluid___srcSet
+  childImageSharp___fluid___srcSetWebp
+  childImageSharp___fluid___srcWebp
+  childImageSharp___fluid___tracedSVG
+  childImageSharp___id
+  childImageSharp___internal___content
+  childImageSharp___internal___contentDigest
+  childImageSharp___internal___description
+  childImageSharp___internal___fieldOwners
+  childImageSharp___internal___ignoreType
+  childImageSharp___internal___mediaType
+  childImageSharp___internal___owner
+  childImageSharp___internal___type
+  childImageSharp___original___height
+  childImageSharp___original___src
+  childImageSharp___original___width
+  childImageSharp___parent___children
+  childImageSharp___parent___children___children
+  childImageSharp___parent___children___id
+  childImageSharp___parent___id
+  childImageSharp___parent___internal___content
+  childImageSharp___parent___internal___contentDigest
+  childImageSharp___parent___internal___description
+  childImageSharp___parent___internal___fieldOwners
+  childImageSharp___parent___internal___ignoreType
+  childImageSharp___parent___internal___mediaType
+  childImageSharp___parent___internal___owner
+  childImageSharp___parent___internal___type
+  childImageSharp___parent___parent___children
+  childImageSharp___parent___parent___id
+  childImageSharp___resize___aspectRatio
+  childImageSharp___resize___height
+  childImageSharp___resize___originalName
+  childImageSharp___resize___src
+  childImageSharp___resize___tracedSVG
+  childImageSharp___resize___width
+  childImageSharp___resolutions___aspectRatio
+  childImageSharp___resolutions___base64
+  childImageSharp___resolutions___height
+  childImageSharp___resolutions___originalName
+  childImageSharp___resolutions___src
+  childImageSharp___resolutions___srcSet
+  childImageSharp___resolutions___srcSetWebp
+  childImageSharp___resolutions___srcWebp
+  childImageSharp___resolutions___tracedSVG
+  childImageSharp___resolutions___width
+  childImageSharp___sizes___aspectRatio
+  childImageSharp___sizes___base64
+  childImageSharp___sizes___originalImg
+  childImageSharp___sizes___originalName
+  childImageSharp___sizes___presentationHeight
+  childImageSharp___sizes___presentationWidth
+  childImageSharp___sizes___sizes
+  childImageSharp___sizes___src
+  childImageSharp___sizes___srcSet
+  childImageSharp___sizes___srcSetWebp
+  childImageSharp___sizes___srcWebp
+  childImageSharp___sizes___tracedSVG
   children
+  childrenProjectJson
+  childrenProjectJson___children
+  childrenProjectJson___children___children
+  childrenProjectJson___children___children___children
+  childrenProjectJson___children___children___id
+  childrenProjectJson___children___id
+  childrenProjectJson___children___internal___content
+  childrenProjectJson___children___internal___contentDigest
+  childrenProjectJson___children___internal___description
+  childrenProjectJson___children___internal___fieldOwners
+  childrenProjectJson___children___internal___ignoreType
+  childrenProjectJson___children___internal___mediaType
+  childrenProjectJson___children___internal___owner
+  childrenProjectJson___children___internal___type
+  childrenProjectJson___children___parent___children
+  childrenProjectJson___children___parent___id
+  childrenProjectJson___desc
+  childrenProjectJson___id
+  childrenProjectJson___image___absolutePath
+  childrenProjectJson___image___accessTime
+  childrenProjectJson___image___atime
+  childrenProjectJson___image___atimeMs
+  childrenProjectJson___image___base
+  childrenProjectJson___image___birthTime
+  childrenProjectJson___image___birthtime
+  childrenProjectJson___image___birthtimeMs
+  childrenProjectJson___image___blksize
+  childrenProjectJson___image___blocks
+  childrenProjectJson___image___changeTime
+  childrenProjectJson___image___childImageSharp___children
+  childrenProjectJson___image___childImageSharp___id
+  childrenProjectJson___image___children
+  childrenProjectJson___image___childrenProjectJson
+  childrenProjectJson___image___childrenProjectJson___children
+  childrenProjectJson___image___childrenProjectJson___desc
+  childrenProjectJson___image___childrenProjectJson___id
+  childrenProjectJson___image___childrenProjectJson___slug
+  childrenProjectJson___image___childrenProjectJson___title
+  childrenProjectJson___image___children___children
+  childrenProjectJson___image___children___id
+  childrenProjectJson___image___ctime
+  childrenProjectJson___image___ctimeMs
+  childrenProjectJson___image___dev
+  childrenProjectJson___image___dir
+  childrenProjectJson___image___ext
+  childrenProjectJson___image___extension
+  childrenProjectJson___image___gid
+  childrenProjectJson___image___id
+  childrenProjectJson___image___ino
+  childrenProjectJson___image___internal___content
+  childrenProjectJson___image___internal___contentDigest
+  childrenProjectJson___image___internal___description
+  childrenProjectJson___image___internal___fieldOwners
+  childrenProjectJson___image___internal___ignoreType
+  childrenProjectJson___image___internal___mediaType
+  childrenProjectJson___image___internal___owner
+  childrenProjectJson___image___internal___type
+  childrenProjectJson___image___mode
+  childrenProjectJson___image___modifiedTime
+  childrenProjectJson___image___mtime
+  childrenProjectJson___image___mtimeMs
+  childrenProjectJson___image___name
+  childrenProjectJson___image___nlink
+  childrenProjectJson___image___parent___children
+  childrenProjectJson___image___parent___id
+  childrenProjectJson___image___prettySize
+  childrenProjectJson___image___publicURL
+  childrenProjectJson___image___rdev
+  childrenProjectJson___image___relativeDirectory
+  childrenProjectJson___image___relativePath
+  childrenProjectJson___image___root
+  childrenProjectJson___image___size
+  childrenProjectJson___image___sourceInstanceName
+  childrenProjectJson___image___uid
+  childrenProjectJson___internal___content
+  childrenProjectJson___internal___contentDigest
+  childrenProjectJson___internal___description
+  childrenProjectJson___internal___fieldOwners
+  childrenProjectJson___internal___ignoreType
+  childrenProjectJson___internal___mediaType
+  childrenProjectJson___internal___owner
+  childrenProjectJson___internal___type
+  childrenProjectJson___link___href
+  childrenProjectJson___link___label
+  childrenProjectJson___parent___children
+  childrenProjectJson___parent___children___children
+  childrenProjectJson___parent___children___id
+  childrenProjectJson___parent___id
+  childrenProjectJson___parent___internal___content
+  childrenProjectJson___parent___internal___contentDigest
+  childrenProjectJson___parent___internal___description
+  childrenProjectJson___parent___internal___fieldOwners
+  childrenProjectJson___parent___internal___ignoreType
+  childrenProjectJson___parent___internal___mediaType
+  childrenProjectJson___parent___internal___owner
+  childrenProjectJson___parent___internal___type
+  childrenProjectJson___parent___parent___children
+  childrenProjectJson___parent___parent___id
+  childrenProjectJson___slug
+  childrenProjectJson___title
   children___children
   children___children___children
   children___children___children___children
@@ -1418,7 +1602,131 @@ enum ProjectJsonFieldsEnum {
   image___blksize
   image___blocks
   image___changeTime
+  image___childImageSharp___children
+  image___childImageSharp___children___children
+  image___childImageSharp___children___id
+  image___childImageSharp___fixed___aspectRatio
+  image___childImageSharp___fixed___base64
+  image___childImageSharp___fixed___height
+  image___childImageSharp___fixed___originalName
+  image___childImageSharp___fixed___src
+  image___childImageSharp___fixed___srcSet
+  image___childImageSharp___fixed___srcSetWebp
+  image___childImageSharp___fixed___srcWebp
+  image___childImageSharp___fixed___tracedSVG
+  image___childImageSharp___fixed___width
+  image___childImageSharp___fluid___aspectRatio
+  image___childImageSharp___fluid___base64
+  image___childImageSharp___fluid___originalImg
+  image___childImageSharp___fluid___originalName
+  image___childImageSharp___fluid___presentationHeight
+  image___childImageSharp___fluid___presentationWidth
+  image___childImageSharp___fluid___sizes
+  image___childImageSharp___fluid___src
+  image___childImageSharp___fluid___srcSet
+  image___childImageSharp___fluid___srcSetWebp
+  image___childImageSharp___fluid___srcWebp
+  image___childImageSharp___fluid___tracedSVG
+  image___childImageSharp___id
+  image___childImageSharp___internal___content
+  image___childImageSharp___internal___contentDigest
+  image___childImageSharp___internal___description
+  image___childImageSharp___internal___fieldOwners
+  image___childImageSharp___internal___ignoreType
+  image___childImageSharp___internal___mediaType
+  image___childImageSharp___internal___owner
+  image___childImageSharp___internal___type
+  image___childImageSharp___original___height
+  image___childImageSharp___original___src
+  image___childImageSharp___original___width
+  image___childImageSharp___parent___children
+  image___childImageSharp___parent___id
+  image___childImageSharp___resize___aspectRatio
+  image___childImageSharp___resize___height
+  image___childImageSharp___resize___originalName
+  image___childImageSharp___resize___src
+  image___childImageSharp___resize___tracedSVG
+  image___childImageSharp___resize___width
+  image___childImageSharp___resolutions___aspectRatio
+  image___childImageSharp___resolutions___base64
+  image___childImageSharp___resolutions___height
+  image___childImageSharp___resolutions___originalName
+  image___childImageSharp___resolutions___src
+  image___childImageSharp___resolutions___srcSet
+  image___childImageSharp___resolutions___srcSetWebp
+  image___childImageSharp___resolutions___srcWebp
+  image___childImageSharp___resolutions___tracedSVG
+  image___childImageSharp___resolutions___width
+  image___childImageSharp___sizes___aspectRatio
+  image___childImageSharp___sizes___base64
+  image___childImageSharp___sizes___originalImg
+  image___childImageSharp___sizes___originalName
+  image___childImageSharp___sizes___presentationHeight
+  image___childImageSharp___sizes___presentationWidth
+  image___childImageSharp___sizes___sizes
+  image___childImageSharp___sizes___src
+  image___childImageSharp___sizes___srcSet
+  image___childImageSharp___sizes___srcSetWebp
+  image___childImageSharp___sizes___srcWebp
+  image___childImageSharp___sizes___tracedSVG
   image___children
+  image___childrenProjectJson
+  image___childrenProjectJson___children
+  image___childrenProjectJson___children___children
+  image___childrenProjectJson___children___id
+  image___childrenProjectJson___desc
+  image___childrenProjectJson___id
+  image___childrenProjectJson___image___absolutePath
+  image___childrenProjectJson___image___accessTime
+  image___childrenProjectJson___image___atime
+  image___childrenProjectJson___image___atimeMs
+  image___childrenProjectJson___image___base
+  image___childrenProjectJson___image___birthTime
+  image___childrenProjectJson___image___birthtime
+  image___childrenProjectJson___image___birthtimeMs
+  image___childrenProjectJson___image___blksize
+  image___childrenProjectJson___image___blocks
+  image___childrenProjectJson___image___changeTime
+  image___childrenProjectJson___image___children
+  image___childrenProjectJson___image___childrenProjectJson
+  image___childrenProjectJson___image___ctime
+  image___childrenProjectJson___image___ctimeMs
+  image___childrenProjectJson___image___dev
+  image___childrenProjectJson___image___dir
+  image___childrenProjectJson___image___ext
+  image___childrenProjectJson___image___extension
+  image___childrenProjectJson___image___gid
+  image___childrenProjectJson___image___id
+  image___childrenProjectJson___image___ino
+  image___childrenProjectJson___image___mode
+  image___childrenProjectJson___image___modifiedTime
+  image___childrenProjectJson___image___mtime
+  image___childrenProjectJson___image___mtimeMs
+  image___childrenProjectJson___image___name
+  image___childrenProjectJson___image___nlink
+  image___childrenProjectJson___image___prettySize
+  image___childrenProjectJson___image___publicURL
+  image___childrenProjectJson___image___rdev
+  image___childrenProjectJson___image___relativeDirectory
+  image___childrenProjectJson___image___relativePath
+  image___childrenProjectJson___image___root
+  image___childrenProjectJson___image___size
+  image___childrenProjectJson___image___sourceInstanceName
+  image___childrenProjectJson___image___uid
+  image___childrenProjectJson___internal___content
+  image___childrenProjectJson___internal___contentDigest
+  image___childrenProjectJson___internal___description
+  image___childrenProjectJson___internal___fieldOwners
+  image___childrenProjectJson___internal___ignoreType
+  image___childrenProjectJson___internal___mediaType
+  image___childrenProjectJson___internal___owner
+  image___childrenProjectJson___internal___type
+  image___childrenProjectJson___link___href
+  image___childrenProjectJson___link___label
+  image___childrenProjectJson___parent___children
+  image___childrenProjectJson___parent___id
+  image___childrenProjectJson___slug
+  image___childrenProjectJson___title
   image___children___children
   image___children___children___children
   image___children___children___id
@@ -1989,9 +2297,9 @@ input DirectorySortInput {
 }
 
 input DuotoneGradient {
-  highlight: String
+  highlight: String!
   opacity: Int
-  shadow: String
+  shadow: String!
 }
 
 input FileFilterInput {
@@ -2006,7 +2314,9 @@ input FileFilterInput {
   blksize: IntQueryOperatorInput
   blocks: IntQueryOperatorInput
   changeTime: DateQueryOperatorInput
+  childImageSharp: ImageSharpFilterInput
   children: NodeFilterListInput
+  childrenProjectJson: ProjectJsonFilterListInput
   ctime: DateQueryOperatorInput
   ctimeMs: FloatQueryOperatorInput
   dev: IntQueryOperatorInput
@@ -2195,6 +2505,10 @@ input ProjectJsonFilterInput {
   parent: NodeFilterInput
   slug: StringQueryOperatorInput
   title: StringQueryOperatorInput
+}
+
+input ProjectJsonFilterListInput {
+  elemMatch: ProjectJsonFilterInput
 }
 
 input ProjectJsonLinkFilterInput {

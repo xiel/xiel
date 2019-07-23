@@ -332,9 +332,9 @@ export type DirectorySortInput = {
 }
 
 export type DuotoneGradient = {
-  highlight: Maybe<Scalars['String']>
+  highlight: Scalars['String']
   opacity: Maybe<Scalars['Int']>
-  shadow: Maybe<Scalars['String']>
+  shadow: Scalars['String']
 }
 
 export type File = Node & {
@@ -397,13 +397,6 @@ export type FileAtimeArgs = {
 }
 
 export type FileBirthTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
-}
-
-export type FileBirthtimeArgs = {
   difference: Maybe<Scalars['String']>
   formatString: Maybe<Scalars['String']>
   fromNow: Maybe<Scalars['Boolean']>
@@ -477,7 +470,198 @@ export enum FileFieldsEnum {
   blksize = 'blksize',
   blocks = 'blocks',
   changeTime = 'changeTime',
+  childImageSharp___children = 'childImageSharp___children',
+  childImageSharp___children___children = 'childImageSharp___children___children',
+  childImageSharp___children___children___children = 'childImageSharp___children___children___children',
+  childImageSharp___children___children___id = 'childImageSharp___children___children___id',
+  childImageSharp___children___id = 'childImageSharp___children___id',
+  childImageSharp___children___internal___content = 'childImageSharp___children___internal___content',
+  childImageSharp___children___internal___contentDigest = 'childImageSharp___children___internal___contentDigest',
+  childImageSharp___children___internal___description = 'childImageSharp___children___internal___description',
+  childImageSharp___children___internal___fieldOwners = 'childImageSharp___children___internal___fieldOwners',
+  childImageSharp___children___internal___ignoreType = 'childImageSharp___children___internal___ignoreType',
+  childImageSharp___children___internal___mediaType = 'childImageSharp___children___internal___mediaType',
+  childImageSharp___children___internal___owner = 'childImageSharp___children___internal___owner',
+  childImageSharp___children___internal___type = 'childImageSharp___children___internal___type',
+  childImageSharp___children___parent___children = 'childImageSharp___children___parent___children',
+  childImageSharp___children___parent___id = 'childImageSharp___children___parent___id',
+  childImageSharp___fixed___aspectRatio = 'childImageSharp___fixed___aspectRatio',
+  childImageSharp___fixed___base64 = 'childImageSharp___fixed___base64',
+  childImageSharp___fixed___height = 'childImageSharp___fixed___height',
+  childImageSharp___fixed___originalName = 'childImageSharp___fixed___originalName',
+  childImageSharp___fixed___src = 'childImageSharp___fixed___src',
+  childImageSharp___fixed___srcSet = 'childImageSharp___fixed___srcSet',
+  childImageSharp___fixed___srcSetWebp = 'childImageSharp___fixed___srcSetWebp',
+  childImageSharp___fixed___srcWebp = 'childImageSharp___fixed___srcWebp',
+  childImageSharp___fixed___tracedSVG = 'childImageSharp___fixed___tracedSVG',
+  childImageSharp___fixed___width = 'childImageSharp___fixed___width',
+  childImageSharp___fluid___aspectRatio = 'childImageSharp___fluid___aspectRatio',
+  childImageSharp___fluid___base64 = 'childImageSharp___fluid___base64',
+  childImageSharp___fluid___originalImg = 'childImageSharp___fluid___originalImg',
+  childImageSharp___fluid___originalName = 'childImageSharp___fluid___originalName',
+  childImageSharp___fluid___presentationHeight = 'childImageSharp___fluid___presentationHeight',
+  childImageSharp___fluid___presentationWidth = 'childImageSharp___fluid___presentationWidth',
+  childImageSharp___fluid___sizes = 'childImageSharp___fluid___sizes',
+  childImageSharp___fluid___src = 'childImageSharp___fluid___src',
+  childImageSharp___fluid___srcSet = 'childImageSharp___fluid___srcSet',
+  childImageSharp___fluid___srcSetWebp = 'childImageSharp___fluid___srcSetWebp',
+  childImageSharp___fluid___srcWebp = 'childImageSharp___fluid___srcWebp',
+  childImageSharp___fluid___tracedSVG = 'childImageSharp___fluid___tracedSVG',
+  childImageSharp___id = 'childImageSharp___id',
+  childImageSharp___internal___content = 'childImageSharp___internal___content',
+  childImageSharp___internal___contentDigest = 'childImageSharp___internal___contentDigest',
+  childImageSharp___internal___description = 'childImageSharp___internal___description',
+  childImageSharp___internal___fieldOwners = 'childImageSharp___internal___fieldOwners',
+  childImageSharp___internal___ignoreType = 'childImageSharp___internal___ignoreType',
+  childImageSharp___internal___mediaType = 'childImageSharp___internal___mediaType',
+  childImageSharp___internal___owner = 'childImageSharp___internal___owner',
+  childImageSharp___internal___type = 'childImageSharp___internal___type',
+  childImageSharp___original___height = 'childImageSharp___original___height',
+  childImageSharp___original___src = 'childImageSharp___original___src',
+  childImageSharp___original___width = 'childImageSharp___original___width',
+  childImageSharp___parent___children = 'childImageSharp___parent___children',
+  childImageSharp___parent___children___children = 'childImageSharp___parent___children___children',
+  childImageSharp___parent___children___id = 'childImageSharp___parent___children___id',
+  childImageSharp___parent___id = 'childImageSharp___parent___id',
+  childImageSharp___parent___internal___content = 'childImageSharp___parent___internal___content',
+  childImageSharp___parent___internal___contentDigest = 'childImageSharp___parent___internal___contentDigest',
+  childImageSharp___parent___internal___description = 'childImageSharp___parent___internal___description',
+  childImageSharp___parent___internal___fieldOwners = 'childImageSharp___parent___internal___fieldOwners',
+  childImageSharp___parent___internal___ignoreType = 'childImageSharp___parent___internal___ignoreType',
+  childImageSharp___parent___internal___mediaType = 'childImageSharp___parent___internal___mediaType',
+  childImageSharp___parent___internal___owner = 'childImageSharp___parent___internal___owner',
+  childImageSharp___parent___internal___type = 'childImageSharp___parent___internal___type',
+  childImageSharp___parent___parent___children = 'childImageSharp___parent___parent___children',
+  childImageSharp___parent___parent___id = 'childImageSharp___parent___parent___id',
+  childImageSharp___resize___aspectRatio = 'childImageSharp___resize___aspectRatio',
+  childImageSharp___resize___height = 'childImageSharp___resize___height',
+  childImageSharp___resize___originalName = 'childImageSharp___resize___originalName',
+  childImageSharp___resize___src = 'childImageSharp___resize___src',
+  childImageSharp___resize___tracedSVG = 'childImageSharp___resize___tracedSVG',
+  childImageSharp___resize___width = 'childImageSharp___resize___width',
+  childImageSharp___resolutions___aspectRatio = 'childImageSharp___resolutions___aspectRatio',
+  childImageSharp___resolutions___base64 = 'childImageSharp___resolutions___base64',
+  childImageSharp___resolutions___height = 'childImageSharp___resolutions___height',
+  childImageSharp___resolutions___originalName = 'childImageSharp___resolutions___originalName',
+  childImageSharp___resolutions___src = 'childImageSharp___resolutions___src',
+  childImageSharp___resolutions___srcSet = 'childImageSharp___resolutions___srcSet',
+  childImageSharp___resolutions___srcSetWebp = 'childImageSharp___resolutions___srcSetWebp',
+  childImageSharp___resolutions___srcWebp = 'childImageSharp___resolutions___srcWebp',
+  childImageSharp___resolutions___tracedSVG = 'childImageSharp___resolutions___tracedSVG',
+  childImageSharp___resolutions___width = 'childImageSharp___resolutions___width',
+  childImageSharp___sizes___aspectRatio = 'childImageSharp___sizes___aspectRatio',
+  childImageSharp___sizes___base64 = 'childImageSharp___sizes___base64',
+  childImageSharp___sizes___originalImg = 'childImageSharp___sizes___originalImg',
+  childImageSharp___sizes___originalName = 'childImageSharp___sizes___originalName',
+  childImageSharp___sizes___presentationHeight = 'childImageSharp___sizes___presentationHeight',
+  childImageSharp___sizes___presentationWidth = 'childImageSharp___sizes___presentationWidth',
+  childImageSharp___sizes___sizes = 'childImageSharp___sizes___sizes',
+  childImageSharp___sizes___src = 'childImageSharp___sizes___src',
+  childImageSharp___sizes___srcSet = 'childImageSharp___sizes___srcSet',
+  childImageSharp___sizes___srcSetWebp = 'childImageSharp___sizes___srcSetWebp',
+  childImageSharp___sizes___srcWebp = 'childImageSharp___sizes___srcWebp',
+  childImageSharp___sizes___tracedSVG = 'childImageSharp___sizes___tracedSVG',
   children = 'children',
+  childrenProjectJson = 'childrenProjectJson',
+  childrenProjectJson___children = 'childrenProjectJson___children',
+  childrenProjectJson___children___children = 'childrenProjectJson___children___children',
+  childrenProjectJson___children___children___children = 'childrenProjectJson___children___children___children',
+  childrenProjectJson___children___children___id = 'childrenProjectJson___children___children___id',
+  childrenProjectJson___children___id = 'childrenProjectJson___children___id',
+  childrenProjectJson___children___internal___content = 'childrenProjectJson___children___internal___content',
+  childrenProjectJson___children___internal___contentDigest = 'childrenProjectJson___children___internal___contentDigest',
+  childrenProjectJson___children___internal___description = 'childrenProjectJson___children___internal___description',
+  childrenProjectJson___children___internal___fieldOwners = 'childrenProjectJson___children___internal___fieldOwners',
+  childrenProjectJson___children___internal___ignoreType = 'childrenProjectJson___children___internal___ignoreType',
+  childrenProjectJson___children___internal___mediaType = 'childrenProjectJson___children___internal___mediaType',
+  childrenProjectJson___children___internal___owner = 'childrenProjectJson___children___internal___owner',
+  childrenProjectJson___children___internal___type = 'childrenProjectJson___children___internal___type',
+  childrenProjectJson___children___parent___children = 'childrenProjectJson___children___parent___children',
+  childrenProjectJson___children___parent___id = 'childrenProjectJson___children___parent___id',
+  childrenProjectJson___desc = 'childrenProjectJson___desc',
+  childrenProjectJson___id = 'childrenProjectJson___id',
+  childrenProjectJson___image___absolutePath = 'childrenProjectJson___image___absolutePath',
+  childrenProjectJson___image___accessTime = 'childrenProjectJson___image___accessTime',
+  childrenProjectJson___image___atime = 'childrenProjectJson___image___atime',
+  childrenProjectJson___image___atimeMs = 'childrenProjectJson___image___atimeMs',
+  childrenProjectJson___image___base = 'childrenProjectJson___image___base',
+  childrenProjectJson___image___birthTime = 'childrenProjectJson___image___birthTime',
+  childrenProjectJson___image___birthtime = 'childrenProjectJson___image___birthtime',
+  childrenProjectJson___image___birthtimeMs = 'childrenProjectJson___image___birthtimeMs',
+  childrenProjectJson___image___blksize = 'childrenProjectJson___image___blksize',
+  childrenProjectJson___image___blocks = 'childrenProjectJson___image___blocks',
+  childrenProjectJson___image___changeTime = 'childrenProjectJson___image___changeTime',
+  childrenProjectJson___image___childImageSharp___children = 'childrenProjectJson___image___childImageSharp___children',
+  childrenProjectJson___image___childImageSharp___id = 'childrenProjectJson___image___childImageSharp___id',
+  childrenProjectJson___image___children = 'childrenProjectJson___image___children',
+  childrenProjectJson___image___childrenProjectJson = 'childrenProjectJson___image___childrenProjectJson',
+  childrenProjectJson___image___childrenProjectJson___children = 'childrenProjectJson___image___childrenProjectJson___children',
+  childrenProjectJson___image___childrenProjectJson___desc = 'childrenProjectJson___image___childrenProjectJson___desc',
+  childrenProjectJson___image___childrenProjectJson___id = 'childrenProjectJson___image___childrenProjectJson___id',
+  childrenProjectJson___image___childrenProjectJson___slug = 'childrenProjectJson___image___childrenProjectJson___slug',
+  childrenProjectJson___image___childrenProjectJson___title = 'childrenProjectJson___image___childrenProjectJson___title',
+  childrenProjectJson___image___children___children = 'childrenProjectJson___image___children___children',
+  childrenProjectJson___image___children___id = 'childrenProjectJson___image___children___id',
+  childrenProjectJson___image___ctime = 'childrenProjectJson___image___ctime',
+  childrenProjectJson___image___ctimeMs = 'childrenProjectJson___image___ctimeMs',
+  childrenProjectJson___image___dev = 'childrenProjectJson___image___dev',
+  childrenProjectJson___image___dir = 'childrenProjectJson___image___dir',
+  childrenProjectJson___image___ext = 'childrenProjectJson___image___ext',
+  childrenProjectJson___image___extension = 'childrenProjectJson___image___extension',
+  childrenProjectJson___image___gid = 'childrenProjectJson___image___gid',
+  childrenProjectJson___image___id = 'childrenProjectJson___image___id',
+  childrenProjectJson___image___ino = 'childrenProjectJson___image___ino',
+  childrenProjectJson___image___internal___content = 'childrenProjectJson___image___internal___content',
+  childrenProjectJson___image___internal___contentDigest = 'childrenProjectJson___image___internal___contentDigest',
+  childrenProjectJson___image___internal___description = 'childrenProjectJson___image___internal___description',
+  childrenProjectJson___image___internal___fieldOwners = 'childrenProjectJson___image___internal___fieldOwners',
+  childrenProjectJson___image___internal___ignoreType = 'childrenProjectJson___image___internal___ignoreType',
+  childrenProjectJson___image___internal___mediaType = 'childrenProjectJson___image___internal___mediaType',
+  childrenProjectJson___image___internal___owner = 'childrenProjectJson___image___internal___owner',
+  childrenProjectJson___image___internal___type = 'childrenProjectJson___image___internal___type',
+  childrenProjectJson___image___mode = 'childrenProjectJson___image___mode',
+  childrenProjectJson___image___modifiedTime = 'childrenProjectJson___image___modifiedTime',
+  childrenProjectJson___image___mtime = 'childrenProjectJson___image___mtime',
+  childrenProjectJson___image___mtimeMs = 'childrenProjectJson___image___mtimeMs',
+  childrenProjectJson___image___name = 'childrenProjectJson___image___name',
+  childrenProjectJson___image___nlink = 'childrenProjectJson___image___nlink',
+  childrenProjectJson___image___parent___children = 'childrenProjectJson___image___parent___children',
+  childrenProjectJson___image___parent___id = 'childrenProjectJson___image___parent___id',
+  childrenProjectJson___image___prettySize = 'childrenProjectJson___image___prettySize',
+  childrenProjectJson___image___publicURL = 'childrenProjectJson___image___publicURL',
+  childrenProjectJson___image___rdev = 'childrenProjectJson___image___rdev',
+  childrenProjectJson___image___relativeDirectory = 'childrenProjectJson___image___relativeDirectory',
+  childrenProjectJson___image___relativePath = 'childrenProjectJson___image___relativePath',
+  childrenProjectJson___image___root = 'childrenProjectJson___image___root',
+  childrenProjectJson___image___size = 'childrenProjectJson___image___size',
+  childrenProjectJson___image___sourceInstanceName = 'childrenProjectJson___image___sourceInstanceName',
+  childrenProjectJson___image___uid = 'childrenProjectJson___image___uid',
+  childrenProjectJson___internal___content = 'childrenProjectJson___internal___content',
+  childrenProjectJson___internal___contentDigest = 'childrenProjectJson___internal___contentDigest',
+  childrenProjectJson___internal___description = 'childrenProjectJson___internal___description',
+  childrenProjectJson___internal___fieldOwners = 'childrenProjectJson___internal___fieldOwners',
+  childrenProjectJson___internal___ignoreType = 'childrenProjectJson___internal___ignoreType',
+  childrenProjectJson___internal___mediaType = 'childrenProjectJson___internal___mediaType',
+  childrenProjectJson___internal___owner = 'childrenProjectJson___internal___owner',
+  childrenProjectJson___internal___type = 'childrenProjectJson___internal___type',
+  childrenProjectJson___link___href = 'childrenProjectJson___link___href',
+  childrenProjectJson___link___label = 'childrenProjectJson___link___label',
+  childrenProjectJson___parent___children = 'childrenProjectJson___parent___children',
+  childrenProjectJson___parent___children___children = 'childrenProjectJson___parent___children___children',
+  childrenProjectJson___parent___children___id = 'childrenProjectJson___parent___children___id',
+  childrenProjectJson___parent___id = 'childrenProjectJson___parent___id',
+  childrenProjectJson___parent___internal___content = 'childrenProjectJson___parent___internal___content',
+  childrenProjectJson___parent___internal___contentDigest = 'childrenProjectJson___parent___internal___contentDigest',
+  childrenProjectJson___parent___internal___description = 'childrenProjectJson___parent___internal___description',
+  childrenProjectJson___parent___internal___fieldOwners = 'childrenProjectJson___parent___internal___fieldOwners',
+  childrenProjectJson___parent___internal___ignoreType = 'childrenProjectJson___parent___internal___ignoreType',
+  childrenProjectJson___parent___internal___mediaType = 'childrenProjectJson___parent___internal___mediaType',
+  childrenProjectJson___parent___internal___owner = 'childrenProjectJson___parent___internal___owner',
+  childrenProjectJson___parent___internal___type = 'childrenProjectJson___parent___internal___type',
+  childrenProjectJson___parent___parent___children = 'childrenProjectJson___parent___parent___children',
+  childrenProjectJson___parent___parent___id = 'childrenProjectJson___parent___parent___id',
+  childrenProjectJson___slug = 'childrenProjectJson___slug',
+  childrenProjectJson___title = 'childrenProjectJson___title',
   children___children = 'children___children',
   children___children___children = 'children___children___children',
   children___children___children___children = 'children___children___children___children',
@@ -600,7 +784,9 @@ export type FileFilterInput = {
   blksize: Maybe<IntQueryOperatorInput>
   blocks: Maybe<IntQueryOperatorInput>
   changeTime: Maybe<DateQueryOperatorInput>
+  childImageSharp: Maybe<ImageSharpFilterInput>
   children: Maybe<NodeFilterListInput>
+  childrenProjectJson: Maybe<ProjectJsonFilterListInput>
   ctime: Maybe<DateQueryOperatorInput>
   ctimeMs: Maybe<FloatQueryOperatorInput>
   dev: Maybe<IntQueryOperatorInput>
@@ -697,102 +883,102 @@ export type ImageSharp = Node & {
 }
 
 export type ImageSharpFixedArgs = {
-  background: Scalars['String']
+  background?: Maybe<Scalars['String']>
   base64Width: Maybe<Scalars['Int']>
-  cropFocus: ImageCropFocus
+  cropFocus?: Maybe<ImageCropFocus>
   duotone: Maybe<DuotoneGradient>
-  fit: ImageFit
-  grayscale: Scalars['Boolean']
+  fit?: Maybe<ImageFit>
+  grayscale?: Maybe<Scalars['Boolean']>
   height: Maybe<Scalars['Int']>
-  jpegProgressive: Scalars['Boolean']
-  pngCompressionSpeed: Scalars['Int']
+  jpegProgressive?: Maybe<Scalars['Boolean']>
+  pngCompressionSpeed?: Maybe<Scalars['Int']>
   quality: Maybe<Scalars['Int']>
-  rotate: Scalars['Int']
-  toFormat: ImageFormat
-  toFormatBase64: ImageFormat
+  rotate?: Maybe<Scalars['Int']>
+  toFormat?: Maybe<ImageFormat>
+  toFormatBase64?: Maybe<ImageFormat>
   traceSVG: Maybe<Potrace>
-  trim: Scalars['Float']
+  trim?: Maybe<Scalars['Float']>
   width: Maybe<Scalars['Int']>
 }
 
 export type ImageSharpFluidArgs = {
-  background: Scalars['String']
+  background?: Maybe<Scalars['String']>
   base64Width: Maybe<Scalars['Int']>
-  cropFocus: ImageCropFocus
+  cropFocus?: Maybe<ImageCropFocus>
   duotone: Maybe<DuotoneGradient>
-  fit: ImageFit
-  grayscale: Scalars['Boolean']
-  jpegProgressive: Scalars['Boolean']
+  fit?: Maybe<ImageFit>
+  grayscale?: Maybe<Scalars['Boolean']>
+  jpegProgressive?: Maybe<Scalars['Boolean']>
   maxHeight: Maybe<Scalars['Int']>
   maxWidth: Maybe<Scalars['Int']>
-  pngCompressionSpeed: Scalars['Int']
+  pngCompressionSpeed?: Maybe<Scalars['Int']>
   quality: Maybe<Scalars['Int']>
-  rotate: Scalars['Int']
-  sizes: Scalars['String']
-  srcSetBreakpoints: Array<Maybe<Scalars['Int']>>
-  toFormat: ImageFormat
-  toFormatBase64: ImageFormat
+  rotate?: Maybe<Scalars['Int']>
+  sizes?: Maybe<Scalars['String']>
+  srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>
+  toFormat?: Maybe<ImageFormat>
+  toFormatBase64?: Maybe<ImageFormat>
   traceSVG: Maybe<Potrace>
-  trim: Scalars['Float']
+  trim?: Maybe<Scalars['Float']>
 }
 
 export type ImageSharpResizeArgs = {
-  background: Scalars['String']
-  base64: Scalars['Boolean']
-  cropFocus: ImageCropFocus
+  background?: Maybe<Scalars['String']>
+  base64?: Maybe<Scalars['Boolean']>
+  cropFocus?: Maybe<ImageCropFocus>
   duotone: Maybe<DuotoneGradient>
-  fit: ImageFit
-  grayscale: Scalars['Boolean']
+  fit?: Maybe<ImageFit>
+  grayscale?: Maybe<Scalars['Boolean']>
   height: Maybe<Scalars['Int']>
-  jpegProgressive: Scalars['Boolean']
-  pngCompressionLevel: Scalars['Int']
-  pngCompressionSpeed: Scalars['Int']
+  jpegProgressive?: Maybe<Scalars['Boolean']>
+  pngCompressionLevel?: Maybe<Scalars['Int']>
+  pngCompressionSpeed?: Maybe<Scalars['Int']>
   quality: Maybe<Scalars['Int']>
-  rotate: Scalars['Int']
-  toFormat: ImageFormat
+  rotate?: Maybe<Scalars['Int']>
+  toFormat?: Maybe<ImageFormat>
   traceSVG: Maybe<Potrace>
-  trim: Scalars['Float']
+  trim?: Maybe<Scalars['Float']>
   width: Maybe<Scalars['Int']>
 }
 
 export type ImageSharpResolutionsArgs = {
-  background: Scalars['String']
+  background?: Maybe<Scalars['String']>
   base64Width: Maybe<Scalars['Int']>
-  cropFocus: ImageCropFocus
+  cropFocus?: Maybe<ImageCropFocus>
   duotone: Maybe<DuotoneGradient>
-  fit: ImageFit
-  grayscale: Scalars['Boolean']
+  fit?: Maybe<ImageFit>
+  grayscale?: Maybe<Scalars['Boolean']>
   height: Maybe<Scalars['Int']>
-  jpegProgressive: Scalars['Boolean']
-  pngCompressionSpeed: Scalars['Int']
+  jpegProgressive?: Maybe<Scalars['Boolean']>
+  pngCompressionSpeed?: Maybe<Scalars['Int']>
   quality: Maybe<Scalars['Int']>
-  rotate: Scalars['Int']
-  toFormat: ImageFormat
-  toFormatBase64: ImageFormat
+  rotate?: Maybe<Scalars['Int']>
+  toFormat?: Maybe<ImageFormat>
+  toFormatBase64?: Maybe<ImageFormat>
   traceSVG: Maybe<Potrace>
-  trim: Scalars['Float']
+  trim?: Maybe<Scalars['Float']>
   width: Maybe<Scalars['Int']>
 }
 
 export type ImageSharpSizesArgs = {
-  background: Scalars['String']
+  background?: Maybe<Scalars['String']>
   base64Width: Maybe<Scalars['Int']>
-  cropFocus: ImageCropFocus
+  cropFocus?: Maybe<ImageCropFocus>
   duotone: Maybe<DuotoneGradient>
-  fit: ImageFit
-  grayscale: Scalars['Boolean']
-  jpegProgressive: Scalars['Boolean']
+  fit?: Maybe<ImageFit>
+  grayscale?: Maybe<Scalars['Boolean']>
+  jpegProgressive?: Maybe<Scalars['Boolean']>
   maxHeight: Maybe<Scalars['Int']>
   maxWidth: Maybe<Scalars['Int']>
-  pngCompressionSpeed: Scalars['Int']
+  pngCompressionSpeed?: Maybe<Scalars['Int']>
   quality: Maybe<Scalars['Int']>
-  rotate: Scalars['Int']
-  sizes: Scalars['String']
-  srcSetBreakpoints: Array<Maybe<Scalars['Int']>>
-  toFormat: ImageFormat
-  toFormatBase64: ImageFormat
+  rotate?: Maybe<Scalars['Int']>
+  sizes?: Maybe<Scalars['String']>
+  srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>
+  toFormat?: Maybe<ImageFormat>
+  toFormatBase64?: Maybe<ImageFormat>
   traceSVG: Maybe<Potrace>
-  trim: Scalars['Float']
+  trim?: Maybe<Scalars['Float']>
 }
 
 export type ImageSharpConnection = {
@@ -1176,7 +1362,6 @@ export type IntQueryOperatorInput = {
 
 /** Node Interface */
 export type Node = {
-  __typename?: 'Node'
   children: Array<Node>
   id: Scalars['ID']
   internal: Internal
@@ -1318,7 +1503,131 @@ export enum ProjectJsonFieldsEnum {
   image___blksize = 'image___blksize',
   image___blocks = 'image___blocks',
   image___changeTime = 'image___changeTime',
+  image___childImageSharp___children = 'image___childImageSharp___children',
+  image___childImageSharp___children___children = 'image___childImageSharp___children___children',
+  image___childImageSharp___children___id = 'image___childImageSharp___children___id',
+  image___childImageSharp___fixed___aspectRatio = 'image___childImageSharp___fixed___aspectRatio',
+  image___childImageSharp___fixed___base64 = 'image___childImageSharp___fixed___base64',
+  image___childImageSharp___fixed___height = 'image___childImageSharp___fixed___height',
+  image___childImageSharp___fixed___originalName = 'image___childImageSharp___fixed___originalName',
+  image___childImageSharp___fixed___src = 'image___childImageSharp___fixed___src',
+  image___childImageSharp___fixed___srcSet = 'image___childImageSharp___fixed___srcSet',
+  image___childImageSharp___fixed___srcSetWebp = 'image___childImageSharp___fixed___srcSetWebp',
+  image___childImageSharp___fixed___srcWebp = 'image___childImageSharp___fixed___srcWebp',
+  image___childImageSharp___fixed___tracedSVG = 'image___childImageSharp___fixed___tracedSVG',
+  image___childImageSharp___fixed___width = 'image___childImageSharp___fixed___width',
+  image___childImageSharp___fluid___aspectRatio = 'image___childImageSharp___fluid___aspectRatio',
+  image___childImageSharp___fluid___base64 = 'image___childImageSharp___fluid___base64',
+  image___childImageSharp___fluid___originalImg = 'image___childImageSharp___fluid___originalImg',
+  image___childImageSharp___fluid___originalName = 'image___childImageSharp___fluid___originalName',
+  image___childImageSharp___fluid___presentationHeight = 'image___childImageSharp___fluid___presentationHeight',
+  image___childImageSharp___fluid___presentationWidth = 'image___childImageSharp___fluid___presentationWidth',
+  image___childImageSharp___fluid___sizes = 'image___childImageSharp___fluid___sizes',
+  image___childImageSharp___fluid___src = 'image___childImageSharp___fluid___src',
+  image___childImageSharp___fluid___srcSet = 'image___childImageSharp___fluid___srcSet',
+  image___childImageSharp___fluid___srcSetWebp = 'image___childImageSharp___fluid___srcSetWebp',
+  image___childImageSharp___fluid___srcWebp = 'image___childImageSharp___fluid___srcWebp',
+  image___childImageSharp___fluid___tracedSVG = 'image___childImageSharp___fluid___tracedSVG',
+  image___childImageSharp___id = 'image___childImageSharp___id',
+  image___childImageSharp___internal___content = 'image___childImageSharp___internal___content',
+  image___childImageSharp___internal___contentDigest = 'image___childImageSharp___internal___contentDigest',
+  image___childImageSharp___internal___description = 'image___childImageSharp___internal___description',
+  image___childImageSharp___internal___fieldOwners = 'image___childImageSharp___internal___fieldOwners',
+  image___childImageSharp___internal___ignoreType = 'image___childImageSharp___internal___ignoreType',
+  image___childImageSharp___internal___mediaType = 'image___childImageSharp___internal___mediaType',
+  image___childImageSharp___internal___owner = 'image___childImageSharp___internal___owner',
+  image___childImageSharp___internal___type = 'image___childImageSharp___internal___type',
+  image___childImageSharp___original___height = 'image___childImageSharp___original___height',
+  image___childImageSharp___original___src = 'image___childImageSharp___original___src',
+  image___childImageSharp___original___width = 'image___childImageSharp___original___width',
+  image___childImageSharp___parent___children = 'image___childImageSharp___parent___children',
+  image___childImageSharp___parent___id = 'image___childImageSharp___parent___id',
+  image___childImageSharp___resize___aspectRatio = 'image___childImageSharp___resize___aspectRatio',
+  image___childImageSharp___resize___height = 'image___childImageSharp___resize___height',
+  image___childImageSharp___resize___originalName = 'image___childImageSharp___resize___originalName',
+  image___childImageSharp___resize___src = 'image___childImageSharp___resize___src',
+  image___childImageSharp___resize___tracedSVG = 'image___childImageSharp___resize___tracedSVG',
+  image___childImageSharp___resize___width = 'image___childImageSharp___resize___width',
+  image___childImageSharp___resolutions___aspectRatio = 'image___childImageSharp___resolutions___aspectRatio',
+  image___childImageSharp___resolutions___base64 = 'image___childImageSharp___resolutions___base64',
+  image___childImageSharp___resolutions___height = 'image___childImageSharp___resolutions___height',
+  image___childImageSharp___resolutions___originalName = 'image___childImageSharp___resolutions___originalName',
+  image___childImageSharp___resolutions___src = 'image___childImageSharp___resolutions___src',
+  image___childImageSharp___resolutions___srcSet = 'image___childImageSharp___resolutions___srcSet',
+  image___childImageSharp___resolutions___srcSetWebp = 'image___childImageSharp___resolutions___srcSetWebp',
+  image___childImageSharp___resolutions___srcWebp = 'image___childImageSharp___resolutions___srcWebp',
+  image___childImageSharp___resolutions___tracedSVG = 'image___childImageSharp___resolutions___tracedSVG',
+  image___childImageSharp___resolutions___width = 'image___childImageSharp___resolutions___width',
+  image___childImageSharp___sizes___aspectRatio = 'image___childImageSharp___sizes___aspectRatio',
+  image___childImageSharp___sizes___base64 = 'image___childImageSharp___sizes___base64',
+  image___childImageSharp___sizes___originalImg = 'image___childImageSharp___sizes___originalImg',
+  image___childImageSharp___sizes___originalName = 'image___childImageSharp___sizes___originalName',
+  image___childImageSharp___sizes___presentationHeight = 'image___childImageSharp___sizes___presentationHeight',
+  image___childImageSharp___sizes___presentationWidth = 'image___childImageSharp___sizes___presentationWidth',
+  image___childImageSharp___sizes___sizes = 'image___childImageSharp___sizes___sizes',
+  image___childImageSharp___sizes___src = 'image___childImageSharp___sizes___src',
+  image___childImageSharp___sizes___srcSet = 'image___childImageSharp___sizes___srcSet',
+  image___childImageSharp___sizes___srcSetWebp = 'image___childImageSharp___sizes___srcSetWebp',
+  image___childImageSharp___sizes___srcWebp = 'image___childImageSharp___sizes___srcWebp',
+  image___childImageSharp___sizes___tracedSVG = 'image___childImageSharp___sizes___tracedSVG',
   image___children = 'image___children',
+  image___childrenProjectJson = 'image___childrenProjectJson',
+  image___childrenProjectJson___children = 'image___childrenProjectJson___children',
+  image___childrenProjectJson___children___children = 'image___childrenProjectJson___children___children',
+  image___childrenProjectJson___children___id = 'image___childrenProjectJson___children___id',
+  image___childrenProjectJson___desc = 'image___childrenProjectJson___desc',
+  image___childrenProjectJson___id = 'image___childrenProjectJson___id',
+  image___childrenProjectJson___image___absolutePath = 'image___childrenProjectJson___image___absolutePath',
+  image___childrenProjectJson___image___accessTime = 'image___childrenProjectJson___image___accessTime',
+  image___childrenProjectJson___image___atime = 'image___childrenProjectJson___image___atime',
+  image___childrenProjectJson___image___atimeMs = 'image___childrenProjectJson___image___atimeMs',
+  image___childrenProjectJson___image___base = 'image___childrenProjectJson___image___base',
+  image___childrenProjectJson___image___birthTime = 'image___childrenProjectJson___image___birthTime',
+  image___childrenProjectJson___image___birthtime = 'image___childrenProjectJson___image___birthtime',
+  image___childrenProjectJson___image___birthtimeMs = 'image___childrenProjectJson___image___birthtimeMs',
+  image___childrenProjectJson___image___blksize = 'image___childrenProjectJson___image___blksize',
+  image___childrenProjectJson___image___blocks = 'image___childrenProjectJson___image___blocks',
+  image___childrenProjectJson___image___changeTime = 'image___childrenProjectJson___image___changeTime',
+  image___childrenProjectJson___image___children = 'image___childrenProjectJson___image___children',
+  image___childrenProjectJson___image___childrenProjectJson = 'image___childrenProjectJson___image___childrenProjectJson',
+  image___childrenProjectJson___image___ctime = 'image___childrenProjectJson___image___ctime',
+  image___childrenProjectJson___image___ctimeMs = 'image___childrenProjectJson___image___ctimeMs',
+  image___childrenProjectJson___image___dev = 'image___childrenProjectJson___image___dev',
+  image___childrenProjectJson___image___dir = 'image___childrenProjectJson___image___dir',
+  image___childrenProjectJson___image___ext = 'image___childrenProjectJson___image___ext',
+  image___childrenProjectJson___image___extension = 'image___childrenProjectJson___image___extension',
+  image___childrenProjectJson___image___gid = 'image___childrenProjectJson___image___gid',
+  image___childrenProjectJson___image___id = 'image___childrenProjectJson___image___id',
+  image___childrenProjectJson___image___ino = 'image___childrenProjectJson___image___ino',
+  image___childrenProjectJson___image___mode = 'image___childrenProjectJson___image___mode',
+  image___childrenProjectJson___image___modifiedTime = 'image___childrenProjectJson___image___modifiedTime',
+  image___childrenProjectJson___image___mtime = 'image___childrenProjectJson___image___mtime',
+  image___childrenProjectJson___image___mtimeMs = 'image___childrenProjectJson___image___mtimeMs',
+  image___childrenProjectJson___image___name = 'image___childrenProjectJson___image___name',
+  image___childrenProjectJson___image___nlink = 'image___childrenProjectJson___image___nlink',
+  image___childrenProjectJson___image___prettySize = 'image___childrenProjectJson___image___prettySize',
+  image___childrenProjectJson___image___publicURL = 'image___childrenProjectJson___image___publicURL',
+  image___childrenProjectJson___image___rdev = 'image___childrenProjectJson___image___rdev',
+  image___childrenProjectJson___image___relativeDirectory = 'image___childrenProjectJson___image___relativeDirectory',
+  image___childrenProjectJson___image___relativePath = 'image___childrenProjectJson___image___relativePath',
+  image___childrenProjectJson___image___root = 'image___childrenProjectJson___image___root',
+  image___childrenProjectJson___image___size = 'image___childrenProjectJson___image___size',
+  image___childrenProjectJson___image___sourceInstanceName = 'image___childrenProjectJson___image___sourceInstanceName',
+  image___childrenProjectJson___image___uid = 'image___childrenProjectJson___image___uid',
+  image___childrenProjectJson___internal___content = 'image___childrenProjectJson___internal___content',
+  image___childrenProjectJson___internal___contentDigest = 'image___childrenProjectJson___internal___contentDigest',
+  image___childrenProjectJson___internal___description = 'image___childrenProjectJson___internal___description',
+  image___childrenProjectJson___internal___fieldOwners = 'image___childrenProjectJson___internal___fieldOwners',
+  image___childrenProjectJson___internal___ignoreType = 'image___childrenProjectJson___internal___ignoreType',
+  image___childrenProjectJson___internal___mediaType = 'image___childrenProjectJson___internal___mediaType',
+  image___childrenProjectJson___internal___owner = 'image___childrenProjectJson___internal___owner',
+  image___childrenProjectJson___internal___type = 'image___childrenProjectJson___internal___type',
+  image___childrenProjectJson___link___href = 'image___childrenProjectJson___link___href',
+  image___childrenProjectJson___link___label = 'image___childrenProjectJson___link___label',
+  image___childrenProjectJson___parent___children = 'image___childrenProjectJson___parent___children',
+  image___childrenProjectJson___parent___id = 'image___childrenProjectJson___parent___id',
+  image___childrenProjectJson___slug = 'image___childrenProjectJson___slug',
+  image___childrenProjectJson___title = 'image___childrenProjectJson___title',
   image___children___children = 'image___children___children',
   image___children___children___children = 'image___children___children___children',
   image___children___children___id = 'image___children___children___id',
@@ -1441,6 +1750,10 @@ export type ProjectJsonFilterInput = {
   parent: Maybe<NodeFilterInput>
   slug: Maybe<StringQueryOperatorInput>
   title: Maybe<StringQueryOperatorInput>
+}
+
+export type ProjectJsonFilterListInput = {
+  elemMatch: Maybe<ProjectJsonFilterInput>
 }
 
 export type ProjectJsonGroupConnection = {
@@ -1588,7 +1901,9 @@ export type QueryFileArgs = {
   blksize: Maybe<IntQueryOperatorInput>
   blocks: Maybe<IntQueryOperatorInput>
   changeTime: Maybe<DateQueryOperatorInput>
+  childImageSharp: Maybe<ImageSharpFilterInput>
   children: Maybe<NodeFilterListInput>
+  childrenProjectJson: Maybe<ProjectJsonFilterListInput>
   ctime: Maybe<DateQueryOperatorInput>
   ctimeMs: Maybe<FloatQueryOperatorInput>
   dev: Maybe<IntQueryOperatorInput>

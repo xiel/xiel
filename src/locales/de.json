@@ -8,5 +8,9 @@
   },
   "Projects": {
     "Title": "Projekte"
+  },
+  "StageSection": {
+    "Hello": "Hallo!",
+    "Intro": "Ich bin Felix, freiberuflicher FrontEnd-Entwickler aus Berlin und entwickle effektive Webseiten und Apps, die jeder gerne nutzt."
   }
 }

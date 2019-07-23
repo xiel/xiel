@@ -13,4 +13,3 @@ generates:
       - typescript-operations
     config:
       maybeValue: T | undefined
-
