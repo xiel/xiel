@@ -1,8 +1,8 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { visuallyhidden } from '../../styles/mixins'
+import { VisuallyHidden } from '../../styles/mixins'
 import { screenSmMax, screenXsMax } from '../../styles/theme'
-import { Link } from 'gatsby'
+import InternalLink from '../InternalLink'
 
 interface Props {
   siteTitle: string
@@ -75,11 +75,11 @@ const logo = css`
 
 export default function Logo({ siteTitle }: Props) {
   return (
-    <header css={logo}>
+    <div css={logo}>
       <h1>
-        <Link to="/">
-          <span css={visuallyhidden}>{siteTitle}</span>
-        </Link>
+        <InternalLink to="/">
+          <VisuallyHidden>{siteTitle}</VisuallyHidden>
+        </InternalLink>
       </h1>
       <svg
         viewBox="0 0 500 500"
@@ -94,6 +94,6 @@ export default function Logo({ siteTitle }: Props) {
           />
         </g>
       </svg>
-    </header>
+    </div>
   )
 }

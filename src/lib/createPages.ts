@@ -6,9 +6,9 @@
 import { resolve, join } from 'path'
 import { NodePluginArgs } from 'gatsby'
 import { ProjectJsonEdge } from '../graphqlTypes'
+import { PageLocaleConfig } from '../types/GlobalTypes'
 
 // based on: https://github.com/gatsbyjs/gatsby/issues/1457#issuecomment-381405638
-
 export default async function createPages({
   boundActionCreators: { createPage },
   graphql,
@@ -32,7 +32,7 @@ export default async function createPages({
   }
 
   const projects = result.data.projects.edges as ProjectJsonEdge[]
-  const lanCfgs = [
+  const lanCfgs: PageLocaleConfig[] = [
     {
       lngBasePath: '/',
       lng: 'de',

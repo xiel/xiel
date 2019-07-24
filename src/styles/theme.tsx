@@ -24,7 +24,7 @@ export const colorTextOnDark = `#CCD1CC`
 
 //flx grid
 export const gridColumns = `12`
-export const contentContainerMax = `1300px`
+export const contentContainerMax = 1300
 
 // //== Media queries breakpoints
 export const screenXs = 400

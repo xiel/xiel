@@ -1,4 +1,5 @@
 import { css } from '@emotion/core'
+import styled from '@emotion/styled'
 
 export const buttonReset = css`
   display: inline-flex;
@@ -22,7 +23,7 @@ export const hidden = css`
   visibility: hidden;
 `
 
-export const visuallyhidden = css`
+export const visuallyHidden = css`
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -42,3 +43,5 @@ export const visuallyhidden = css`
     width: auto;
   }
 `
+
+export const VisuallyHidden = styled.span(visuallyHidden)

@@ -1,12 +1,14 @@
 import React from 'react'
 import Section from '../Layout/Section'
+import Container from '../Layout/Container'
+import { css } from '@emotion/core'
 
 interface Props {}
 
 export default function DevelopmentSection(props: Props) {
   return (
     <Section>
-      <div className="container">
+      <Container>
         <header className="section__header">
           <h2>Modern Web Development</h2>
           <p>
@@ -21,7 +23,12 @@ export default function DevelopmentSection(props: Props) {
           data-module="itemscroller"
         >
           <div className="itemscroller-viewport">
-            <div className="itemscroller-content flx-group">
+            <div
+              className="itemscroller-content flx-group"
+              css={css`
+                display: flex;
+              `}
+            >
               <div className="flx--4°sm flx--4°md dev-feature dev-feature--ux">
                 <div className="dev-feature__icon">
                   <svg
@@ -189,7 +196,7 @@ export default function DevelopmentSection(props: Props) {
             <li className="flx--4°xs flx--2°sm webpack">Webpack</li>
           </ul>
         </div>
-      </div>
+      </Container>
     </Section>
   )
 }

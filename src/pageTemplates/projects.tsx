@@ -42,7 +42,6 @@ export default function Projects({ navigate }: PageProps) {
       <div>
         <button onClick={() => setCount(c => c + 1)}>{count}</button>
       </div>
-
       <Link to="/">Go back to the homepage</Link>
 
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>

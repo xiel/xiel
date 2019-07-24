@@ -1,7 +1,7 @@
 import React from 'react'
 import Image, { FluidObject } from 'gatsby-image'
-import { Link } from 'gatsby'
 import { css } from '@emotion/core'
+import InternalLink from './InternalLink'
 
 interface Props {
   title?: string
@@ -17,12 +17,12 @@ const teaser = css`
 export default function ProjectTeaser({ title, slug, desc, imageData }: Props) {
   return (
     <div css={teaser}>
-      <Link to={`/${slug}`}>
+      <InternalLink to={`/${slug}`}>
         {imageData && <Image fluid={imageData} alt=""></Image>}
-      </Link>
-      <Link to={`/${slug}`}>
+      </InternalLink>
+      <InternalLink to={`/${slug}`}>
         <h2>{title}</h2>
-      </Link>
+      </InternalLink>
       <p>{desc}</p>
     </div>
   )

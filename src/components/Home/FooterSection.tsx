@@ -1,4 +1,6 @@
 import React from 'react'
+import InternalLink from '../InternalLink'
+import { Link } from 'gatsby'
 
 interface Props {}
 
@@ -65,12 +67,12 @@ export default function FooterSection(props: Props) {
             <div className="legal-links">
               <ul>
                 <li>
-                  <a href="http://xiel.de" title="Startseite">
+                  <InternalLink to="/" title="Startseite">
                     XIEL webdevelopment
-                  </a>
+                  </InternalLink>
                 </li>
                 <li>
-                  <a href="/impressum/">Datenschutz & Impressum</a>
+                  <Link to="/impressum/">Datenschutz & Impressum</Link>
                 </li>
               </ul>
             </div>
