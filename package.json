@@ -38,11 +38,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "jest": {
-    "globals": {
-      "__PATH_PREFIX__": ""
-    }
-  },
   "devDependencies": {
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
