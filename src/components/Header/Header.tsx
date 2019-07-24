@@ -9,10 +9,6 @@ interface Props {
 }
 
 const Header = ({ siteTitle = '' }: Props) => {
-  const pageCtx = useContext(PageContext)
-
-  console.log('header', pageCtx)
-
   return (
     <header>
       <Logo siteTitle={siteTitle} />
