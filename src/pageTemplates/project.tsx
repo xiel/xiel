@@ -6,6 +6,7 @@ import { ProjectPageWithQuery } from '../graphqlTypes'
 import Image, { FluidObject } from 'gatsby-image'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/seo'
+import { useQueryState } from 'react-router-use-location-state'
 
 interface Props {}
 

@@ -1,6 +1,15 @@
 import React from 'react'
 import { Global, css } from '@emotion/core'
-import { screenMdMax, screenSmMax, screenXsMax } from './theme'
+import {
+  colorTextDefault,
+  screenMdMax,
+  screenSmMax,
+  screenXsMax,
+} from './theme'
+// stylesheets
+import 'normalize.css'
+import './reset.css'
+import './fonts.css'
 
 export default function BaseStyles() {
   return (
@@ -38,11 +47,12 @@ export default function BaseStyles() {
 
         body {
           position: relative;
-          font-family: 'Roboto', sans-serif;
+          font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+          color: ${colorTextDefault};
           background: #fff;
           font-size: 1.7rem;
           line-height: 1.4;
-          font-weight: 300;
+          font-weight: 200;
         }
       `}
     />

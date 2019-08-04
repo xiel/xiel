@@ -72,6 +72,7 @@
     "react-i18next": "^10.11.0",
     "react-scripts": "^3.0.1",
     "ts-node": "^8.2.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "use-location-state": "^2.1.2"
   }
 }

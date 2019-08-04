@@ -1,9 +1,6 @@
 import React from 'react'
 import { graphql, Link, StaticQuery } from 'gatsby'
-
 import Header from '../Header/Header'
-import 'normalize.css'
-import '../../styles/reset.css'
 import BasesStyles from '../../styles/BaseStyles'
 
 interface Props {

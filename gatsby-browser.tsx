@@ -12,5 +12,6 @@ export const wrapPageElement = ({
   props: PageProps<PageLocaleConfig>
 }) => {
   i18n.changeLanguage(props.pageContext.lng)
+
   return <PageContextProvider value={props.pageContext} children={element} />
 }

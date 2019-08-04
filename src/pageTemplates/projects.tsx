@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/seo'
@@ -7,9 +7,10 @@ import { ProjectsQuery } from '../graphqlTypes'
 import { FluidObject } from 'gatsby-image'
 import { PageProps } from '../types/PageProps'
 import { useTranslation } from 'react-i18next'
+import { useQueryState } from 'use-location-state'
 
 export default function Projects({ navigate }: PageProps) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useQueryState('count', 0)
   const { t } = useTranslation()
 
   const { projects } = useStaticQuery<ProjectsQuery>(graphql`
@@ -40,7 +41,9 @@ export default function Projects({ navigate }: PageProps) {
       <h1>Hi from the second page asdasd</h1>
       <p>Welcome to page 2</p>
       <div>
-        <button onClick={() => setCount(c => c + 1)}>{count}</button>
+        <button onClick={() => setCount(count + 1, { method: 'replace' })}>
+          {count}
+        </button>
       </div>
       <Link to="/">Go back to the homepage</Link>
 
