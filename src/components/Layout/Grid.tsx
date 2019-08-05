@@ -11,6 +11,7 @@ type IElementProps = React.DetailedHTMLProps<
  * TODO:
  * - maxWidth: default eg. 1280, or 100% / inherited from current col
  * - css: width: 50vw; max-width: 0.5 * 1280px
+ * - make gaps flexible too!
  * -
  * - GridItem
  * - fixed cols:
@@ -31,13 +32,17 @@ interface IContext {
   columns: number // or per MQ
   gap: number
   maxWidth: number
+  maxWidthVW: number
 }
 
-const GridCtx = createContext<IContext>({
+const gridContextDefault = {
   maxWidth: 1440,
+  maxWidthVW: 100,
   columns: 12,
   gap: 32,
-})
+}
+
+const GridCtx = createContext<IContext>(gridContextDefault)
 const useGrid = () => useContext(GridCtx)
 
 const GridItemRowCtx = createContext({
@@ -48,12 +53,35 @@ const GridItemRowCtx = createContext({
 const useItemRowContext = () => useContext(GridItemRowCtx)
 const { Provider: GridContextProvider } = GridCtx
 
-interface IGridContextProps extends IContext {
+interface IGridContextProps extends Partial<IContext> {
   children: React.ReactNode
 }
 
 export function GridContext({ children, ...value }: IGridContextProps) {
-  return <GridContextProvider value={value} />
+  const { columns, maxWidth, maxWidthVW, gap } = useGrid()
+  const { availableCols } = useItemRowContext()
+  const availableMaxWidth = availableCols
+    ? (maxWidth / columns) * availableCols
+    : maxWidth
+  const availableMaxWidthVW = availableCols
+    ? (maxWidthVW / columns) * availableCols
+    : maxWidthVW
+
+  console.log({ availableCols, availableMaxWidth, availableMaxWidthVW })
+
+  return (
+    <GridContextProvider
+      children={children}
+      value={{
+        ...gridContextDefault,
+        columns,
+        gap,
+        maxWidth: availableMaxWidth,
+        maxWidthVW: availableMaxWidthVW,
+        ...value,
+      }}
+    />
+  )
 }
 
 export function GridRow(props: IElementProps) {
@@ -83,9 +111,9 @@ export function GridRow(props: IElementProps) {
   )
 }
 
-interface IGridItemProps {
+interface IGridItemProps extends IElementProps {
   col?: number | 'auto'
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export function GridItem({
@@ -93,7 +121,7 @@ export function GridItem({
   children,
   ...restProps
 }: IGridItemProps) {
-  const { gap, maxWidth, columns } = useGrid()
+  const { gap, maxWidth, maxWidthVW, columns } = useGrid()
   const { isInRow, availableCols } = useItemRowContext()
   const colCount = colProp === 'auto' ? 0 : colProp
   const isColPropRelative = colCount < 1
@@ -107,7 +135,7 @@ export function GridItem({
   `
 
   const cssCol = css`
-    width: ${(col / columns) * 100}vw;
+    width: ${(col / columns) * maxWidthVW}vw;
     max-width: ${(col / columns) * maxWidth}px;
   `
 
@@ -135,7 +163,7 @@ export function GridItem({
       <div css={[cssBase, col ? cssCol : cssColAuto]} {...restProps}>
         <div
           css={css`
-            height: 10vh;
+            min-height: 10vh;
             background: linear-gradient(
               to bottom,
               rgba(255, 105, 180, 0.33),
