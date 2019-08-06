@@ -9,6 +9,7 @@ import React from 'react'
 import Helmet, { HelmetProps } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import { SeoQuery } from '../graphqlTypes'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   description?: string
@@ -18,6 +19,7 @@ interface Props {
 }
 
 function SEO({ title = '', lang = `en`, meta = [], description = `` }: Props) {
+  const { i18n } = useTranslation()
   const { site } = useStaticQuery<SeoQuery>(
     graphql`
       query Seo {
@@ -41,7 +43,7 @@ function SEO({ title = '', lang = `en`, meta = [], description = `` }: Props) {
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: i18n.language,
       }}
       title={title || site.siteMetadata.title}
       titleTemplate={

@@ -59,7 +59,7 @@ interface IGridContextProps extends Partial<IContext> {
 
 export function GridContext({ children, ...value }: IGridContextProps) {
   const { columns, maxWidth, maxWidthVW, gap } = useGrid()
-  const { availableCols } = useItemRowContext()
+  const { availableCols, ...itemRowCtx } = useItemRowContext()
   const availableMaxWidth = availableCols
     ? (maxWidth / columns) * availableCols
     : maxWidth
@@ -67,35 +67,57 @@ export function GridContext({ children, ...value }: IGridContextProps) {
     ? (maxWidthVW / columns) * availableCols
     : maxWidthVW
 
-  console.log({ availableCols, availableMaxWidth, availableMaxWidthVW })
+  const newGridCtx = {
+    ...gridContextDefault,
+    columns,
+    gap,
+    maxWidth: availableMaxWidth,
+    maxWidthVW: availableMaxWidthVW,
+    ...value,
+  }
+
+  console.log('GridContext', {
+    availableCols,
+    availableMaxWidth,
+    availableMaxWidthVW,
+  })
 
   return (
-    <GridContextProvider
-      children={children}
-      value={{
-        ...gridContextDefault,
-        columns,
-        gap,
-        maxWidth: availableMaxWidth,
-        maxWidthVW: availableMaxWidthVW,
-        ...value,
-      }}
-    />
+    <GridContextProvider value={newGridCtx}>
+      <GridItemRowCtx.Provider
+        children={children}
+        value={{
+          ...itemRowCtx,
+          availableCols: newGridCtx.columns,
+        }}
+      />
+    </GridContextProvider>
   )
 }
 
-export function GridRow(props: IElementProps) {
+interface IGridRowProps extends IElementProps {
+  justify?: 'flex-start' | 'center' | 'flex-end'
+  align?: 'stretch' | 'center' | 'flex-start' | 'flex-end'
+}
+
+export function GridRow({
+  justify = 'flex-start',
+  align = 'stretch',
+  ...restProps
+}: IGridRowProps) {
   const { columns, gap, maxWidth } = useGrid()
   const { isInCol, availableCols } = useItemRowContext()
   const base = css`
     display: flex;
     flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: flex-start;
+    align-items: ${align};
+    justify-content: ${justify};
     flex: 1 0;
     max-width: ${maxWidth}px;
     margin: 0 ${isInCol ? gap / -2 + 'px' : 'auto'};
     font-family: 'Fira Code', monospace;
+    background: #ccc;
+    outline: 1px dashed cyan;
   `
 
   return (
@@ -106,7 +128,7 @@ export function GridRow(props: IElementProps) {
         availableCols: availableCols || columns,
       }}
     >
-      <div css={[base]} {...props} />
+      <div css={[base]} {...restProps} />
     </GridItemRowCtx.Provider>
   )
 }
@@ -129,15 +151,30 @@ export function GridItem({
     ? Math.max(0, Math.floor(colCount * availableCols))
     : Math.min(availableCols, Math.round(colCount))
 
-  const cssBase = css`
-    padding: 0 ${gap / 2}px;
-    background: rgba(0, 255, 255, 0.33);
-  `
+  console.log({
+    col,
+    columns,
+    availableCols,
+    maxWidth,
+    maxWidthVW,
+  })
 
-  const cssCol = css`
-    width: ${(col / columns) * maxWidthVW}vw;
-    max-width: ${(col / columns) * maxWidth}px;
-  `
+  const cssBase = useMemo(
+    () => css`
+      padding: 0 ${gap / 2}px;
+      background: rgba(0, 255, 255, 0.33);
+    `,
+    [gap]
+  )
+
+  const cssCol = useMemo(
+    () =>
+      css`
+        width: ${(col / columns) * maxWidthVW}vw;
+        max-width: ${(col / columns) * maxWidth}px;
+      `,
+    [col, columns, maxWidth, maxWidthVW]
+  )
 
   const cssColAuto = css`
     flex: 1;
@@ -163,14 +200,20 @@ export function GridItem({
       <div css={[cssBase, col ? cssCol : cssColAuto]} {...restProps}>
         <div
           css={css`
-            min-height: 10vh;
+            overflow: hidden;
+            min-height: 5vh;
+            height: 100%;
             background: linear-gradient(
               to bottom,
               rgba(255, 105, 180, 0.33),
               rgba(50, 50, 50, 0.1)
             );
           `}
-          children={children}
+          children={
+            <>
+              {`${colProp} ^= ${col}`} {children}
+            </>
+          }
         />
       </div>
     </GridItemRowCtx.Provider>
