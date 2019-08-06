@@ -12484,10 +12484,10 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-query-state-core@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/query-state-core/-/query-state-core-2.1.4.tgz#213c55b9315811f86894d762272dacf5d9fe807f"
-  integrity sha512-mZkKWI5kXi4W8mXHXYko8MEsur9lTFoSOKKx1qsa65nEfAwG8G86zNltjBtn3hjmh5vQkmuA42PmnjI84HXLNg==
+query-state-core@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/query-state-core/-/query-state-core-2.1.5.tgz#aef1bb2d2843a9210abe0f6f0a0a56f3dd39651c"
+  integrity sha512-65brLUP5B5jlo1+1gwUT0ps4QkvFcGIjTVhsnb67nRZSEg/x9hJIVithY99nVCkisHZtYKDjuqMksnnnvVjrTg==
 
 query-string@^5.0.1:
   version "5.1.1"
@@ -15000,12 +15000,12 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-location-state@2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/use-location-state/-/use-location-state-2.1.4.tgz#4f9934f77f00a3a915a96a085311d970f1a97a99"
-  integrity sha512-XtRGQywzxqBmQw63UjMecJn9+zPIxjVws/hAcv4rerKZOjtsbaiZciHuzR2H+7Gxbx3LK84Ac/ezvnaCzYRQMg==
+use-location-state@2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/use-location-state/-/use-location-state-2.1.5.tgz#d869e0886003b40cfa99193c0f4f09c0b2997aed"
+  integrity sha512-Dx0y7JX6wfKM+Y3DkseZvt/z/UJuzJqvLiFrj1UeouU7FogWFF31n/rqK2wCGWw9+PCrXYixs6ca2R929SpaNw==
   dependencies:
-    query-state-core "^2.1.4"
+    query-state-core "^2.1.5"
 
 use@^3.1.0:
   version "3.1.1"

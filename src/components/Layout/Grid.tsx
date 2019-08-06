@@ -116,8 +116,6 @@ export function GridRow({
     max-width: ${maxWidth}px;
     margin: 0 ${isInCol ? gap / -2 + 'px' : 'auto'};
     font-family: 'Fira Code', monospace;
-    background: #ccc;
-    outline: 1px dashed cyan;
   `
 
   return (
@@ -140,7 +138,6 @@ interface IGridItemProps extends IElementProps {
 
 export function GridItem({
   col: colProp = 'auto',
-  children,
   ...restProps
 }: IGridItemProps) {
   const { gap, maxWidth, maxWidthVW, columns } = useGrid()
@@ -161,8 +158,8 @@ export function GridItem({
 
   const cssBase = useMemo(
     () => css`
+      min-height: 1px;
       padding: 0 ${gap / 2}px;
-      background: rgba(0, 255, 255, 0.33);
     `,
     [gap]
   )
@@ -183,7 +180,6 @@ export function GridItem({
   if (!isInRow) {
     console.warn('GridItem can only be used within a GridRow', {
       col,
-      children,
       ...restProps,
     })
     return null
@@ -197,25 +193,7 @@ export function GridItem({
         availableCols: col,
       }}
     >
-      <div css={[cssBase, col ? cssCol : cssColAuto]} {...restProps}>
-        <div
-          css={css`
-            overflow: hidden;
-            min-height: 5vh;
-            height: 100%;
-            background: linear-gradient(
-              to bottom,
-              rgba(255, 105, 180, 0.33),
-              rgba(50, 50, 50, 0.1)
-            );
-          `}
-          children={
-            <>
-              {`${colProp} ^= ${col}`} {children}
-            </>
-          }
-        />
-      </div>
+      <div css={[cssBase, col ? cssCol : cssColAuto]} {...restProps} />
     </GridItemRowCtx.Provider>
   )
 }
