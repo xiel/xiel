@@ -2,9 +2,10 @@ import React from 'react'
 import { Global, css } from '@emotion/core'
 import {
   colorTextDefault,
-  screenMdMax,
+  contentContainerMax,
   screenSmMax,
   screenXsMax,
+  screenXsMin,
 } from './theme'
 // stylesheets
 import 'normalize.css'
@@ -25,23 +26,16 @@ export default function BaseStyles() {
 
         html {
           box-sizing: border-box;
-          font-size: 62.5%;
+          font-size: calc(
+            100% + (20 - 16) *
+              (
+                (100vw - ${screenXsMin}px) /
+                  (${contentContainerMax} - ${screenXsMin})
+              )
+          );
 
-          @media (max-width: ${screenMdMax}px) {
-            font-size: 60%;
-          }
-
-          @media (max-width: ${screenSmMax}px) {
-            font-size: 55%;
-          }
-
-          @media (max-width: ${screenXsMax}px) {
-            font-size: 51%;
-
-            input,
-            textarea {
-              font-size: 16px;
-            }
+          @media (min-width: ${contentContainerMax}px) {
+            font-size: 125%;
           }
         }
 
@@ -50,7 +44,7 @@ export default function BaseStyles() {
           font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
           color: ${colorTextDefault};
           background: #fff;
-          font-size: 1.7rem;
+          font-size: 1rem;
           line-height: 1.4;
           font-weight: 200;
         }

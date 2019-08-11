@@ -9,7 +9,7 @@ export default function DevelopmentSection(props: Props) {
   return (
     <Section>
       <GridRow justify={'center'}>
-        <GridItem col={1 / 2}>
+        <GridItem col={[12, 1 / 2]}>
           <header className="section__header">
             <h2>Modern Web Development</h2>
             <p>
@@ -21,7 +21,7 @@ export default function DevelopmentSection(props: Props) {
         </GridItem>
       </GridRow>
       <GridRow>
-        <GridItem col={1 / 3}>
+        <GridItem col={[12, 1 / 3, 6]}>
           <div className="dev-feature__icon">
             <svg
               width="272"
@@ -62,6 +62,118 @@ export default function DevelopmentSection(props: Props) {
             </p>
           </div>
         </GridItem>
+        <GridItem col={[12, 1 / 3, 6]}>
+          <div className="dev-feature__icon">
+            <svg
+              width="272"
+              height="272"
+              viewBox="0 0 272 272"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                stroke="#81CF2A"
+                strokeWidth="2"
+                fill="none"
+                fillRule="evenodd"
+              >
+                <path
+                  d="M137 152.333L130.333 159 117 145.667l6.667-6.667 66.666-55L192 85.667l-55 66.666z"
+                  id="Shape"
+                />
+                <path d="M123 139l13 13" id="Shape" />
+                <path d="M130 159.44S116.56 188 88 188c0 0 4.623-27.408 15.12-35.28 6.72-5.04 13.44-6.72 13.44-6.72" />
+                <path d="M136 271c74.558 0 135-60.442 135-135 0-54.758-32.602-101.902-79.454-123.08C174.606 5.263 155.8 1 136 1 61.442 1 1 61.442 1 136c0 74.558 60.442 135 135 135z" />
+              </g>
+            </svg>
+          </div>
+          <GridRow>
+            <GridItem col={3}>
+              <h3>Interface Design</h3>
+              <p>
+                Ansprechende und dennoch einfache Benutzerobflächen machen eine
+                Webseite oder App intuitiv zugänglich. Und durch Responsives
+                Design funktionieren Sie zukunftssicher auf allen Plattformen.
+              </p>
+            </GridItem>
+            <GridItem col={3}>
+              <h3>Interface Design</h3>
+              <p>
+                Ansprechende und dennoch einfache Benutzerobflächen machen eine
+                Webseite oder App intuitiv zugänglich. Und durch Responsives
+                Design funktionieren Sie zukunftssicher auf allen Plattformen.
+              </p>
+            </GridItem>
+          </GridRow>
+          <div className="dev-feature__text">
+            <h3>Interface Design</h3>
+            <p>
+              Ansprechende und dennoch einfache Benutzerobflächen machen eine
+              Webseite oder App intuitiv zugänglich. Und durch Responsives
+              Design funktionieren Sie zukunftssicher auf allen Plattformen.
+            </p>
+          </div>
+        </GridItem>
+        <GridItem col={[12, 1 / 3, 6]}>
+          <div className="dev-feature__icon">
+            <svg
+              width="272"
+              height="272"
+              viewBox="0 0 272 272"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                stroke="#3C99C8"
+                strokeWidth="2"
+                fill="none"
+                fillRule="evenodd"
+              >
+                <path d="M74 108h130v63H74z" />
+                <path d="M86 108V91.556h30v-14.39H94.57V71" />
+                <path d="M81 122h8" />
+                <path d="M93 122h8" />
+                <path d="M106 122h8" />
+                <path d="M118 122h8" />
+                <path d="M130 122h8" />
+                <path d="M143 122h8" />
+                <path d="M155 122h8" />
+                <path d="M168 122h8" />
+                <path d="M181 122h8" />
+                <path d="M88 140h8" />
+                <path d="M101 140h8" />
+                <path d="M113 140h8" />
+                <path d="M127 140h8" />
+                <path d="M139 140h8" />
+                <path d="M151 140h8" />
+                <path d="M165 140h8" />
+                <path d="M177 140h8" />
+                <path d="M190 140h8" />
+                <path d="M81 157h8" />
+                <path d="M93 157h8" />
+                <path d="M106 157h54" />
+                <path d="M165 157h8" />
+                <path d="M177 157h8" />
+                <path d="M190 157h8" />
+                <path d="M136 271c74.558 0 135-60.442 135-135 0-54.758-32.602-101.902-79.454-123.08C174.606 5.263 155.8 1 136 1 61.442 1 1 61.442 1 136c0 74.558 60.442 135 135 135z" />
+              </g>
+            </svg>
+          </div>
+          <div className="dev-feature__text">
+            <h3>Development</h3>
+            <p>
+              Mit Hilfe modernster Technologien werden aus statischen Konzepten
+              und Screendesigns lebendige Webseiten & Apps für Smartphones,
+              Tablets und Desktops geschaffen.
+            </p>
+
+            <button
+              aria-controls="dev-technologies"
+              className="toggle-btn text-btn text-btn--small js-rb-live"
+              data-module="panelbutton"
+            >
+              über Technologien
+            </button>
+          </div>
+        </GridItem>
       </GridRow>
 
       <div
@@ -74,106 +186,7 @@ export default function DevelopmentSection(props: Props) {
             css={css`
               display: flex;
             `}
-          >
-            <div className="flx--4°sm flx--4°md dev-feature dev-feature--ux"></div>
-
-            <div className="flx--4°sm flx--4°md dev-feature dev-feature--design">
-              <div className="dev-feature__icon">
-                <svg
-                  width="272"
-                  height="272"
-                  viewBox="0 0 272 272"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    stroke="#81CF2A"
-                    strokeWidth="2"
-                    fill="none"
-                    fillRule="evenodd"
-                  >
-                    <path
-                      d="M137 152.333L130.333 159 117 145.667l6.667-6.667 66.666-55L192 85.667l-55 66.666z"
-                      id="Shape"
-                    />
-                    <path d="M123 139l13 13" id="Shape" />
-                    <path d="M130 159.44S116.56 188 88 188c0 0 4.623-27.408 15.12-35.28 6.72-5.04 13.44-6.72 13.44-6.72" />
-                    <path d="M136 271c74.558 0 135-60.442 135-135 0-54.758-32.602-101.902-79.454-123.08C174.606 5.263 155.8 1 136 1 61.442 1 1 61.442 1 136c0 74.558 60.442 135 135 135z" />
-                  </g>
-                </svg>
-              </div>
-              <div className="dev-feature__text">
-                <h3>Interface Design</h3>
-                <p>
-                  Ansprechende und dennoch einfache Benutzerobflächen machen
-                  eine Webseite oder App intuitiv zugänglich. Und durch
-                  Responsives Design funktionieren Sie zukunftssicher auf allen
-                  Plattformen.
-                </p>
-              </div>
-            </div>
-
-            <div className="flx--4°sm flx--4°md dev-feature dev-feature--tech">
-              <div className="dev-feature__icon">
-                <svg
-                  width="272"
-                  height="272"
-                  viewBox="0 0 272 272"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    stroke="#3C99C8"
-                    strokeWidth="2"
-                    fill="none"
-                    fillRule="evenodd"
-                  >
-                    <path d="M74 108h130v63H74z" />
-                    <path d="M86 108V91.556h30v-14.39H94.57V71" />
-                    <path d="M81 122h8" />
-                    <path d="M93 122h8" />
-                    <path d="M106 122h8" />
-                    <path d="M118 122h8" />
-                    <path d="M130 122h8" />
-                    <path d="M143 122h8" />
-                    <path d="M155 122h8" />
-                    <path d="M168 122h8" />
-                    <path d="M181 122h8" />
-                    <path d="M88 140h8" />
-                    <path d="M101 140h8" />
-                    <path d="M113 140h8" />
-                    <path d="M127 140h8" />
-                    <path d="M139 140h8" />
-                    <path d="M151 140h8" />
-                    <path d="M165 140h8" />
-                    <path d="M177 140h8" />
-                    <path d="M190 140h8" />
-                    <path d="M81 157h8" />
-                    <path d="M93 157h8" />
-                    <path d="M106 157h54" />
-                    <path d="M165 157h8" />
-                    <path d="M177 157h8" />
-                    <path d="M190 157h8" />
-                    <path d="M136 271c74.558 0 135-60.442 135-135 0-54.758-32.602-101.902-79.454-123.08C174.606 5.263 155.8 1 136 1 61.442 1 1 61.442 1 136c0 74.558 60.442 135 135 135z" />
-                  </g>
-                </svg>
-              </div>
-              <div className="dev-feature__text">
-                <h3>Development</h3>
-                <p>
-                  Mit Hilfe modernster Technologien werden aus statischen
-                  Konzepten und Screendesigns lebendige Webseiten & Apps für
-                  Smartphones, Tablets und Desktops geschaffen.
-                </p>
-
-                <button
-                  aria-controls="dev-technologies"
-                  className="toggle-btn text-btn text-btn--small js-rb-live"
-                  data-module="panelbutton"
-                >
-                  über Technologien
-                </button>
-              </div>
-            </div>
-          </div>
+          ></div>
         </div>
         <div className="itemscroller-pagination"></div>
       </div>

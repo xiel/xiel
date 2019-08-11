@@ -22,9 +22,9 @@ export const colorTextLighter = `${colorGrayLighter}`
 export const colorTextBright = `${colorGrayBright}`
 export const colorTextOnDark = `#CCD1CC`
 
-//flx grid
+// grid - RASTER
 export const gridColumns = `12`
-export const contentContainerMax = 1300
+export const contentContainerMax = 1440
 
 // //== Media queries breakpoints
 export const screenXs = 400

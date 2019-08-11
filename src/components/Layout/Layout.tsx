@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql, Link, StaticQuery } from 'gatsby'
 import Header from '../Header/Header'
 import BasesStyles from '../../styles/BaseStyles'
-import { GridContext } from './Grid'
 
 interface Props {
   children: React.ReactNode
@@ -10,7 +9,8 @@ interface Props {
 
 const Layout = ({ children, ...props }: Props) => {
   return (
-    <GridContext gap={32}>
+    <>
+      {/*<GridContext gap={32}>*/}
       <BasesStyles />
       <StaticQuery
         query={graphql`
@@ -34,7 +34,8 @@ const Layout = ({ children, ...props }: Props) => {
           </div>
         )}
       />
-    </GridContext>
+      {/*</GridContext>*/}
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { createContext, Props, useContext, useMemo } from 'react'
+import React, { createContext, useContext } from 'react'
 import { css } from '@emotion/core'
 
 type IElementProps = React.DetailedHTMLProps<
@@ -6,23 +6,10 @@ type IElementProps = React.DetailedHTMLProps<
   HTMLDivElement
 >
 
+type ColValue = number | 'auto'
+type ColValues = ColValue[]
+
 /*
- * - columns: 12
- * TODO:
- * - maxWidth: default eg. 1280, or 100% / inherited from current col
- * - css: width: 50vw; max-width: 0.5 * 1280px
- * - make gaps flexible too!
- * -
- * - GridItem
- * - fixed cols:
- * - col - default 100%, 3 col = 3 / 12 col in current GridContext
- *
- * - relative cols:
- * - col: 1/2 (all fractions below 1 will be seen as relative cols in current nested context)
- * - col: { mq1: 2/6, mq2:  }
- *
- * - nesting cols GridItem > GridRow > GridItem does not create a new GridContext
- *
  * - VStack - gapWidth, align
  * - HStack - gapWidth, align
  * - Container Query Helper
@@ -31,6 +18,7 @@ type IElementProps = React.DetailedHTMLProps<
 interface IContext {
   columns: number // or per MQ
   gap: number
+  gapUnit: string
   maxWidth: number
   maxWidthVW: number
 }
@@ -39,7 +27,8 @@ const gridContextDefault = {
   maxWidth: 1440,
   maxWidthVW: 100,
   columns: 12,
-  gap: 32,
+  gap: 2,
+  gapUnit: 'rem',
 }
 
 const GridCtx = createContext<IContext>(gridContextDefault)
@@ -48,7 +37,7 @@ const useGrid = () => useContext(GridCtx)
 const GridItemRowCtx = createContext({
   isInCol: false,
   isInRow: false,
-  availableCols: 0,
+  availableCols: [] as number[],
 })
 const useItemRowContext = () => useContext(GridItemRowCtx)
 const { Provider: GridContextProvider } = GridCtx
@@ -58,34 +47,15 @@ interface IGridContextProps extends Partial<IContext> {
 }
 
 export function GridContext({ children, ...value }: IGridContextProps) {
-  const { columns, maxWidth, maxWidthVW, gap } = useGrid()
-  const { availableCols, ...itemRowCtx } = useItemRowContext()
-  const availableMaxWidth = availableCols
-    ? (maxWidth / columns) * availableCols
-    : maxWidth
-  const availableMaxWidthVW = availableCols
-    ? (maxWidthVW / columns) * availableCols
-    : maxWidthVW
-
-  const newGridCtx = {
-    ...gridContextDefault,
-    columns,
-    maxWidth: availableMaxWidth,
-    maxWidthVW: availableMaxWidthVW,
-    ...value,
-    gap,
-  }
-
+  const gridContextCurrent = useGrid()
   return (
-    <GridContextProvider value={newGridCtx}>
-      <GridItemRowCtx.Provider
-        children={children}
-        value={{
-          ...itemRowCtx,
-          availableCols: newGridCtx.columns,
-        }}
-      />
-    </GridContextProvider>
+    <GridContextProvider
+      value={{
+        ...gridContextDefault,
+        ...gridContextCurrent,
+        ...value,
+      }}
+    />
   )
 }
 
@@ -99,7 +69,7 @@ export function GridRow({
   align = 'stretch',
   ...restProps
 }: IGridRowProps) {
-  const { columns, gap, maxWidth } = useGrid()
+  const { columns, gap, gapUnit, maxWidth } = useGrid()
   const { isInCol, availableCols } = useItemRowContext()
   const base = css`
     display: flex;
@@ -108,8 +78,7 @@ export function GridRow({
     justify-content: ${justify};
     flex: 1 0;
     max-width: ${maxWidth}px;
-    margin: 0 ${isInCol ? gap / -2 + 'px' : 'auto'};
-    background: yellow;
+    margin: 0 ${isInCol ? gap / -2 + gapUnit : 'auto'};
   `
 
   return (
@@ -117,7 +86,7 @@ export function GridRow({
       value={{
         isInCol: false,
         isInRow: true,
-        availableCols: availableCols || columns,
+        availableCols: availableCols.length ? availableCols : [columns],
       }}
     >
       <div css={[base]} {...restProps} />
@@ -126,86 +95,76 @@ export function GridRow({
 }
 
 interface IGridItemProps extends IElementProps {
-  col?: number | 'auto'
+  col?: ColValue | ColValues
   children?: React.ReactNode
+}
+
+const breakpoints = [576, 768, 992, 1200]
+const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
+
+const calcColForMQ = (colValue: ColValue, availableCols: number) => {
+  const colCount = colValue === 'auto' ? 0 : colValue
+  const isColPropRelative = colCount < 1
+  return isColPropRelative
+    ? Math.max(0, Math.floor(colCount * availableCols))
+    : Math.min(availableCols, Math.round(colCount))
+}
+
+const getValueForIndexOrClosestLower = (
+  values: number[],
+  index: number
+): number => {
+  const val = values[index]
+  if (val !== undefined) {
+    return val
+  } else if (index >= 1) {
+    return getValueForIndexOrClosestLower(values, index - 1)
+  }
+  return 0
 }
 
 export function GridItem({
   col: colProp = 'auto',
   ...restProps
 }: IGridItemProps) {
-  const { gap, maxWidth, maxWidthVW, columns } = useGrid()
-  const { isInRow, availableCols } = useItemRowContext()
-  const colCount = colProp === 'auto' ? 0 : colProp
-  const isColPropRelative = colCount < 1
-  const col = isColPropRelative
-    ? Math.max(0, Math.floor(colCount * availableCols))
-    : Math.min(availableCols, Math.round(colCount))
-
-  console.log({
-    col,
-    columns,
-    availableCols,
-    maxWidth,
-    maxWidthVW,
-  })
-
-  const cssBase = useMemo(
-    () => css`
-      min-height: 1px;
-      padding: 0 ${gap / 2}px;
-      background: cornflowerblue;
-    `,
-    [gap]
+  const { gap, gapUnit, maxWidth, maxWidthVW, columns } = useGrid()
+  const { availableCols } = useItemRowContext()
+  const colValues = Array.isArray(colProp) ? colProp : [colProp]
+  const colForMQs = colValues.map((colValue, i) =>
+    calcColForMQ(colValue, getValueForIndexOrClosestLower(availableCols, i))
   )
 
-  const cssCol = useMemo(
-    () =>
-      css`
-        width: ${(col / columns) * maxWidthVW}vw;
-        max-width: ${(col / columns) * maxWidth}px;
-      `,
-    [col, columns, maxWidth, maxWidthVW]
-  )
+  const getCSS = (col: number, mqIndex: number) => {
+    if (col) {
+      return css`
+        ${mq[mqIndex]} {
+          flex: 0 1 auto;
+          width: ${(col / columns) * maxWidthVW}vw;
+          max-width: ${(col / columns) * maxWidth}px;
+        }
+      `
+    }
+    return css`
+      flex: 1;
+    `
+  }
 
-  const cssColAuto = css`
-    flex: 1;
+  const cssBase = css`
+    min-height: 1px;
+    padding: 0 ${gap / 2 + gapUnit};
   `
 
-  if (!isInRow) {
-    console.warn('GridItem can only be used within a GridRow', {
-      col,
-      ...restProps,
-    })
-    return null
-  }
+  const colCSS = colForMQs.map(getCSS)
 
   return (
     <GridItemRowCtx.Provider
       value={{
         isInCol: true,
         isInRow: false,
-        availableCols: col,
+        availableCols: colForMQs,
       }}
     >
-      <div
-        css={[cssBase, col ? cssCol : cssColAuto]}
-        data-col={col}
-        {...restProps}
-      >
-        <div
-          css={css`
-            overflow: hidden;
-            min-height: 5vh;
-            background: linear-gradient(
-              to bottom,
-              rgba(255, 105, 180, 0.33),
-              rgba(50, 50, 50, 0.1)
-            );
-          `}
-        />
-        {restProps.children}
-      </div>
+      <div css={[cssBase, ...colCSS]} {...restProps} />
     </GridItemRowCtx.Provider>
   )
 }
