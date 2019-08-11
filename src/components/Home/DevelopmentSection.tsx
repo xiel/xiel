@@ -1,6 +1,5 @@
 import React from 'react'
 import Section from '../Layout/Section'
-import Container from '../Layout/Container'
 import { css } from '@emotion/core'
 import { GridItem, GridRow } from '../Layout/Grid'
 
@@ -21,6 +20,49 @@ export default function DevelopmentSection(props: Props) {
           </header>
         </GridItem>
       </GridRow>
+      <GridRow>
+        <GridItem col={1 / 3}>
+          <div className="dev-feature__icon">
+            <svg
+              width="272"
+              height="272"
+              viewBox="0 0 272 272"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                stroke="#D0011B"
+                strokeWidth="2"
+                fill="none"
+                fillRule="evenodd"
+              >
+                <path d="M116.62 149.87v8.828h38.76l.003-9.018c10.57-6.53 17.617-18.24 17.617-31.597C173 97.603 156.435 81 136 81s-37 16.603-37 37.083c0 13.36 7.044 25.26 17.62 31.786z" />
+                <path d="M128.6 159.57l-5.224-35.792" />
+                <path d="M143.4 159.57l5.224-35.792" />
+                <path d="M123.376 125.524l6.965 5.238 5.225-5.238 5.223 5.238 6.965-5.238" />
+                <path
+                  id="Rectangle-path"
+                  d="M116.412 158.698h39.176v10.476h-39.176z"
+                />
+                <path
+                  id="Rectangle-path"
+                  d="M119.894 170.048h31.34v10.476h-31.34z"
+                />
+                <path d="M123.376 180.524h24.376V191h-24.376z" />
+                <path d="M136 271c74.558 0 135-60.442 135-135 0-54.758-32.602-101.902-79.454-123.08C174.606 5.263 155.8 1 136 1 61.442 1 1 61.442 1 136c0 74.558 60.442 135 135 135z" />
+              </g>
+            </svg>
+          </div>
+          <div className="dev-feature__text">
+            <h3>User Experience</h3>
+            <p>
+              Ich gestalte Produkte, die gut strukturiert, zugänglich und
+              effektiv sind. Bei der Entwicklung von Ideen und Konzepten stehe
+              ich mit meinen Erfahrungen zu bewährten und neuen Technologien
+              beratend zur Seite.
+            </p>
+          </div>
+        </GridItem>
+      </GridRow>
 
       <div
         className="rb-itemscroller itemscroller--development js-rb-live"
@@ -33,47 +75,7 @@ export default function DevelopmentSection(props: Props) {
               display: flex;
             `}
           >
-            <div className="flx--4°sm flx--4°md dev-feature dev-feature--ux">
-              <div className="dev-feature__icon">
-                <svg
-                  width="272"
-                  height="272"
-                  viewBox="0 0 272 272"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    stroke="#D0011B"
-                    stroke-width="2"
-                    fill="none"
-                    fill-rule="evenodd"
-                  >
-                    <path d="M116.62 149.87v8.828h38.76l.003-9.018c10.57-6.53 17.617-18.24 17.617-31.597C173 97.603 156.435 81 136 81s-37 16.603-37 37.083c0 13.36 7.044 25.26 17.62 31.786z" />
-                    <path d="M128.6 159.57l-5.224-35.792" />
-                    <path d="M143.4 159.57l5.224-35.792" />
-                    <path d="M123.376 125.524l6.965 5.238 5.225-5.238 5.223 5.238 6.965-5.238" />
-                    <path
-                      id="Rectangle-path"
-                      d="M116.412 158.698h39.176v10.476h-39.176z"
-                    />
-                    <path
-                      id="Rectangle-path"
-                      d="M119.894 170.048h31.34v10.476h-31.34z"
-                    />
-                    <path d="M123.376 180.524h24.376V191h-24.376z" />
-                    <path d="M136 271c74.558 0 135-60.442 135-135 0-54.758-32.602-101.902-79.454-123.08C174.606 5.263 155.8 1 136 1 61.442 1 1 61.442 1 136c0 74.558 60.442 135 135 135z" />
-                  </g>
-                </svg>
-              </div>
-              <div className="dev-feature__text">
-                <h3>User Experience</h3>
-                <p>
-                  Ich gestalte Produkte, die gut strukturiert, zugänglich und
-                  effektiv sind. Bei der Entwicklung von Ideen und Konzepten
-                  stehe ich mit meinen Erfahrungen zu bewährten und neuen
-                  Technologien beratend zur Seite.
-                </p>
-              </div>
-            </div>
+            <div className="flx--4°sm flx--4°md dev-feature dev-feature--ux"></div>
 
             <div className="flx--4°sm flx--4°md dev-feature dev-feature--design">
               <div className="dev-feature__icon">
@@ -85,9 +87,9 @@ export default function DevelopmentSection(props: Props) {
                 >
                   <g
                     stroke="#81CF2A"
-                    stroke-width="2"
+                    strokeWidth="2"
                     fill="none"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   >
                     <path
                       d="M137 152.333L130.333 159 117 145.667l6.667-6.667 66.666-55L192 85.667l-55 66.666z"
@@ -120,9 +122,9 @@ export default function DevelopmentSection(props: Props) {
                 >
                   <g
                     stroke="#3C99C8"
-                    stroke-width="2"
+                    strokeWidth="2"
                     fill="none"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   >
                     <path d="M74 108h130v63H74z" />
                     <path d="M86 108V91.556h30v-14.39H94.57V71" />

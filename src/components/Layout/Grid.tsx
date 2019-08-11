@@ -70,17 +70,11 @@ export function GridContext({ children, ...value }: IGridContextProps) {
   const newGridCtx = {
     ...gridContextDefault,
     columns,
-    gap,
     maxWidth: availableMaxWidth,
     maxWidthVW: availableMaxWidthVW,
     ...value,
+    gap,
   }
-
-  console.log('GridContext', {
-    availableCols,
-    availableMaxWidth,
-    availableMaxWidthVW,
-  })
 
   return (
     <GridContextProvider value={newGridCtx}>
@@ -115,7 +109,7 @@ export function GridRow({
     flex: 1 0;
     max-width: ${maxWidth}px;
     margin: 0 ${isInCol ? gap / -2 + 'px' : 'auto'};
-    font-family: 'Fira Code', monospace;
+    background: yellow;
   `
 
   return (
@@ -160,6 +154,7 @@ export function GridItem({
     () => css`
       min-height: 1px;
       padding: 0 ${gap / 2}px;
+      background: cornflowerblue;
     `,
     [gap]
   )
@@ -193,7 +188,24 @@ export function GridItem({
         availableCols: col,
       }}
     >
-      <div css={[cssBase, col ? cssCol : cssColAuto]} {...restProps} />
+      <div
+        css={[cssBase, col ? cssCol : cssColAuto]}
+        data-col={col}
+        {...restProps}
+      >
+        <div
+          css={css`
+            overflow: hidden;
+            min-height: 5vh;
+            background: linear-gradient(
+              to bottom,
+              rgba(255, 105, 180, 0.33),
+              rgba(50, 50, 50, 0.1)
+            );
+          `}
+        />
+        {restProps.children}
+      </div>
     </GridItemRowCtx.Provider>
   )
 }
