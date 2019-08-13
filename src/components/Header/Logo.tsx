@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { VisuallyHidden } from '../../styles/mixins'
-import { screenSmMax, screenXsMax } from '../../styles/theme'
+import { screenXsMax } from '../../styles/theme'
 import InternalLink from '../InternalLink'
 
 interface Props {
@@ -13,10 +13,18 @@ const logo = css`
   top: 0;
   left: 0;
   right: 0;
-  width: 9rem;
-  height: 9rem;
+  width: 4.5rem;
+  height: 4.5rem;
   margin: 4.5rem auto 0;
   z-index: 9999;
+
+  @media (max-width: ${screenXsMax}px) {
+    margin-top: 2rem;
+    width: 3rem;
+    height: 3rem;
+    left: 2rem;
+    right: auto;
+  }
 
   a {
     position: relative;
@@ -57,19 +65,6 @@ const logo = css`
       transition: 100ms;
       transform: scale(0.95) rotate(90deg);
     }
-  }
-
-  @media (max-width: ${screenSmMax}px) {
-    width: 8rem;
-    height: 8rem;
-  }
-
-  @media (max-width: ${screenXsMax}px) {
-    margin-top: 2rem;
-    width: 6rem;
-    height: 6rem;
-    left: 2rem;
-    right: auto;
   }
 `
 

@@ -13,22 +13,6 @@ import Container from '../Layout/Container'
 
 interface Props {}
 
-const stageHello = css`
-  position: relative;
-  display: block;
-  margin: 0 0 1rem;
-  font-size: 6.4rem;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
-  font-weight: 500;
-  color: ${colorTextBright};
-  z-index: 1;
-
-  @media (max-width: ${screenXsMax}px) {
-    font-size: 5rem;
-  }
-`
-
 export default function StageSection(props: Props) {
   const { t } = useTranslation()
 
@@ -100,27 +84,42 @@ export default function StageSection(props: Props) {
         <StageImage />
       </div>
       <Container>
-        <div className="flx-group">
-          <div className="flx--12°md">
-            <div
-              className="welcoming"
-              css={css`
-                position: relative;
-                font-size: 2rem;
-                width: 62%;
-                max-width: 546px;
+        <div>
+          <div
+            className="welcoming"
+            css={css`
+              position: relative;
+              width: 62%;
+              max-width: 546px;
 
-                @media (max-width: ${screenXs}) {
-                  width: auto;
-                  padding-bottom: 30%;
-                }
-              `}
-            >
-              <p>
-                <em css={stageHello}>{t('StageSection.Hello')}</em>
-                {t('StageSection.Intro')}
-              </p>
-            </div>
+              @media (max-width: ${screenXs}) {
+                width: auto;
+                padding-bottom: 30%;
+              }
+            `}
+          >
+            <p>
+              <em
+                css={css`
+                  position: relative;
+                  display: block;
+                  margin: 0 0 1rem;
+                  font-size: 4rem;
+                  line-height: 0.9;
+                  letter-spacing: -0.03em;
+                  font-weight: 500;
+                  color: ${colorTextBright};
+                  z-index: 1;
+
+                  @media (max-width: ${screenXsMax}px) {
+                    font-size: 2rem;
+                  }
+                `}
+              >
+                {t('StageSection.Hello')}
+              </em>
+              {t('StageSection.Intro')}
+            </p>
           </div>
         </div>
       </Container>

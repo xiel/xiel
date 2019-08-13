@@ -13,5 +13,9 @@
   "StageSection": {
     "Hello": "Hallo!",
     "Intro": "Ich bin Felix, freiberuflicher FrontEnd-Entwickler aus Berlin und entwickle effektive Webseiten und Apps, die jeder gerne nutzt."
+  },
+  "Footer": {
+    "Title": "Projekt- und Kooperationsanfragen an:",
+    "Email": "felix@xiel.de"
   }
 }

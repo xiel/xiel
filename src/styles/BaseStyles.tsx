@@ -1,12 +1,6 @@
 import React from 'react'
-import { Global, css } from '@emotion/core'
-import {
-  colorTextDefault,
-  contentContainerMax,
-  screenSmMax,
-  screenXsMax,
-  screenXsMin,
-} from './theme'
+import { css, Global } from '@emotion/core'
+import { colorTextDefault, contentContainerMax, screenSmMin } from './theme'
 // stylesheets
 import 'normalize.css'
 import './reset.css'
@@ -29,14 +23,20 @@ export default function BaseStyles() {
           font-size: calc(
             100% + (20 - 16) *
               (
-                (100vw - ${screenXsMin}px) /
-                  (${contentContainerMax} - ${screenXsMin})
+                (100vw - ${screenSmMin}px) /
+                  (${contentContainerMax} - ${screenSmMin})
               )
           );
 
           @media (min-width: ${contentContainerMax}px) {
             font-size: 125%;
           }
+        }
+
+        h1,
+        h2,
+        h3 {
+          font-family: 'Fira Code';
         }
 
         body {

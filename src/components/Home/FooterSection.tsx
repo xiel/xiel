@@ -1,84 +1,52 @@
 import React from 'react'
-import InternalLink from '../InternalLink'
 import { Link } from 'gatsby'
+import Container from '../Layout/Container'
+import Section from '../Layout/Section'
+import { GridItem, GridRow } from '../Layout/Grid'
+import { useTranslation } from 'react-i18next'
+import { css } from '@emotion/core'
+import styled from '@emotion/styled'
 
 interface Props {}
 
+const Ul = styled.ul(css`
+  display: inline-flex;
+`)
+
 export default function FooterSection(props: Props) {
+  const { t } = useTranslation()
+
   return (
-    <footer className="section section--imprint">
-      <div className="container">
-        <div className="flx-group flx-group--centered">
-          <div className="flx--12°sm">
-            <ul className="btn-group btn-group--center">
+    <Section>
+      <Container>
+        <GridRow>
+          <GridItem>
+            <h4 className="label">{t('Footer.Title')}</h4>
+            <a href={`mailto:${t('Footer.Email')}`}>{t('Footer.Email')}</a>
+            <Ul>
               <li>
-                <span className="label">
-                  Projekt- und Kooperationsanfragen an:
-                </span>
-                <a href="mailto:felix@xiel.de" className="cta-btn">
-                  felix@xiel.de
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="flx--12°sm">
-            <ul className="sm-links flx-group flx-group--centered">
-              <li>
-                <a
-                  href="http://twitter.com/xiel"
-                  target="_blank"
-                  className="sm-link sm-link--twitter"
-                >
-                  Twitter
-                </a>
+                <a href="http://twitter.com/xiel">Twitter</a>
               </li>
               <li>
-                <a
-                  href="http://github.com/xiel"
-                  target="_blank"
-                  className="sm-link sm-link--github"
-                >
-                  Github
-                </a>
+                <a href="http://github.com/xiel">Github</a>
               </li>
               <li>
-                <a
-                  href="https://dribbble.com/xiel"
-                  target="_blank"
-                  className="sm-link sm-link--dribbble"
-                >
-                  Dribbble
-                </a>
+                <a href="https://dribbble.com/xiel">Dribbble</a>
               </li>
               <li>
-                <a
-                  href="http://instagram.com/xiel"
-                  target="_blank"
-                  className="sm-link sm-link--instagram"
-                >
-                  Instagram
-                </a>
+                <a href="http://instagram.com/xiel">Instagram</a>
               </li>
-            </ul>
-          </div>
-        </div>
-        <div className="flx-group flx-group--centered">
-          <div className="flx--6°sm flx--6°md">
-            <div className="legal-links">
-              <ul>
-                <li>
-                  <InternalLink to="/" title="Startseite">
-                    XIEL webdevelopment
-                  </InternalLink>
-                </li>
-                <li>
-                  <Link to="/impressum/">Datenschutz & Impressum</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+            </Ul>
+          </GridItem>
+          <GridItem>
+            <Ul>
+              <li>
+                <Link to="/impressum/">Datenschutz & Impressum</Link>
+              </li>
+            </Ul>
+          </GridItem>
+        </GridRow>
+      </Container>
+    </Section>
   )
 }

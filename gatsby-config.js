@@ -48,5 +48,13 @@ module.exports = {
       resolve: `gatsby-plugin-typescript`,
       options: {},
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
   ],
 }

@@ -27,12 +27,12 @@ const gridContextDefault = {
   maxWidth: 1440,
   maxWidthVW: 100,
   columns: 12,
-  gap: 2,
+  gap: 1.6,
   gapUnit: 'rem',
 }
 
 const GridCtx = createContext<IContext>(gridContextDefault)
-const useGrid = () => useContext(GridCtx)
+export const useGrid = () => useContext(GridCtx)
 
 const GridItemRowCtx = createContext({
   isInCol: false,
@@ -62,14 +62,16 @@ export function GridContext({ children, ...value }: IGridContextProps) {
 interface IGridRowProps extends IElementProps {
   justify?: 'flex-start' | 'center' | 'flex-end'
   align?: 'stretch' | 'center' | 'flex-start' | 'flex-end'
+  component?: React.ElementType
 }
 
 export function GridRow({
   justify = 'flex-start',
   align = 'stretch',
+  component: Component = 'div',
   ...restProps
 }: IGridRowProps) {
-  const { columns, gap, gapUnit, maxWidth } = useGrid()
+  const { columns, gap, gapUnit, maxWidth, maxWidthVW } = useGrid()
   const { isInCol, availableCols } = useItemRowContext()
   const base = css`
     display: flex;
@@ -77,6 +79,7 @@ export function GridRow({
     align-items: ${align};
     justify-content: ${justify};
     flex: 1 0;
+    width: ${maxWidthVW}vw; // new
     max-width: ${maxWidth}px;
     margin: 0 ${isInCol ? gap / -2 + gapUnit : 'auto'};
   `
@@ -89,7 +92,7 @@ export function GridRow({
         availableCols: availableCols.length ? availableCols : [columns],
       }}
     >
-      <div css={[base]} {...restProps} />
+      <Component css={[base]} {...restProps} />
     </GridItemRowCtx.Provider>
   )
 }
@@ -97,9 +100,10 @@ export function GridRow({
 interface IGridItemProps extends IElementProps {
   col?: ColValue | ColValues
   children?: React.ReactNode
+  component?: React.ElementType
 }
 
-const breakpoints = [576, 768, 992, 1200]
+const breakpoints = [0, 576, 768, 992, 1200]
 const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
 
 const calcColForMQ = (colValue: ColValue, availableCols: number) => {
@@ -125,6 +129,7 @@ const getValueForIndexOrClosestLower = (
 
 export function GridItem({
   col: colProp = 'auto',
+  component: Component = 'div',
   ...restProps
 }: IGridItemProps) {
   const { gap, gapUnit, maxWidth, maxWidthVW, columns } = useGrid()
@@ -136,13 +141,19 @@ export function GridItem({
 
   const getCSS = (col: number, mqIndex: number) => {
     if (col) {
-      return css`
-        ${mq[mqIndex]} {
-          flex: 0 1 auto;
-          width: ${(col / columns) * maxWidthVW}vw;
-          max-width: ${(col / columns) * maxWidth}px;
-        }
+      const colCSS = css`
+        flex: 0 1 auto;
+        width: ${(col / columns) * maxWidthVW}vw;
+        max-width: ${(col / columns) * maxWidth}px;
       `
+
+      return breakpoints[mqIndex]
+        ? css`
+            ${mq[mqIndex]} {
+              ${colCSS}
+            }
+          `
+        : colCSS
     }
     return css`
       flex: 1;
@@ -164,7 +175,7 @@ export function GridItem({
         availableCols: colForMQs,
       }}
     >
-      <div css={[cssBase, ...colCSS]} {...restProps} />
+      <Component css={[cssBase, ...colCSS]} {...restProps} />
     </GridItemRowCtx.Provider>
   )
 }
