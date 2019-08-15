@@ -3,13 +3,8 @@ import StageImage from '../StageImage'
 import Section from '../Layout/Section'
 import { useTranslation } from 'react-i18next'
 import { css } from '@emotion/core'
-import {
-  colorTextBright,
-  screenSmMax,
-  screenXs,
-  screenXsMax,
-} from '../../styles/theme'
-import Container from '../Layout/Container'
+import { colorTextBright, screenSmMax, screenXs, screenXsMax } from '../../styles/theme'
+import { GridItem, GridRow } from '../Layout/Grid'
 
 interface Props {}
 
@@ -83,17 +78,13 @@ export default function StageSection(props: Props) {
       >
         <StageImage />
       </div>
-      <Container>
-        <div>
+      <GridRow>
+        <GridItem col={[12, 12, 5]}>
           <div
-            className="welcoming"
             css={css`
               position: relative;
-              width: 62%;
-              max-width: 546px;
 
               @media (max-width: ${screenXs}) {
-                width: auto;
                 padding-bottom: 30%;
               }
             `}
@@ -121,8 +112,22 @@ export default function StageSection(props: Props) {
               {t('StageSection.Intro')}
             </p>
           </div>
-        </div>
-      </Container>
+          <ul>
+            <li>
+              <a href="http://twitter.com/xiel">Twitter</a>
+            </li>
+            <li>
+              <a href="http://github.com/xiel">Github</a>
+            </li>
+            <li>
+              <a href="https://dribbble.com/xiel">Dribbble</a>
+            </li>
+            <li>
+              <a href="http://instagram.com/xiel">Instagram</a>
+            </li>
+          </ul>
+        </GridItem>
+      </GridRow>
     </Section>
   )
 }

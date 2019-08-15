@@ -5,6 +5,6 @@ import { render } from '@testing-library/react'
 describe('FooterSection', () => {
   it('should render footer', function() {
     const { getByText } = render(<FooterSection />)
-    expect(getByText('Projekt- und Kooperationsanfragen an:'))
+    expect(getByText('Footer.Title'))
   })
 })

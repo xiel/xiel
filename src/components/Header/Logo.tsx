@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import { VisuallyHidden } from '../../styles/mixins'
 import { screenXsMax } from '../../styles/theme'
-import InternalLink from '../InternalLink'
+import InternalLink from '../../elements/InternalLink'
 
 interface Props {
   siteTitle: string

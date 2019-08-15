@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Felix Leupold <felix@xiel.de>",
   "dependencies": {
+    "emotion-theming": "^10.0.14",
     "gatsby-plugin-react-svg": "^2.1.2"
   },
   "keywords": [

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, GatsbyLinkProps } from 'gatsby'
+import { GatsbyLinkProps, Link } from 'gatsby'
 import { PageContext } from '../Providers/PageContext'
 import { join } from 'path'
 
