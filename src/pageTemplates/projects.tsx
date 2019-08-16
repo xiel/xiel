@@ -12,7 +12,6 @@ import { useQueryState } from 'use-location-state'
 export default function Projects({ navigate }: PageProps) {
   const [count, setCount] = useQueryState('count', 0)
   const { t } = useTranslation()
-
   const { projects } = useStaticQuery<ProjectsQuery>(graphql`
     query Projects {
       projects: allProjectJson {
@@ -20,7 +19,6 @@ export default function Projects({ navigate }: PageProps) {
           node {
             title
             desc
-
             slug
             image {
               childImageSharp {
@@ -49,7 +47,7 @@ export default function Projects({ navigate }: PageProps) {
 
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {projects!.edges
-          .map(edge => edge.node)
+          .map((edge) => edge.node)
           .map((p, i) => (
             <ProjectTeaser
               key={p.slug + '-' + i}

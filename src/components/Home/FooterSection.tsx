@@ -13,7 +13,13 @@ export default function FooterSection(props: Props) {
     <>
       <GridRow>
         <GridItem>
-          <h4 className="label">{t('Footer.Title')}</h4>
+          <a href="#" download={true}>
+            Download CV
+          </a>
+
+          <button>Get in touch</button>
+
+          <h4>{t('Footer.Title')}</h4>
           <a href={`mailto:${t('Footer.Email')}`}>{t('Footer.Email')}</a>
         </GridItem>
       </GridRow>
@@ -22,6 +28,7 @@ export default function FooterSection(props: Props) {
           <ul
             css={css`
               display: inline-flex;
+              font-size: 0.5rem;
             `}
           >
             <li>

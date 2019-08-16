@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
 /*
@@ -29,7 +29,7 @@ export default function StageImage() {
           }
         }
       `}
-      render={data => (
+      render={(data) => (
         <Img fluid={data.placeholderImage.childImageSharp.fluid} />
       )}
     />

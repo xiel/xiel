@@ -9,10 +9,11 @@ interface Props {
   children: React.ReactNode
 }
 
+// matchMedia('(prefers-color-scheme: light)')
+
 const Layout = ({ children, ...props }: Props) => {
   return (
     <>
-      {/*<GridContext gap={32}>*/}
       <BasesStyles />
       <StaticQuery
         query={graphql`
@@ -24,7 +25,7 @@ const Layout = ({ children, ...props }: Props) => {
             }
           }
         `}
-        render={data => (
+        render={(data) => (
           <div {...props}>
             <Header siteTitle={data.site.siteMetadata.title} />
             <main>{children}</main>
@@ -33,7 +34,6 @@ const Layout = ({ children, ...props }: Props) => {
           </div>
         )}
       />
-      {/*</GridContext>*/}
     </>
   )
 }

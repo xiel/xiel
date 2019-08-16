@@ -9,7 +9,7 @@ export default function DevelopmentSection(props: Props) {
   return (
     <Section>
       <GridRow justify={'center'}>
-        <GridItem col={[12, 1 / 2]}>
+        <GridItem col={[12, 10]}>
           <header className="section__header">
             <h2>Modern Web Development</h2>
             <p>
@@ -21,7 +21,7 @@ export default function DevelopmentSection(props: Props) {
         </GridItem>
       </GridRow>
       <GridRow>
-        <GridItem col={[12, 1 / 3]}>
+        <GridItem col={[12]}>
           <h3>User Experience</h3>
           <p>
             Ich gestalte Produkte, die gut strukturiert, zugänglich und effektiv
@@ -30,7 +30,7 @@ export default function DevelopmentSection(props: Props) {
             Seite.
           </p>
         </GridItem>
-        <GridItem col={[12, 1 / 3]}>
+        <GridItem col={[12]}>
           <h3>Interface Design</h3>
           <p>
             Ansprechende und dennoch einfache Benutzerobflächen machen eine
@@ -38,7 +38,7 @@ export default function DevelopmentSection(props: Props) {
             funktionieren Sie zukunftssicher auf allen Plattformen.
           </p>
         </GridItem>
-        <GridItem col={[12, 1 / 3]}>
+        <GridItem col={[12]}>
           <h3>Development</h3>
           <p>
             Mit Hilfe modernster Technologien werden aus statischen Konzepten

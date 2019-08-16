@@ -36,14 +36,15 @@ export default function BaseStyles() {
         h1,
         h2,
         h3 {
-          font-family: 'Fira Code';
+          //font-family: 'Fira Code';
+          font-weight: 500;
         }
 
         body {
           position: relative;
           font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
           color: ${colorTextDefault};
-          background: #fff;
+          background: #111;
           font-size: 1rem;
           line-height: 1.4;
           font-weight: 200;
