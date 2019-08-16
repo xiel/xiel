@@ -6,7 +6,8 @@
   "author": "Felix Leupold <felix@xiel.de>",
   "dependencies": {
     "emotion-theming": "^10.0.14",
-    "gatsby-plugin-react-svg": "^2.1.2"
+    "gatsby-plugin-react-svg": "^2.1.2",
+    "react-spring": "^8.0.27"
   },
   "keywords": [
     "gatsby"
@@ -15,7 +16,7 @@
   "scripts": {
     "prebuild": "yarn gql-generate; yarn type-check",
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop --host 0.0.0.0",
     "gql-generate": "graphql-codegen --config graphql-codegen.yml",
     "gql-generate:watch": "yarn gql-generate --watch",
     "format": "prettier --write src/**/*.{js,jsx,json,ts,tsx}",
