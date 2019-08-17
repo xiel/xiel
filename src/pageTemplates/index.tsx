@@ -80,7 +80,8 @@ export default function Index(props: PageProps) {
               </div>
             </GridItem>
             <GridItem>
-              <Icon />
+              <Icon name={'tech-es5'} />
+              <Icon name={'tech-nodejs'} />
               <Button>Contact</Button>
               <Button primary>Contact</Button>
             </GridItem>

@@ -22,7 +22,7 @@ export default styled(Button)`
   border: 2px solid cyan;
 `
 
-function Button({ ...props }: Props & InnerButtonProps) {
+function Button({ primary: _, ...props }: Props & InnerButtonProps) {
   if ('to' in props) {
     return <InternalLink {...props} />
   }

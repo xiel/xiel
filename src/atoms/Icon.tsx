@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import loadable from '@loadable/component'
 
-interface Props {}
+interface Props {
+  name: string
+}
 
-export default function Icon(props: Props) {
-  const IconSVG = React.useMemo(
-    () => React.lazy(() => import('../assets/svg/icons/tech-es5.svg') as any),
-    []
+export default function Icon({ name }: Props) {
+  const IconSVG = useMemo(
+    () => loadable(() => import(`../assets/svg/icons/${name}.svg`)),
+    [name]
   )
 
   return <IconSVG />
