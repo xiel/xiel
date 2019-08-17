@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import Header from '../Header/Header'
 import BasesStyles from '../../styles/BaseStyles'
@@ -13,7 +13,7 @@ interface Props {
 
 const Layout = ({ children, ...props }: Props) => {
   return (
-    <>
+    <Suspense fallback={'loading'}>
       <BasesStyles />
       <StaticQuery
         query={graphql`
@@ -34,7 +34,7 @@ const Layout = ({ children, ...props }: Props) => {
           </div>
         )}
       />
-    </>
+    </Suspense>
   )
 }
 

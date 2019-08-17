@@ -2755,6 +2755,22 @@ export type StringQueryOperatorInput = {
   nin: Maybe<Array<Maybe<Scalars['String']>>>
   regex: Maybe<Scalars['String']>
 }
+export type Unnamed_1_QueryVariables = {}
+
+export type Unnamed_1_Query = { __typename?: 'Query' } & {
+  placeholderImage: Maybe<
+    { __typename?: 'File' } & {
+      childImageSharp: Maybe<
+        { __typename?: 'ImageSharp' } & {
+          fluid: Maybe<
+            { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
+          >
+        }
+      >
+    }
+  >
+}
+
 export type SiteTitleQueryQueryVariables = {}
 
 export type SiteTitleQueryQuery = { __typename?: 'Query' } & {
@@ -2777,22 +2793,6 @@ export type SeoQuery = { __typename?: 'Query' } & {
           SiteSiteMetadata,
           'title' | 'description' | 'author'
         >
-      >
-    }
-  >
-}
-
-export type Unnamed_1_QueryVariables = {}
-
-export type Unnamed_1_Query = { __typename?: 'Query' } & {
-  placeholderImage: Maybe<
-    { __typename?: 'File' } & {
-      childImageSharp: Maybe<
-        { __typename?: 'ImageSharp' } & {
-          fluid: Maybe<
-            { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
-          >
-        }
       >
     }
   >

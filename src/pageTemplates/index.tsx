@@ -10,6 +10,7 @@ import { css } from '@emotion/core'
 import { GridItem, GridRow } from '../components/Layout/Grid'
 import { colorTextBright } from '../styles/theme'
 import Button from '../atoms/Button'
+import Icon from '../atoms/Icon'
 
 export default function Index(props: PageProps) {
   const { t } = useTranslation()
@@ -79,6 +80,7 @@ export default function Index(props: PageProps) {
               </div>
             </GridItem>
             <GridItem>
+              <Icon />
               <Button>Contact</Button>
               <Button primary>Contact</Button>
             </GridItem>

@@ -1,5 +1,5 @@
 import i18n from './src/locales/i18n'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { PageContextProvider } from './src/Providers/PageContext'
 import { PageProps } from './src/types/PageProps'
 import { PageLocaleConfig } from './src/types/GlobalTypes'
@@ -13,5 +13,9 @@ export const wrapPageElement = ({
 }) => {
   i18n.changeLanguage(props.pageContext.lng)
 
-  return <PageContextProvider value={props.pageContext} children={element} />
+  return (
+    <Suspense fallback={'loading'}>
+      <PageContextProvider value={props.pageContext} children={element} />
+    </Suspense>
+  )
 }
