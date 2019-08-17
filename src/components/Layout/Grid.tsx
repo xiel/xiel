@@ -79,7 +79,9 @@ export function GridRow({
     align-items: ${align};
     justify-content: ${justify};
     flex: 1 0;
-    width: ${maxWidthVW}vw; // new
+    width: ${isInCol
+      ? 'auto'
+      : maxWidthVW + 'vw'}; // new (is to big when nested)
     max-width: ${maxWidth}px;
     margin: 0 ${isInCol ? gap / -2 + gapUnit : 'auto'};
   `
@@ -104,7 +106,7 @@ interface IGridItemProps extends IElementProps {
 }
 
 const breakpoints = [0, 576, 768, 992, 1200]
-const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
+const mq = breakpoints.map((bp) => `@media (min-width: ${bp}px)`)
 
 const calcColForMQ = (colValue: ColValue, availableCols: number) => {
   const colCount = colValue === 'auto' ? 0 : colValue

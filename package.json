@@ -40,7 +40,13 @@
     "url": "https://github.com/xiel/xiel/issues"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "react/self-closing-comp": "error"
+    }
   },
   "devDependencies": {
     "@emotion/core": "^10.0.14",
@@ -53,6 +59,8 @@
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "@types/react-helmet": "^5.0.8",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "gatsby": "^2.8.6",
     "gatsby-image": "^2.1.2",
     "gatsby-plugin-emotion": "^4.1.0",

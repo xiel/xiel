@@ -1,7 +1,7 @@
 import React from 'react'
 import Image, { FluidObject } from 'gatsby-image'
 import { css } from '@emotion/core'
-import InternalLink from '../elements/InternalLink'
+import InternalLink from '../atoms/InternalLink'
 
 interface Props {
   title?: string

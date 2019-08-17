@@ -19,7 +19,7 @@ export default function StageImage() {
       query={graphql`
         query {
           placeholderImage: file(
-            relativePath: { eq: "stage/felix-leupold-stage.jpg" }
+            relativePath: { eq: "stage/frontend-space.jpg" }
           ) {
             childImageSharp {
               fluid(maxHeight: 1600) {

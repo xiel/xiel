@@ -3,7 +3,8 @@ import { GatsbyLinkProps, Link } from 'gatsby'
 import { PageContext } from '../Providers/PageContext'
 import { join } from 'path'
 
-interface Props<TState> extends Omit<GatsbyLinkProps<any>, 'ref'> {
+export interface Props<TState = unknown>
+  extends Omit<GatsbyLinkProps<any>, 'ref'> {
   prependWithLng?: boolean
 }
 

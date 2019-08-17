@@ -8,7 +8,8 @@ import StageSection from '../components/Home/StageSection'
 import ClientsPartners from '../components/Home/ClientsPartners'
 import { css } from '@emotion/core'
 import { GridItem, GridRow } from '../components/Layout/Grid'
-import { colorTextBright, screenXs } from '../styles/theme'
+import { colorTextBright } from '../styles/theme'
+import Button from '../atoms/Button'
 
 export default function Index(props: PageProps) {
   const { t } = useTranslation()
@@ -25,42 +26,14 @@ export default function Index(props: PageProps) {
       >
         <GridItem col={[12, 12, 12, 10]}>
           <GridRow>
-            <GridItem
-              col={[8, 8, 5]}
-              css={css`
-                position: relative;
-                background: red;
-                padding-top: 2rem;
-                padding-bottom: 2rem;
-                transform: translateY(-50%);
-              `}
-            >
-              <svg
-                css={css`
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 10%;
-                  fill: red;
-                  transform: translateY(-99%) scaleX(-1);
-                `}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1024 72"
-                preserveAspectRatio="none"
-              >
-                <path fillRule="evenodd" d="M1024 0L0 72h1024z" />
-              </svg>
+            <GridItem col={[8, 8, 5]} css={css``}>
               <div
                 css={css`
-                  display: flex;
-                  align-items: center;
-                  position: relative;
-                  height: 100%;
-
-                  @media (max-width: ${screenXs}) {
-                    padding-bottom: 30%;
-                  }
+                  background: hsla(216, 32%, 9%, 0.9);
+                  padding: 1.5rem;
+                  border-radius: 0.5rem;
+                  transform: translateY(-50%);
+                  box-shadow: 0 1rem 2rem -0.5rem #000;
                 `}
               >
                 <div>
@@ -81,6 +54,8 @@ export default function Index(props: PageProps) {
                       {t('StageSection.Hello')}
                     </em>
                     {t('StageSection.Intro')}
+
+                    <code>ctrl + L</code>
                   </p>
                   <ul
                     css={css`
@@ -102,6 +77,10 @@ export default function Index(props: PageProps) {
                   </ul>
                 </div>
               </div>
+            </GridItem>
+            <GridItem>
+              <Button>Contact</Button>
+              <Button primary>Contact</Button>
             </GridItem>
           </GridRow>
         </GridItem>

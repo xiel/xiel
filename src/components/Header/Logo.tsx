@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import { VisuallyHidden } from '../../styles/mixins'
 import { screenXsMax } from '../../styles/theme'
-import InternalLink from '../../elements/InternalLink'
+import InternalLink from '../../atoms/InternalLink'
 
 interface Props {
   siteTitle: string
@@ -46,6 +46,10 @@ const logo = css`
     height: 100%;
   }
 
+  svg {
+    fill: #d2d2ce;
+  }
+
   path {
     transform-origin: 250px 250px 0px;
     transition: 0ms;
@@ -81,7 +85,7 @@ export default function Logo({ siteTitle }: Props) {
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        <g fill="#333" fillRule="evenodd">
+        <g fillRule="evenodd">
           <path d="M500 82V0h-82v41h41v41h41zm-41 377h-41v41h82v-82h-41v41zM0 418v82h82v-41H41v-41H0zM41 82V41h41V0H0v82h41z" />
           <path
             className="x"

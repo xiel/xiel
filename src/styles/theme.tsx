@@ -16,7 +16,7 @@ export const colorGrayLight = `lighten(#636462, 25)`
 export const colorGrayLighter = `lighten(#636462, 35)`
 export const colorGrayBright = `#ffffff`
 
-export const colorTextDefault = `#636462`
+export const colorTextDefault = `hsla(220, 5%, 50%, 1)`
 export const colorTextLight = `${colorGrayLight}`
 export const colorTextLighter = `${colorGrayLighter}`
 export const colorTextBright = `${colorGrayBright}`
