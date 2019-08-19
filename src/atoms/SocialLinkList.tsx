@@ -1,0 +1,50 @@
+import React from 'react'
+import { css } from '@emotion/core'
+import TextIcon from './TextIcon'
+
+interface Props {}
+
+const list = css`
+  display: inline-grid;
+  font-size: 1rem;
+  column-gap: 0.5em;
+
+  grid-auto-flow: column;
+`
+
+const link = css`
+  color: hsla(215, 25%, 50%, 0.9);
+  //color: hsla(50, 75%, 45%, 1);
+
+  &:hover,
+  &:focus {
+    color: hsla(215, 25%, 50%, 1);
+  }
+`
+
+export default function SocialLinkList(props: Props) {
+  return (
+    <ul css={list} {...props}>
+      <li>
+        <a href="http://twitter.com/xiel" css={link}>
+          <TextIcon name={'twitter'} title={'Twitter'} />
+        </a>
+      </li>
+      <li>
+        <a href="http://github.com/xiel" css={link}>
+          <TextIcon name={'github'} title={'Github'} />
+        </a>
+      </li>
+      <li>
+        <a href="https://dribbble.com/xiel" css={link}>
+          <TextIcon name={'dribbble'} title={'Dribbble'} />
+        </a>
+      </li>
+      <li>
+        <a href="http://instagram.com/xiel" css={link}>
+          <TextIcon name={'instagram'} title={'Instagram'} />
+        </a>
+      </li>
+    </ul>
+  )
+}

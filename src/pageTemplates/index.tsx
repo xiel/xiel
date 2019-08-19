@@ -10,7 +10,26 @@ import { css } from '@emotion/core'
 import { GridItem, GridRow } from '../components/Layout/Grid'
 import { colorTextBright } from '../styles/theme'
 import Button from '../atoms/Button'
-import Icon from '../atoms/Icon'
+import SocialLinkList from '../atoms/SocialLinkList'
+import Headline from '../atoms/Typo/Headline'
+
+const introBox = css`
+  position: relative;
+  background: hsla(216, 32%, 9%, 0.9);
+  background: linear-gradient(
+    to bottom,
+    hsla(314, 100%, 9%, 0.9),
+    hsla(205, 90%, 10%, 1)
+  );
+  margin-top: -20%;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1rem 2rem -0.5rem #000;
+`
+
+const introText = css`
+  color: hsla(0, 0%, 100%, 0.5);
+`
 
 export default function Index(props: PageProps) {
   const { t } = useTranslation()
@@ -19,6 +38,7 @@ export default function Index(props: PageProps) {
     <Layout>
       <SEO />
       <StageSection />
+
       <GridRow
         justify="center"
         css={css`
@@ -27,69 +47,35 @@ export default function Index(props: PageProps) {
       >
         <GridItem col={[12, 12, 12, 10]}>
           <GridRow>
-            <GridItem col={[8, 8, 5]} css={css``}>
-              <div
-                css={css`
-                  background: hsla(216, 32%, 9%, 0.9);
-                  padding: 1.5rem;
-                  border-radius: 0.5rem;
-                  transform: translateY(-50%);
-                  box-shadow: 0 1rem 2rem -0.5rem #000;
-                `}
-              >
+            <GridItem col={[8, 8, 5]}>
+              <div css={introBox}>
                 <div>
-                  <p>
-                    <em
-                      css={css`
-                        position: relative;
-                        display: block;
-                        margin: 0 0 0.33em;
-                        font-size: 2rem;
-                        line-height: 0.9;
-                        letter-spacing: -0.03em;
-                        font-weight: 500;
-                        color: ${colorTextBright};
-                        z-index: 1;
-                      `}
-                    >
-                      {t('StageSection.Hello')}
-                    </em>
-                    {t('StageSection.Intro')}
-
-                    <code>ctrl + L</code>
-                  </p>
-                  <ul
+                  <Headline>{t('StageSection.Hello')}</Headline>
+                  <p css={introText}>{t('StageSection.Intro')}</p>
+                  <SocialLinkList
                     css={css`
-                      display: inline-flex;
+                      margin-top: 1rem;
                     `}
-                  >
-                    <li>
-                      <a href="http://twitter.com/xiel">Twitter</a>
-                    </li>
-                    <li>
-                      <a href="http://github.com/xiel">Github</a>
-                    </li>
-                    <li>
-                      <a href="https://dribbble.com/xiel">Dribbble</a>
-                    </li>
-                    <li>
-                      <a href="http://instagram.com/xiel">Instagram</a>
-                    </li>
-                  </ul>
+                  ></SocialLinkList>
                 </div>
               </div>
             </GridItem>
             <GridItem>
-              <Icon name={'tech-es5'} />
-              <Icon name={'tech-nodejs'} />
-              <Button>Contact</Button>
-              <Button primary>Contact</Button>
+              {/*<nav>*/}
+              {/*  <ul>*/}
+              {/*    <li>Home</li>*/}
+              {/*    <li>Projects</li>*/}
+              {/*  </ul>*/}
+              {/*</nav>*/}
             </GridItem>
           </GridRow>
         </GridItem>
       </GridRow>
       <DevelopmentSection />
       <ClientsPartners />
+
+      <Button>Contact</Button>
+      <Button primary>Contact</Button>
 
       {/*<InternalLink to="/projects/">*/}
       {/*  {t('Page.Index.ProjectsCTALabel')}*/}

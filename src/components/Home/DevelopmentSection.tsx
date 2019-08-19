@@ -1,7 +1,9 @@
 import React from 'react'
 import Section from '../Layout/Section'
 import { GridItem, GridRow } from '../Layout/Grid'
-import IconES6 from '../../assets/svg/icons/tech-es5.svg'
+import Icon from '../../atoms/Icon'
+import TextIcon from '../../atoms/TextIcon'
+import { css } from '@emotion/core'
 
 interface Props {}
 
@@ -10,18 +12,16 @@ export default function DevelopmentSection(props: Props) {
     <Section>
       <GridRow justify={'center'}>
         <GridItem col={[12, 10]}>
-          <header className="section__header">
-            <h2>Modern Web Development</h2>
-            <p>
-              Leidenschaft für Design, Technologie und Innovation verbindet sich
-              in all meinen Projekten, die ich gerne von der ersten Idee bis zur
-              Veröffentlichung begleite.
-            </p>
-          </header>
+          <h2>Modern Web Development</h2>
+          <p>
+            Leidenschaft für Design, Technologie und Innovation verbindet sich
+            in all meinen Projekten, die ich gerne von der ersten Idee bis zur
+            Veröffentlichung begleite.
+          </p>
         </GridItem>
       </GridRow>
-      <GridRow>
-        <GridItem col={[12]}>
+      <GridRow justify={'center'}>
+        <GridItem col={[12, 10, 4]}>
           <h3>User Experience</h3>
           <p>
             Ich gestalte Produkte, die gut strukturiert, zugänglich und effektiv
@@ -30,7 +30,7 @@ export default function DevelopmentSection(props: Props) {
             Seite.
           </p>
         </GridItem>
-        <GridItem col={[12]}>
+        <GridItem col={[12, 10, 4]}>
           <h3>Interface Design</h3>
           <p>
             Ansprechende und dennoch einfache Benutzerobflächen machen eine
@@ -38,7 +38,7 @@ export default function DevelopmentSection(props: Props) {
             funktionieren Sie zukunftssicher auf allen Plattformen.
           </p>
         </GridItem>
-        <GridItem col={[12]}>
+        <GridItem col={[12, 10, 4]}>
           <h3>Development</h3>
           <p>
             Mit Hilfe modernster Technologien werden aus statischen Konzepten
@@ -61,7 +61,7 @@ export default function DevelopmentSection(props: Props) {
         className="dev-technologies rb-panel js-rb-live"
         data-module="panel"
       >
-        <GridRow>
+        <GridRow justify={'center'}>
           <GridItem>
             <h3>Technologien</h3>
             <p>
@@ -76,7 +76,7 @@ export default function DevelopmentSection(props: Props) {
             HTML5 & CSS3
           </GridItem>
           <GridItem col={2} component="li">
-            <IconES6 />
+            <Icon name={'tech-es5'} />
             JavaScript / ES6
           </GridItem>
           <GridItem col={2} component="li">
@@ -87,6 +87,7 @@ export default function DevelopmentSection(props: Props) {
           </GridItem>
           <GridItem col={2} component="li">
             NodeJS
+            <Icon name={'tech-nodejs'} />
           </GridItem>
           <GridItem col={2} component="li">
             Webpack / Jest

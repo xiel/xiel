@@ -5,6 +5,7 @@ import { colorTextDefault, contentContainerMax, screenSmMin } from './theme'
 import 'normalize.css'
 import './reset.css'
 import './fonts.css'
+import '../assets/fonts/Inter/inter.css'
 
 export default function BaseStyles() {
   return (

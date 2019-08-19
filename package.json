@@ -37,7 +37,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
+      "plugin:react-app/recommended",
       "plugin:prettier/recommended"
     ],
     "rules": {
@@ -63,6 +63,8 @@
     "emotion-theming": "^10.0.14",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react-app": "^6.0.1",
+    "eslint-config-react-app": "^5.0.1",
     "gatsby": "^2.8.6",
     "gatsby-image": "^2.1.2",
     "gatsby-plugin-emotion": "^4.1.0",
