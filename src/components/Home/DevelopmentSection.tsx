@@ -2,27 +2,39 @@ import React from 'react'
 import Section from '../Layout/Section'
 import { GridItem, GridRow } from '../Layout/Grid'
 import Icon from '../../atoms/Icon'
-import TextIcon from '../../atoms/TextIcon'
+import Headline from '../../atoms/Typo/Headline'
 import { css } from '@emotion/core'
 
 interface Props {}
+
+const teasterText = css`
+  line-height: 1.5;
+
+  p {
+    margin: 1.5em 0;
+  }
+`
 
 export default function DevelopmentSection(props: Props) {
   return (
     <Section>
       <GridRow justify={'center'}>
         <GridItem col={[12, 10]}>
-          <h2>Modern Web Development</h2>
-          <p>
-            Leidenschaft für Design, Technologie und Innovation verbindet sich
-            in all meinen Projekten, die ich gerne von der ersten Idee bis zur
-            Veröffentlichung begleite.
-          </p>
+          <Headline lvl="h2">Modern Web Development</Headline>
+          <div css={teasterText}>
+            <p>
+              Leidenschaft für Design, Technologie und Innovation verbindet sich
+              in all meinen Projekten, die ich gerne von der ersten Idee bis zur
+              Veröffentlichung begleite.
+            </p>
+          </div>
         </GridItem>
       </GridRow>
       <GridRow justify={'center'}>
         <GridItem col={[12, 10, 4]}>
-          <h3>User Experience</h3>
+          <Headline lvl="h3" line>
+            User Experience
+          </Headline>
           <p>
             Ich gestalte Produkte, die gut strukturiert, zugänglich und effektiv
             sind. Bei der Entwicklung von Ideen und Konzepten stehe ich mit
@@ -31,7 +43,9 @@ export default function DevelopmentSection(props: Props) {
           </p>
         </GridItem>
         <GridItem col={[12, 10, 4]}>
-          <h3>Interface Design</h3>
+          <Headline lvl="h3" line>
+            Interface Design
+          </Headline>
           <p>
             Ansprechende und dennoch einfache Benutzerobflächen machen eine
             Webseite oder App intuitiv zugänglich. Und durch Responsives Design
@@ -39,7 +53,9 @@ export default function DevelopmentSection(props: Props) {
           </p>
         </GridItem>
         <GridItem col={[12, 10, 4]}>
-          <h3>Development</h3>
+          <Headline lvl="h3" line>
+            Development
+          </Headline>
           <p>
             Mit Hilfe modernster Technologien werden aus statischen Konzepten
             und Screendesigns lebendige Webseiten & Apps für Smartphones,
@@ -63,7 +79,9 @@ export default function DevelopmentSection(props: Props) {
       >
         <GridRow justify={'center'}>
           <GridItem>
-            <h3>Technologien</h3>
+            <Headline lvl="h3" line>
+              Technologien
+            </Headline>
             <p>
               Ich bin auf die FrontEnd Entwicklung von Webseiten mit modernen
               Webstandards spezialisiert, dabei setze ich unter anderem folgende

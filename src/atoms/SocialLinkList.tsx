@@ -14,11 +14,11 @@ const list = css`
 
 const link = css`
   color: hsla(215, 25%, 50%, 0.9);
-  //color: hsla(50, 75%, 45%, 1);
+  transition: color 400ms;
 
   &:hover,
   &:focus {
-    color: hsla(215, 25%, 50%, 1);
+    color: hsla(215, 80%, 60%, 1);
   }
 `
 
