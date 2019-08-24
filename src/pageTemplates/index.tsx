@@ -8,7 +8,6 @@ import StageSection from '../components/Home/StageSection'
 import ClientsPartners from '../components/Home/ClientsPartners'
 import { css } from '@emotion/core'
 import { GridItem, GridRow } from '../components/Layout/Grid'
-import { colorTextBright } from '../styles/theme'
 import Button from '../atoms/Button'
 import SocialLinkList from '../atoms/SocialLinkList'
 import Headline from '../atoms/Typo/Headline'
@@ -56,17 +55,17 @@ export default function Index(props: PageProps) {
                     css={css`
                       margin-top: 1rem;
                     `}
-                  ></SocialLinkList>
+                  />
                 </div>
               </div>
             </GridItem>
             <GridItem>
-              {/*<nav>*/}
-              {/*  <ul>*/}
-              {/*    <li>Home</li>*/}
-              {/*    <li>Projects</li>*/}
-              {/*  </ul>*/}
-              {/*</nav>*/}
+              <nav>
+                <ul>
+                  <li>Home</li>
+                  <li>Projects</li>
+                </ul>
+              </nav>
             </GridItem>
           </GridRow>
         </GridItem>

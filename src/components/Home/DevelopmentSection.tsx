@@ -20,7 +20,9 @@ export default function DevelopmentSection(props: Props) {
     <Section>
       <GridRow justify={'center'}>
         <GridItem col={[12, 10]}>
-          <Headline lvl="h2">Modern Web Development</Headline>
+          <Headline lvl="h2" line>
+            Modern Web Development
+          </Headline>
           <div css={teaserText}>
             <p>
               Leidenschaft für Design, Technologie und Innovation verbindet sich

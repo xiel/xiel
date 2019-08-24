@@ -13,6 +13,8 @@ export function optionalChain(getValue: () => unknown) {
   let value
   try {
     value = getValue()
-  } catch (e) {}
+  } catch (e) {
+    return
+  }
   return value
 }

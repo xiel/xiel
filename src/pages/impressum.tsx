@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 
 import Layout from '../components/Layout/Layout'
@@ -47,8 +48,8 @@ export default function Impressum(props: Props) {
           <p>
             Diese Datenschutzerklärung klärt Nutzer über die Art, den Umfang und
             Zwecke der Erhebung und Verwendung personenbezogener Daten durch den
-            verantwortlichen Anbieter Felix Leupold (Siegfriedstr. 8, 12051
-            Berlin) auf dieser Website (im folgenden “Angebot”) auf.
+            verantwortlichen Anbieter Felix Leupold auf dieser Website (im
+            folgenden “Angebot”) auf.
           </p>
           <p>
             Die rechtlichen Grundlagen des Datenschutzes finden sich im

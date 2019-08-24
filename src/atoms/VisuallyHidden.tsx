@@ -4,5 +4,5 @@ import { visuallyHidden } from '../styles/mixins'
 interface Props {}
 
 export default function VisuallyHidden(props: Props) {
-  return <span css={visuallyHidden} {...props}></span>
+  return <span css={visuallyHidden} {...props} />
 }

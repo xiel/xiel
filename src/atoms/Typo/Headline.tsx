@@ -55,9 +55,6 @@ export default function Headline({
   const Component = component || lvl
 
   return (
-    <Component
-      css={[heading, level[lvl], line && lineStyle]}
-      {...restProps}
-    ></Component>
+    <Component css={[heading, level[lvl], line && lineStyle]} {...restProps} />
   )
 }

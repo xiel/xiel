@@ -1,21 +1,55 @@
 import React from 'react'
+import { GridItem, GridRow } from '../Layout/Grid'
+import Headline from '../../atoms/Typo/Headline'
+import Section from '../Layout/Section'
+import { css } from '@emotion/core'
 
 interface Props {}
 
+const teaserText = css`
+  line-height: 1.5;
+
+  p {
+    margin: 1.5em 0;
+  }
+`
+
 export default function ClientsPartners(props: Props) {
   return (
-    <div>
-      <h1>
-        <em>Who I work with</em>
-        Clients & Partners
-      </h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
-        consequuntur dicta eius enim eveniet excepturi fugit incidunt ipsum
-        libero magni minima necessitatibus repellat repudiandae, sequi sit
-        tenetur unde voluptatum. Tempore.
-      </p>
-      <div>Logos...</div>
-    </div>
+    <Section
+      css={css`
+        background: linear-gradient(to bottom, #110e15, #1f1e35);
+      `}
+    >
+      <GridRow justify={'center'}>
+        <GridItem col={[12, 10]}>
+          <GridRow>
+            <GridItem col={[12, 10, 1 / 2]}>
+              <Headline lvl="h2" line>
+                Clients & Partners
+              </Headline>
+
+              <Headline />
+              <GridItem />
+
+              <div css={teaserText}>
+                <p>
+                  In den vergangenen Jahren hatte ich die Ehre mit großartigen
+                  Teams an einem großen Spektrum von Projekten für die besten
+                  Kunden der Welt zu arbeiten. Von einnehmenden Touch-Interfaces
+                  bis zu komplexen FrontEnd-Anwendungen.
+                </p>
+                <ul>
+                  <li>
+                    Lufthansa, BCG, Aperto, Boffinhouse, ZDF, exozet, Daimler,
+                    EO
+                  </li>
+                </ul>
+              </div>
+            </GridItem>
+          </GridRow>
+        </GridItem>
+      </GridRow>
+    </Section>
   )
 }

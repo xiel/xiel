@@ -13,7 +13,7 @@ export default function FooterSection(props: Props) {
     <>
       <GridRow>
         <GridItem>
-          <a href="#" download={true}>
+          <a href="#" download>
             Download CV
           </a>
 

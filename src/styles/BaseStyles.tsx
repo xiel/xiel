@@ -31,10 +31,11 @@ const globalCss = css`
     position: relative;
     font-family: Inter, 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
     color: ${colorTextDefault};
+    color: hsla(253, 10%, 65%, 1);
     background: hsla(260, 20%, 7%, 1);
     font-size: 1rem;
     line-height: 1.4;
-    font-weight: 400;
+    font-weight: 300;
   }
 `
 

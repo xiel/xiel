@@ -16,7 +16,7 @@
     "gql-generate": "graphql-codegen --config graphql-codegen.yml",
     "gql-generate:watch": "yarn gql-generate --watch",
     "format": "prettier --write src/**/*.{js,jsx,json,ts,tsx}",
-    "start": "npm run develop",
+    "start": "yarn gql-generate; npm run develop",
     "serve": "gatsby serve",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "test": "react-scripts test",
@@ -35,18 +35,10 @@
   "bugs": {
     "url": "https://github.com/xiel/xiel/issues"
   },
-  "eslintConfig": {
-    "extends": [
-      "plugin:react-app/recommended",
-      "plugin:prettier/recommended"
-    ],
-    "rules": {
-      "react/self-closing-comp": "error"
-    }
-  },
   "devDependencies": {
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
+    "@graphql-codegen/add": "^1.6.1",
     "@graphql-codegen/cli": "^1.2.0",
     "@graphql-codegen/typescript-operations": "^1.2.0",
     "@loadable/babel-plugin": "^5.10.0",

@@ -1,3 +1,5 @@
+/* eslint-disable */
+// ⚠️ DO NOT EDIT ⚠️
 export type Maybe<T> = T | undefined
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -1784,13 +1786,13 @@ export type ProjectJsonSortInput = {
 
 export type Query = {
   __typename?: 'Query'
-  allDirectory: Maybe<DirectoryConnection>
-  allFile: Maybe<FileConnection>
-  allImageSharp: Maybe<ImageSharpConnection>
-  allProjectJson: Maybe<ProjectJsonConnection>
-  allSite: Maybe<SiteConnection>
-  allSitePage: Maybe<SitePageConnection>
-  allSitePlugin: Maybe<SitePluginConnection>
+  allDirectory: DirectoryConnection
+  allFile: FileConnection
+  allImageSharp: ImageSharpConnection
+  allProjectJson: ProjectJsonConnection
+  allSite: SiteConnection
+  allSitePage: SitePageConnection
+  allSitePlugin: SitePluginConnection
   directory: Maybe<Directory>
   file: Maybe<File>
   imageSharp: Maybe<ImageSharp>
@@ -2755,104 +2757,6 @@ export type StringQueryOperatorInput = {
   nin: Maybe<Array<Maybe<Scalars['String']>>>
   regex: Maybe<Scalars['String']>
 }
-export type Unnamed_1_QueryVariables = {}
-
-export type Unnamed_1_Query = { __typename?: 'Query' } & {
-  placeholderImage: Maybe<
-    { __typename?: 'File' } & {
-      childImageSharp: Maybe<
-        { __typename?: 'ImageSharp' } & {
-          fluid: Maybe<
-            { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
-          >
-        }
-      >
-    }
-  >
-}
-
-export type SiteTitleQueryQueryVariables = {}
-
-export type SiteTitleQueryQuery = { __typename?: 'Query' } & {
-  site: Maybe<
-    { __typename?: 'Site' } & {
-      siteMetadata: Maybe<
-        { __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'title'>
-      >
-    }
-  >
-}
-
-export type SeoQueryVariables = {}
-
-export type SeoQuery = { __typename?: 'Query' } & {
-  site: Maybe<
-    { __typename?: 'Site' } & {
-      siteMetadata: Maybe<
-        { __typename?: 'SiteSiteMetadata' } & Pick<
-          SiteSiteMetadata,
-          'title' | 'description' | 'author'
-        >
-      >
-    }
-  >
-}
-
-export type ProjectPageWithQueryVariables = {
-  slug: Scalars['String']
-}
-
-export type ProjectPageWithQuery = { __typename?: 'Query' } & {
-  projectJson: Maybe<
-    { __typename?: 'ProjectJson' } & Pick<ProjectJson, 'title' | 'desc'> & {
-        image: Maybe<
-          { __typename?: 'File' } & {
-            childImageSharp: Maybe<
-              { __typename?: 'ImageSharp' } & {
-                fluid: Maybe<
-                  {
-                    __typename?: 'ImageSharpFluid'
-                  } & GatsbyImageSharpFluidFragment
-                >
-              }
-            >
-          }
-        >
-      }
-  >
-}
-
-export type ProjectsQueryVariables = {}
-
-export type ProjectsQuery = { __typename?: 'Query' } & {
-  projects: Maybe<
-    { __typename?: 'ProjectJsonConnection' } & {
-      edges: Array<
-        { __typename?: 'ProjectJsonEdge' } & {
-          node: { __typename?: 'ProjectJson' } & Pick<
-            ProjectJson,
-            'title' | 'desc' | 'slug'
-          > & {
-              image: Maybe<
-                { __typename?: 'File' } & {
-                  childImageSharp: Maybe<
-                    { __typename?: 'ImageSharp' } & {
-                      fluid: Maybe<
-                        {
-                          __typename?: 'ImageSharpFluid'
-                        } & GatsbyImageSharpFluidFragment
-                      >
-                    }
-                  >
-                }
-              >
-            }
-        }
-      >
-    }
-  >
-}
-
 export type GatsbyImageSharpFixedFragment = {
   __typename?: 'ImageSharpFixed'
 } & Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>
@@ -3020,3 +2924,99 @@ export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = {
   ImageSharpSizes,
   'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
 >
+
+export type StageImageQueryVariables = {}
+
+export type StageImageQuery = { __typename?: 'Query' } & {
+  placeholderImage: Maybe<
+    { __typename?: 'File' } & {
+      childImageSharp: Maybe<
+        { __typename?: 'ImageSharp' } & {
+          fluid: Maybe<
+            { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
+          >
+        }
+      >
+    }
+  >
+}
+
+export type SiteTitleQueryQueryVariables = {}
+
+export type SiteTitleQueryQuery = { __typename?: 'Query' } & {
+  site: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'title'>
+      >
+    }
+  >
+}
+
+export type SeoQueryVariables = {}
+
+export type SeoQuery = { __typename?: 'Query' } & {
+  site: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<
+          SiteSiteMetadata,
+          'title' | 'description' | 'author'
+        >
+      >
+    }
+  >
+}
+
+export type ProjectPageWithQueryVariables = {
+  slug: Scalars['String']
+}
+
+export type ProjectPageWithQuery = { __typename?: 'Query' } & {
+  projectJson: Maybe<
+    { __typename?: 'ProjectJson' } & Pick<ProjectJson, 'title' | 'desc'> & {
+        image: Maybe<
+          { __typename?: 'File' } & {
+            childImageSharp: Maybe<
+              { __typename?: 'ImageSharp' } & {
+                fluid: Maybe<
+                  {
+                    __typename?: 'ImageSharpFluid'
+                  } & GatsbyImageSharpFluidFragment
+                >
+              }
+            >
+          }
+        >
+      }
+  >
+}
+
+export type ProjectsQueryVariables = {}
+
+export type ProjectsQuery = { __typename?: 'Query' } & {
+  projects: { __typename?: 'ProjectJsonConnection' } & {
+    edges: Array<
+      { __typename?: 'ProjectJsonEdge' } & {
+        node: { __typename?: 'ProjectJson' } & Pick<
+          ProjectJson,
+          'title' | 'desc' | 'slug'
+        > & {
+            image: Maybe<
+              { __typename?: 'File' } & {
+                childImageSharp: Maybe<
+                  { __typename?: 'ImageSharp' } & {
+                    fluid: Maybe<
+                      {
+                        __typename?: 'ImageSharpFluid'
+                      } & GatsbyImageSharpFluidFragment
+                    >
+                  }
+                >
+              }
+            >
+          }
+      }
+    >
+  }
+}

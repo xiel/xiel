@@ -12,5 +12,5 @@ const textIcon = css`
 interface Props extends IconProps {}
 
 export default function TextIcon(props: Props) {
-  return <Icon css={textIcon} {...props}></Icon>
+  return <Icon css={textIcon} {...props} />
 }

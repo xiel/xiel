@@ -10,7 +10,7 @@ function GridOverlay(props: Props) {
   const [showGrid, setShowGrid] = useState(
     () => sessionStorage.getItem('overlayActive') === 'true' || false
   )
-  const toggleGrid = () => setShowGrid(prev => !prev)
+  const toggleGrid = () => setShowGrid((prev) => !prev)
 
   useEffect(() => {
     const pressHandler = ({ key, ctrlKey }: KeyboardEvent) => {

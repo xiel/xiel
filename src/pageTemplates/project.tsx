@@ -46,10 +46,7 @@ export default function Project(
       </h1>
       <p>{desc}</p>
       {image && image.childImageSharp && image.childImageSharp.fluid && (
-        <Image
-          fluid={image.childImageSharp.fluid as FluidObject}
-          alt=""
-        ></Image>
+        <Image fluid={image.childImageSharp.fluid as FluidObject} alt="" />
       )}
       <Link to="/projects/">Back to all projects</Link>
     </Layout>

@@ -1,11 +1,11 @@
-import React from "react"
-import { RouteComponentProps } from "@reach/router"
+import React from 'react'
+import { RouteComponentProps } from '@reach/router'
 
 export interface PageProps<
   AdditionalContext = {},
   PageData = Record<string, unknown> | undefined
-> extends Omit<RouteComponentProps, "default"> {
-  "*"?: string
+> extends Omit<RouteComponentProps, 'default'> {
+  '*'?: string
   children: React.ReactNode
   data: PageData
   pageResources: PageResources
