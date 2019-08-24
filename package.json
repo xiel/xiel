@@ -84,5 +84,9 @@
     "ts-node": "^8.2.0",
     "typescript": "^3.5.3",
     "use-location-state": "2.1.5"
+  },
+  "resolutions": {
+    "eslint": "6.1.0",
+    "webpack": "4.39.1"
   }
 }
