@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, StaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
 /*
@@ -14,24 +14,16 @@ import Img from 'gatsby-image'
  */
 
 export default function StageImage() {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          placeholderImage: file(
-            relativePath: { eq: "stage/frontend-space.jpg" }
-          ) {
-            childImageSharp {
-              fluid(maxHeight: 1600) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+  const data = useStaticQuery(graphql`
+    query StageImage {
+      placeholderImage: file(relativePath: { eq: "stage/frontend-space.jpg" }) {
+        childImageSharp {
+          fluid(grayscale: true, maxWidth: 2560) {
+            ...GatsbyImageSharpFluid
           }
         }
-      `}
-      render={(data) => (
-        <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-      )}
-    />
-  )
+      }
+    }
+  `)
+  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
 }

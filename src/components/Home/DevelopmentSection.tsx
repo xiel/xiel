@@ -7,7 +7,7 @@ import { css } from '@emotion/core'
 
 interface Props {}
 
-const teasterText = css`
+const teaserText = css`
   line-height: 1.5;
 
   p {
@@ -21,7 +21,7 @@ export default function DevelopmentSection(props: Props) {
       <GridRow justify={'center'}>
         <GridItem col={[12, 10]}>
           <Headline lvl="h2">Modern Web Development</Headline>
-          <div css={teasterText}>
+          <div css={teaserText}>
             <p>
               Leidenschaft für Design, Technologie und Innovation verbindet sich
               in all meinen Projekten, die ich gerne von der ersten Idee bis zur
@@ -30,17 +30,20 @@ export default function DevelopmentSection(props: Props) {
           </div>
         </GridItem>
       </GridRow>
+
       <GridRow justify={'center'}>
         <GridItem col={[12, 10, 4]}>
           <Headline lvl="h3" line>
             User Experience
           </Headline>
-          <p>
-            Ich gestalte Produkte, die gut strukturiert, zugänglich und effektiv
-            sind. Bei der Entwicklung von Ideen und Konzepten stehe ich mit
-            meinen Erfahrungen zu bewährten und neuen Technologien beratend zur
-            Seite.
-          </p>
+          <div css={teaserText}>
+            <p>
+              Ich gestalte Produkte, die gut strukturiert, zugänglich und
+              effektiv sind. Bei der Entwicklung von Ideen und Konzepten stehe
+              ich mit meinen Erfahrungen zu bewährten und neuen Technologien
+              beratend zur Seite.
+            </p>
+          </div>
         </GridItem>
         <GridItem col={[12, 10, 4]}>
           <Headline lvl="h3" line>
