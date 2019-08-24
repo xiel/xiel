@@ -25,13 +25,9 @@ export default function ClientsPartners(props: Props) {
         <GridItem col={[12, 10]}>
           <GridRow>
             <GridItem col={[12, 10, 1 / 2]}>
-              <Headline lvl="h2" line>
+              <Headline level="h2" line>
                 Clients & Partners
               </Headline>
-
-              <Headline />
-              <GridItem />
-
               <div css={teaserText}>
                 <p>
                   In den vergangenen Jahren hatte ich die Ehre mit großartigen

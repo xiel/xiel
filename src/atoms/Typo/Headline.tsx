@@ -8,15 +8,15 @@ const heading = css`
   font-weight: 500;
 `
 
-const level = {
+const levelCSS = {
   h1: css`
     color: #fff;
     font-size: 2.2rem;
-    font-weight: 700;
+    font-weight: 600;
   `,
   h2: css`
     color: #fff;
-    font-size: 1.9rem;
+    font-size: 2rem;
   `,
   h3: css`
     color: #fff;
@@ -41,20 +41,23 @@ const lineStyle = css`
 `
 
 interface Props extends React.HTMLAttributes<unknown> {
-  lvl?: keyof typeof level
+  level?: keyof typeof levelCSS
   component?: React.ComponentType | React.ElementType
   line?: boolean
 }
 
 export default function Headline({
-  lvl = 'h1',
+  level = 'h1',
   component,
   line,
   ...restProps
 }: Props) {
-  const Component = component || lvl
+  const Component = component || level
 
   return (
-    <Component css={[heading, level[lvl], line && lineStyle]} {...restProps} />
+    <Component
+      css={[heading, levelCSS[level], line && lineStyle]}
+      {...restProps}
+    />
   )
 }

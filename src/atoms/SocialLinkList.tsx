@@ -6,7 +6,7 @@ interface Props {}
 
 const list = css`
   display: inline-grid;
-  font-size: 1rem;
+  font-size: 1.3rem;
   column-gap: 0.5em;
 
   grid-auto-flow: column;

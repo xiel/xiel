@@ -62,12 +62,14 @@ export function GridContext({ children, ...value }: IGridContextProps) {
 interface IGridRowProps extends IElementProps {
   justify?: 'flex-start' | 'center' | 'flex-end'
   align?: 'stretch' | 'center' | 'flex-start' | 'flex-end'
+  wrap?: 'wrap' | 'nowrap'
   component?: React.ElementType
 }
 
 export function GridRow({
   justify = 'flex-start',
   align = 'stretch',
+  wrap = 'wrap',
   component: Component = 'div',
   ...restProps
 }: IGridRowProps) {
@@ -78,6 +80,7 @@ export function GridRow({
     flex-wrap: wrap;
     align-items: ${align};
     justify-content: ${justify};
+    flex-wrap: ${wrap};
     flex: 1 0;
     width: ${isInCol
       ? 'auto'
@@ -144,7 +147,6 @@ export function GridItem({
   const getCSS = (col: number, mqIndex: number) => {
     if (col) {
       const colCSS = css`
-        flex: 0 1 auto;
         width: ${(col / columns) * maxWidthVW}vw;
         max-width: ${(col / columns) * maxWidth}px;
       `
@@ -163,6 +165,7 @@ export function GridItem({
   }
 
   const cssBase = css`
+    flex: 1 0 auto;
     min-height: 1px;
     padding: 0 ${gap / 2 + gapUnit};
   `
