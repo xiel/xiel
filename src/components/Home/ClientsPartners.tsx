@@ -19,6 +19,7 @@ export default function ClientsPartners(props: Props) {
     <Section
       css={css`
         background: linear-gradient(to bottom, #110e15, #1f1e35);
+        background: #26262c;
       `}
     >
       <GridRow justify={'center'}>

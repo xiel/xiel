@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Section from '../Layout/Section'
 import { GridItem, GridRow } from '../Layout/Grid'
 import Icon from '../../atoms/Icon'
@@ -18,6 +18,8 @@ const teaserText = css`
 const sectionCSS = css`
   background: #000;
   background: linear-gradient(to bottom right, #171e24, #220d25);
+  color: #000;
+  background: #eee;
 `
 
 const techTeaserCSS = css`
@@ -38,16 +40,18 @@ const iconCSS = css`
 `
 
 export default function Technologies(props: Props) {
-  useEffect(() => {
-    console.log(document.body.innerHTML.split('><'))
-  }, [])
-
   return (
     <Section css={sectionCSS}>
       <GridRow justify="center">
         <GridItem col={[12, 10]}>
-          <Headline level="h2" line>
-            Technologien
+          <Headline
+            level="h2"
+            css={css`
+              font-family: 'Fira Code', monospace;
+              color: #000;
+            `}
+          >
+            {`<Technologien />`}
           </Headline>
           <div css={teaserText}>
             <p>

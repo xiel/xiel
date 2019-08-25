@@ -43,10 +43,11 @@ export default function CorePrinciples(props: Props) {
           </Headline>
           <div css={teaserText}>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Asperiores blanditiis cupiditate debitis, deleniti dicta dolorem
-              ea enim est, excepturi fugit labore maxime molestiae officiis
-              perspiciatis praesentium quas quidem, totam voluptatum.
+              Our user-centric approach focuses on creating a seamless
+              experience across all digital touchpoints. By leveraging a
+              combination of open source software, 3rd-party solutions, and
+              proprietary tools, we deliver effective, sustainable, and
+              performant results that drive value.
             </p>
           </div>
         </GridItem>
