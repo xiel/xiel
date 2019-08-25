@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Section from '../Layout/Section'
 import { css } from '@emotion/core'
 import StageHero from './StageHero'
@@ -9,13 +9,16 @@ import SocialLinkList from '../../atoms/SocialLinkList'
 import { animated, useSpring } from 'react-spring'
 import { useTranslation } from 'react-i18next'
 
+const introBoxWrapper = css`
+  position: relative;
+`
+
 const introBox = css`
   position: relative;
   white-space: nowrap;
   z-index: 2;
   padding: 1.4rem 2rem;
   box-shadow: 0 1rem 2rem -0.5rem #000;
-  backface-visibility: hidden;
 
   @media (min-width: 500px) {
     position: absolute;
@@ -25,12 +28,18 @@ const introBox = css`
 `
 
 const introBoxBackground = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 1.6rem;
   background: linear-gradient(
     45deg,
     hsla(206, 37%, 25%, 0.75),
     hsla(206, 24%, 13%, 0.75)
   );
+  z-index: -1;
 `
 
 const introBoxInner = css`
@@ -61,7 +70,8 @@ const introTextCSS = css`
 `
 
 const introText = css`
-  color: hsla(0, 0%, 100%, 0.5);
+  margin: 0.125em 0 0;
+  color: hsla(215, 25%, 54%, 1);
 `
 
 const avatarCSS = css`
@@ -84,30 +94,26 @@ type XYS = [number, number, number]
 
 const initialXYS: XYS = [0, 0, 1]
 
-const calc = (x: number, y: number): XYS => [
-  -(y - window.innerHeight / 2) / 75,
-  (x - window.innerWidth / 2) / 75,
-  1.05,
+const calc = (x: number, y: number, scale: number = 1): XYS => [
+  -(y - window.innerHeight / 2) / 110,
+  (x - window.innerWidth / 2) / 110,
+  scale,
 ]
 
 const trans = (...[x, y, s]: XYS) =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
-const antiTrans = (...[x, y, s]: XYS) =>
-  `perspective(1200px) rotateX(${x * -1}deg) rotateY(${y * -1}deg) scale(${s})`
-
 export default function StageSection(props: Props) {
   const { t } = useTranslation()
+  const stopFn = useRef(() => {})
   const [cardSpring, setCardSpring] = useSpring(() => ({
     xys: initialXYS,
-    config: { mass: 2, tension: 200, friction: 40 },
+    config: { mass: 4, tension: 80, friction: 80 },
   }))
 
   useEffect(() => {
-    console.log('card effect')
     let count = 0
     const setCardSpringRandom = () => {
-      console.log('setCardSpringRandom')
       setCardSpring({
         xys: calc(
           window.innerHeight * Math.random(),
@@ -117,28 +123,24 @@ export default function StageSection(props: Props) {
     }
 
     const t = setInterval(() => {
-      console.log('interval', count)
       setCardSpringRandom()
       count++
-      if (count >= 5) {
-        clearInterval(t)
-        console.log('animation end')
-      }
+      count >= 20 && stopFn.current()
     }, 1000)
 
-    setCardSpringRandom()
+    requestAnimationFrame(() => setCardSpringRandom())
 
-    return () => clearInterval(t)
+    stopFn.current = () => {
+      clearInterval(t)
+      setCardSpring({ xys: [0, 0, 1] })
+    }
+
+    return () => stopFn.current()
   }, [setCardSpring])
 
-  // @ts-ignore
   return (
     <>
       <Section
-        onMouseMove={({ clientX: x, clientY: y }) =>
-          setCardSpring({ xys: calc(x, y) })
-        }
-        onMouseLeave={() => setCardSpring({ xys: [0, 0, 1] })}
         css={css`
           position: relative;
           overflow: hidden;
@@ -156,36 +158,33 @@ export default function StageSection(props: Props) {
         <GridItem col={[12, 12, 12]}>
           <GridRow>
             <GridItem col={[12]}>
-              <div
-                css={css`
-                  position: relative;
-                `}
-              >
-                <div>
+              <div css={introBoxWrapper}>
+                <div
+                  css={introBox}
+                  onMouseEnter={() => stopFn.current()}
+                  onMouseMove={({ clientX: x, clientY: y }) => {
+                    setCardSpring({ xys: calc(x, y) })
+                  }}
+                  onMouseLeave={() => setCardSpring({ xys: [0, 0, 1] })}
+                >
+                  <div css={introBoxInner}>
+                    <Portrait css={avatarCSS} />
+                    <div css={introTextCSS}>
+                      <Headline>{t('StageSection.Hello')}</Headline>
+                      <p css={introText}>{t('StageSection.Intro')}</p>
+                      <SocialLinkList
+                        css={css`
+                          margin-top: 1rem;
+                        `}
+                      />
+                    </div>
+                  </div>
                   <animated.div
-                    css={[introBox, introBoxBackground]}
+                    css={[introBoxBackground]}
                     style={{
                       transform: cardSpring.xys.interpolate(trans as any),
                     }}
-                  >
-                    <animated.div
-                      css={introBoxInner}
-                      style={{
-                        transform: cardSpring.xys.interpolate(antiTrans as any),
-                      }}
-                    >
-                      <Portrait css={avatarCSS} />
-                      <div css={introTextCSS}>
-                        <Headline>{t('StageSection.Hello')}</Headline>
-                        <p css={introText}>{t('StageSection.Intro')}</p>
-                        <SocialLinkList
-                          css={css`
-                            margin-top: 1rem;
-                          `}
-                        />
-                      </div>
-                    </animated.div>
-                  </animated.div>
+                  ></animated.div>
                 </div>
               </div>
             </GridItem>

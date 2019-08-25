@@ -5,6 +5,7 @@ import { css } from '@emotion/core'
 
 const sectionCSS = css`
   background: linear-gradient(to bottom, #111111, #1a242d);
+  background: linear-gradient(to bottom, #111111, hsla(264, 9%, 5%, 1));
 `
 
 interface Props {}

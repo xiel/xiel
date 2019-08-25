@@ -47,11 +47,12 @@ export default function Technologies(props: Props) {
           <Headline
             level="h2"
             css={css`
-              font-family: 'Fira Code', monospace;
+              //font-family: 'Fira Code', monospace;
               color: #000;
             `}
+            line
           >
-            {`<Technologien />`}
+            {`Technologien`}
           </Headline>
           <div css={teaserText}>
             <p>

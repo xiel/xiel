@@ -1,4 +1,6 @@
-export const marginDefault = `2rem`
+// object-style theme
+
+const theme = {}
 
 // Colors
 export const colorKey = `#a7a8a3`
