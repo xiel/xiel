@@ -1,15 +1,14 @@
-// object-style theme
-
-const theme = {}
+// generate type from itself
+export type Theme = typeof import('./theme')
 
 // Colors
 export const colorKey = `#a7a8a3`
 export const colorKeyCyan = `${colorKey}`
 export const colorKeyCyanDark = `darken(${colorKeyCyan}, 10)`
 
-export const colorRed = `#D0011B; //ux`
-export const colorGreen = `#81CF2A; //design`
-export const colorBlue = `#3C99C8; //tech`
+export const colorRed = `#D0011B` //ux
+export const colorGreen = `#81CF2A` //design
+export const colorBlue = `#3C99C8` //tech
 
 export const colorError = `#ED4321`
 

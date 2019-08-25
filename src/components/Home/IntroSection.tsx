@@ -2,10 +2,12 @@ import React from 'react'
 import Section from '../Layout/Section'
 import { GridItem, GridRow } from '../Layout/Grid'
 import { css } from '@emotion/core'
+import { Theme } from '../../styles/theme'
 
-const sectionCSS = css`
+const sectionCSS = (theme: Theme) => css`
   background: linear-gradient(to bottom, #111111, #1a242d);
   background: linear-gradient(to bottom, #111111, hsla(264, 9%, 5%, 1));
+  background: linear-gradient(to bottom, #111111, ${theme.colorBlue});
 `
 
 interface Props {}
@@ -16,8 +18,9 @@ export default function IntroSection(props: Props) {
       <GridRow justify={'center'}>
         <GridItem col={[12, 10]}>
           <p
-            css={css`
+            css={(theme) => css`
               color: #fff;
+              background: ${theme.colorKey};
               line-height: 1.5;
               font-size: 1.4rem;
             `}
