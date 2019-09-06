@@ -4,6 +4,7 @@ import { GridItem, GridRow } from '../Layout/Grid'
 import Headline from '../../atoms/Typo/Headline'
 import { css } from '@emotion/core'
 import Button from '../../atoms/Button'
+import { Theme } from '../../styles/theme'
 
 interface Props {}
 
@@ -15,9 +16,8 @@ const teaserText = css`
   }
 `
 
-const sectionCSS = css`
-  background: linear-gradient(to bottom right, #171e24, #220d25);
-  background: hsla(259, 10%, 11%, 1);
+const sectionCSS = (theme: Theme) => css`
+  //background: ${theme.background};
 `
 
 const teaserContainer = css`
@@ -43,11 +43,11 @@ export default function CorePrinciples(props: Props) {
           </Headline>
           <div css={teaserText}>
             <p>
-              Our user-centric approach focuses on creating a seamless
-              experience across all digital touchpoints. By leveraging a
-              combination of open source software, 3rd-party solutions, and
-              proprietary tools, we deliver effective, sustainable, and
-              performant results that drive value.
+              My user-centric approach focuses on creating a seamless experience
+              across all digital touchpoints. By leveraging a combination of
+              open source software, 3rd-party solutions, and proprietary tools,
+              I deliver effective, sustainable, and performant results that
+              drive value.
             </p>
           </div>
         </GridItem>

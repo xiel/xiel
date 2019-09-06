@@ -48,6 +48,7 @@ module.exports = {
       resolve: `gatsby-plugin-typescript`,
       options: {},
     },
+    'gatsby-plugin-typescript-checker',
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {

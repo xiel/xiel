@@ -1,12 +1,12 @@
 import React from 'react'
 import { css, Global } from '@emotion/core'
-import { colorTextDefault, contentContainerMax, screenSmMin } from './theme'
+import { Theme } from './theme'
 // normal stylesheets
 import 'normalize.css'
 import './reset.css'
 import './fonts.css'
 
-const globalCss = css`
+const globalCss = (theme: Theme) => css`
   * {
     &,
     &:before,
@@ -19,10 +19,13 @@ const globalCss = css`
     box-sizing: border-box;
     font-size: calc(
       100% + (20 - 16) *
-        ((100vw - ${screenSmMin}px) / (${contentContainerMax} - ${screenSmMin}))
+        (
+          (100vw - ${theme.screenSmMin}px) /
+            (${theme.contentContainerMax} - ${theme.screenSmMin})
+        )
     );
 
-    @media (min-width: ${contentContainerMax}px) {
+    @media (min-width: ${theme.contentContainerMax}px) {
       font-size: 125%;
     }
   }
@@ -30,12 +33,16 @@ const globalCss = css`
   body {
     position: relative;
     font-family: Inter, 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: ${colorTextDefault};
-    color: hsla(253, 10%, 65%, 1);
-    background: hsla(260, 20%, 7%, 1);
+    color: ${theme.secondaryLabel};
+    background: ${theme.background};
     font-size: 1rem;
     line-height: 1.4;
     font-weight: 300;
+  }
+
+  main {
+    overflow: hidden;
+    width: 100%;
   }
 `
 

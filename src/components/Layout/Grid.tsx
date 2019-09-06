@@ -166,7 +166,6 @@ export function GridItem({
 
   const cssBase = css`
     flex: 1 0 auto;
-    min-height: 1px;
     padding: 0 ${gap / 2 + gapUnit};
   `
 

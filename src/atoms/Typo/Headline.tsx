@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import { Theme } from '../../styles/theme'
 
 const heading = css`
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
@@ -9,16 +10,16 @@ const heading = css`
 `
 
 const levelCSS = {
-  h1: css`
+  h1: (theme: Theme) => css`
     color: #fff;
     font-size: 2.2rem;
     font-weight: 600;
   `,
-  h2: css`
+  h2: (theme: Theme) => css`
     color: #fff;
     font-size: 2rem;
   `,
-  h3: css`
+  h3: (theme: Theme) => css`
     color: #fff;
     font-size: 1.4rem;
   `,
@@ -30,7 +31,8 @@ const lineStyle = css`
     content: '';
     margin-bottom: 0.3em;
     width: 3em;
-    height: 2px;
+    height: 0.15em;
+    border-radius: 1em;
     background: hsla(257, 45%, 41%, 1);
     background: linear-gradient(
       to right,
@@ -53,10 +55,11 @@ export default function Headline({
   ...restProps
 }: Props) {
   const Component = component || level
+  const levelStyles = levelCSS[level]
 
   return (
     <Component
-      css={[heading, levelCSS[level], line && lineStyle]}
+      css={(theme) => [heading, levelStyles(theme), line && lineStyle]}
       {...restProps}
     />
   )

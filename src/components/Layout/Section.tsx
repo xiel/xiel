@@ -3,5 +3,5 @@ import styled from '@emotion/styled'
 export default styled.section`
   position: relative;
   width: 100%;
-  padding: 10vh 0;
+  padding: 8rem 0;
 `

@@ -1,9 +1,20 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import StageImage from './StageImage'
-import Triangle from '../../assets/svg/triangle.svg'
+import Triangle from '../../../assets/svg/triangle.svg'
+import { Theme } from '../../../styles/theme'
 
 interface Props {}
+
+const triangle = (theme: Theme) => css`
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 15%;
+  fill: ${theme.background};
+  transform: scaleX(-1);
+`
 
 export default function StageHero(props: Props) {
   return (
@@ -31,17 +42,7 @@ export default function StageHero(props: Props) {
           height: 100%;
         `}
       />
-      <Triangle
-        css={css`
-          position: absolute;
-          left: 0;
-          bottom: -1px;
-          width: 100%;
-          height: 10vh;
-          fill: #111;
-          transform: scaleX(-1);
-        `}
-      />
+      <Triangle css={triangle} />
     </div>
   )
 }
