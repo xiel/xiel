@@ -1,5 +1,16 @@
 import { css } from '@emotion/core'
 
+export const section = css`
+  position: relative;
+  overflow: hidden;
+  height: 30vh;
+
+  @media (min-width: 500px) {
+    height: 50vw;
+    max-height: calc(100vh - 50px);
+  }
+`
+
 export const introBoxWrapper = css`
   position: relative;
 `

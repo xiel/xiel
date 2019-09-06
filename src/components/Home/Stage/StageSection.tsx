@@ -10,6 +10,8 @@ import { animated, useSpring } from 'react-spring'
 import { useTranslation } from 'react-i18next'
 import * as c from './StageSection.css'
 import useElementSize from '../../../hooks/useElementSize'
+import { mapNumInRange } from '../../../helpers/mapInRange'
+import { throttle } from 'throttle-debounce'
 
 interface Props {}
 
@@ -17,9 +19,10 @@ type XYS = [number, number, number]
 
 const initialXYS: XYS = [0, 0, 1]
 
-const calc = (x: number, y: number, scale: number = 1): XYS => [
-  -(y - window.innerHeight / 2) / 100,
-  (x - window.innerWidth / 2) / 100,
+// map from 0..1 value to -maxDeg..maxDeg values
+const calc = (x: number, y: number, scale: number = 1, maxDeg = 4): XYS => [
+  mapNumInRange(y, 0, 1, maxDeg * -1, maxDeg) * -1,
+  mapNumInRange(x, 0, 1, maxDeg * -1, maxDeg),
   scale,
 ]
 
@@ -30,29 +33,28 @@ const trans = (...[x, y, s]: XYS) =>
 export default function StageSection(props: Props) {
   const { t } = useTranslation()
   const stopFn = useRef(() => {})
-  const { ref: introBoxRef, rect, pos } = useElementSize()
+  const { ref: introBoxRef, rect: introBoxRect } = useElementSize()
   const [cardSpring, setCardSpring] = useSpring(() => ({
     xys: initialXYS,
-    config: { mass: 4, tension: 80, friction: 10 },
+    config: { mass: 4, tension: 20, friction: 3 },
   }))
 
-  console.log('rect', rect)
-  console.log('pos', pos)
+  const moveMoveUpdate = throttle(
+    250,
+    ({ pageX, pageY }: { pageX: number; pageY: number }) => {
+      if (!introBoxRect) return
+      const boxX = (pageX - introBoxRect.pageX) / introBoxRect.offsetWidth
+      const boxY = (pageY - introBoxRect.pageY) / introBoxRect.offsetHeight
+      setCardSpring({ xys: calc(boxX, boxY) })
+    }
+  )
 
   useEffect(() => {
     let count = 0
     const setCardSpringRandom = () => {
-      console.log(
-        calc(
-          window.innerHeight * Math.random(),
-          window.innerWidth * Math.random()
-        )
-      )
+      const val = (Math.sin(performance.now()) + 1) / 2
       setCardSpring({
-        xys: calc(
-          window.innerHeight * Math.random(),
-          window.innerWidth * Math.random()
-        ),
+        xys: calc(val, val),
       })
     }
 
@@ -62,7 +64,7 @@ export default function StageSection(props: Props) {
       count >= 20 && stopFn.current()
     }, 3000)
 
-    requestAnimationFrame(() => setCardSpringRandom())
+    requestAnimationFrame(setCardSpringRandom)
 
     stopFn.current = () => {
       clearInterval(t)
@@ -74,18 +76,7 @@ export default function StageSection(props: Props) {
 
   return (
     <>
-      <Section
-        css={css`
-          position: relative;
-          overflow: hidden;
-          height: 30vh;
-
-          @media (min-width: 500px) {
-            height: 50vw;
-            max-height: calc(100vh - 50px);
-          }
-        `}
-      >
+      <Section css={c.section}>
         <StageHero />
       </Section>
       <GridRow justify="center">
@@ -97,10 +88,9 @@ export default function StageSection(props: Props) {
                   css={c.introBox}
                   ref={introBoxRef}
                   onMouseEnter={() => stopFn.current()}
-                  onMouseMove={({ clientX: x, clientY: y }) => {
-                    setCardSpring({ xys: calc(x, y) })
-                  }}
-                  onMouseLeave={() => setCardSpring({ xys: [0, 0, 1] })}
+                  onMouseMove={({ pageX, pageY }) =>
+                    moveMoveUpdate({ pageX, pageY })
+                  }
                 >
                   <div css={c.introBoxInner}>
                     <Portrait css={c.avatarCSS} />

@@ -3,40 +3,36 @@ import ResizeObserver from 'resize-observer-polyfill'
 import useLatest from './useLatest'
 
 interface Props {
-  domTarget?: Element | null
+  domTarget?: HTMLElement | null
 }
 
-export type ContentRect = Omit<DOMRectReadOnly, 'toJSON'>
+const initialPagePos = { pageX: 0, pageY: 0, offsetHeight: 0, offsetWidth: 0 }
+const initialRect = {
+  width: 0,
+  height: 0,
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
+  x: 0,
+  y: 0,
+
+  ...initialPagePos,
+}
 
 export default function useElementSize({ domTarget }: Props = {}) {
   const [ref, setRef] = useState(domTarget)
-  const [rect, set] = useState<ContentRect>({
-    width: 0,
-    height: 0,
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    x: 0,
-    y: 0,
-  })
+  const [rect, set] = useState(initialRect)
   const updatePosCallback = useLatest(() => {
-    if (!ref) return
+    if (!ref) return initialPagePos
     const boundingRect = ref.getBoundingClientRect()
-    const { top, left, width, height } = boundingRect
-
-    console.log(ref, Object.getOwnPropertyDescriptor(boundingRect, 'top'))
-
-    setPosition(() => ({
-      top,
-      left,
-      width,
-      height,
+    return {
+      offsetWidth: ref.offsetWidth,
+      offsetHeight: ref.offsetHeight,
       pageX: window.pageXOffset + boundingRect.left,
       pageY: window.pageYOffset + boundingRect.top,
-    }))
+    }
   })
-  const [position, setPosition] = useState<{ pageX: number; pageY: number }>()
 
   if (domTarget && ref !== domTarget) {
     setRef(domTarget)
@@ -46,10 +42,21 @@ export default function useElementSize({ domTarget }: Props = {}) {
     () =>
       new ResizeObserver((entries) => {
         const entry = entries[0]
-        if (entry) {
-          set(entry.contentRect)
-          updatePosCallback.current()
-        }
+        if (!entry) return
+        const contentRect = entry.contentRect
+        // top left -> relative to viewport
+        // page X / Y -> relative to document
+        set({
+          width: contentRect.width,
+          height: contentRect.height,
+          top: contentRect.top,
+          left: contentRect.left,
+          bottom: contentRect.bottom,
+          right: contentRect.right,
+          x: contentRect.x,
+          y: contentRect.y,
+          ...updatePosCallback.current(),
+        })
       }),
     [updatePosCallback]
   )
@@ -69,6 +76,5 @@ export default function useElementSize({ domTarget }: Props = {}) {
           )
       : setRef,
     rect,
-    position,
   }
 }

@@ -4,10 +4,7 @@
   "description": "Portfolio and Blog",
   "version": "0.1.0",
   "author": "Felix Leupold <felix@xiel.de>",
-  "dependencies": {
-    "gatsby-plugin-typescript-checker": "^1.1.1",
-    "resize-observer-polyfill": "^1.5.1"
-  },
+  "dependencies": {},
   "keywords": [
     "gatsby"
   ],
@@ -41,6 +38,10 @@
   "devDependencies": {
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
+    "gatsby-plugin-typescript-checker": "^1.1.1",
+    "resize-observer-polyfill": "^1.5.1",
+    "@types/throttle-debounce": "^2.1.0",
+    "throttle-debounce": "^2.1.0",
     "@graphql-codegen/add": "^1.6.1",
     "@graphql-codegen/cli": "^1.2.0",
     "@graphql-codegen/typescript-operations": "^1.2.0",
