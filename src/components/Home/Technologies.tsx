@@ -65,8 +65,8 @@ export default function Technologies(props: Props) {
       </GridRow>
       <GridRow justify="center" component="ul">
         <GridItem col={[6, 6, 2]} component="li" css={techTeaserCSS}>
-          <Icon name={'tech-es5'} css={iconCSS} />
-          <h5 css={techLabel}>JavaScript / ES6</h5>
+          <Icon name={'tech-typescript'} css={iconCSS} />
+          <h5 css={techLabel}>TypeScript / ES6</h5>
         </GridItem>
         <GridItem col={[6, 6, 2]} component="li" css={techTeaserCSS}>
           <Icon name={'tech-react'} css={iconCSS} />
