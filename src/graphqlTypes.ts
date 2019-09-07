@@ -34,7 +34,7 @@ export type DateQueryOperatorInput = {
 };
 
 export type Directory = Node & {
-  __typename?: 'Directory',
+   __typename?: 'Directory',
   absolutePath: Maybe<Scalars['String']>,
   accessTime: Maybe<Scalars['Date']>,
   atime: Maybe<Scalars['Date']>,
@@ -139,7 +139,7 @@ export type DirectoryMtimeArgs = {
 };
 
 export type DirectoryConnection = {
-  __typename?: 'DirectoryConnection',
+   __typename?: 'DirectoryConnection',
   distinct: Array<Scalars['String']>,
   edges: Array<DirectoryEdge>,
   group: Array<DirectoryGroupConnection>,
@@ -161,7 +161,7 @@ export type DirectoryConnectionGroupArgs = {
 };
 
 export type DirectoryEdge = {
-  __typename?: 'DirectoryEdge',
+   __typename?: 'DirectoryEdge',
   next: Maybe<Directory>,
   node: Directory,
   previous: Maybe<Directory>,
@@ -330,7 +330,7 @@ export type DirectoryFilterInput = {
 };
 
 export type DirectoryGroupConnection = {
-  __typename?: 'DirectoryGroupConnection',
+   __typename?: 'DirectoryGroupConnection',
   edges: Array<DirectoryEdge>,
   field: Scalars['String'],
   fieldValue: Maybe<Scalars['String']>,
@@ -351,7 +351,7 @@ export type DuotoneGradient = {
 };
 
 export type File = Node & {
-  __typename?: 'File',
+   __typename?: 'File',
   absolutePath: Maybe<Scalars['String']>,
   accessTime: Maybe<Scalars['Date']>,
   atime: Maybe<Scalars['Date']>,
@@ -452,7 +452,7 @@ export type FileMtimeArgs = {
 };
 
 export type FileConnection = {
-  __typename?: 'FileConnection',
+   __typename?: 'FileConnection',
   distinct: Array<Scalars['String']>,
   edges: Array<FileEdge>,
   group: Array<FileGroupConnection>,
@@ -474,7 +474,7 @@ export type FileConnectionGroupArgs = {
 };
 
 export type FileEdge = {
-  __typename?: 'FileEdge',
+   __typename?: 'FileEdge',
   next: Maybe<File>,
   node: File,
   previous: Maybe<File>,
@@ -838,7 +838,7 @@ export type FileFilterInput = {
 };
 
 export type FileGroupConnection = {
-  __typename?: 'FileGroupConnection',
+   __typename?: 'FileGroupConnection',
   edges: Array<FileEdge>,
   field: Scalars['String'],
   fieldValue: Maybe<Scalars['String']>,
@@ -891,7 +891,7 @@ export enum ImageFormat {
 }
 
 export type ImageSharp = Node & {
-  __typename?: 'ImageSharp',
+   __typename?: 'ImageSharp',
   children: Array<Node>,
   fixed: Maybe<ImageSharpFixed>,
   fluid: Maybe<ImageSharpFluid>,
@@ -1009,7 +1009,7 @@ export type ImageSharpSizesArgs = {
 };
 
 export type ImageSharpConnection = {
-  __typename?: 'ImageSharpConnection',
+   __typename?: 'ImageSharpConnection',
   distinct: Array<Scalars['String']>,
   edges: Array<ImageSharpEdge>,
   group: Array<ImageSharpGroupConnection>,
@@ -1031,7 +1031,7 @@ export type ImageSharpConnectionGroupArgs = {
 };
 
 export type ImageSharpEdge = {
-  __typename?: 'ImageSharpEdge',
+   __typename?: 'ImageSharpEdge',
   next: Maybe<ImageSharp>,
   node: ImageSharp,
   previous: Maybe<ImageSharp>,
@@ -1193,7 +1193,7 @@ export type ImageSharpFilterInput = {
 };
 
 export type ImageSharpFixed = {
-  __typename?: 'ImageSharpFixed',
+   __typename?: 'ImageSharpFixed',
   aspectRatio: Maybe<Scalars['Float']>,
   base64: Maybe<Scalars['String']>,
   height: Maybe<Scalars['Float']>,
@@ -1220,7 +1220,7 @@ export type ImageSharpFixedFilterInput = {
 };
 
 export type ImageSharpFluid = {
-  __typename?: 'ImageSharpFluid',
+   __typename?: 'ImageSharpFluid',
   aspectRatio: Maybe<Scalars['Float']>,
   base64: Maybe<Scalars['String']>,
   originalImg: Maybe<Scalars['String']>,
@@ -1251,7 +1251,7 @@ export type ImageSharpFluidFilterInput = {
 };
 
 export type ImageSharpGroupConnection = {
-  __typename?: 'ImageSharpGroupConnection',
+   __typename?: 'ImageSharpGroupConnection',
   edges: Array<ImageSharpEdge>,
   field: Scalars['String'],
   fieldValue: Maybe<Scalars['String']>,
@@ -1261,7 +1261,7 @@ export type ImageSharpGroupConnection = {
 };
 
 export type ImageSharpOriginal = {
-  __typename?: 'ImageSharpOriginal',
+   __typename?: 'ImageSharpOriginal',
   height: Maybe<Scalars['Float']>,
   src: Maybe<Scalars['String']>,
   width: Maybe<Scalars['Float']>,
@@ -1274,7 +1274,7 @@ export type ImageSharpOriginalFilterInput = {
 };
 
 export type ImageSharpResize = {
-  __typename?: 'ImageSharpResize',
+   __typename?: 'ImageSharpResize',
   aspectRatio: Maybe<Scalars['Float']>,
   height: Maybe<Scalars['Int']>,
   originalName: Maybe<Scalars['String']>,
@@ -1293,7 +1293,7 @@ export type ImageSharpResizeFilterInput = {
 };
 
 export type ImageSharpResolutions = {
-  __typename?: 'ImageSharpResolutions',
+   __typename?: 'ImageSharpResolutions',
   aspectRatio: Maybe<Scalars['Float']>,
   base64: Maybe<Scalars['String']>,
   height: Maybe<Scalars['Float']>,
@@ -1320,7 +1320,7 @@ export type ImageSharpResolutionsFilterInput = {
 };
 
 export type ImageSharpSizes = {
-  __typename?: 'ImageSharpSizes',
+   __typename?: 'ImageSharpSizes',
   aspectRatio: Maybe<Scalars['Float']>,
   base64: Maybe<Scalars['String']>,
   originalImg: Maybe<Scalars['String']>,
@@ -1356,7 +1356,7 @@ export type ImageSharpSortInput = {
 };
 
 export type Internal = {
-  __typename?: 'Internal',
+   __typename?: 'Internal',
   content: Maybe<Scalars['String']>,
   contentDigest: Scalars['String'],
   description: Maybe<Scalars['String']>,
@@ -1410,7 +1410,7 @@ export type NodeFilterListInput = {
 };
 
 export type PageInfo = {
-  __typename?: 'PageInfo',
+   __typename?: 'PageInfo',
   currentPage: Scalars['Int'],
   hasNextPage: Scalars['Boolean'],
   hasPreviousPage: Scalars['Boolean'],
@@ -1441,7 +1441,7 @@ export enum PotraceTurnPolicy {
 }
 
 export type ProjectJson = Node & {
-  __typename?: 'ProjectJson',
+   __typename?: 'ProjectJson',
   children: Array<Node>,
   desc: Maybe<Scalars['String']>,
   id: Scalars['ID'],
@@ -1454,7 +1454,7 @@ export type ProjectJson = Node & {
 };
 
 export type ProjectJsonConnection = {
-  __typename?: 'ProjectJsonConnection',
+   __typename?: 'ProjectJsonConnection',
   distinct: Array<Scalars['String']>,
   edges: Array<ProjectJsonEdge>,
   group: Array<ProjectJsonGroupConnection>,
@@ -1476,7 +1476,7 @@ export type ProjectJsonConnectionGroupArgs = {
 };
 
 export type ProjectJsonEdge = {
-  __typename?: 'ProjectJsonEdge',
+   __typename?: 'ProjectJsonEdge',
   next: Maybe<ProjectJson>,
   node: ProjectJson,
   previous: Maybe<ProjectJson>,
@@ -1789,7 +1789,7 @@ export type ProjectJsonFilterListInput = {
 };
 
 export type ProjectJsonGroupConnection = {
-  __typename?: 'ProjectJsonGroupConnection',
+   __typename?: 'ProjectJsonGroupConnection',
   edges: Array<ProjectJsonEdge>,
   field: Scalars['String'],
   fieldValue: Maybe<Scalars['String']>,
@@ -1799,7 +1799,7 @@ export type ProjectJsonGroupConnection = {
 };
 
 export type ProjectJsonLink = {
-  __typename?: 'ProjectJsonLink',
+   __typename?: 'ProjectJsonLink',
   href: Maybe<Scalars['String']>,
   label: Maybe<Scalars['String']>,
 };
@@ -1815,7 +1815,7 @@ export type ProjectJsonSortInput = {
 };
 
 export type Query = {
-  __typename?: 'Query',
+   __typename?: 'Query',
   allDirectory: DirectoryConnection,
   allFile: FileConnection,
   allImageSharp: ImageSharpConnection,
@@ -2049,7 +2049,7 @@ export type QuerySitePluginArgs = {
 };
 
 export type Site = Node & {
-  __typename?: 'Site',
+   __typename?: 'Site',
   buildTime: Maybe<Scalars['Date']>,
   children: Array<Node>,
   host: Maybe<Scalars['String']>,
@@ -2071,7 +2071,7 @@ export type SiteBuildTimeArgs = {
 };
 
 export type SiteConnection = {
-  __typename?: 'SiteConnection',
+   __typename?: 'SiteConnection',
   distinct: Array<Scalars['String']>,
   edges: Array<SiteEdge>,
   group: Array<SiteGroupConnection>,
@@ -2093,7 +2093,7 @@ export type SiteConnectionGroupArgs = {
 };
 
 export type SiteEdge = {
-  __typename?: 'SiteEdge',
+   __typename?: 'SiteEdge',
   next: Maybe<Site>,
   node: Site,
   previous: Maybe<Site>,
@@ -2210,7 +2210,7 @@ export type SiteFilterInput = {
 };
 
 export type SiteGroupConnection = {
-  __typename?: 'SiteGroupConnection',
+   __typename?: 'SiteGroupConnection',
   edges: Array<SiteEdge>,
   field: Scalars['String'],
   fieldValue: Maybe<Scalars['String']>,
@@ -2220,7 +2220,7 @@ export type SiteGroupConnection = {
 };
 
 export type SitePage = Node & {
-  __typename?: 'SitePage',
+   __typename?: 'SitePage',
   children: Array<Node>,
   component: Maybe<Scalars['String']>,
   componentChunkName: Maybe<Scalars['String']>,
@@ -2237,7 +2237,7 @@ export type SitePage = Node & {
 };
 
 export type SitePageConnection = {
-  __typename?: 'SitePageConnection',
+   __typename?: 'SitePageConnection',
   distinct: Array<Scalars['String']>,
   edges: Array<SitePageEdge>,
   group: Array<SitePageGroupConnection>,
@@ -2259,7 +2259,7 @@ export type SitePageConnectionGroupArgs = {
 };
 
 export type SitePageContext = {
-  __typename?: 'SitePageContext',
+   __typename?: 'SitePageContext',
   lng: Maybe<Scalars['String']>,
   lngBasePath: Maybe<Scalars['String']>,
   slug: Maybe<Scalars['String']>,
@@ -2272,7 +2272,7 @@ export type SitePageContextFilterInput = {
 };
 
 export type SitePageEdge = {
-  __typename?: 'SitePageEdge',
+   __typename?: 'SitePageEdge',
   next: Maybe<SitePage>,
   node: SitePage,
   previous: Maybe<SitePage>,
@@ -2465,7 +2465,7 @@ export type SitePageFilterInput = {
 };
 
 export type SitePageGroupConnection = {
-  __typename?: 'SitePageGroupConnection',
+   __typename?: 'SitePageGroupConnection',
   edges: Array<SitePageEdge>,
   field: Scalars['String'],
   fieldValue: Maybe<Scalars['String']>,
@@ -2480,7 +2480,7 @@ export type SitePageSortInput = {
 };
 
 export type SitePlugin = Node & {
-  __typename?: 'SitePlugin',
+   __typename?: 'SitePlugin',
   browserAPIs: Maybe<Array<Maybe<Scalars['String']>>>,
   children: Array<Node>,
   id: Scalars['ID'],
@@ -2497,7 +2497,7 @@ export type SitePlugin = Node & {
 };
 
 export type SitePluginConnection = {
-  __typename?: 'SitePluginConnection',
+   __typename?: 'SitePluginConnection',
   distinct: Array<Scalars['String']>,
   edges: Array<SitePluginEdge>,
   group: Array<SitePluginGroupConnection>,
@@ -2519,7 +2519,7 @@ export type SitePluginConnectionGroupArgs = {
 };
 
 export type SitePluginEdge = {
-  __typename?: 'SitePluginEdge',
+   __typename?: 'SitePluginEdge',
   next: Maybe<SitePlugin>,
   node: SitePlugin,
   previous: Maybe<SitePlugin>,
@@ -2664,7 +2664,7 @@ export type SitePluginFilterInput = {
 };
 
 export type SitePluginGroupConnection = {
-  __typename?: 'SitePluginGroupConnection',
+   __typename?: 'SitePluginGroupConnection',
   edges: Array<SitePluginEdge>,
   field: Scalars['String'],
   fieldValue: Maybe<Scalars['String']>,
@@ -2674,7 +2674,7 @@ export type SitePluginGroupConnection = {
 };
 
 export type SitePluginPackageJson = {
-  __typename?: 'SitePluginPackageJson',
+   __typename?: 'SitePluginPackageJson',
   author: Maybe<Scalars['String']>,
   dependencies: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>,
   description: Maybe<Scalars['String']>,
@@ -2688,7 +2688,7 @@ export type SitePluginPackageJson = {
 };
 
 export type SitePluginPackageJsonDependencies = {
-  __typename?: 'SitePluginPackageJsonDependencies',
+   __typename?: 'SitePluginPackageJsonDependencies',
   name: Maybe<Scalars['String']>,
   version: Maybe<Scalars['String']>,
 };
@@ -2703,7 +2703,7 @@ export type SitePluginPackageJsonDependenciesFilterListInput = {
 };
 
 export type SitePluginPackageJsonDevDependencies = {
-  __typename?: 'SitePluginPackageJsonDevDependencies',
+   __typename?: 'SitePluginPackageJsonDevDependencies',
   name: Maybe<Scalars['String']>,
   version: Maybe<Scalars['String']>,
 };
@@ -2731,7 +2731,7 @@ export type SitePluginPackageJsonFilterInput = {
 };
 
 export type SitePluginPackageJsonPeerDependencies = {
-  __typename?: 'SitePluginPackageJsonPeerDependencies',
+   __typename?: 'SitePluginPackageJsonPeerDependencies',
   name: Maybe<Scalars['String']>,
   version: Maybe<Scalars['String']>,
 };
@@ -2746,7 +2746,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
-  __typename?: 'SitePluginPluginOptions',
+   __typename?: 'SitePluginPluginOptions',
   background_color: Maybe<Scalars['String']>,
   display: Maybe<Scalars['String']>,
   icon: Maybe<Scalars['String']>,
@@ -2778,7 +2778,7 @@ export type SitePluginSortInput = {
 };
 
 export type SiteSiteMetadata = {
-  __typename?: 'SiteSiteMetadata',
+   __typename?: 'SiteSiteMetadata',
   author: Maybe<Scalars['String']>,
   description: Maybe<Scalars['String']>,
   title: Maybe<Scalars['String']>,
