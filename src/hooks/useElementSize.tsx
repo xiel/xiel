@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
 import useLatest from './useLatest'
+import { debounce } from 'throttle-debounce'
 
 interface Props {
   domTarget?: HTMLElement | null
@@ -22,7 +23,7 @@ const initialRect = {
 
 export default function useElementSize({ domTarget }: Props = {}) {
   const [ref, setRef] = useState(domTarget)
-  const [rect, set] = useState(initialRect)
+  const [rect, setRect] = useState(initialRect)
   const updatePosCallback = useLatest(() => {
     if (!ref) return initialPagePos
     const boundingRect = ref.getBoundingClientRect()
@@ -46,7 +47,7 @@ export default function useElementSize({ domTarget }: Props = {}) {
         const contentRect = entry.contentRect
         // top left -> relative to viewport
         // page X / Y -> relative to document
-        set({
+        setRect({
           width: contentRect.width,
           height: contentRect.height,
           top: contentRect.top,
@@ -60,6 +61,17 @@ export default function useElementSize({ domTarget }: Props = {}) {
       }),
     [updatePosCallback]
   )
+
+  useEffect(() => {
+    const resizeHandler = debounce(100, () => {
+      setRect((currRect) => ({
+        ...currRect,
+        ...updatePosCallback.current(),
+      }))
+    })
+    window.addEventListener('resize', resizeHandler)
+    return () => window.removeEventListener('resize', resizeHandler)
+  }, [])
 
   useEffect(() => {
     if (!ref) return

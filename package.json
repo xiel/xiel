@@ -4,10 +4,7 @@
   "description": "Portfolio and Blog",
   "version": "0.1.0",
   "author": "Felix Leupold <felix@xiel.de>",
-  "dependencies": {
-    "eslint": "6.3.0",
-    "webpack": "4.39.3"
-  },
+  "dependencies": {},
   "keywords": [
     "gatsby"
   ],
@@ -58,7 +55,7 @@
     "@types/throttle-debounce": "^2.1.0",
     "emotion-theming": "^10.0.14",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-config-react-app": "^5.0.1",
+    "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react-app": "^6.0.1",
     "gatsby": "^2.8.6",
@@ -94,6 +91,7 @@
   },
   "resolutions": {
     "eslint": "6.1.0",
+    "babel-eslint": "10.0.2",
     "webpack": "4.39.1"
   }
 }
