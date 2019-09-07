@@ -26,22 +26,22 @@ export default function SocialLinkList(props: Props) {
   return (
     <ul css={list} {...props}>
       <li>
-        <a href="http://twitter.com/xiel" css={link}>
+        <a href="http://twitter.com/xiel" css={link} target="_blank">
           <TextIcon name={'twitter'} title={'Twitter'} />
         </a>
       </li>
       <li>
-        <a href="http://github.com/xiel" css={link}>
+        <a href="http://github.com/xiel" css={link} target="_blank">
           <TextIcon name={'github'} title={'Github'} />
         </a>
       </li>
       <li>
-        <a href="https://dribbble.com/xiel" css={link}>
+        <a href="https://dribbble.com/xiel" css={link} target="_blank">
           <TextIcon name={'dribbble'} title={'Dribbble'} />
         </a>
       </li>
       <li>
-        <a href="http://instagram.com/xiel" css={link}>
+        <a href="http://instagram.com/xiel" css={link} target="_blank">
           <TextIcon name={'instagram'} title={'Instagram'} />
         </a>
       </li>

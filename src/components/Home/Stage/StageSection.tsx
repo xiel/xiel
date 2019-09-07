@@ -62,7 +62,7 @@ export default function StageSection(props: Props) {
       setCardSpringRandom()
       count++
       count >= 20 && stopFn.current()
-    }, 3000)
+    }, 1000)
 
     requestAnimationFrame(setCardSpringRandom)
 
@@ -80,40 +80,36 @@ export default function StageSection(props: Props) {
         <StageHero />
       </Section>
       <GridRow justify="center">
-        <GridItem col={[12, 12, 12]}>
-          <GridRow>
-            <GridItem col={[12]}>
-              <div css={c.introBoxWrapper}>
-                <div
-                  css={c.introBox}
-                  ref={introBoxRef}
-                  onMouseEnter={() => stopFn.current()}
-                  onMouseMove={({ pageX, pageY }) =>
-                    moveMoveUpdate({ pageX, pageY })
-                  }
-                >
-                  <div css={c.introBoxInner}>
-                    <Portrait css={c.avatarCSS} />
-                    <div css={c.introTextCSS}>
-                      <Headline>{t('StageSection.Hello')}</Headline>
-                      <p css={c.introText}>{t('StageSection.Intro')}</p>
-                      <SocialLinkList
-                        css={css`
-                          margin-top: 1rem;
-                        `}
-                      />
-                    </div>
-                  </div>
-                  <animated.div
-                    css={[c.introBoxBackground]}
-                    style={{
-                      transform: cardSpring.xys.interpolate(trans as any),
-                    }}
+        <GridItem>
+          <div css={c.introBoxWrapper}>
+            <div
+              css={c.introBox}
+              ref={introBoxRef}
+              onMouseEnter={() => stopFn.current()}
+              onMouseMove={({ pageX, pageY }) =>
+                moveMoveUpdate({ pageX, pageY })
+              }
+            >
+              <div css={c.introBoxInner}>
+                <Portrait css={c.avatarCSS} />
+                <div css={c.introTextCSS}>
+                  <Headline>{t('StageSection.Hello')}</Headline>
+                  <p css={c.introText}>{t('StageSection.Intro')}</p>
+                  <SocialLinkList
+                    css={css`
+                      margin-top: 1rem;
+                    `}
                   />
                 </div>
               </div>
-            </GridItem>
-          </GridRow>
+              <animated.div
+                css={[c.introBoxBackground]}
+                style={{
+                  transform: cardSpring.xys.interpolate(trans as any),
+                }}
+              />
+            </div>
+          </div>
         </GridItem>
       </GridRow>
     </>

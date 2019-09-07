@@ -74,19 +74,19 @@ export default function Technologies(props: Props) {
         </GridItem>
         <GridItem col={[6, 6, 2]} component="li" css={techTeaserCSS}>
           <Icon name={'tech-html5'} css={iconCSS} />
-          <h5 css={techLabel}>HTML5 & CSS3</h5>
+          <h5 css={techLabel}>HTML5</h5>
         </GridItem>
         <GridItem col={[6, 6, 2]} component="li" css={techTeaserCSS}>
           <Icon name={'tech-sass'} css={iconCSS} />
-          <h5 css={techLabel}>SASS / SCSS</h5>
+          <h5 css={techLabel}>CSS3 + SASS</h5>
         </GridItem>
         <GridItem col={[6, 6, 2]} component="li" css={techTeaserCSS}>
           <Icon name={'tech-nodejs'} css={iconCSS} />
           <h5 css={techLabel}>NodeJS</h5>
         </GridItem>
         <GridItem col={[6, 6, 2]} component="li" css={techTeaserCSS}>
-          <Icon name={'tech-webpack'} css={iconCSS} />
-          <h5 css={techLabel}>Webpack / Jest</h5>
+          <Icon name={'tech-graphql'} css={iconCSS} />
+          <h5 css={techLabel}>GraphQL</h5>
         </GridItem>
       </GridRow>
     </Section>

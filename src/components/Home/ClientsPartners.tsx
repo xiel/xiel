@@ -3,6 +3,7 @@ import { GridItem, GridRow } from '../Layout/Grid'
 import Headline from '../../atoms/Typo/Headline'
 import Section from '../Layout/Section'
 import { css } from '@emotion/core'
+import { useTranslation } from 'react-i18next'
 
 interface Props {}
 
@@ -15,6 +16,7 @@ const teaserText = css`
 `
 
 export default function ClientsPartners(props: Props) {
+  const { t } = useTranslation()
   return (
     <Section
       css={css`
@@ -36,13 +38,16 @@ export default function ClientsPartners(props: Props) {
                   Kunden der Welt zu arbeiten. Von einnehmenden Touch-Interfaces
                   bis zu komplexen FrontEnd-Anwendungen.
                 </p>
-                <ul>
-                  <li>
-                    Lufthansa, BCG, Aperto, Boffinhouse, ZDF, exozet, Daimler,
-                    EO
-                  </li>
-                </ul>
+                <h4>{t('Footer.Title')}</h4>
+                <a href={`mailto:${t('Footer.Email')}`}>{t('Footer.Email')}</a>
               </div>
+            </GridItem>
+            <GridItem>
+              <ul>
+                <li>
+                  Lufthansa, BCG, Aperto, Boffinhouse, ZDF, exozet, Daimler, EO
+                </li>
+              </ul>
             </GridItem>
           </GridRow>
         </GridItem>

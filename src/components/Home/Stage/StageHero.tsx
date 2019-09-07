@@ -16,7 +16,7 @@ const triangle = (theme: Theme) => css`
   transform: scaleX(-1);
 `
 
-export default function StageHero(props: Props) {
+export default function StageHero({  }: Props) {
   return (
     <div
       css={css`

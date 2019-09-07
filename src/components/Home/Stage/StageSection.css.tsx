@@ -60,6 +60,7 @@ export const introTextCSS = css`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  text-shadow: 0 0.3em 0.6em rgba(0, 0, 0, 0.5);
 
   @media (min-width: 500px) {
     text-align: left;
