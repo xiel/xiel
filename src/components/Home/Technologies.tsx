@@ -4,6 +4,7 @@ import { GridItem, GridRow } from '../Layout/Grid'
 import Icon from '../../atoms/Icon'
 import Headline from '../../atoms/Typo/Headline'
 import { css } from '@emotion/core'
+import { Trans } from 'react-i18next'
 
 interface Props {}
 
@@ -16,10 +17,8 @@ const teaserText = css`
 `
 
 const sectionCSS = css`
-  background: #000;
-  background: linear-gradient(to bottom right, #171e24, #220d25);
-  color: #000;
   background: #eee;
+  color: #000;
 `
 
 const techTeaserCSS = css`
@@ -47,18 +46,15 @@ export default function Technologies(props: Props) {
           <Headline
             level="h2"
             css={css`
-              //font-family: 'Fira Code', monospace;
               color: #000;
             `}
             line
           >
-            {`Technologien`}
+            <Trans i18nKey={'Technologies.Title'} />
           </Headline>
           <div css={teaserText}>
             <p>
-              Ich bin auf die FrontEnd Entwicklung von Webseiten mit modernen
-              Webstandards spezialisiert, dabei setze ich unter anderem folgende
-              Technologien ein:
+              <Trans i18nKey={'Technologies.Text'} />
             </p>
           </div>
         </GridItem>

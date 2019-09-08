@@ -22,6 +22,7 @@ const levelCSS = {
   h3: (theme: Theme) => css`
     color: #fff;
     font-size: 1.4rem;
+    line-height: 1.4;
   `,
 }
 

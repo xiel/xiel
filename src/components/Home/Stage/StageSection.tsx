@@ -36,7 +36,7 @@ export default function StageSection(props: Props) {
   const { ref: introBoxRef, rect: introBoxRect } = useElementSize()
   const [cardSpring, setCardSpring] = useSpring(() => ({
     xys: initialXYS,
-    config: { mass: 4, tension: 20, friction: 3 },
+    config: { mass: 5, tension: 20, friction: 3 },
   }))
 
   const moveMoveUpdate = throttle(
@@ -98,6 +98,7 @@ export default function StageSection(props: Props) {
                   <SocialLinkList
                     css={css`
                       margin-top: 1rem;
+                      filter: drop-shadow(0 0.15em 0.2em rgba(0, 0, 0, 0.6));
                     `}
                   />
                 </div>

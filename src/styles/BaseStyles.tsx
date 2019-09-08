@@ -36,7 +36,8 @@ const globalCss = (theme: Theme) => css`
     color: ${theme.secondaryLabel};
     background: ${theme.background};
     font-size: 1rem;
-    line-height: 1.4;
+    line-height: 1.5;
+
     font-weight: 300;
   }
 

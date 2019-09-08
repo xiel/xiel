@@ -12,7 +12,15 @@
   },
   "StageSection": {
     "Hello": "Felix Leupold",
-    "Intro": "Engineer, Speaker & Advisor"
+    "Intro": "Senior FrontEnd Developer"
+  },
+  "Intro": {
+    "Title": "Ich bin freiberuflicher FrontEnd-Entwickler aus Berlin und erschaffe digitale Erlebnisse, die jeder gerne nutzt.",
+    "Text": "Meine Leidenschaft für gutes Design, Technologie und Innovation verbinden sich in all meinen Projekten, die ich gerne von der ersten Idee bis zur Veröffentlichung begleite. Mein Schwerpunkt liegt dabei auf der Entwicklung responsiver User Interfaces mit React. Ich interessiere mich für JavaScript, User Experience, Accessibility, Clean Code und das Weltall. Und alles dazwischen."
+  },
+  "Technologies": {
+    "Title": "Technologien",
+    "Text": "Ich bin auf die FrontEnd Entwicklung von Webseiten mit modernen Webstandards spezialisiert, dabei setze ich unter anderem folgende Technologien ein:"
   },
   "Footer": {
     "Title": "Got a project to discuss? Projekt- und Kooperationsanfragen an:",
