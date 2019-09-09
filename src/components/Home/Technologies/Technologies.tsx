@@ -6,17 +6,41 @@ import { css } from '@emotion/core'
 import { Trans } from 'react-i18next'
 import Spacer from '../../Layout/Spacer'
 import TechTeaser from './TechTeaser'
+import Triangle from '../../../assets/svg/triangle.svg'
+import { Theme } from '../../../styles/theme'
 
 interface Props {}
 
 const sectionCSS = css`
+  margin: 7vmin 0;
   background: #eee;
   color: #000;
+`
+
+const triangleTop = (theme: Theme) => css`
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 100%;
+  height: 7vmin;
+  fill: #eee;
+  transform: translateY(-100%);
+`
+
+const triangle = (theme: Theme) => css`
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  height: 7vmin;
+  fill: #eee;
+  transform: translateY(100%) scale(-1);
 `
 
 export default function Technologies(props: Props) {
   return (
     <Section css={sectionCSS}>
+      <Triangle css={triangleTop} />
       <GridRow justify="center">
         <GridItem col={[12, 10]}>
           <Headline
@@ -43,6 +67,7 @@ export default function Technologies(props: Props) {
         <TechTeaser label={'NodeJS'} iconName="tech-nodejs" />
         <TechTeaser label={'GraphQL'} iconName="tech-graphql" />
       </GridRow>
+      <Triangle css={triangle} />
     </Section>
   )
 }

@@ -7,8 +7,8 @@ import { Theme } from '../../../styles/theme'
 import RatioBox from '../../Layout/RatioBox'
 
 const techTeaserInner = (theme: Theme) => css`
+  border-radius: 2rem;
   background: #f7f7f7;
-  border-radius: 1.5rem;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
 `
 
@@ -49,12 +49,10 @@ interface Props {
 export default function TechTeaser({ label, iconName }: Props) {
   return (
     <GridItem col={[6, 4, 4, 2]} component="li" css={spaceTop(2)}>
-      <div>
-        <RatioBox css={techTeaserInner}>
-          <Icon name={iconName} css={iconCSS} />
-          <h5 css={techLabel}>{label}</h5>
-        </RatioBox>
-      </div>
+      <RatioBox css={techTeaserInner}>
+        <Icon name={iconName} css={iconCSS} />
+        <h5 css={techLabel}>{label}</h5>
+      </RatioBox>
     </GridItem>
   )
 }
