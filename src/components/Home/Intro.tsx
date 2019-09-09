@@ -5,11 +5,12 @@ import Headline from '../../atoms/Typo/Headline'
 import { css } from '@emotion/core'
 import { Theme } from '../../styles/theme'
 import { Trans } from 'react-i18next'
+import Spacer from '../Layout/Spacer'
 
 interface Props {}
 
 const teaserText = css`
-  margin: 1.5em 0 0;
+  //margin: 1.5em 0 0;
 `
 
 const sectionCSS = (theme: Theme) => css`
@@ -24,6 +25,7 @@ export default function Intro(props: Props) {
           <Headline level="h2" component="p">
             <Trans i18nKey={'Intro.Title'} />
           </Headline>
+          <Spacer />
           <p css={teaserText}>
             <Trans i18nKey={'Intro.Text'} />
           </p>

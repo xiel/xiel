@@ -12,19 +12,24 @@
   },
   "StageSection": {
     "Hello": "Felix Leupold",
-    "Intro": "Senior FrontEnd Developer"
+    "Intro": "FrontEnd-Entwickler & Berater"
   },
   "Intro": {
     "Title": "Ich bin freiberuflicher FrontEnd-Entwickler aus Berlin und erschaffe digitale Erlebnisse, die jeder gerne nutzt.",
-    "Text": "Meine Leidenschaft für gutes Design, Technologie und Innovation verbinden sich in all meinen Projekten, die ich gerne von der ersten Idee bis zur Veröffentlichung begleite. Mein Schwerpunkt liegt dabei auf der Entwicklung responsiver User Interfaces mit React. Ich interessiere mich für JavaScript, User Experience, Accessibility, Clean Code und das Weltall. Und alles dazwischen."
+    "Text": "Meine Leidenschaft für gutes Design, Technologie und Innovation verbinden sich in all meinen Projekten, die ich gerne von der ersten Idee bis zur Veröffentlichung begleite. Mein Schwerpunkt liegt dabei auf der Entwicklung responsiver User Interfaces mit React. Ich interessiere mich für JavaScript, User Experience, Accessibility, Clean Code und das Weltall.<br/> Und alles dazwischen."
   },
   "Technologies": {
     "Title": "Technologien",
-    "Text": "Ich bin auf die FrontEnd Entwicklung von Webseiten mit modernen Webstandards spezialisiert, dabei setze ich unter anderem folgende Technologien ein:"
+    "Text": "Mit einer Kombination aus modernsten Technologien und zuverlässiger Open-Source-Software erstelle ich benutzerorientierte, leistungsstarke Apps und Websites für Smartphones, Tablets und Desktops."
+  },
+  "ClientsPartners": {
+    "Title": "Kunden & Partner",
+    "Text": "In den vergangenen Jahren hatte ich die Ehre mit großartigen Teams an einem großen Spektrum von Projekten für die besten Kunden der Welt zu arbeiten, von einnehmenden Touch-Interfaces bis zu komplexen FrontEnd-Anwendungen."
   },
   "Footer": {
-    "Title": "Got a project to discuss? Projekt- und Kooperationsanfragen an:",
+    "Title": "Projekt- und Kooperationsanfragen an:",
     "Email": "felix@xiel.de",
-    "PrivacyLink": "Datenschutz & Impressum"
+    "PrivacyLink": "Datenschutz & Impressum",
+    "Copyright": " © {{year}} Berlin"
   }
 }

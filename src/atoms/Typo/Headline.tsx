@@ -4,7 +4,7 @@ import { Theme } from '../../styles/theme'
 
 const heading = css`
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-  line-height: 1.2;
+  line-height: 1.3;
   letter-spacing: -0.03em;
   font-weight: 500;
 `

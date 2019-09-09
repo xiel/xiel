@@ -68,7 +68,6 @@ export const introTextCSS = css`
   }
 `
 export const introText = css`
-  margin: 0.125em 0 0;
   color: hsla(215, 25%, 54%, 1);
 `
 export const avatarCSS = css`

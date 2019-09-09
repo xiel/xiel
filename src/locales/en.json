@@ -12,7 +12,7 @@
   },
   "StageSection": {
     "Hello": "Felix Leupold",
-    "Intro": "Senior FrontEnd Developer"
+    "Intro": "FrontEnd Developer & Advisor"
   },
   "Intro": {
     "Title": "I'm a freelance front-end developer from Berlin who creates digital experiences that everyone likes to use.",
@@ -20,11 +20,16 @@
   },
   "Technologies": {
     "Title": "Technologies",
-    "Text": "I specialize in the front end development of websites with modern web standards, including the following technologies:"
+    "Text": "Using a combination of cutting-edge technologies and reliable open-source software I build user-focused, performant apps and websites for smartphones, tablets, and desktops."
+  },
+  "ClientsPartners": {
+    "Title": "Clients & Partners",
+    "Text": "In recent years, I had the honor of working with great teams on a wide range of projects for the best clients in the world, from engaging touch interfaces to complex front-end applications."
   },
   "Footer": {
-    "Title": "Got a project to discuss? Projekt- und Kooperationsanfragen an:",
+    "Title": "Got a project to discuss?",
     "Email": "felix@xiel.de",
-    "PrivacyLink": "Datenschutz & Impressum"
+    "PrivacyLink": "Privacy & Imprint",
+    "Copyright": " © {{year}} Berlin"
   }
 }

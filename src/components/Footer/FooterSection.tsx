@@ -7,6 +7,8 @@ import SocialLinkList from '../../atoms/SocialLinkList'
 
 interface Props {}
 
+const year = new Date().toJSON().split('-')[0]
+
 export default function FooterSection(props: Props) {
   const { t } = useTranslation()
 
@@ -31,8 +33,8 @@ export default function FooterSection(props: Props) {
               font-size: 12px;
             `}
           >
-            <Link to="/impressum/">{t('Footer.PrivacyLink')}</Link> ©{' '}
-            {new Date().toJSON().split('-')[0]} Berlin
+            <Link to="/impressum/">{t('Footer.PrivacyLink')}</Link>
+            {t('Footer.Copyright', { year })}
           </p>
         </GridItem>
       </GridRow>

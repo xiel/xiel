@@ -3,44 +3,40 @@ import { GridItem, GridRow } from '../Layout/Grid'
 import Headline from '../../atoms/Typo/Headline'
 import Section from '../Layout/Section'
 import { css } from '@emotion/core'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
+import Spacer from '../Layout/Spacer'
 
 interface Props {}
 
 const teaserText = css`
-  line-height: 1.5;
-
-  p {
-    margin: 1.5em 0;
-  }
+  //line-height: 1.5;
+  //
+  //p {
+  //  margin: 1.5em 0;
+  //}
 `
 
 export default function ClientsPartners(props: Props) {
   const { t } = useTranslation()
+
   return (
-    <Section
-      css={css`
-        background: linear-gradient(to bottom, #110e15, #1f1e35);
-        background: #26262c;
-      `}
-    >
+    <Section>
       <GridRow justify={'center'}>
         <GridItem col={[12, 10]}>
           <GridRow>
             <GridItem col={[12, 10, 1 / 2]}>
               <Headline level="h2" line>
-                Clients & Partners
+                <Trans i18nKey={'ClientsPartners.Title'} />
               </Headline>
-              <div css={teaserText}>
-                <p>
-                  In den vergangenen Jahren hatte ich die Ehre mit großartigen
-                  Teams an einem großen Spektrum von Projekten für die besten
-                  Kunden der Welt zu arbeiten. Von einnehmenden Touch-Interfaces
-                  bis zu komplexen FrontEnd-Anwendungen.
-                </p>
-                <h4>{t('Footer.Title')}</h4>
-                <a href={`mailto:${t('Footer.Email')}`}>{t('Footer.Email')}</a>
-              </div>
+              <Spacer />
+              <p>
+                <Trans i18nKey={'ClientsPartners.Text'} />
+              </p>
+              <Spacer size={2} />
+              <Headline level="h3">
+                <Trans i18nKey={'Footer.Title'} />
+              </Headline>
+              <a href={`mailto:${t('Footer.Email')}`}>{t('Footer.Email')}</a>
             </GridItem>
             <GridItem>
               <ul>

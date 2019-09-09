@@ -2,13 +2,19 @@ import React from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 
-const spacer = (props: Props) => css`
-  width: ${props.size}rem;
-  height: ${props.size}rem;
+type SpaceSize = 1 | 2 | 3
+
+export const spaceTop = (size: SpaceSize = 1) => css`
+  margin-top: ${size}rem;
+`
+
+const spacer = ({ size = 1 }: Props = {}) => css`
+  width: ${size}rem;
+  height: ${size}rem;
 `
 
 interface Props {
-  size: 1 | 2 | 3
+  size?: SpaceSize
 }
 
 export default styled.div<Props>`
