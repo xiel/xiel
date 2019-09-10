@@ -15,6 +15,50 @@ const triangle = (theme: Theme) => css`
   transform: scaleX(-1);
 `
 
+const image = css`
+  @keyframes zoom-in-2 {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+
+  animation: zoom-in-2 20s;
+  transform-origin: 50% 50%;
+`
+
+const mask = css`
+  @keyframes zoom-out {
+    from {
+      transform: scale(2);
+    }
+    to {
+      transform: scale(0.5);
+    }
+  }
+
+  animation: zoom-out 15s;
+  transform-origin: 50% 50%;
+`
+
+const maskedImage = css`
+  @keyframes zoom-in {
+    from {
+      transform: scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: scale(2);
+      //opacity: 0;
+    }
+  }
+
+  animation: zoom-in 30s;
+  transform-origin: 50% 50%;
+`
+
 export default function StageHero({  }: Props) {
   return (
     <div
@@ -79,19 +123,21 @@ export default function StageHero({  }: Props) {
           width="3754"
           height="1970"
           xlinkHref="http://192.168.178.22:8000/static/c766772eeb38e61e85727bf499ee9924/883ab/frontend-space.jpg"
+          css={image}
         />
         <mask id="logo-path-mask" fill="white">
-          <use xlinkHref="#logo-path" />
+          <use xlinkHref="#logo-path" css={mask} />
         </mask>
         {/*<use id="Mask" fill="#000000" fillRule="nonzero" xlinkHref="#path-1">*/}
         <image
           id="frontend-space"
           mask="url(#logo-path-mask)"
+          x="0"
+          y="0"
+          width="3754"
+          height="1970"
+          css={maskedImage}
           xlinkHref="http://192.168.178.22:8000/static/c766772eeb38e61e85727bf499ee9924/883ab/frontend-space.jpg"
-          x="989"
-          y="519"
-          width="1776"
-          height="932"
         />
       </svg>
       <Triangle css={triangle} />
