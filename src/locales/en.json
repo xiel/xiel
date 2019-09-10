@@ -1,15 +1,4 @@
 {
-  "Welcome to React": "Willkommen zu React and react-i18next DE",
-  "Subline": "Zwischenüberschrift",
-  "Page": {
-    "Index": {
-      "Title": "",
-      "ProjectsCTALabel": "Projekte ansehen"
-    }
-  },
-  "Projects": {
-    "Title": "Projekte"
-  },
   "StageSection": {
     "Hello": "Felix Leupold",
     "Intro": "FrontEnd Developer & Advisor"
@@ -29,6 +18,7 @@
   "Footer": {
     "Title": "Got a project to discuss?",
     "Email": "felix@xiel.de",
+    "EmailLabel": "Let's talk",
     "PrivacyLink": "Privacy & Imprint",
     "Copyright": " © {{year}} Berlin"
   }

@@ -1,12 +1,4 @@
 {
-  "Welcome to React": "Willkommen zu React and react-i18next DE",
-  "Subline": "Zwischenüberschrift",
-  "Page": {
-    "Index": {
-      "Title": "",
-      "ProjectsCTALabel": "Projekte ansehen"
-    }
-  },
   "Projects": {
     "Title": "Projekte"
   },
@@ -27,8 +19,9 @@
     "Text": "In den vergangenen Jahren hatte ich die Ehre mit großartigen Teams an einem großen Spektrum von Projekten für die besten Kunden der Welt zu arbeiten, von einnehmenden Touch-Interfaces bis zu komplexen FrontEnd-Anwendungen."
   },
   "Footer": {
-    "Title": "Projekt- und Kooperationsanfragen an:",
+    "Title": "Neues Projekt im Kopf?",
     "Email": "felix@xiel.de",
+    "EmailLabel": "Lass uns sprechen!",
     "PrivacyLink": "Datenschutz & Impressum",
     "Copyright": " © {{year}} Berlin"
   }

@@ -10,9 +10,14 @@ const techTeaserInner = (theme: Theme) => css`
   border-radius: 2rem;
   background: #f7f7f7;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+
+  &:hover h5 {
+    display: block;
+  }
 `
 
-const techLabel = css`
+const techLabel = (theme: Theme) => css`
+  display: none;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -27,6 +32,10 @@ const techLabel = css`
   border-radius: 1em;
   transform: translate(-50%, 50%);
   box-shadow: 0 0.25rem 0.5rem -0.25rem rgba(0, 0, 0, 0.3);
+
+  @media (min-width: ${theme.screenMd}px) {
+    display: block;
+  }
 `
 
 const iconCSS = css`
@@ -48,7 +57,7 @@ interface Props {
 
 export default function TechTeaser({ label, iconName }: Props) {
   return (
-    <GridItem col={[6, 4, 4, 2]} component="li" css={spaceTop(2)}>
+    <GridItem col={[4, 2, 2, 2]} component="li" css={spaceTop(2)}>
       <RatioBox css={techTeaserInner}>
         <Icon name={iconName} css={iconCSS} />
         <h5 css={techLabel}>{label}</h5>

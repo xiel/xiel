@@ -11,6 +11,11 @@ import Daimler from './logos/Daimler.svg'
 import Aperto from './logos/Aperto.svg'
 import Spacer from '../../Layout/Spacer'
 import { css } from '@emotion/core'
+import Button from '../../../atoms/Button'
+
+const section = css`
+  padding-bottom: 4rem;
+`
 
 const logos = css`
   display: flex;
@@ -44,7 +49,7 @@ export default function ClientsPartners() {
   const { t } = useTranslation()
 
   return (
-    <Section>
+    <Section css={section}>
       <GridRow justify={'center'}>
         <GridItem col={[12, 10]}>
           <GridRow>
@@ -60,8 +65,11 @@ export default function ClientsPartners() {
               <Headline level="h3">
                 <Trans i18nKey={'Footer.Title'} />
               </Headline>
-              <a href={`mailto:${t('Footer.Email')}`}>{t('Footer.Email')}</a>
-              <Spacer size={2}></Spacer>
+              <Spacer size={1} />
+              <Button href={`mailto:${t('Footer.Email')}`}>
+                {t('Footer.EmailLabel')}
+              </Button>
+              <Spacer size={2} />
             </GridItem>
             <GridItem col={[12, 10, 1 / 2]}>
               <ul css={logos}>
@@ -75,10 +83,10 @@ export default function ClientsPartners() {
                   <Lufthansa />
                 </li>
                 <li>
-                  <ZDF />
+                  <Daimler />
                 </li>
                 <li>
-                  <Daimler />
+                  <ZDF />
                 </li>
                 <li>
                   <Aperto />
