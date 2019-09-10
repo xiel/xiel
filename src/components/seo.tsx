@@ -7,18 +7,17 @@
 
 import React from 'react'
 import Helmet, { HelmetProps } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { SeoQuery } from '../graphqlTypes'
 import { useTranslation } from 'react-i18next'
 
 interface Props {
   description?: string
-  lang?: string
   title?: string
   meta?: HelmetProps['meta']
 }
 
-function SEO({ title = '', lang = `en`, meta = [], description = `` }: Props) {
+function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
   const { i18n } = useTranslation()
   const { site } = useStaticQuery<SeoQuery>(
     graphql`
@@ -38,6 +37,8 @@ function SEO({ title = '', lang = `en`, meta = [], description = `` }: Props) {
     return null
   }
 
+  const mainTitle = site.siteMetadata.title || ''
+  const title = titleProp ? `${titleProp} | ${mainTitle}` : mainTitle
   const metaDescription = description || site.siteMetadata.description || ''
 
   return (
@@ -45,10 +46,7 @@ function SEO({ title = '', lang = `en`, meta = [], description = `` }: Props) {
       htmlAttributes={{
         lang: i18n.language,
       }}
-      title={title || site.siteMetadata.title}
-      titleTemplate={
-        title ? `%s | ${site.siteMetadata.title}` : site.siteMetadata.title
-      }
+      title={title}
       meta={[
         {
           name: `description`,

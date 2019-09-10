@@ -8,7 +8,7 @@
   },
   "Intro": {
     "Title": "Ich bin freiberuflicher FrontEnd-Entwickler aus Berlin und erschaffe digitale Erlebnisse, die jeder gerne nutzt.",
-    "Text": "Meine Leidenschaft für gutes Design, Technologie und Innovation verbinden sich in all meinen Projekten, die ich gerne von der ersten Idee bis zur Veröffentlichung begleite. Mein Schwerpunkt liegt dabei auf der Entwicklung responsiver User Interfaces mit React. Ich interessiere mich für JavaScript, User Experience, Accessibility, Clean Code und das Weltall.<br/> Und alles dazwischen."
+    "Text": "Mit Leidenschaft verbinde ich gutes Design, Technologie und Innovation in all meinen Projekten, die ich gerne von der ersten Idee bis zur Veröffentlichung begleite. Mein Schwerpunkt liegt aktuell auf der Entwicklung responsiver User Interfaces mit React. Ich interessiere mich für JavaScript, User Experience, Accessibility, Clean Code und das Weltall.<br/> Und alles dazwischen."
   },
   "Technologies": {
     "Title": "Technologien",
@@ -16,12 +16,12 @@
   },
   "ClientsPartners": {
     "Title": "Kunden & Partner",
-    "Text": "In den vergangenen Jahren hatte ich die Ehre mit großartigen Teams an einem großen Spektrum von Projekten für die besten Kunden der Welt zu arbeiten, von einnehmenden Touch-Interfaces bis zu komplexen FrontEnd-Anwendungen."
+    "Text": "In den vergangenen 10 Jahren konnte ich mit großartigen Teams für spannende Kunden ein breites Spektrum an Projekten umsetzen: von einnehmenden Touch-Interfaces bis zu komplexen Web-Anwendungen."
   },
   "Footer": {
-    "Title": "Neues Projekt im Kopf?",
+    "Title": "Neues Projekt in Planung?",
     "Email": "felix@xiel.de",
-    "EmailLabel": "Lass uns sprechen!",
+    "EmailLabel": "Lass uns sprechen",
     "PrivacyLink": "Datenschutz & Impressum",
     "Copyright": " © {{year}} Berlin"
   }
