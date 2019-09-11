@@ -12,19 +12,20 @@
   ],
   "license": "MIT",
   "scripts": {
-    "prebuild": "yarn gql-generate; yarn type-check",
+    "prebuild": "yarn cleanup; yarn gql-generate; yarn type-check",
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "develop": "gatsby develop --host 0.0.0.0",
     "gql-generate": "graphql-codegen --config graphql-codegen.yml",
     "gql-generate:watch": "yarn gql-generate --watch",
     "format": "prettier --write src/**/*.{js,jsx,json,ts,tsx}",
-    "start": "yarn gql-generate; concurrently 'yarn type-check:watch' 'yarn develop'",
+    "start": "yarn cleanup; yarn gql-generate; concurrently 'yarn type-check:watch' 'yarn develop'",
     "serve": "gatsby serve",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "test": "react-scripts test",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "yarn type-check --watch"
+    "type-check:watch": "yarn type-check --watch",
+    "cleanup": "rm -rf .cache; rm -rf node_modules/gh-pages/.cache"
   },
   "husky": {
     "hooks": {

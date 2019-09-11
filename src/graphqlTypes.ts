@@ -2193,6 +2193,7 @@ export enum SiteFieldsEnum {
   port = 'port',
   siteMetadata___author = 'siteMetadata___author',
   siteMetadata___description = 'siteMetadata___description',
+  siteMetadata___origin = 'siteMetadata___origin',
   siteMetadata___title = 'siteMetadata___title'
 }
 
@@ -2261,14 +2262,27 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
    __typename?: 'SitePageContext',
   lng: Maybe<Scalars['String']>,
+  lngAlternates: Maybe<SitePageContextLngAlternates>,
   lngBasePath: Maybe<Scalars['String']>,
   slug: Maybe<Scalars['String']>,
 };
 
 export type SitePageContextFilterInput = {
   lng: Maybe<StringQueryOperatorInput>,
+  lngAlternates: Maybe<SitePageContextLngAlternatesFilterInput>,
   lngBasePath: Maybe<StringQueryOperatorInput>,
   slug: Maybe<StringQueryOperatorInput>,
+};
+
+export type SitePageContextLngAlternates = {
+   __typename?: 'SitePageContextLngAlternates',
+  de: Maybe<Scalars['String']>,
+  en: Maybe<Scalars['String']>,
+};
+
+export type SitePageContextLngAlternatesFilterInput = {
+  de: Maybe<StringQueryOperatorInput>,
+  en: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageEdge = {
@@ -2322,6 +2336,8 @@ export enum SitePageFieldsEnum {
   componentChunkName = 'componentChunkName',
   componentPath = 'componentPath',
   context___lng = 'context___lng',
+  context___lngAlternates___de = 'context___lngAlternates___de',
+  context___lngAlternates___en = 'context___lngAlternates___en',
   context___lngBasePath = 'context___lngBasePath',
   context___slug = 'context___slug',
   id = 'id',
@@ -2781,12 +2797,14 @@ export type SiteSiteMetadata = {
    __typename?: 'SiteSiteMetadata',
   author: Maybe<Scalars['String']>,
   description: Maybe<Scalars['String']>,
+  origin: Maybe<Scalars['String']>,
   title: Maybe<Scalars['String']>,
 };
 
 export type SiteSiteMetadataFilterInput = {
   author: Maybe<StringQueryOperatorInput>,
   description: Maybe<StringQueryOperatorInput>,
+  origin: Maybe<StringQueryOperatorInput>,
   title: Maybe<StringQueryOperatorInput>,
 };
 
@@ -2983,7 +3001,7 @@ export type SeoQuery = (
     { __typename?: 'Site' }
     & { siteMetadata: Maybe<(
       { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>
+      & Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'origin'>
     )> }
   )> }
 );

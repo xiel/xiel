@@ -4,6 +4,7 @@ module.exports = {
     title: `FrontEnd Developer · Felix Leupold · XIEL`,
     description: ``,
     author: `@xiel`,
+    origin: 'https://xiel.de',
   },
   plugins: [
     `gatsby-plugin-emotion`,

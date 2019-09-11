@@ -57,25 +57,31 @@ export default async function createPages({
     })
 
     // Project Pages (not used atm.)
-    createPage({
+    createPage<IPageContext>({
       path: `${join(lngBasePath, 'projects')}`,
       component: resolve(__dirname, '../pageTemplates/projects.tsx'),
       context: {
         lng,
         lngBasePath,
+        lngAlternates: Object.fromEntries(
+          languageConfigs.map((c) => [c.lng, join(c.lngBasePath, 'projects')])
+        ),
       },
     })
 
     projects.forEach(({ node: { slug } }) => {
       if (!slug) return
 
-      createPage({
+      createPage<IPageContext>({
         path: `${join(lngBasePath, slug)}`,
         component: resolve(__dirname, '../pageTemplates/project.tsx'),
         context: {
           slug,
           lng,
           lngBasePath,
+          lngAlternates: Object.fromEntries(
+            languageConfigs.map((c) => [c.lng, join(c.lngBasePath, slug)])
+          ),
         },
       })
     })

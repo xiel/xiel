@@ -2,7 +2,7 @@ import i18n from './src/locales/i18n'
 import React from 'react'
 import { PageContextProvider } from './src/Providers/PageContext'
 import { PageProps } from './src/types/PageProps'
-import { PageLocaleConfig } from './src/types/GlobalTypes'
+import { IPageContext } from './src/types/GlobalTypes'
 import ThemeProvider from './src/styles/ThemeProvider'
 
 export const wrapPageElement = ({
@@ -10,7 +10,7 @@ export const wrapPageElement = ({
   props,
 }: {
   element: React.ReactNode
-  props: PageProps<PageLocaleConfig>
+  props: PageProps<IPageContext>
 }) => {
   i18n.changeLanguage(props.pageContext.lng)
 

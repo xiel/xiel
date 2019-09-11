@@ -30,6 +30,7 @@ function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
             title
             description
             author
+            origin
           }
         }
       }
@@ -41,13 +42,17 @@ function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
   }
 
   const mainTitle = site.siteMetadata.title || ''
+  const origin =
+    typeof window !== 'undefined'
+      ? window.location.origin
+      : site.siteMetadata.origin || ''
   const title = titleProp ? `${titleProp} | ${mainTitle}` : mainTitle
   const metaDescription = description || site.siteMetadata.description || ''
-  const langAlternateLinks = Object.entries(lngAlternates).map(
+  const langAlternateLinks = Object.entries(lngAlternates || {}).map(
     ([lng, lngPath]) => ({
       rel: 'alternate',
       hreflang: lng,
-      href: lngPath,
+      href: origin + lngPath,
     })
   )
 
