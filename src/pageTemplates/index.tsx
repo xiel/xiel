@@ -8,10 +8,10 @@ import ClientsPartners from '../components/Home/ClientPartners/ClientsPartners'
 import IntroSection from '../components/Home/IntroSection'
 import Technologies from '../components/Home/Technologies/Technologies'
 import { useTranslation } from 'react-i18next'
-import { PageContext } from '../types/GlobalTypes'
+import { IPageContext } from '../types/GlobalTypes'
 import useEnforceRecommendedLanguageOnce from '../hooks/useEnforceRecommendedLanguageOnce'
 
-export default function Index(props: PageProps<PageContext>) {
+export default function Index(props: PageProps<IPageContext>) {
   const { t } = useTranslation()
 
   useEnforceRecommendedLanguageOnce(props)

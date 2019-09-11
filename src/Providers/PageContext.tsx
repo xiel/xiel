@@ -1,9 +1,10 @@
 import { createContext } from 'react'
-import { PageLocaleConfig } from '../types/GlobalTypes'
+import { IPageContext } from '../types/GlobalTypes'
 
-const defaultPageContext: PageLocaleConfig = {
+const defaultPageContext: IPageContext = {
   lng: '',
   lngBasePath: '',
+  lngAlternates: {},
 }
 
 export const PageContext = createContext(defaultPageContext)

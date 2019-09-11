@@ -5,7 +5,7 @@
  */
 import { join, resolve } from 'path'
 import { NodePluginArgs } from 'gatsby'
-import { PageContext, PageLocaleConfig } from '../types/GlobalTypes'
+import { IPageContext, PageLocaleConfig } from '../types/GlobalTypes'
 import { ProjectJsonEdge } from '../graphqlTypes'
 
 // based on: https://github.com/gatsbyjs/gatsby/issues/1457#issuecomment-381405638
@@ -44,7 +44,7 @@ export default async function createPages({
   ]
 
   languageConfigs.forEach(({ lng, lngBasePath }) => {
-    createPage<PageContext>({
+    createPage<IPageContext>({
       path: join(lngBasePath, ''),
       component: resolve(__dirname, '../pageTemplates/index.tsx'),
       context: {

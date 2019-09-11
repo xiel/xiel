@@ -5,7 +5,7 @@ export interface PageLocaleConfig {
   lng: string
 }
 
-export interface PageContext extends PageLocaleConfig {
+export interface IPageContext extends PageLocaleConfig {
   lngAlternates: Record<string, string>
 }
 

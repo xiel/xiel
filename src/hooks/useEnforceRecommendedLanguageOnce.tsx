@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { PageProps } from '../types/PageProps'
-import { PageContext } from '../types/GlobalTypes'
+import { IPageContext } from '../types/GlobalTypes'
 
 interface Props
-  extends Pick<PageProps<PageContext>, 'navigate' | 'pageContext' | 'path'> {}
+  extends Pick<PageProps<IPageContext>, 'navigate' | 'pageContext' | 'path'> {}
 
 const STORAGE_KEY = 'enforcedRecommendedLanguageOnce'
 
