@@ -25,10 +25,10 @@ export default function Nav(props: Props) {
         `}
       >
         <Li>
-          <Link to="/">DE</Link>
+          <Link to="/de">DE</Link>
         </Li>
         <Li>
-          <Link to="/en/">EN</Link>
+          <Link to="/">EN</Link>
         </Li>
       </ul>
     </nav>

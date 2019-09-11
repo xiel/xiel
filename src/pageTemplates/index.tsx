@@ -8,9 +8,14 @@ import ClientsPartners from '../components/Home/ClientPartners/ClientsPartners'
 import IntroSection from '../components/Home/IntroSection'
 import Technologies from '../components/Home/Technologies/Technologies'
 import { useTranslation } from 'react-i18next'
+import { PageContext } from '../types/GlobalTypes'
+import useEnforceRecommendedLanguageOnce from '../hooks/useEnforceRecommendedLanguageOnce'
 
-export default function Index(props: PageProps) {
+export default function Index(props: PageProps<PageContext>) {
   const { t } = useTranslation()
+
+  useEnforceRecommendedLanguageOnce(props)
+
   return (
     <Layout>
       <SEO description={t('Intro.Title')} />

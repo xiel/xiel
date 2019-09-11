@@ -15,4 +15,4 @@ require('ts-node').register({
 })
 
 // typescript files
-exports.createPages = require('./src/lib/createPages').default
+exports.createPages = require('./src/pages/createPages').default

@@ -3,10 +3,10 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-import { resolve, join } from 'path'
+import { join, resolve } from 'path'
 import { NodePluginArgs } from 'gatsby'
+import { PageContext, PageLocaleConfig } from '../types/GlobalTypes'
 import { ProjectJsonEdge } from '../graphqlTypes'
-import { PageLocaleConfig } from '../types/GlobalTypes'
 
 // based on: https://github.com/gatsbyjs/gatsby/issues/1457#issuecomment-381405638
 export default async function createPages({
@@ -32,27 +32,31 @@ export default async function createPages({
   }
 
   const projects = result.data.projects.edges as ProjectJsonEdge[]
-  const lanCfgs: PageLocaleConfig[] = [
+  const languageConfigs: PageLocaleConfig[] = [
     {
       lngBasePath: '/',
-      lng: 'de',
+      lng: 'en',
     },
     {
-      lngBasePath: '/en',
-      lng: 'en',
+      lngBasePath: '/de',
+      lng: 'de',
     },
   ]
 
-  lanCfgs.forEach(({ lng, lngBasePath }) => {
-    createPage({
-      path: `${join(lngBasePath)}`,
+  languageConfigs.forEach(({ lng, lngBasePath }) => {
+    createPage<PageContext>({
+      path: join(lngBasePath, ''),
       component: resolve(__dirname, '../pageTemplates/index.tsx'),
       context: {
         lng,
         lngBasePath,
+        lngAlternates: Object.fromEntries(
+          languageConfigs.map((c) => [c.lng, join(c.lngBasePath, '')])
+        ),
       },
     })
 
+    // Project Pages (not used atm.)
     createPage({
       path: `${join(lngBasePath, 'projects')}`,
       component: resolve(__dirname, '../pageTemplates/projects.tsx'),
@@ -62,7 +66,7 @@ export default async function createPages({
       },
     })
 
-    projects.map(({ node: { slug } }) => {
+    projects.forEach(({ node: { slug } }) => {
       if (!slug) return
 
       createPage({

@@ -5,4 +5,8 @@ export interface PageLocaleConfig {
   lng: string
 }
 
+export interface PageContext extends PageLocaleConfig {
+  lngAlternates: Record<string, string>
+}
+
 export type GatsbyImageProps = typeof Img.prototype.props
