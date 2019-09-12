@@ -12,13 +12,12 @@ export const wrapPageElement = ({
   element: React.ReactNode
   props: PageProps<IPageContext>
 }) => {
-  i18n.changeLanguage(props.pageContext.lng)
+  const { pageContext, ...pageProps } = props
+  i18n.changeLanguage(pageContext.lng || i18n.language || 'en')
 
   return (
     <ThemeProvider>
-      <PageContextProvider value={props.pageContext}>
-        {element}
-      </PageContextProvider>
+      <PageContextProvider value={{ ...pageContext, ...pageProps }}>{element}</PageContextProvider>
     </ThemeProvider>
   )
 }

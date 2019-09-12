@@ -1,7 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { VisuallyHidden } from '../../styles/mixins'
-import { screenXsMax } from '../../styles/theme'
 import InternalLink from '../../atoms/InternalLink'
 
 interface Props {
@@ -9,22 +8,9 @@ interface Props {
 }
 
 const logo = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 4.5rem;
-  height: 4.5rem;
-  margin: 4.5rem auto 0;
-  z-index: 9999;
-
-  //@media (max-width: ${screenXsMax}px) {
-    margin-top: 2rem;
-    width: 3rem;
-    height: 3rem;
-    left: 2rem;
-    right: auto;
-  //}
+  position: relative;
+  width: 3rem;
+  height: 3rem;
 
   a {
     position: relative;
@@ -80,11 +66,7 @@ export default function Logo({ siteTitle }: Props) {
           <VisuallyHidden>{siteTitle}</VisuallyHidden>
         </InternalLink>
       </h1>
-      <svg
-        viewBox="0 0 500 500"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M500 82V0h-82v41h41v41h41zm-41 377h-41v41h82v-82h-41v41zM0 418v82h82v-41H41v-41H0zM41 82V41h41V0H0v82h41z" />
         <path
           className="x"

@@ -45,26 +45,26 @@ export default async function createPages({
 
   languageConfigs.forEach(({ lng, lngBasePath }) => {
     createPage<IPageContext>({
-      path: join(lngBasePath, ''),
+      path: join(lngBasePath, '/'),
       component: resolve(__dirname, '../pageTemplates/index.tsx'),
       context: {
         lng,
         lngBasePath,
         lngAlternates: Object.fromEntries(
-          languageConfigs.map((c) => [c.lng, join(c.lngBasePath, '')])
+          languageConfigs.map((c) => [c.lng, join(c.lngBasePath, '/')])
         ),
       },
     })
 
     // Project Pages (not used atm.)
     createPage<IPageContext>({
-      path: `${join(lngBasePath, 'projects')}`,
+      path: `${join(lngBasePath, 'projects/')}`,
       component: resolve(__dirname, '../pageTemplates/projects.tsx'),
       context: {
         lng,
         lngBasePath,
         lngAlternates: Object.fromEntries(
-          languageConfigs.map((c) => [c.lng, join(c.lngBasePath, 'projects')])
+          languageConfigs.map((c) => [c.lng, join(c.lngBasePath, 'projects/')])
         ),
       },
     })
@@ -73,14 +73,14 @@ export default async function createPages({
       if (!slug) return
 
       createPage<IPageContext>({
-        path: `${join(lngBasePath, slug)}`,
+        path: `${join(lngBasePath, slug, '/')}`,
         component: resolve(__dirname, '../pageTemplates/project.tsx'),
         context: {
           slug,
           lng,
           lngBasePath,
           lngAlternates: Object.fromEntries(
-            languageConfigs.map((c) => [c.lng, join(c.lngBasePath, slug)])
+            languageConfigs.map((c) => [c.lng, join(c.lngBasePath, slug, '/')])
           ),
         },
       })

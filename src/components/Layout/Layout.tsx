@@ -7,9 +7,10 @@ import GridOverlay from './GridOverlay'
 
 interface Props {
   children: React.ReactNode
+  headerFixed?: boolean
 }
 
-const Layout = ({ children, ...props }: Props) => {
+const Layout = ({ children, headerFixed }: Props) => {
   return (
     <>
       <BasesStyles />
@@ -24,12 +25,12 @@ const Layout = ({ children, ...props }: Props) => {
           }
         `}
         render={(data) => (
-          <div {...props}>
-            <Header siteTitle={data.site.siteMetadata.title} />
+          <>
+            <Header siteTitle={data.site.siteMetadata.title} fixed={headerFixed} />
             <main>{children}</main>
             <FooterSection />
             <GridOverlay />
-          </div>
+          </>
         )}
       />
     </>

@@ -5,12 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useContext } from 'react'
+import React from 'react'
 import Helmet, { HelmetProps } from 'react-helmet'
 import { graphql, useStaticQuery, withPrefix } from 'gatsby'
 import { SeoQuery } from '../graphqlTypes'
 import { useTranslation } from 'react-i18next'
-import { PageContext } from '../Providers/PageContext'
+import { usePageContext } from '../Providers/PageContext'
 
 interface Props {
   description?: string
@@ -20,7 +20,7 @@ interface Props {
 
 function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
   const { i18n } = useTranslation()
-  const { lngAlternates } = useContext(PageContext)
+  const { lngAlternates = {} } = usePageContext()
 
   const { site } = useStaticQuery<SeoQuery>(
     graphql`
@@ -46,7 +46,7 @@ function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
     typeof window !== 'undefined' ? window.location.origin : site.siteMetadata.origin || ''
   const title = titleProp ? `${titleProp} | ${mainTitle}` : mainTitle
   const metaDescription = description || site.siteMetadata.description || ''
-  const langAlternateLinks = Object.entries(lngAlternates || {}).map(([lng, lngPath]) => ({
+  const langAlternateLinks = Object.entries(lngAlternates).map(([lng, lngPath]) => ({
     rel: 'alternate',
     hreflang: lng,
     href: origin + withPrefix(lngPath),
