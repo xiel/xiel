@@ -1,6 +1,5 @@
 import React from 'react'
 import Logo from './Logo'
-import Nav from './Nav'
 import styled from '@emotion/styled'
 import Spacer from '../Layout/Spacer'
 import { Theme } from '../../styles/theme'
@@ -27,17 +26,14 @@ const HeaderEl = styled('header')<HeaderElProps, Theme>`
 
 const fixedHeader = css`
   position: absolute;
-  background: linear-gradient(to bottom, #000, hsla(0, 0%, 0%, 0));
-  z-index: 9;
+  z-index: 2;
 `
 
 const Header = ({ siteTitle = '', fixed }: Props) => {
-  console.log(fixed)
   return (
     <HeaderEl css={fixed && fixedHeader}>
       <Logo siteTitle={siteTitle} />
       <Spacer />
-      <Nav />
     </HeaderEl>
   )
 }

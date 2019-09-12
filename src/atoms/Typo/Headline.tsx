@@ -9,19 +9,27 @@ const heading = css`
   font-weight: 500;
 `
 
-const levelCSS = {
+export const headlineCSS = {
   h1: (theme: Theme) => css`
+    ${heading};
     color: #fff;
     font-size: 2.2rem;
     font-weight: 600;
   `,
   h2: (theme: Theme) => css`
+    ${heading};
     color: #fff;
     font-size: 2rem;
   `,
   h3: (theme: Theme) => css`
+    ${heading};
     color: #fff;
     font-size: 1.4rem;
+    line-height: 1.4;
+  `,
+  h4: (theme: Theme) => css`
+    ${heading};
+    font-size: 1.2rem;
     line-height: 1.4;
   `,
 }
@@ -35,33 +43,19 @@ const lineStyle = css`
     height: 0.15em;
     border-radius: 1em;
     background: hsla(257, 45%, 41%, 1);
-    background: linear-gradient(
-      to right,
-      hsl(293, 42%, 42%),
-      hsla(257, 45%, 41%, 1)
-    );
+    background: linear-gradient(to right, hsl(293, 42%, 42%), hsla(257, 45%, 41%, 1));
   }
 `
 
 interface Props extends React.HTMLAttributes<unknown> {
-  level?: keyof typeof levelCSS
+  level?: keyof typeof headlineCSS
   component?: React.ComponentType | React.ElementType
   line?: boolean
 }
 
-export default function Headline({
-  level = 'h1',
-  component,
-  line,
-  ...restProps
-}: Props) {
+export default function Headline({ level = 'h1', component, line, ...restProps }: Props) {
   const Component = component || level
-  const levelStyles = levelCSS[level]
+  const levelStyles = headlineCSS[level]
 
-  return (
-    <Component
-      css={(theme) => [heading, levelStyles(theme), line && lineStyle]}
-      {...restProps}
-    />
-  )
+  return <Component css={(theme) => [levelStyles(theme), line && lineStyle]} {...restProps} />
 }

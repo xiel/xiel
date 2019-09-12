@@ -1,29 +1,28 @@
 import { css } from '@emotion/core'
+import { Theme } from '../../../styles/theme'
 
-export const section = css`
+export const introBoxWrapperRow = css`
   position: relative;
-  overflow: hidden;
-  height: 30vh;
-
-  @media (min-width: 500px) {
-    height: 50vw;
-    max-height: calc(100vh - 50px);
-  }
+  background: hsla(259, 10%, 11%, 0.8);
 `
-
 export const introBoxWrapper = css`
   position: relative;
+  display: flex;
+  justify-content: center;
 `
-export const introBox = css`
+export const introBox = (theme: Theme) => css`
   position: relative;
   white-space: nowrap;
   z-index: 2;
   padding: 1.4rem 2rem;
+  margin-top: -10%;
+  margin-bottom: -10%;
 
-  @media (min-width: 500px) {
+  @media (min-width: ${theme.screenMd}px) {
     position: absolute;
     left: 0;
     bottom: 0;
+    margin: 0;
   }
 `
 export const introBoxBackground = css`

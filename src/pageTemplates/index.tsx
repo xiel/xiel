@@ -16,7 +16,7 @@ export default function Index(props: PageProps<IPageContext>) {
   useEnforceRecommendedLanguageOnce(props)
 
   return (
-    <Layout headerFixed={true}>
+    <Layout headerFixed>
       <SEO description={t('Intro.Title')} />
       <StageSection />
       <IntroSection />

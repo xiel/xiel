@@ -6,11 +6,13 @@ import { css } from '@emotion/core'
 import { Theme } from '../../styles/theme'
 import { Trans } from 'react-i18next'
 import Spacer from '../Layout/Spacer'
+import { TriangleSpacer } from './Technologies/Technologies'
 
 interface Props {}
 
 const sectionCSS = (theme: Theme) => css`
   background: ${theme.background};
+  background: linear-gradient(to bottom, hsla(259, 10%, 11%, 0.8), ${theme.background});
 `
 
 export default function IntroSection(props: Props) {
@@ -27,6 +29,7 @@ export default function IntroSection(props: Props) {
           </p>
         </GridItem>
       </GridRow>
+      <TriangleSpacer />
     </Section>
   )
 }

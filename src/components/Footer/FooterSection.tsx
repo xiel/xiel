@@ -9,6 +9,11 @@ import { Theme } from '../../styles/theme'
 
 interface Props {}
 
+const footerCSS = (theme: Theme) => css`
+  position: relative;
+  background: ${theme.background};
+`
+
 const FooterList = styled.ul<{}, Theme>`
   display: flex;
   justify-content: center;
@@ -42,11 +47,12 @@ export default function FooterSection(props: Props) {
   const { t } = useTranslation()
 
   return (
-    <>
+    <footer css={footerCSS}>
       <GridRow justify="center">
         <GridItem
           col={[12, 12, 10]}
           css={css`
+            position: relative;
             padding: 1rem 0;
             text-align: center;
           `}
@@ -75,6 +81,6 @@ export default function FooterSection(props: Props) {
           </FooterList>
         </GridItem>
       </GridRow>
-    </>
+    </footer>
   )
 }

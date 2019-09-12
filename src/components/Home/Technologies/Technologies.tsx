@@ -8,13 +8,14 @@ import Spacer from '../../Layout/Spacer'
 import TechTeaser from './TechTeaser'
 import Triangle from '../../../assets/svg/triangle.svg'
 import { Theme } from '../../../styles/theme'
+import styled from '@emotion/styled'
 
 interface Props {}
 
 const sectionCSS = css`
-  margin: 7vmin 0;
   background: #eee;
   color: #000;
+  z-index: 1;
 `
 
 const triangleTop = (theme: Theme) => css`
@@ -35,6 +36,10 @@ const triangle = (theme: Theme) => css`
   height: 7vmin;
   fill: #eee;
   transform: translateY(100%) scale(-1);
+`
+
+export const TriangleSpacer = styled.div`
+  height: 7vmin;
 `
 
 export default function Technologies(props: Props) {

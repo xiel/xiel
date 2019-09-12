@@ -1,10 +1,7 @@
 import React, { createContext, useContext } from 'react'
 import { css } from '@emotion/core'
 
-type IElementProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->
+type IElementProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 type ColValue = number | 'auto'
 type ColValues = ColValue[]
@@ -82,9 +79,7 @@ export function GridRow({
     justify-content: ${justify};
     flex-wrap: ${wrap};
     flex: 1 0;
-    width: ${isInCol
-      ? 'auto'
-      : maxWidthVW + 'vw'}; // new (is to big when nested)
+    width: ${isInCol ? 'auto' : maxWidthVW + 'vw'}; // new (is to big when nested)
     max-width: ${maxWidth}px;
     margin: 0 ${isInCol ? gap / -2 + gapUnit : 'auto'};
   `
@@ -119,10 +114,7 @@ const calcColForMQ = (colValue: ColValue, availableCols: number) => {
     : Math.min(availableCols, Math.round(colCount))
 }
 
-const getValueForIndexOrClosestLower = (
-  values: number[],
-  index: number
-): number => {
+const getValueForIndexOrClosestLower = (values: number[], index: number): number => {
   const val = values[index]
   if (val !== undefined) {
     return val
@@ -165,7 +157,7 @@ export function GridItem({
   }
 
   const cssBase = css`
-    flex: 1 0 auto;
+    flex: 0 auto;
     padding: 0 ${gap / 2 + gapUnit};
   `
 

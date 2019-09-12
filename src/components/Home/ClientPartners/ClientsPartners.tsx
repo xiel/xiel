@@ -12,9 +12,12 @@ import Aperto from './logos/Aperto.svg'
 import Spacer from '../../Layout/Spacer'
 import { css } from '@emotion/core'
 import Button from '../../../atoms/Button'
+import { TriangleSpacer } from '../Technologies/Technologies'
+import { Theme } from '../../../styles/theme'
 
-const section = css`
+const section = (theme: Theme) => css`
   padding-bottom: 4rem;
+  background: ${theme.background};
 `
 
 const logos = css`
@@ -50,6 +53,7 @@ export default function ClientsPartners() {
 
   return (
     <Section css={section}>
+      <TriangleSpacer />
       <GridRow justify={'center'}>
         <GridItem col={[12, 10]}>
           <GridRow>
@@ -66,9 +70,7 @@ export default function ClientsPartners() {
                 <Trans i18nKey={'Footer.Title'} />
               </Headline>
               <Spacer size={1} />
-              <Button href={`mailto:${t('Footer.Email')}`}>
-                {t('Footer.EmailLabel')}
-              </Button>
+              <Button href={`mailto:${t('Footer.Email')}`}>{t('Footer.EmailLabel')}</Button>
               <Spacer size={2} />
             </GridItem>
             <GridItem col={[12, 10, 1 / 2]}>

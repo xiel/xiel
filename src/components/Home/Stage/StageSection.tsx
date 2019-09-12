@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import Section from '../../Layout/Section'
 import { css } from '@emotion/core'
 import StageHero from './StageHero'
 import { GridItem, GridRow } from '../../Layout/Grid'
@@ -20,7 +19,7 @@ type XYS = [number, number, number]
 const initialXYS: XYS = [0, 0, 1]
 
 // map from 0..1 value to -maxDeg..maxDeg values
-const calc = (x: number, y: number, scale: number = 1, maxDeg = 4): XYS => [
+const calc = (x: number, y: number, scale: number = 1, maxDeg = 3): XYS => [
   mapNumInRange(y, 0, 1, maxDeg * -1, maxDeg) * -1,
   mapNumInRange(x, 0, 1, maxDeg * -1, maxDeg),
   scale,
@@ -36,18 +35,15 @@ export default function StageSection(props: Props) {
   const { ref: introBoxRef, rect: introBoxRect } = useElementSize()
   const [cardSpring, setCardSpring] = useSpring(() => ({
     xys: initialXYS,
-    config: { mass: 5, tension: 20, friction: 3 },
+    config: { mass: 5, tension: 20, friction: 4 },
   }))
 
-  const moveMoveUpdate = throttle(
-    250,
-    ({ pageX, pageY }: { pageX: number; pageY: number }) => {
-      if (!introBoxRect) return
-      const boxX = (pageX - introBoxRect.pageX) / introBoxRect.offsetWidth
-      const boxY = (pageY - introBoxRect.pageY) / introBoxRect.offsetHeight
-      setCardSpring({ xys: calc(boxX, boxY) })
-    }
-  )
+  const moveMoveUpdate = throttle(250, ({ pageX, pageY }: { pageX: number; pageY: number }) => {
+    if (!introBoxRect) return
+    const boxX = (pageX - introBoxRect.pageX) / introBoxRect.offsetWidth
+    const boxY = (pageY - introBoxRect.pageY) / introBoxRect.offsetHeight
+    setCardSpring({ xys: calc(boxX, boxY) })
+  })
 
   useEffect(() => {
     let count = 0
@@ -62,7 +58,7 @@ export default function StageSection(props: Props) {
       setCardSpringRandom()
       count++
       count >= 20 && stopFn.current()
-    }, 1000)
+    }, 2000)
 
     requestAnimationFrame(setCardSpringRandom)
 
@@ -75,20 +71,16 @@ export default function StageSection(props: Props) {
   }, [setCardSpring])
 
   return (
-    <>
-      <Section css={c.section}>
-        <StageHero />
-      </Section>
-      <GridRow justify="center">
+    <article>
+      <StageHero />
+      <GridRow justify="center" css={c.introBoxWrapperRow}>
         <GridItem>
           <div css={c.introBoxWrapper}>
             <div
               css={c.introBox}
               ref={introBoxRef}
               onMouseEnter={() => stopFn.current()}
-              onMouseMove={({ pageX, pageY }) =>
-                moveMoveUpdate({ pageX, pageY })
-              }
+              onMouseMove={({ pageX, pageY }) => moveMoveUpdate({ pageX, pageY })}
             >
               <div css={c.introBoxInner}>
                 <Portrait css={c.avatarCSS} />
@@ -113,6 +105,6 @@ export default function StageSection(props: Props) {
           </div>
         </GridItem>
       </GridRow>
-    </>
+    </article>
   )
 }
