@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { PageProps } from '../types/PageProps'
 import { IPageContext } from '../types/GlobalTypes'
+import { withPrefix } from 'gatsby'
 
 interface Props extends Pick<PageProps<IPageContext>, 'navigate' | 'pageContext' | 'path'> {}
 
@@ -21,7 +22,7 @@ export default function useEnforceRecommendedLanguageOnce({ navigate, pageContex
     localStorage.setItem(STORAGE_KEY, recommendedLngPath)
 
     if (recommendedLngPath !== path) {
-      navigate(recommendedLngPath, { replace: true })
+      navigate(withPrefix(recommendedLngPath), { replace: true })
     }
   }, [navigate, pageContext, path])
 }
