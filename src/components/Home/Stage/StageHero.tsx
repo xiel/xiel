@@ -6,20 +6,28 @@ import StageImage from './StageImage'
 
 interface Props {}
 
-export const imageWrapper = css`
-  @keyframes stage-hero-fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  animation: 5s stage-hero-fade-in;
-
+export const image = css`
   @media (min-width: 400px) {
     transform: translateY(-20vw);
+  }
+`
+
+const imageWrapper = (theme: Theme) => css`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 200vh;
+  opacity: 1;
+  background: #010008;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    backface-visibility: hidden;
   }
 `
 
@@ -46,38 +54,8 @@ const triangle = (theme: Theme) => css`
 export default function StageHero({  }: Props) {
   return (
     <div css={stage}>
-      <div
-        css={(theme: Theme) => css`
-          position: fixed;
-          bottom: 0;
-          right: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          opacity: 1;
-          background: #010008;
-
-          @keyframes stage-hero-zoom {
-            from {
-              transform: scale(0.85);
-            }
-            to {
-              transform: scale(1);
-            }
-          }
-
-          img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            margin: 0 auto;
-            transform: scale(0.95);
-            backface-visibility: hidden;
-            animation: 30s stage-hero-zoom both;
-          }
-        `}
-      >
-        <StageImage css={imageWrapper} />
+      <div css={imageWrapper}>
+        <StageImage css={image} />
       </div>
       <Triangle css={triangle} />
     </div>

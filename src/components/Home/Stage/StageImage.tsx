@@ -8,7 +8,7 @@ export default function StageImage(props: GatsbyImageProps) {
     query StageImage {
       placeholderImage: file(relativePath: { eq: "stage/frontend-space-2.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 2560, quality: 90) {
+          fluid(maxWidth: 1280, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
