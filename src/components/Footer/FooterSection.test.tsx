@@ -5,6 +5,6 @@ import { render } from '@testing-library/react'
 describe('FooterSection', () => {
   it('should render footer', function() {
     const { getByText } = render(<FooterSection />)
-    expect(getByText('Footer.Title'))
+    expect(getByText('Footer.Copyright'))
   })
 })
