@@ -83,12 +83,14 @@ function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
           property: `og:type`,
           content: `website`,
         },
-        socialImage
-          ? {
-              name: `og:image`,
-              content: origin + socialImage.childImageSharp!.fixed!.src,
-            }
-          : {},
+        {
+          name: `og:image`,
+          content: origin + socialImage!.childImageSharp!.fixed!.src,
+        },
+        {
+          name: `twitter:image`,
+          content: origin + socialImage!.childImageSharp!.fixed!.src,
+        },
         {
           name: `twitter:card`,
           content: `summary`,
