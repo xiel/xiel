@@ -8,6 +8,9 @@
     "gh-pages": "^2.1.1",
     "polished": "^3.4.1"
   },
+  "engines": {
+    "node": ">=10"
+  },
   "keywords": [
     "gatsby"
   ],
