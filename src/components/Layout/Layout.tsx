@@ -4,6 +4,7 @@ import Header from '../Header/Header'
 import BasesStyles from '../../styles/BaseStyles'
 import FooterSection from '../Footer/FooterSection'
 import GridOverlay from './GridOverlay'
+import useTracking from '../../hooks/useTracking'
 
 interface Props {
   children: React.ReactNode
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const Layout = ({ children, headerFixed }: Props) => {
+  useTracking()
   return (
     <>
       <BasesStyles />
