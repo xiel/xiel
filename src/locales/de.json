@@ -1,0 +1,28 @@
+{
+  "Projects": {
+    "Title": "Projekte"
+  },
+  "StageSection": {
+    "Hello": "Felix Leupold",
+    "Intro": "FrontEnd-Entwickler & Berater"
+  },
+  "Intro": {
+    "Title": "Ich bin freiberuflicher FrontEnd-Entwickler aus Berlin und erschaffe digitale Erlebnisse, die jeder gerne nutzt.",
+    "Text": "Mit Leidenschaft verbinde ich gutes Design, Technologie und Innovation in all meinen Projekten, die ich gerne von der ersten Idee bis zur Veröffentlichung begleite. Mein Schwerpunkt liegt aktuell auf der Entwicklung responsiver User Interfaces mit React. Ich interessiere mich für JavaScript, User Experience, Accessibility, Clean Code und das Weltall.<br/> Und alles dazwischen."
+  },
+  "Technologies": {
+    "Title": "Technologien",
+    "Text": "Mit einer Kombination aus modernsten Technologien und zuverlässiger Open-Source-Software erstelle ich benutzerorientierte, leistungsstarke Apps und Websites für Smartphones, Tablets und Desktops."
+  },
+  "ClientsPartners": {
+    "Title": "Kunden & Partner",
+    "Text": "In den vergangenen 10 Jahren konnte ich mit großartigen Teams für spannende Kunden ein breites Spektrum an Projekten umsetzen: von einnehmenden Touch-Interfaces bis zu komplexen Web-Anwendungen."
+  },
+  "Footer": {
+    "Title": "Neues Projekt in Planung?",
+    "Email": "felix@xiel.de",
+    "EmailLabel": "Lass uns sprechen",
+    "PrivacyLink": "Datenschutz & Impressum",
+    "Copyright": "© {{year}} Berlin"
+  }
+}

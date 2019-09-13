@@ -1,0 +1,17 @@
+schema: schema.graphql
+documents:
+  - ./src/**/*.{ts,tsx}
+  - ./node_modules/gatsby-*/**/*.js
+config:
+  avoidOptionals: true
+  namingConvention:
+    enumValues: keep
+generates:
+  ./src/graphqlTypes.ts:
+    plugins:
+      - add: /* eslint-disable */
+      - add: // ⚠️ DO NOT EDIT ⚠️
+      - typescript
+      - typescript-operations
+    config:
+      maybeValue: T | undefined
