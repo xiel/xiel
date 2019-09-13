@@ -18,7 +18,9 @@ type XYS = [number, number, number]
 
 const initialXYS: XYS = [0, 0, 1]
 const reqIdle =
-  (typeof window !== 'undefined' && window.requestIdleCallback) || requestAnimationFrame
+  typeof window !== 'undefined'
+    ? window.requestIdleCallback || window.requestAnimationFrame
+    : setTimeout
 
 // map from 0..1 value to -maxDeg..maxDeg values
 const calc = (x: number, y: number, scale: number = 1, maxDeg = 3): XYS => [
