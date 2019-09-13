@@ -1,6 +1,6 @@
 # xiel
 
-my website & blog.
+my website & blog
 
 ## 🚀 Quick start
 
