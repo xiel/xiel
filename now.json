@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "alias": "xiel.dev",
+  "alias": ["www.xiel.dev"],
   "routes": [
     {
       "src": "/(.*)",
