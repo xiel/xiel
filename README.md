@@ -1,6 +1,6 @@
 # xiel
 
-Based on the Gatsby default starter.
+my website & blog.
 
 ## 🚀 Quick start
 
