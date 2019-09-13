@@ -6,7 +6,6 @@
 import { join, resolve } from 'path'
 import { NodePluginArgs } from 'gatsby'
 import { IPageContext, PageLocaleConfig } from '../types/GlobalTypes'
-import { ProjectJsonEdge } from '../graphqlTypes'
 
 // based on: https://github.com/gatsbyjs/gatsby/issues/1457#issuecomment-381405638
 export default async function createPages({
@@ -31,7 +30,7 @@ export default async function createPages({
     return
   }
 
-  const projects = result.data.projects.edges as ProjectJsonEdge[]
+  // const projects = result.data.projects.edges as ProjectJsonEdge[]
   const languageConfigs: PageLocaleConfig[] = [
     {
       lngBasePath: '/',
@@ -57,33 +56,33 @@ export default async function createPages({
     })
 
     // Project Pages (not used atm.)
-    createPage<IPageContext>({
-      path: `${join(lngBasePath, 'projects/')}`,
-      component: resolve(__dirname, '../pageTemplates/projects.tsx'),
-      context: {
-        lng,
-        lngBasePath,
-        lngAlternates: Object.fromEntries(
-          languageConfigs.map((c) => [c.lng, join(c.lngBasePath, 'projects/')])
-        ),
-      },
-    })
-
-    projects.forEach(({ node: { slug } }) => {
-      if (!slug) return
-
-      createPage<IPageContext>({
-        path: `${join(lngBasePath, slug, '/')}`,
-        component: resolve(__dirname, '../pageTemplates/project.tsx'),
-        context: {
-          slug,
-          lng,
-          lngBasePath,
-          lngAlternates: Object.fromEntries(
-            languageConfigs.map((c) => [c.lng, join(c.lngBasePath, slug, '/')])
-          ),
-        },
-      })
-    })
+    // createPage<IPageContext>({
+    //   path: `${join(lngBasePath, 'projects/')}`,
+    //   component: resolve(__dirname, '../pageTemplates/projects.tsx'),
+    //   context: {
+    //     lng,
+    //     lngBasePath,
+    //     lngAlternates: Object.fromEntries(
+    //       languageConfigs.map((c) => [c.lng, join(c.lngBasePath, 'projects/')])
+    //     ),
+    //   },
+    // })
+    //
+    // projects.forEach(({ node: { slug } }) => {
+    //   if (!slug) return
+    //
+    //   createPage<IPageContext>({
+    //     path: `${join(lngBasePath, slug, '/')}`,
+    //     component: resolve(__dirname, '../pageTemplates/project.tsx'),
+    //     context: {
+    //       slug,
+    //       lng,
+    //       lngBasePath,
+    //       lngAlternates: Object.fromEntries(
+    //         languageConfigs.map((c) => [c.lng, join(c.lngBasePath, slug, '/')])
+    //       ),
+    //     },
+    //   })
+    // })
   })
 }
