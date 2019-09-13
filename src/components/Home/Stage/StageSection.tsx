@@ -17,6 +17,8 @@ interface Props {}
 type XYS = [number, number, number]
 
 const initialXYS: XYS = [0, 0, 1]
+const reqIdle =
+  (typeof window !== 'undefined' && window.requestIdleCallback) || requestAnimationFrame
 
 // map from 0..1 value to -maxDeg..maxDeg values
 const calc = (x: number, y: number, scale: number = 1, maxDeg = 3): XYS => [
@@ -57,15 +59,19 @@ export default function StageSection(props: Props) {
     const t = setInterval(() => {
       setCardSpringRandom()
       count++
-      count >= 20 && stopFn.current()
-    }, 2000)
+      count >= 10 && stopFn.current()
+    }, 3000)
 
-    requestAnimationFrame(setCardSpringRandom)
+    reqIdle(setCardSpringRandom)
 
+    stopFn.current()
     stopFn.current = () => {
       clearInterval(t)
       setCardSpring({ xys: [0, 0, 1] })
+      window.removeEventListener('scroll', stopFn.current)
     }
+
+    window.addEventListener('scroll', stopFn.current)
 
     return () => stopFn.current()
   }, [setCardSpring])

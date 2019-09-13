@@ -40,6 +40,7 @@ export const introBoxBackground = css`
   background: linear-gradient(45deg, hsla(206, 37%, 25%, 0.75), hsla(206, 24%, 13%, 0.75));
   box-shadow: 0 1rem 2rem -0.5rem #000;
   z-index: -1;
+  will-change: transform;
 `
 export const introBoxInner = css`
   position: relative;
