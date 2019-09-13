@@ -3,6 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+import 'core-js/stable'
 import { join, resolve } from 'path'
 import { NodePluginArgs } from 'gatsby'
 import { IPageContext, PageLocaleConfig } from '../types/GlobalTypes'

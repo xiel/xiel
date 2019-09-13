@@ -5,11 +5,12 @@
   "version": "0.1.0",
   "author": "Felix Leupold <felix@xiel.de>",
   "dependencies": {
+    "core-js": "^3.2.1",
     "gh-pages": "^2.1.1",
     "polished": "^3.4.1"
   },
   "engines": {
-    "node": ">=10"
+    "node": "10.x"
   },
   "keywords": [
     "gatsby"
