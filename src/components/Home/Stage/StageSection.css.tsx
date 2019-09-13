@@ -1,14 +1,19 @@
 import { css } from '@emotion/core'
 import { Theme } from '../../../styles/theme'
+import { rgba } from 'polished'
 
-export const introBoxWrapperRow = css`
+export const introBoxWrapperRow = (theme: Theme) => css`
   position: relative;
-  background: hsla(259, 10%, 11%, 0.8);
+  background: ${rgba(theme.background, 0.7)};
 `
 export const introBoxWrapper = css`
   position: relative;
   display: flex;
   justify-content: center;
+
+  @media (min-width: 500px) {
+    justify-content: start;
+  }
 `
 export const introBox = (theme: Theme) => css`
   position: relative;
@@ -16,12 +21,12 @@ export const introBox = (theme: Theme) => css`
   z-index: 2;
   padding: 1.4rem 2rem;
   margin-top: -10%;
-  margin-bottom: -10%;
+  margin-bottom: -5%;
 
   @media (min-width: ${theme.screenMd}px) {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -1vw;
     margin: 0;
   }
 `
@@ -55,7 +60,7 @@ export const introTextCSS = css`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  text-shadow: 0 0.3em 0.6em rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0.5em 0.6em rgba(0, 0, 0, 0.3);
 
   @media (min-width: 500px) {
     text-align: left;

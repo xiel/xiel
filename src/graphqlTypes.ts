@@ -3003,6 +3003,15 @@ export type SeoQuery = (
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'origin'>
     )> }
+  )>, socialImage: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fixed: Maybe<(
+        { __typename?: 'ImageSharpFixed' }
+        & Pick<ImageSharpFixed, 'src'>
+      )> }
+    )> }
   )> }
 );
 

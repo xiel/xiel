@@ -3,8 +3,7 @@ import { css } from '@emotion/core'
 import Triangle from '../../../assets/svg/triangle.svg'
 import { Theme } from '../../../styles/theme'
 import StageImage from './StageImage'
-
-interface Props {}
+import { rgba } from 'polished'
 
 export const image = css`
   @media (min-width: 400px) {
@@ -44,14 +43,14 @@ export const stage = css`
 const triangle = (theme: Theme) => css`
   position: absolute;
   left: 0;
-  bottom: -1px;
+  bottom: -0.49px; // anti-aliasing bug
   width: 100%;
   height: 15%;
-  fill: hsla(259, 10%, 11%, 0.8);
+  fill: ${rgba(theme.background, 0.7)};
   transform: scaleX(-1);
 `
 
-export default function StageHero({  }: Props) {
+export default function StageHero() {
   return (
     <div css={stage}>
       <div css={imageWrapper}>

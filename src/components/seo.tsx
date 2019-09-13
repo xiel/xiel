@@ -22,7 +22,7 @@ function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
   const { i18n } = useTranslation()
   const { lngAlternates = {} } = usePageContext()
 
-  const { site } = useStaticQuery<SeoQuery>(
+  const { site, socialImage } = useStaticQuery<SeoQuery>(
     graphql`
       query Seo {
         site {
@@ -31,6 +31,13 @@ function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
             description
             author
             origin
+          }
+        }
+        socialImage: file(relativePath: { eq: "stage/deepspace-social.jpg" }) {
+          childImageSharp {
+            fixed(width: 1200) {
+              src
+            }
           }
         }
       }
@@ -76,6 +83,12 @@ function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
           property: `og:type`,
           content: `website`,
         },
+        socialImage
+          ? {
+              name: `og:image`,
+              content: origin + socialImage.childImageSharp!.fixed!.src,
+            }
+          : {},
         {
           name: `twitter:card`,
           content: `summary`,

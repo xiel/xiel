@@ -6,9 +6,9 @@ import { GatsbyImageProps } from '../../../types/GlobalTypes'
 export default function StageImage(props: GatsbyImageProps) {
   const data = useStaticQuery(graphql`
     query StageImage {
-      placeholderImage: file(relativePath: { eq: "stage/frontend-space-2.jpg" }) {
+      placeholderImage: file(relativePath: { eq: "stage/deepspace-stage.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1280, quality: 90) {
+          fluid(maxWidth: 2560, quality: 85) {
             ...GatsbyImageSharpFluid
           }
         }
