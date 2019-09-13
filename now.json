@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "alias": ["www.xiel.dev"],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "status": 301,
-      "headers": { "Location": "https://xiel.dev/$1" }
-    }
-  ]
+  "alias": ["xiel.dev"],
+  "routes": []
 }
