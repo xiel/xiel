@@ -3,6 +3,15 @@
   "alias": ["xiel.dev"],
   "routes": [
     {
+      "src": "/*",
+      "headers": {
+        "referrer-policy": "no-referrer-when-downgrade",
+        "content-security-policy": "default-src 'self'; img-src piwik.xiel.de data: 'self'; script-src piwik.xiel.de 'self' 'unsafe-inline'; frame-src piwik.xiel.de 'self'; style-src 'self' 'unsafe-inline'; font-src data: 'self';",
+        "feature-policy": "geolocation 'self'; microphone 'self'; camera 'self'"
+      },
+      "continue": true
+    },
+    {
       "src": "/static/(.*)",
       "dest": "/static/$1",
       "headers": { "cache-control": "public,max-age=31536000,immutable" }
