@@ -144,11 +144,14 @@ export default function Impressum(props: Props) {
             </p>
 
             <p>
-              <iframe
-                src="//piwik.xiel.de/index.php?module=CustomOptOut&amp;action=optOut&amp;idSite=2&amp;language=de"
-                width="320"
-                height="240"
-              />
+              Sie haben die Möglichkeit zu verhindern, dass von Ihnen hier getätigte Aktionen
+              analysiert und verknüpft werden. Dies wird Ihre Privatsphäre schützen, aber wird auch
+              den Besitzer daran hindern, aus Ihren Aktionen zu lernen und die Bedienbarkeit für Sie
+              und andere Benutzer zu verbessern. Hier geht es zum{' '}
+              <a href="//piwik.xiel.de/index.php?module=CustomOptOut&amp;action=optOut&amp;idSite=2&amp;language=de">
+                Opt-Out
+              </a>
+              .
             </p>
 
             <h4>Widerruf, Änderungen, Berichtigungen und Aktualisierungen</h4>
