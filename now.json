@@ -6,7 +6,7 @@
       "src": "/*",
       "headers": {
         "referrer-policy": "no-referrer-when-downgrade",
-        "content-security-policy": "allow 'self'; img-src data: 'self'; script-src 'self' ; font-src 'self';",
+        "content-security-policy": "default-src 'self'; img-src data: 'self'; script-src piwik.xiel.de 'self' 'unsafe-inline'; font-src 'self';",
         "feature-policy": "geolocation 'self'; microphone 'self'; camera 'self'",
         "expect-ct": "max-age=604800, enforce",
         "strict-transport-security": "max-age=31536000; includeSubDomains",
