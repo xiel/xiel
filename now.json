@@ -3,6 +3,21 @@
   "alias": ["xiel.dev"],
   "routes": [
     {
+      "src": "/*",
+      "headers": {
+        "referrer-policy": "no-referrer-when-downgrade",
+        "content-security-policy": "allow 'self'; img-src data: 'self'; script-src 'self' ; font-src 'self';",
+        "feature-policy": "geolocation 'self'; microphone 'self'; camera 'self'",
+        "expect-ct": "max-age=604800, enforce",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block",
+        "x-content-type-options": "nosniff",
+        "x-download-options": "noopen"
+      },
+      "continue": true
+    },
+    {
       "src": "/static/(.*)",
       "dest": "/static/$1",
       "headers": { "cache-control": "public,max-age=31536000,immutable" }
