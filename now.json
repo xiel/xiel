@@ -6,14 +6,8 @@
       "src": "/*",
       "headers": {
         "referrer-policy": "no-referrer-when-downgrade",
-        "content-security-policy": "default-src 'self'; img-src data: 'self'; script-src piwik.xiel.de 'self' 'unsafe-inline'; font-src 'self';",
-        "feature-policy": "geolocation 'self'; microphone 'self'; camera 'self'",
-        "expect-ct": "max-age=604800, enforce",
-        "strict-transport-security": "max-age=31536000; includeSubDomains",
-        "x-frame-options": "SAMEORIGIN",
-        "x-xss-protection": "1; mode=block",
-        "x-content-type-options": "nosniff",
-        "x-download-options": "noopen"
+        "content-security-policy": "default-src 'self'; img-src piwik.xiel.de data: 'self'; script-src piwik.xiel.de 'self' 'unsafe-inline'; frame-src piwik.xiel.de 'self'; style-src 'self' 'unsafe-inline'; font-src data: 'self';",
+        "feature-policy": "geolocation 'self'; microphone 'self'; camera 'self'"
       },
       "continue": true
     },
