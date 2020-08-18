@@ -3,7 +3,7 @@ import Section from '../../Layout/Section'
 import { GridItem, GridRow } from '../../Layout/Grid'
 import Headline from '../../../atoms/Typo/Headline'
 import { css } from '@emotion/core'
-import { Trans } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import Spacer from '../../Layout/Spacer'
 import TechTeaser from './TechTeaser'
 import Triangle from '../../../assets/svg/triangle.svg'
@@ -43,6 +43,7 @@ export const TriangleSpacer = styled.div`
 `
 
 export default function Technologies(props: Props) {
+  const { t } = useTranslation()
   return (
     <Section css={sectionCSS}>
       <Triangle css={triangleTop} />

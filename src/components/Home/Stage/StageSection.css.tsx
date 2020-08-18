@@ -30,6 +30,7 @@ export const introBox = (theme: Theme) => css`
     margin: 0;
   }
 `
+
 export const introBoxBackground = css`
   position: absolute;
   top: 0;
@@ -38,10 +39,9 @@ export const introBoxBackground = css`
   height: 100%;
   border-radius: 1.6rem;
   background: linear-gradient(45deg, hsla(206, 37%, 25%, 0.75), hsla(206, 24%, 13%, 0.75));
-  box-shadow: 0 1rem 2rem -0.5rem #000;
   z-index: -1;
-  will-change: transform;
 `
+
 export const introBoxInner = css`
   position: relative;
   display: flex;
@@ -50,7 +50,6 @@ export const introBoxInner = css`
   align-items: center;
   justify-content: center;
   z-index: 2;
-  transform: perspective(600px) translateZ(1px);
 
   @media (min-width: 500px) {
     flex-direction: row;
