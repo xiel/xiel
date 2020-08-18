@@ -31,18 +31,13 @@ export default function SocialLinkList(props: Props) {
         </a>
       </li>
       <li>
-        <a href="http://github.com/xiel" css={link} target="_blank">
-          <TextIcon name={'github'} title={'Github'} />
-        </a>
-      </li>
-      <li>
-        <a href="https://dribbble.com/xiel" css={link} target="_blank">
-          <TextIcon name={'dribbble'} title={'Dribbble'} />
-        </a>
-      </li>
-      <li>
         <a href="http://instagram.com/xiel" css={link} target="_blank">
           <TextIcon name={'instagram'} title={'Instagram'} />
+        </a>
+      </li>
+      <li>
+        <a href="http://github.com/xiel" css={link} target="_blank">
+          <TextIcon name={'github'} title={'Github'} />
         </a>
       </li>
     </ul>

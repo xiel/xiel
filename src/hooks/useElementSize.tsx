@@ -81,11 +81,7 @@ export default function useElementSize({ domTarget }: Props = {}) {
 
   return {
     ref: domTarget
-      ? () =>
-          console.warn(
-            'no need to call ref, observing passed domTarget',
-            domTarget
-          )
+      ? () => console.warn('no need to call ref, observing passed domTarget', domTarget)
       : setRef,
     rect,
   }

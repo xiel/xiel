@@ -12,12 +12,12 @@ export const image = css`
 `
 
 const imageWrapper = (theme: Theme) => css`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   top: 0;
   width: 100%;
-  height: 200vh;
+  height: 100%;
   opacity: 1;
   background: #010008;
 
