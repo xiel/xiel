@@ -2,7 +2,6 @@ import React from 'react'
 import { css } from '@emotion/core'
 import Triangle from '../../../assets/svg/triangle.svg'
 import { Theme } from '../../../styles/theme'
-import StageImage from './StageImage'
 import { rgba } from 'polished'
 
 export const image = css`
@@ -53,9 +52,7 @@ const triangle = (theme: Theme) => css`
 export default function StageHero() {
   return (
     <div css={stage}>
-      <div css={imageWrapper}>
-        <StageImage css={image} />
-      </div>
+      <div css={imageWrapper}>{/*<StageImage css={image} />*/}</div>
       <Triangle css={triangle} />
     </div>
   )

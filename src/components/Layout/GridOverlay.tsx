@@ -22,9 +22,7 @@ function GridOverlay(props: Props) {
     return () => document.removeEventListener('keypress', pressHandler)
   }, [])
 
-  useEffect(() => sessionStorage.setItem('overlayActive', `${showGrid}`), [
-    showGrid,
-  ])
+  useEffect(() => sessionStorage.setItem('overlayActive', `${showGrid}`), [showGrid])
 
   return showGrid ? (
     <div
@@ -35,6 +33,7 @@ function GridOverlay(props: Props) {
         width: 100%;
         height: 100%;
         pointer-events: none;
+        z-index: 100;
       `}
     >
       <GridRow
