@@ -19,7 +19,12 @@ function GridOverlay(props: Props) {
       }
     }
     document.addEventListener('keypress', pressHandler)
-    return () => document.removeEventListener('keypress', pressHandler)
+    document.documentElement.addEventListener('dblclick', toggleGrid)
+
+    return () => {
+      document.removeEventListener('keypress', pressHandler)
+      document.documentElement.removeEventListener('dblclick', toggleGrid)
+    }
   }, [])
 
   useEffect(() => sessionStorage.setItem('overlayActive', `${showGrid}`), [showGrid])
