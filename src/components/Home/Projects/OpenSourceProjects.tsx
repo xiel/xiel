@@ -12,10 +12,10 @@ import { Theme } from '../../../styles/theme'
 interface Props {}
 
 const sectionCSS = css`
-  background: linear-gradient(180deg, #222d35, #26262c);
   color: #eee;
   z-index: 1;
   padding-top: 7rem;
+  background: linear-gradient(180deg, #222d35, #26262c);
 `
 
 const triangleTop = (theme: Theme) => css`
@@ -38,23 +38,24 @@ const triangle = (theme: Theme) => css`
   transform: translateY(100%) scale(-1);
 `
 
-export default function Projects(props: Props) {
+export default function OpenSourceProjects(props: Props) {
   const { t } = useTranslation()
+
   return (
     <Section css={sectionCSS}>
       <Triangle css={triangleTop} />
       <GridRow justify="center">
         <GridItem col={[12, 10]}>
           <Headline level="h2" line>
-            <Trans i18nKey={'OpenSource.Title'} />
+            <Trans i18nKey={'OpenSourceProjects.Title'} />
           </Headline>
           <Spacer />
           <p>
-            <Trans i18nKey={'OpenSource.Text'} />
+            <Trans i18nKey={'OpenSourceProjects.Text'} />
           </p>
           <Spacer />
-          <GridRow component="ul">
-            <OpenSourceProjectTeaser label={'TypeScript / ES6'} iconName="tech-typescript" />
+          <GridRow component="ul" wrap="nowrap">
+            <OpenSourceProjectTeaser label={'React (Native)'} iconName="tech-react" />
             <OpenSourceProjectTeaser label={'React (Native)'} iconName="tech-react" />
             <OpenSourceProjectTeaser label={'React (Native)'} iconName="tech-react" />
             <OpenSourceProjectTeaser label={'React (Native)'} iconName="tech-react" />

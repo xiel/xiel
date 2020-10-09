@@ -32,7 +32,7 @@ export default function OpenSourceProjectTeaser({ label, iconName }: Props) {
   return (
     <GridItem col={[4, 3, 2, 5]} component="li" css={spaceTop(2)}>
       <div css={techTeaser}>
-        <Headline level="h3">wheel-gestures</Headline>
+        <Headline level="h3">{label}</Headline>
         <p>wheel gestures and momentum detection in the browser</p>
       </div>
     </GridItem>

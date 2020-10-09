@@ -9,7 +9,7 @@ import Technologies from '../components/Home/Technologies/Technologies'
 import { useTranslation } from 'react-i18next'
 import { IPageContext } from '../types/GlobalTypes'
 import useEnforceRecommendedLanguageOnce from '../hooks/useEnforceRecommendedLanguageOnce'
-import Projects from '../components/Home/Projects/Projects'
+import OpenSourceProjects from '../components/Home/Projects/OpenSourceProjects'
 
 export default function Index(props: PageProps<IPageContext>) {
   const { t } = useTranslation()
@@ -22,7 +22,7 @@ export default function Index(props: PageProps<IPageContext>) {
       <StageSection />
       <IntroSection />
       <Technologies />
-      <Projects />
+      <OpenSourceProjects />
       <ClientsPartners />
     </Layout>
   )
