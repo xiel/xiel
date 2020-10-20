@@ -6,6 +6,8 @@
   "author": "Felix Leupold <felix@xiel.de>",
   "dependencies": {
     "core-js": "^3.2.1",
+    "embla-carousel": "^4.0.5",
+    "embla-carousel-wheel-gestures": "^1.0.4",
     "polished": "^3.4.1"
   },
   "engines": {

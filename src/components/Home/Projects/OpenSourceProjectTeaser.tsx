@@ -1,39 +1,48 @@
 import React from 'react'
-import { spaceTop } from '../../Layout/Spacer'
+import Spacer, { spaceTop } from '../../Layout/Spacer'
 import { GridItem } from '../../Layout/Grid'
 import { css } from '@emotion/core'
 import Headline from '../../../atoms/Typo/Headline'
+import Button from '../../../atoms/Button'
 
 const techTeaser = () => css`
   padding: 2rem;
+  height: 100%;
   border-radius: 2rem;
   background: linear-gradient(180deg, hsl(0, 0%, 100%, 0.1), hsl(0, 0%, 100%, 0.05));
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
-`
 
-const iconCSS = css`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  margin: auto;
-  width: 80%;
-  height: 80%;
+  a {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
 `
 
 interface Props {
-  label: React.ReactNode
-  iconName: string
+  headline: React.ReactNode
+  description: React.ReactNode
+  buttonProps?: Parameters<typeof Button>[0]
 }
 
-export default function OpenSourceProjectTeaser({ label, iconName }: Props) {
+export default function OpenSourceProjectTeaser({ headline, description, buttonProps }: Props) {
+  console.log(`buttonProps`, buttonProps)
+
   return (
-    <GridItem col={[4, 3, 2, 5]} component="li" css={spaceTop(2)}>
+    <GridItem col={[10, 8, 5, 3]} component="li" css={spaceTop(2)}>
       <div css={techTeaser}>
-        <Headline level="h3">{label}</Headline>
-        <p>wheel gestures and momentum detection in the browser</p>
+        <Headline level="h4">
+          <a href={buttonProps && buttonProps.href}>{headline}</a>
+        </Headline>
+        <Spacer size={0.5} />
+        <p>{description}</p>
+        {/*{buttonProps && (*/}
+        {/*  <>*/}
+        {/*    <Spacer />*/}
+        {/*    <Button {...buttonProps} />*/}
+        {/*  </>*/}
+        {/*)}*/}
       </div>
     </GridItem>
   )

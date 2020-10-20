@@ -15,8 +15,30 @@
     "Text": "Mit einer Kombination aus modernsten Technologien und zuverlässiger Open-Source-Software erstelle ich benutzerorientierte, leistungsstarke Apps und Websites für Smartphones, Tablets und Desktops."
   },
   "OpenSourceProjects": {
-    "Title": "Open Source Projekte",
-    "Text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem donec massa sapien faucibus et molestie. Phasellus faucibus scelerisque eleifend donec. Diam maecenas sed enim ut sem viverra aliquet. Gravida neque convallis a cras. Habitant morbi tristique senectus et netus et malesuada fames ac."
+    "Title": "Open Source",
+    "Text": "Ich bin begeistert von Open Source Software und gebe gerne etwas an andere zurück.<br/> Meine Projekte werden von Hunderten von Entwicklern auf der ganzen Welt genutzt.",
+    "Projects": [
+      {
+        "Headline": "useLocationState / useQueryState",
+        "Description": "store and retrieve state in react from the browsers history using modern hooks",
+        "LinkHref": "https://github.com/xiel/use-location-state"
+      },
+      {
+        "Headline": "wheel-gestures",
+        "Description": "wheel gestures and momentum detection",
+        "LinkHref": "https://github.com/xiel/use-location-state"
+      },
+      {
+        "Headline": "Wheel Gestures for Embla Carousel",
+        "Description": "This plugin adds wheel interactions to the amazing Embla Carousel",
+        "LinkHref": "https://github.com/xiel/use-location-state"
+      },
+      {
+        "Headline": " Gravida neque convallis",
+        "Description": "Phasellus faucibus scelerisque eleifend donec. Diam maecenas sed enim ut sem viverra aliquet.",
+        "LinkHref": "https://github.com/xiel/use-location-state"
+      }
+    ]
   },
   "ClientsPartners": {
     "Title": "Kunden & Partner",

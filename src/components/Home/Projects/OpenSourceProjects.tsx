@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Section from '../../Layout/Section'
 import { GridItem, GridRow } from '../../Layout/Grid'
 import Headline from '../../../atoms/Typo/Headline'
@@ -8,6 +8,9 @@ import Spacer from '../../Layout/Spacer'
 import OpenSourceProjectTeaser from './OpenSourceProjectTeaser'
 import Triangle from '../../../assets/svg/triangle.svg'
 import { Theme } from '../../../styles/theme'
+import { useEmblaCarousel } from 'embla-carousel/react'
+import { setupWheelGestures } from 'embla-carousel-wheel-gestures'
+import '../../../styles/embla.css'
 
 interface Props {}
 
@@ -38,8 +41,21 @@ const triangle = (theme: Theme) => css`
   transform: translateY(100%) scale(-1);
 `
 
+interface ProjectText {
+  Headline: string
+  Description: string
+  LinkHref: string
+}
+
 export default function OpenSourceProjects(props: Props) {
   const { t } = useTranslation()
+  const [viewportRef, embla] = useEmblaCarousel({
+    align: 'start',
+    containScroll: 'trimSnaps',
+  })
+  const projectTexts: ProjectText[] = t('OpenSourceProjects.Projects', { returnObjects: true })
+
+  useEffect(() => embla && setupWheelGestures(embla), [embla])
 
   return (
     <Section css={sectionCSS}>
@@ -54,12 +70,24 @@ export default function OpenSourceProjects(props: Props) {
             <Trans i18nKey={'OpenSourceProjects.Text'} />
           </p>
           <Spacer />
-          <GridRow component="ul" wrap="nowrap">
-            <OpenSourceProjectTeaser label={'React (Native)'} iconName="tech-react" />
-            <OpenSourceProjectTeaser label={'React (Native)'} iconName="tech-react" />
-            <OpenSourceProjectTeaser label={'React (Native)'} iconName="tech-react" />
-            <OpenSourceProjectTeaser label={'React (Native)'} iconName="tech-react" />
-          </GridRow>
+          <div className="embla">
+            <div className="embla__viewport is-overflow-visible" ref={viewportRef}>
+              <GridRow component="ul" wrap="nowrap" align="stretch" className="embla__container">
+                {projectTexts.map((p) => (
+                  <OpenSourceProjectTeaser
+                    key={p.Headline}
+                    headline={p.Headline}
+                    description={p.Description}
+                    buttonProps={{
+                      href: p.LinkHref,
+                      target: '_blank',
+                      children: 'View on GitHub',
+                    }}
+                  />
+                ))}
+              </GridRow>
+            </div>
+          </div>
         </GridItem>
       </GridRow>
       <Triangle css={triangle} />

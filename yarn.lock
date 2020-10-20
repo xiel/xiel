@@ -5495,6 +5495,18 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+embla-carousel-wheel-gestures@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/embla-carousel-wheel-gestures/-/embla-carousel-wheel-gestures-1.0.4.tgz#0f7597e2074c2df6635e1717ea15010659e6f6df"
+  integrity sha512-/Zon7qeL5slnqFb2tCqx50PeVM6hfSzYSX4A71l21fmynvgyU1jHN2rzN8a3PWPFSAuoZDXmR3q9Ktb9PI/Pag==
+  dependencies:
+    wheel-gestures "^2.2.1"
+
+embla-carousel@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-4.0.5.tgz#270070ce0f8fa258d26615128c2d3e8b073fe26f"
+  integrity sha512-+iUYbtjbGJZGMNJGrbumBVcU0fH2+Wmdvzvfbd+TabE9rGJACf+3jrFZ1c0PBEXBNuaqB9xEknxoM0xTSzv+/Q==
+
 emoji-regex@^7.0.1, emoji-regex@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
@@ -15836,6 +15848,11 @@ whatwg-url@^7.0.0:
     lodash.sortby "^4.7.0"
     tr46 "^1.0.1"
     webidl-conversions "^4.0.2"
+
+wheel-gestures@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/wheel-gestures/-/wheel-gestures-2.2.1.tgz#da0c71bf5b15e2e8c4c7f925f50b8a23c4b3f9e4"
+  integrity sha512-RswU0m7RWxEevaSitpazsn+4G94c03GkxXo44cnjHQnL0nr69p8SFSvNctKcXyY3g4/xpb/kWAxYQp0UVa4tqg==
 
 which-module@^2.0.0:
   version "2.0.0"
