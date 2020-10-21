@@ -44,19 +44,17 @@ export default async function createPages({
   ]
 
   languageConfigs.forEach(({ lng, lngBasePath }) => {
-    createPage <
-      IPageContext >
-      {
-        path: join(lngBasePath, '/'),
-        component: resolve(__dirname, '../pageTemplates/index.tsx'),
-        context: {
-          lng,
-          lngBasePath,
-          lngAlternates: Object.fromEntries(
-            languageConfigs.map((c) => [c.lng, join(c.lngBasePath, '/')])
-          ),
-        },
-      }
+    createPage<IPageContext>({
+      path: join(lngBasePath, '/'),
+      component: resolve(__dirname, '../pageTemplates/index.tsx'),
+      context: {
+        lng,
+        lngBasePath,
+        lngAlternates: Object.fromEntries(
+          languageConfigs.map((c) => [c.lng, join(c.lngBasePath, '/')])
+        ),
+      },
+    })
 
     // Project Pages (not used atm.)
     // createPage<IPageContext>({
