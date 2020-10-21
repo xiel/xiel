@@ -3,7 +3,6 @@ import Spacer, { spaceTop } from '../../Layout/Spacer'
 import { GridItem } from '../../Layout/Grid'
 import { css } from '@emotion/core'
 import Headline from '../../../atoms/Typo/Headline'
-import Button from '../../../atoms/Button'
 
 const techTeaser = () => css`
   padding: 2rem;
@@ -23,26 +22,18 @@ const techTeaser = () => css`
 interface Props {
   headline: React.ReactNode
   description: React.ReactNode
-  buttonProps?: Parameters<typeof Button>[0]
+  href?: string
 }
 
-export default function OpenSourceProjectTeaser({ headline, description, buttonProps }: Props) {
-  console.log(`buttonProps`, buttonProps)
-
+export default function OpenSourceProjectTeaser({ headline, description, href }: Props) {
   return (
     <GridItem col={[10, 8, 5, 3]} component="li" css={spaceTop(2)}>
       <div css={techTeaser}>
         <Headline level="h4">
-          <a href={buttonProps && buttonProps.href}>{headline}</a>
+          <a href={href}>{headline}</a>
         </Headline>
         <Spacer size={0.5} />
         <p>{description}</p>
-        {/*{buttonProps && (*/}
-        {/*  <>*/}
-        {/*    <Spacer />*/}
-        {/*    <Button {...buttonProps} />*/}
-        {/*  </>*/}
-        {/*)}*/}
       </div>
     </GridItem>
   )

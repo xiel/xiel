@@ -16,7 +16,7 @@
   },
   "OpenSourceProjects": {
     "Title": "Open Source",
-    "Text": "Ich bin begeistert von Open Source Software und gebe gerne etwas an andere zurück.<br/> Meine Projekte werden von Hunderten von Entwicklern auf der ganzen Welt genutzt.",
+    "Text": "Ich bin begeistert von Open Source Software und gebe gerne etwas an andere zurück.",
     "Projects": [
       {
         "Headline": "useLocationState / useQueryState",
@@ -24,7 +24,7 @@
         "LinkHref": "https://github.com/xiel/use-location-state"
       },
       {
-        "Headline": "wheel-gestures",
+        "Headline": "WheelGestures",
         "Description": "wheel gestures and momentum detection",
         "LinkHref": "https://github.com/xiel/use-location-state"
       },
@@ -34,8 +34,8 @@
         "LinkHref": "https://github.com/xiel/use-location-state"
       },
       {
-        "Headline": " Gravida neque convallis",
-        "Description": "Phasellus faucibus scelerisque eleifend donec. Diam maecenas sed enim ut sem viverra aliquet.",
+        "Headline": "Butter Spring",
+        "Description": "buttery smooth animations for the web. (coming soon)",
         "LinkHref": "https://github.com/xiel/use-location-state"
       }
     ]

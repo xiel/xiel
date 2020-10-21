@@ -39,9 +39,7 @@ export default function Projects({ navigate }: PageProps) {
       <h1>Hi from the second page asdasd</h1>
       <p>Welcome to page 2</p>
       <div>
-        <button onClick={() => setCount(count + 1, { method: 'replace' })}>
-          {count}
-        </button>
+        <button onClick={() => setCount(count + 1, { method: 'replace' })}>{count}</button>
       </div>
       <Link to="/">Go back to the homepage</Link>
 

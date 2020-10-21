@@ -8,9 +8,6 @@ interface Props {
   children?: React.ReactNode
 }
 
-export default function ThemeProvider({
-  theme = defaultTheme,
-  ...restProps
-}: Props) {
+export default function ThemeProvider({ theme = defaultTheme, ...restProps }: Props) {
   return <EmotionThemeProvider theme={theme} {...restProps} />
 }

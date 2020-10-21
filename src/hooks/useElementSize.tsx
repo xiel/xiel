@@ -71,7 +71,7 @@ export default function useElementSize({ domTarget }: Props = {}) {
     })
     window.addEventListener('resize', resizeHandler)
     return () => window.removeEventListener('resize', resizeHandler)
-  }, [])
+  }, [updatePosCallback])
 
   useEffect(() => {
     if (!ref) return

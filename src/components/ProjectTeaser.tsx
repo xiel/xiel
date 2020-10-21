@@ -17,9 +17,7 @@ const teaser = css`
 export default function ProjectTeaser({ title, slug, desc, imageData }: Props) {
   return (
     <div css={teaser}>
-      <InternalLink to={`/${slug}`}>
-        {imageData && <Image fluid={imageData} alt="" />}
-      </InternalLink>
+      <InternalLink to={`/${slug}`}>{imageData && <Image fluid={imageData} alt="" />}</InternalLink>
       <InternalLink to={`/${slug}`}>
         <h2>{title}</h2>
       </InternalLink>

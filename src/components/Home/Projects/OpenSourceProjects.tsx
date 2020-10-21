@@ -53,7 +53,9 @@ export default function OpenSourceProjects(props: Props) {
     align: 'start',
     containScroll: 'trimSnaps',
   })
-  const projectTexts: ProjectText[] = t('OpenSourceProjects.Projects', { returnObjects: true })
+  const projectTexts: ProjectText[] = t('OpenSourceProjects.Projects', {
+    returnObjects: true,
+  })
 
   useEffect(() => embla && setupWheelGestures(embla), [embla])
 
@@ -73,16 +75,12 @@ export default function OpenSourceProjects(props: Props) {
           <div className="embla">
             <div className="embla__viewport is-overflow-visible" ref={viewportRef}>
               <GridRow component="ul" wrap="nowrap" align="stretch" className="embla__container">
-                {projectTexts?.map((p) => (
+                {projectTexts.map((p) => (
                   <OpenSourceProjectTeaser
                     key={p.Headline}
                     headline={p.Headline}
                     description={p.Description}
-                    buttonProps={{
-                      href: p.LinkHref,
-                      target: '_blank',
-                      children: 'View on GitHub',
-                    }}
+                    href={p.LinkHref}
                   />
                 ))}
               </GridRow>
