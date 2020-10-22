@@ -21,19 +21,22 @@
         "LinkHref": "https://github.com/xiel/use-location-state"
       },
       {
-        "Headline": "WheelGestures",
+        "Headline": "Wheel Gestures",
         "Description": "wheel gestures and momentum detection",
-        "LinkHref": "https://github.com/xiel/use-location-state"
+        "LinkHref": "https://github.com/xiel/wheel-gestures"
       },
       {
         "Headline": "Wheel Gestures for Embla Carousel",
         "Description": "This plugin adds wheel interactions to the amazing Embla Carousel",
-        "LinkHref": "https://github.com/xiel/use-location-state"
+        "LinkHref": "https://github.com/xiel/embla-carousel-wheel-gestures"
+      },
+      {
+        "Headline": "Outer Hooks",
+        "Description": "develop javascript modules/libs using hooks - outside of react"
       },
       {
         "Headline": "Butter Spring",
-        "Description": "buttery smooth animations for the web. (coming soon)",
-        "LinkHref": "https://github.com/xiel/use-location-state"
+        "Description": "buttery smooth animations for the web."
       }
     ]
   },

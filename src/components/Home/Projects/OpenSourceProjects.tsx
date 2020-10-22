@@ -72,22 +72,22 @@ export default function OpenSourceProjects(props: Props) {
             <Trans i18nKey={'OpenSourceProjects.Text'} />
           </p>
           <Spacer />
-          <div className="embla">
-            <div className="embla__viewport is-overflow-visible" ref={viewportRef}>
-              <GridRow component="ul" wrap="nowrap" align="stretch" className="embla__container">
-                {projectTexts.map((p) => (
-                  <OpenSourceProjectTeaser
-                    key={p.Headline}
-                    headline={p.Headline}
-                    description={p.Description}
-                    href={p.LinkHref}
-                  />
-                ))}
-              </GridRow>
-            </div>
-          </div>
         </GridItem>
       </GridRow>
+      <div className="embla">
+        <div className="embla__viewport is-overflow-visible" ref={viewportRef}>
+          <GridRow component="ul" wrap="nowrap" align="stretch" className="embla__container">
+            {projectTexts.map((p) => (
+              <OpenSourceProjectTeaser
+                key={p.Headline}
+                headline={p.Headline}
+                description={p.Description}
+                href={p.LinkHref}
+              />
+            ))}
+          </GridRow>
+        </div>
+      </div>
       <Triangle css={triangle} />
     </Section>
   )

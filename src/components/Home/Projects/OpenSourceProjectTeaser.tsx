@@ -19,6 +19,15 @@ const techTeaser = () => css`
   }
 `
 
+const comingSoon = () => css`
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  font-size: 0.75em;
+  border-radius: 1em;
+  line-height: 1;
+  background: hsl(0, 0%, 100%, 0.1);
+`
+
 interface Props {
   headline: React.ReactNode
   description: React.ReactNode
@@ -27,10 +36,18 @@ interface Props {
 
 export default function OpenSourceProjectTeaser({ headline, description, href }: Props) {
   return (
-    <GridItem col={[10, 8, 5, 3]} component="li" css={spaceTop(2)}>
+    <GridItem col={[10, 8, 8, 5]} component="li" css={spaceTop(2)}>
       <div css={techTeaser}>
-        <Headline level="h4">
-          <a href={href}>{headline}</a>
+        <Headline level="h4" line>
+          {href ? (
+            <a href={href} target="_blank">
+              {headline}
+            </a>
+          ) : (
+            <>
+              {headline} <em css={comingSoon()}>coming soon</em>
+            </>
+          )}
         </Headline>
         <Spacer size={0.5} />
         <p>{description}</p>
