@@ -38,7 +38,7 @@ export default function OpenSourceProjectTeaser({ headline, description, href }:
   return (
     <GridItem col={[10, 8, 8, 5]} component="li" css={spaceTop(2)}>
       <div css={techTeaser}>
-        <Headline level="h4" line>
+        <Headline level="h4">
           {href ? (
             <a href={href} target="_blank">
               {headline}

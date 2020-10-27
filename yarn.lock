@@ -5537,17 +5537,17 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-embla-carousel-wheel-gestures@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/embla-carousel-wheel-gestures/-/embla-carousel-wheel-gestures-1.0.4.tgz#0f7597e2074c2df6635e1717ea15010659e6f6df"
-  integrity sha512-/Zon7qeL5slnqFb2tCqx50PeVM6hfSzYSX4A71l21fmynvgyU1jHN2rzN8a3PWPFSAuoZDXmR3q9Ktb9PI/Pag==
+embla-carousel-wheel-gestures@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/embla-carousel-wheel-gestures/-/embla-carousel-wheel-gestures-1.0.6.tgz#c55b78cf82f39e75fd66e353413a5afbc2b3d6f9"
+  integrity sha512-zh4Wnt3Os8V1MXRcBwICZCsh+H8bnXylEFSKSlELxIBxRhVVz9b7GBvRvpkBpvyzoasbSIBZW+s5UfTev890Kw==
   dependencies:
     wheel-gestures "^2.2.1"
 
-embla-carousel@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-4.0.5.tgz#270070ce0f8fa258d26615128c2d3e8b073fe26f"
-  integrity sha512-+iUYbtjbGJZGMNJGrbumBVcU0fH2+Wmdvzvfbd+TabE9rGJACf+3jrFZ1c0PBEXBNuaqB9xEknxoM0xTSzv+/Q==
+embla-carousel@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-4.0.6.tgz#52dae0c0d2d47fa7cc055c9c0dbdd710d9f15d47"
+  integrity sha512-AJpyxQHom4gRwLFAcjf880OxbeshNd+K1neALdMJsyljUXadTPdTZaRdko6CwD+Z6XT/MzWZuF74bJh8sXM/Yw==
 
 emoji-regex@^7.0.1, emoji-regex@^7.0.2:
   version "7.0.3"
