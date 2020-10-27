@@ -29,9 +29,7 @@ export const query = graphql`
   }
 `
 
-export default function Project(
-  props: Props & PageProps<PageContext, ProjectPageWithQuery>
-) {
+export default function Project(props: Props & PageProps<PageContext, ProjectPageWithQuery>) {
   const { pageContext } = props
   const { title, desc, image } = props.data.projectJson!
   const { t } = useTranslation()

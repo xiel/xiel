@@ -2946,10 +2946,10 @@ export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = (
   & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
 );
 
-export type Unnamed_1_QueryVariables = {};
+export type PortraitQueryQueryVariables = {};
 
 
-export type Unnamed_1_Query = (
+export type PortraitQueryQuery = (
   { __typename?: 'Query' }
   & { portrait: Maybe<(
     { __typename?: 'File' }

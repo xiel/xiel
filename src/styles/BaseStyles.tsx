@@ -19,10 +19,7 @@ const globalCss = (theme: Theme) => css`
     box-sizing: border-box;
     font-size: calc(
       100% + (20 - 16) *
-        (
-          (100vw - ${theme.screenSmMin}px) /
-            (${theme.contentContainerMax} - ${theme.screenSmMin})
-        )
+        ((100vw - ${theme.screenSmMin}px) / (${theme.contentContainerMax} - ${theme.screenSmMin}))
     );
 
     @media (min-width: ${theme.contentContainerMax}px) {
@@ -45,6 +42,10 @@ const globalCss = (theme: Theme) => css`
     overflow: hidden;
     width: 100%;
   }
+
+  //svg {
+  //  display: none !important;
+  //}
 `
 
 export default function BaseStyles() {

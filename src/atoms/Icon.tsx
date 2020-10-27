@@ -15,9 +15,9 @@ const icon = css`
 export default function Icon({ name, title, ...restProps }: Props) {
   const IconSVG = useMemo(
     () =>
-      loadable(() =>
-        import(`../assets/svg/icons/${name}.svg`)
-      ) as React.FunctionComponent<React.HTMLAttributes<any>>,
+      loadable(() => import(`../assets/svg/icons/${name}.svg`)) as React.FunctionComponent<
+        React.HTMLAttributes<any>
+      >,
     [name]
   )
 

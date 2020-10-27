@@ -11,6 +11,35 @@
     "Title": "Technologies",
     "Text": "Using a combination of cutting-edge technologies and reliable open-source software I build user-focused, performant apps and websites for smartphones, tablets, and desktops."
   },
+  "OpenSourceProjects": {
+    "Title": "Open Source",
+    "Text": "I am passionate about open source software and like to give back to others.",
+    "Projects": [
+      {
+        "Headline": "useLocationState / useQueryState",
+        "Description": "store and retrieve state in react from the browsers history using modern hooks",
+        "LinkHref": "https://github.com/xiel/use-location-state"
+      },
+      {
+        "Headline": "Wheel Gestures",
+        "Description": "wheel gestures and momentum detection",
+        "LinkHref": "https://wheel-gestures.xiel.dev"
+      },
+      {
+        "Headline": "Wheel Gestures for Embla Carousel",
+        "Description": "This plugin adds wheel interactions to the amazing Embla Carousel",
+        "LinkHref": "https://github.com/xiel/embla-carousel-wheel-gestures"
+      },
+      {
+        "Headline": "Outer Hooks",
+        "Description": "develop javascript modules/libs using hooks - outside of react"
+      },
+      {
+        "Headline": "Butter Spring",
+        "Description": "buttery smooth animations for the web."
+      }
+    ]
+  },
   "ClientsPartners": {
     "Title": "Clients & Partners",
     "Text": "Over the past 10 years, I've worked with great teams for exciting clients to deliver a wide range of projects: from engaging touch interfaces to complex web applications."

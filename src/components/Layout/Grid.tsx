@@ -157,7 +157,7 @@ export function GridItem({
   }
 
   const cssBase = css`
-    flex: 0 auto;
+    flex: 0 0 auto;
     padding: 0 ${gap / 2 + gapUnit};
   `
 

@@ -29,7 +29,7 @@ export const headlineCSS = {
   `,
   h4: (theme: Theme) => css`
     ${heading};
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.4;
   `,
 }

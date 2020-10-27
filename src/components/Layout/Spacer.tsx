@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 
-type SpaceSize = 1 | 2 | 3
+type SpaceSize = 0.5 | 1 | 2 | 3 | 5 | 8 | 13
 
 export const spaceTop = (size: SpaceSize = 1) => css`
   margin-top: ${size}rem;

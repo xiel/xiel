@@ -2,8 +2,8 @@ import React from 'react'
 import { css } from '@emotion/core'
 import Triangle from '../../../assets/svg/triangle.svg'
 import { Theme } from '../../../styles/theme'
-import StageImage from './StageImage'
 import { rgba } from 'polished'
+import StageImage from './StageImage'
 
 export const image = css`
   @media (min-width: 400px) {

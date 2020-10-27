@@ -19,12 +19,15 @@ function GridOverlay(props: Props) {
       }
     }
     document.addEventListener('keypress', pressHandler)
-    return () => document.removeEventListener('keypress', pressHandler)
+    document.documentElement.addEventListener('dblclick', toggleGrid)
+
+    return () => {
+      document.removeEventListener('keypress', pressHandler)
+      document.documentElement.removeEventListener('dblclick', toggleGrid)
+    }
   }, [])
 
-  useEffect(() => sessionStorage.setItem('overlayActive', `${showGrid}`), [
-    showGrid,
-  ])
+  useEffect(() => sessionStorage.setItem('overlayActive', `${showGrid}`), [showGrid])
 
   return showGrid ? (
     <div
@@ -35,6 +38,7 @@ function GridOverlay(props: Props) {
         width: 100%;
         height: 100%;
         pointer-events: none;
+        z-index: 100;
       `}
     >
       <GridRow

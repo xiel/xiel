@@ -73,6 +73,7 @@ export default function Technologies(props: Props) {
         <TechTeaser label={'NodeJS'} iconName="tech-nodejs" />
         <TechTeaser label={'GraphQL'} iconName="tech-graphql" />
       </GridRow>
+      <TriangleSpacer />
       <Triangle css={triangle} />
     </Section>
   )

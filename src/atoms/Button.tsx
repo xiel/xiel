@@ -3,10 +3,7 @@ import InternalLink, { Props as InternalLinkProps } from './InternalLink'
 import styled from '@emotion/styled'
 import { Theme } from '../styles/theme'
 
-type InnerButtonProps =
-  | AnchorProps
-  | JSX.IntrinsicElements['button']
-  | InternalLinkProps
+type InnerButtonProps = AnchorProps | JSX.IntrinsicElements['button'] | InternalLinkProps
 
 interface AnchorProps
   extends React.DetailedHTMLProps<
@@ -47,9 +44,7 @@ export default styled(Button)<Props, Theme>`
   }
 
   &:after {
-    background: ${({
-      theme,
-    }) => `linear-gradient(to right, ${theme.link} 4px, transparent 4px),
+    background: ${({ theme }) => `linear-gradient(to right, ${theme.link} 4px, transparent 4px),
       linear-gradient(to bottom, ${theme.link} 4px, transparent 4px),
       linear-gradient(to left, ${theme.link} 4px, transparent 4px),
       linear-gradient(to bottom, ${theme.link} 4px, transparent 4px),
@@ -58,8 +53,8 @@ export default styled(Button)<Props, Theme>`
       linear-gradient(to right, ${theme.link} 4px, transparent 4px),
       linear-gradient(to top, ${theme.link} 4px, transparent 4px)`};
     background-size: 10px 10px;
-    background-position: top left, top left, top right, top right, bottom right,
-      bottom right, bottom left, bottom left;
+    background-position: top left, top left, top right, top right, bottom right, bottom right,
+      bottom left, bottom left;
     background-repeat: no-repeat;
   }
 
