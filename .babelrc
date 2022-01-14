@@ -1,13 +1,14 @@
 {
-  "plugins": ["@loadable/babel-plugin", "@babel/plugin-proposal-optional-chaining"],
   "presets": [
     [
-      "babel-preset-gatsby",
+      "next/babel",
       {
-        "targets": {
-          "browsers": [">0.25%", "not dead"]
+        "preset-react": {
+          "runtime": "automatic",
+          "importSource": "@emotion/react"
         }
       }
     ]
-  ]
+  ],
+  "plugins": ["@emotion/babel-plugin"]
 }
