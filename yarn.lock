@@ -2162,10 +2162,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-helmet@5.0.9":
-  version "5.0.9"
-  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.9.tgz#60ab5accce74b168ca1d274671522f6b2cf2c98f"
-  integrity sha512-0UVaMQk/Xvq6rFaGyepSBnRApy5RE+YH0XAXlbOBhtez5D9y1/jxKaKODofPzNnJLoLQ+sATTsWQIvrw1Dtiag==
+"@types/react-helmet@5.0.20":
+  version "5.0.20"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.20.tgz#8d27d8a38bca710055eb021db5a65af07829752b"
+  integrity sha512-0gv4NbI5dqBR9l5iMAfDo0udcPfjvv0H8V3tCL1JxCYvXfqYixzsEPVuOIrLCwezELie90S3r+gQuHpEy7SHvg==
   dependencies:
     "@types/react" "*"
 
