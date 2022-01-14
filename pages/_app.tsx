@@ -1,5 +1,6 @@
 import 'normalize.css'
 import '../styles/reset.css'
+import '../styles/embla.css'
 
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
