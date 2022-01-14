@@ -1,7 +1,6 @@
 import { css, Global } from '@emotion/react'
 import React from 'react'
 
-// import * as theme from './theme'
 import { XTheme } from './theme'
 
 const globalCss = (theme: XTheme) => css`
@@ -30,7 +29,8 @@ const globalCss = (theme: XTheme) => css`
 
   body {
     position: relative;
-    font-family: Inter, 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont,
+      sans-serif;
     color: ${theme.secondaryLabel};
     background: ${theme.background};
     font-size: 1rem;

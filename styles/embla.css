@@ -7,7 +7,6 @@
 .embla__viewport {
   overflow: hidden;
   width: 100%;
-  background: red;
 }
 
 .embla__viewport.is-overflow-visible {

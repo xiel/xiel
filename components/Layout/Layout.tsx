@@ -15,12 +15,10 @@ const Layout = ({ children, headerFixed }: Props) => {
   return (
     <>
       <BasesStyles />
-      <>
-        <Header siteTitle={'QWE'} fixed={headerFixed} />
-        <main>{children}</main>
-        <FooterSection />
-        {/*<GridOverlay />*/}
-      </>
+      <Header siteTitle={'QWE'} fixed={headerFixed} />
+      <main>{children}</main>
+      <FooterSection />
+      {/*<GridOverlay />*/}
     </>
   )
 }
