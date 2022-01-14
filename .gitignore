@@ -38,4 +38,4 @@ yarn-error.log*
 
 # generated
 /components/SVG/
-/.idea/
+.idea
