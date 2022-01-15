@@ -10,8 +10,7 @@
     "lint": "next lint --max-warnings 0",
     "lint:fix": "next lint --fix",
     "test": "DEBUG=pw:webserver playwright test",
-    "test:dev": "PWDEBUG=1 playwright test",
-    "test:update": "PWDEBUG=1 playwright test --update-snapshots"
+    "test:dev": "PWDEBUG=1 playwright test"
   },
   "dependencies": {
     "@emotion/react": "^11.6.0",
