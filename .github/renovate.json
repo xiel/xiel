@@ -1,6 +1,7 @@
 {
   "extends": ["config:base"],
   "prConcurrentLimit": 3,
+  "preserveSemverRanges": true,
   "packageRules": [
     {
       "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest"],
