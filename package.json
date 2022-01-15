@@ -29,6 +29,7 @@
     "use-location-state": "^3.0.2"
   },
   "devDependencies": {
+    "@playwright-testing-library/test": "^4.0.1",
     "@playwright/test": "^1.17.2",
     "@svgr/cli": "^6.2.0",
     "@types/node": "17.0.8",
