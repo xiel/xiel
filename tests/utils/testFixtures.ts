@@ -13,3 +13,5 @@ export const test = baseTest.extend<Fixtures>({
   ...fixtures,
   // ... additional fixtures
 })
+
+export const { expect } = test
