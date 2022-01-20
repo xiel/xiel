@@ -35,7 +35,7 @@
     "eslint-config-next": "12.0.8",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "typescript": "4.5.4"
+    "typescript": "4.5.5"
   },
   "svgr": {
     "ref": true,
