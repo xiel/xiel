@@ -8,7 +8,9 @@
     "build:icons": "svgr --out-dir components/SVG public/svg; eslint components/SVG --fix",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "test": "DEBUG=pw:webserver playwright test",
+    "test:dev": "PWDEBUG=1 playwright test"
   },
   "dependencies": {
     "@emotion/react": "^11.6.0",
@@ -27,6 +29,8 @@
     "use-location-state": "^3.0.2"
   },
   "devDependencies": {
+    "@playwright-testing-library/test": "^4.0.1",
+    "@playwright/test": "^1.19.0-alpha-jan-15-2022",
     "@svgr/cli": "^6.2.0",
     "@types/node": "17.0.8",
     "@types/react": "17.0.38",
