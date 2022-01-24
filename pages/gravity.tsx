@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
+import { useEffect, useState } from 'react'
 
-// import { Gravity } from '../components/Gravity/Gravity'
+import { Gravity } from '../components/Gravity/Gravity'
 
 const Wrapper = styled.div`
   display: flex;
@@ -8,14 +9,11 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #000;
+  background: darkblue;
 `
 
 export default function GravityTestPage() {
-  // const [display, setDisplay] = useState(false)
-  // useEffect(() => setDisplay(true), [])
-
-  return <Wrapper>hello</Wrapper>
-
-  return 'hello'
+  const [display, setDisplay] = useState(false)
+  useEffect(() => setDisplay(true), [])
+  return <Wrapper>{display && <Gravity />}</Wrapper>
 }
