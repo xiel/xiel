@@ -1,5 +1,5 @@
 import { ArcballControls, Environment, useTexture } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import * as React from 'react'
 import { Suspense } from 'react'
 import { Shape, ShapeGeometry, Vector3 } from 'three'
@@ -40,6 +40,11 @@ function Spaceship() {
 
   const geometry = new ShapeGeometry(heartShape)
 
+  useFrame(() => {
+    // geometry.rotateX(0.01)
+    geometry.rotateY(0.01)
+  })
+
   return (
     <mesh geometry={geometry}>
       <meshNormalMaterial />
@@ -63,7 +68,7 @@ export function Gravity(): React.ReactElement {
   return (
     <>
       <Suspense fallback={null}>
-        <Canvas dpr={[1, 2]} frameloop="demand">
+        <Canvas dpr={[1, 2]}>
           <Background />
           <Environment preset="city" />
 
