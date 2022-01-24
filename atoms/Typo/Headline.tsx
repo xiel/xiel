@@ -52,25 +52,23 @@ const lineStyle = css`
   }
 `
 
-interface Props extends React.HTMLAttributes<unknown> {
-  level?: keyof typeof headlineCSS
-  component?: React.ComponentType | React.ElementType
-  line?: boolean
-}
-
-export default function Headline({
+export default function Headline<T extends keyof JSX.IntrinsicElements>({
   level = 'h1',
   component,
   line,
   ...restProps
-}: Props) {
-  const Component = component || level
+}: {
+  level?: keyof typeof headlineCSS
+  component?: T
+  line?: boolean
+} & JSX.IntrinsicElements[T]) {
+  const Component: keyof JSX.IntrinsicElements = component || level
   const levelStyles = headlineCSS[level]
 
   return (
     <Component
       css={(theme) => [levelStyles(theme), line && lineStyle]}
-      {...restProps}
+      {...(restProps as any)}
     />
   )
 }
