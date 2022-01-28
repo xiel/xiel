@@ -1,5 +1,10 @@
 import { css } from '@emotion/react'
-import React, { createContext, useContext } from 'react'
+import React, {
+  createContext,
+  ForwardedRef,
+  forwardRef,
+  useContext,
+} from 'react'
 
 type IElementProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -134,11 +139,14 @@ const getValueForIndexOrClosestLower = (
   return 0
 }
 
-export function GridItem({
-  col: colProp = 'auto',
-  component: Component = 'div',
-  ...restProps
-}: IGridItemProps) {
+export const GridItem = forwardRef(function GridItem(
+  {
+    col: colProp = 'auto',
+    component: Component = 'div',
+    ...restProps
+  }: IGridItemProps,
+  forwardedRef: ForwardedRef<HTMLDivElement>
+) {
   const { gap, gapUnit, maxWidth, maxWidthVW, columns } = useGrid()
   const { availableCols } = useItemRowContext()
   const colValues = Array.isArray(colProp) ? colProp : [colProp]
@@ -181,10 +189,10 @@ export function GridItem({
         availableCols: colForMQs,
       }}
     >
-      <Component css={[cssBase, ...colCSS]} {...restProps} />
+      <Component ref={forwardedRef} css={[cssBase, ...colCSS]} {...restProps} />
     </GridItemRowCtx.Provider>
   )
-}
+})
 
 // gap, align
 export function VStack() {

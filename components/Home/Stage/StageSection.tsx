@@ -12,6 +12,7 @@ import * as c from './StageSection.css'
 
 export default function StageSection() {
   const { t } = useTranslation()
+
   return (
     <article>
       <StageHero />
