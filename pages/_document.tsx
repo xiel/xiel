@@ -5,8 +5,9 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700&display=optional"
+          href="/api/fonts/css2?family=Inter:wght@300;500;600;700&display=optional"
           rel="stylesheet"
         />
       </Head>
