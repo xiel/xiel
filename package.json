@@ -33,7 +33,7 @@
     "@playwright-testing-library/test": "^4.0.1",
     "@playwright/test": "^1.19.0-alpha-jan-15-2022",
     "@svgr/cli": "^6.2.0",
-    "@types/node": "17.0.8",
+    "@types/node": "14.x",
     "@types/react": "17.0.39",
     "@types/throttle-debounce": "^2.1.0",
     "eslint": "8.8.0",
