@@ -13,7 +13,10 @@ const proxy = createProxyMiddleware({
   selfHandleResponse: true,
   onProxyRes: responseInterceptor(async (responseBuffer) => {
     const response = responseBuffer.toString('utf8')
-    return response.replaceAll('https://fonts.gstatic.com', '/api/fonts/static')
+    return response.replace(
+      new RegExp('https://fonts.gstatic.com', 'g'),
+      '/api/fonts/static'
+    )
   }) as any,
 })
 
