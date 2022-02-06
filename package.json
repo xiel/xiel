@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.6.0",
     "embla-carousel-react": "^6.0.2",
     "embla-carousel-wheel-gestures": "^2.0.3",
+    "http-proxy-middleware": "^2.0.2",
     "i18next": "^21.6.6",
     "next": "12.0.10",
     "normalize.css": "^8.0.1",
