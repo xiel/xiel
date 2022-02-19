@@ -1,15 +1,21 @@
 import { css } from '@emotion/react'
 import Image from 'next/image'
-import { rgba } from 'polished'
 import React from 'react'
 
 import stageImg from '../../../public/stage/deepspace-stage.jpg'
 import { XTheme } from '../../../styles/theme'
-import Triangle from '../../SVG/Triangle'
 
 export const image = css`
-  @media (min-width: 400px) {
+  transform: translateY(-5vw);
+
+  @media (min-width: 650px) {
+    transform: translateY(-15vw);
+  }
+  @media (min-width: 990px) {
     transform: translateY(-20vw);
+  }
+  @media (min-width: 1230px) {
+    transform: translateY(-25vw);
   }
 `
 
@@ -32,39 +38,17 @@ const imageWrapper = (_theme: XTheme) => css`
   }
 `
 
-export const stage = css`
-  position: relative;
-  min-height: 250px;
-
-  @media (min-width: 400px) {
-    height: 50vw;
-    max-height: calc(100vh - 50px);
-  }
-`
-
-const triangle = (theme: XTheme) => css`
-  position: absolute;
-  left: 0;
-  bottom: -0.49px; // anti-aliasing bug
-  width: 100%;
-  height: 15%;
-  fill: ${rgba(theme.background, 0.7)};
-  transform: scaleX(-1);
-`
-
 export default function StageHero() {
   return (
-    <div css={stage}>
-      <div css={imageWrapper}>
-        <Image
-          src={stageImg}
-          css={image}
-          alt=""
-          layout="responsive"
-          placeholder="blur"
-        />
-      </div>
-      <Triangle css={triangle} />
+    <div css={imageWrapper}>
+      <Image
+        src={stageImg}
+        css={image}
+        role="presentation"
+        layout="responsive"
+        placeholder="blur"
+        alt=""
+      />
     </div>
   )
 }
