@@ -23,8 +23,8 @@
     "normalize.css": "^8.0.1",
     "polished": "^4.1.3",
     "prettier": "^2.5.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
     "react-i18next": "^11.15.3",
     "throttle-debounce": "^3.0.1",
     "use-location-state": "^3.0.2"
