@@ -37,6 +37,11 @@
         "Headline": "Outer Hooks",
         "Description": "develop javascript modules/libs using hooks - outside of react",
         "LinkHref": "https://github.com/xiel/outer-hooks"
+      },
+      {
+        "Headline": "lionflow",
+        "Description": "i18n framework and l10n workflow for react",
+        "LinkHref": "https://lionflow.io"
       }
     ]
   },
