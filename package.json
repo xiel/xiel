@@ -35,7 +35,7 @@
     "@svgr/cli": "^6.2.0",
     "@types/node": "16.x",
     "@types/react": "17.0.44",
-    "@types/throttle-debounce": "^2.1.0",
+    "@types/throttle-debounce": "^4.0.0",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.4",
     "eslint-plugin-simple-import-sort": "^7.0.0",
