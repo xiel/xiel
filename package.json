@@ -26,7 +26,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-i18next": "^11.15.3",
-    "throttle-debounce": "^4.0.0",
+    "throttle-debounce": "^5.0.0",
     "use-location-state": "^3.0.2"
   },
   "devDependencies": {
