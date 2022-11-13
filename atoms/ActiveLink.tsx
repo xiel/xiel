@@ -27,7 +27,7 @@ export const ActiveLink = ({
       : childClassName
 
   return (
-    <Link passHref {...props}>
+    <Link passHref {...props} legacyBehavior>
       {React.cloneElement(child, {
         className: className || null,
       })}

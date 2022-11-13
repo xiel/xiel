@@ -64,9 +64,7 @@ export default function Logo({ siteTitle }: Props) {
     <div css={logo}>
       <h1>
         <Link href="/">
-          <a>
             <VisuallyHidden>{siteTitle}</VisuallyHidden>
-          </a>
         </Link>
       </h1>
       <svg
