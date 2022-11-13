@@ -1,6 +1,5 @@
 import React from 'react'
 
-import useTracking from '../../hooks/useTracking'
 import BasesStyles from '../../styles/BaseStyles'
 import FooterSection from '../Footer/FooterSection'
 import Header from '../Header/Header'
@@ -12,7 +11,6 @@ interface Props {
 }
 
 const Layout = ({ children, headerFixed }: Props) => {
-  useTracking()
   return (
     <>
       <BasesStyles />
