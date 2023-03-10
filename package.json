@@ -34,7 +34,7 @@
     "@playwright/test": "^1.19.0-alpha-jan-15-2022",
     "@svgr/cli": "^6.2.0",
     "@types/node": "18.x",
-    "@types/react": "18.0.27",
+    "@types/react": "18.0.28",
     "@types/throttle-debounce": "^5.0.0",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.4",
