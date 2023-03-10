@@ -14,7 +14,7 @@ export default function Index() {
 
   return (
     <Layout headerFixed>
-      <SEO description={t('Intro.Title')} />
+      <SEO description={t('Intro.Title') ?? ''} />
       <StageHero />
       <IntroSection />
       <Technologies />
