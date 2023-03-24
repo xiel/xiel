@@ -32,7 +32,7 @@
   "devDependencies": {
     "@playwright-testing-library/test": "^4.0.1",
     "@playwright/test": "^1.19.0-alpha-jan-15-2022",
-    "@svgr/cli": "^6.2.0",
+    "@svgr/cli": "^7.0.0",
     "@types/node": "18.x",
     "@types/react": "18.0.28",
     "@types/throttle-debounce": "^5.0.0",
