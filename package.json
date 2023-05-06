@@ -36,7 +36,7 @@
     "@types/node": "18.x",
     "@types/react": "18.2.5",
     "@types/throttle-debounce": "^5.0.0",
-    "eslint": "8.39.0",
+    "eslint": "8.40.0",
     "eslint-config-next": "13.3.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
