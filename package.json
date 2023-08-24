@@ -40,7 +40,7 @@
     "eslint-config-next": "13.4.19",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
-    "typescript": "5.1.6"
+    "typescript": "5.2.2"
   },
   "svgr": {
     "ref": true,
