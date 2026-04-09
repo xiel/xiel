@@ -1,5 +1,7 @@
 import { devices, PlaywrightTestConfig } from '@playwright/test'
 
+const PLAYWRIGHT_PORT = Number(process.env.PLAYWRIGHT_PORT ?? 3100)
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -37,7 +39,7 @@ const config: PlaywrightTestConfig = {
     actionTimeout: 0,
 
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://localhost:3000',
+    baseURL: `http://127.0.0.1:${PLAYWRIGHT_PORT}`,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -102,10 +104,10 @@ const config: PlaywrightTestConfig = {
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'next start',
+    command: `next start -p ${PLAYWRIGHT_PORT}`,
     timeout: 5 * 1000,
-    port: 3000,
-    reuseExistingServer: !process.env.CI,
+    port: PLAYWRIGHT_PORT,
+    reuseExistingServer: false,
   },
 }
 export default config

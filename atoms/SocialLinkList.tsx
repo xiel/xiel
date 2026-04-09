@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import React, { HTMLAttributes } from 'react'
+import { HTMLAttributes } from 'react'
 
 import TextIcon from './TextIcon'
 

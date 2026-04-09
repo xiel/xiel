@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type { ReactNode } from 'react'
 
 import Icon from '../../../atoms/Icon'
 import { XTheme } from '../../../styles/theme'
@@ -52,7 +52,7 @@ const iconCSS = css`
 `
 
 interface Props {
-  label: React.ReactNode
+  label: ReactNode
   iconName: string
 }
 

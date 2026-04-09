@@ -1,10 +1,14 @@
 import { css } from '@emotion/react'
-import React, { createContext, useContext } from 'react'
+import {
+  createContext,
+  type DetailedHTMLProps,
+  type ElementType,
+  type HTMLAttributes,
+  type ReactNode,
+  useContext,
+} from 'react'
 
-type IElementProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->
+type IElementProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 type ColValue = number | 'auto'
 type ColValues = ColValue[]
@@ -43,7 +47,7 @@ const useItemRowContext = () => useContext(GridItemRowCtx)
 const { Provider: GridContextProvider } = GridCtx
 
 interface IGridContextProps extends Partial<IContext> {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export function GridContext({ children, ...value }: IGridContextProps) {
@@ -65,7 +69,7 @@ interface IGridRowProps extends IElementProps {
   justify?: 'flex-start' | 'center' | 'flex-end'
   align?: 'stretch' | 'center' | 'flex-start' | 'flex-end'
   wrap?: 'wrap' | 'nowrap'
-  component?: React.ElementType
+  component?: ElementType
 }
 
 export function GridRow({
@@ -106,8 +110,8 @@ export function GridRow({
 
 interface IGridItemProps extends IElementProps {
   col?: ColValue | ColValues
-  children?: React.ReactNode
-  component?: React.ElementType
+  children?: ReactNode
+  component?: ElementType
 }
 
 const breakpoints = [0, 576, 768, 992, 1200]

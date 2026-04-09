@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import Image from 'next/image'
 import { rgba } from 'polished'
-import React from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
 import SocialLinkList from '../../atoms/SocialLinkList'

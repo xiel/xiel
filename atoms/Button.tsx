@@ -1,13 +1,10 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import type { AnchorHTMLAttributes, DetailedHTMLProps } from 'react'
 
 type InnerButtonProps = AnchorProps | JSX.IntrinsicElements['button']
 
 interface AnchorProps
-  extends React.DetailedHTMLProps<
-    React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
-  > {
+  extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   href: string
 }
 

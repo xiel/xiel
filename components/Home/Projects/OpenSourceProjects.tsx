@@ -3,7 +3,6 @@
 import { css } from '@emotion/react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
-import React from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
 import Headline from '../../../atoms/Typo/Headline'

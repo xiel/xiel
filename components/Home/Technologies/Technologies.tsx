@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React from 'react'
 import { Trans } from 'react-i18next'
 
 import Headline from '../../../atoms/Typo/Headline'

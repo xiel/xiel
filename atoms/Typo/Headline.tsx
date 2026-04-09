@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type { ComponentType, ElementType, HTMLAttributes } from 'react'
 
 import { XTheme } from '../../styles/theme'
 
@@ -52,9 +52,9 @@ const lineStyle = css`
   }
 `
 
-interface Props extends React.HTMLAttributes<unknown> {
+interface Props extends HTMLAttributes<unknown> {
   level?: keyof typeof headlineCSS
-  component?: React.ComponentType | React.ElementType
+  component?: ComponentType | ElementType
   line?: boolean
 }
 

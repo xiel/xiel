@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type { ReactNode } from 'react'
 
 import Headline from '../../../atoms/Typo/Headline'
 import { GridItem } from '../../Layout/Grid'
@@ -34,8 +34,8 @@ const comingSoon = () => css`
 `
 
 interface Props {
-  headline: React.ReactNode
-  description: React.ReactNode
+  headline: ReactNode
+  description: ReactNode
   href?: string
 }
 

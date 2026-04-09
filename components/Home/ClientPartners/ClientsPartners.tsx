@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import React from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
 import Button from '../../../atoms/Button'

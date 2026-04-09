@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React from 'react'
 
 import Spacer from '../Layout/Spacer'
 import Logo from './Logo'

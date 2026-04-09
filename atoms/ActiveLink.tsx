@@ -1,9 +1,9 @@
 import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
-import React, { Children } from 'react'
+import { Children, cloneElement, type ReactElement, type ReactNode } from 'react'
 
 interface Props extends LinkProps {
-  children: React.ReactNode
+  children: ReactNode
   activeClassName?: string
   className?: string
 }
@@ -14,7 +14,7 @@ export const ActiveLink = ({
   ...props
 }: Props) => {
   const { asPath, locale } = useRouter()
-  const child = Children.only(children) as React.ReactElement
+  const child = Children.only(children) as ReactElement
   const childClassName = child.props.className || ''
 
   // pages/about.js will be matched via props.href
@@ -28,7 +28,7 @@ export const ActiveLink = ({
 
   return (
     <Link passHref {...props} legacyBehavior>
-      {React.cloneElement(child, {
+      {cloneElement(child, {
         className: className || null,
       })}
     </Link>

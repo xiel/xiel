@@ -1,11 +1,11 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type { ReactNode } from 'react'
 
 import { XTheme } from '../../styles/theme'
 import { headlineCSS } from './Headline'
 
 interface Props {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 const richtextCSS = (theme: XTheme) => css`
