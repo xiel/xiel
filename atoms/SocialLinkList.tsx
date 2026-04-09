@@ -28,7 +28,7 @@ export default function SocialLinkList(
     <ul css={list} {...props}>
       <li>
         <a
-          href="http://twitter.com/xiel"
+          href="https://twitter.com/xiel"
           css={link}
           target="_blank"
           rel="noreferrer"
@@ -38,7 +38,7 @@ export default function SocialLinkList(
       </li>
       <li>
         <a
-          href="http://instagram.com/xiel"
+          href="https://instagram.com/xiel"
           css={link}
           target="_blank"
           rel="noreferrer"
@@ -48,7 +48,7 @@ export default function SocialLinkList(
       </li>
       <li>
         <a
-          href="http://github.com/xiel"
+          href="https://github.com/xiel"
           css={link}
           target="_blank"
           rel="noreferrer"

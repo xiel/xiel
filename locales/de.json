@@ -1,56 +1,129 @@
 {
-  "Projects": {
-    "Title": "Projekte"
+  "SEO": {
+    "Title": "KI, Frontend & Developer Tooling",
+    "Description": "Unabhängiger Engineer aus Berlin für durchdachte Produkterlebnisse, KI-Agenten und Developer Tooling mit starkem Frontend-Handwerk."
   },
-  "StageSection": {
-    "Hello": "Felix Leupold",
-    "Intro": "FrontEnd-Entwickler & Berater"
+  "Nav": {
+    "Capabilities": "Kompetenzen",
+    "Projects": "Projekte",
+    "Contact": "Kontakt"
   },
-  "Intro": {
-    "Title": "Ich bin freiberuflicher FrontEnd-Entwickler aus Berlin und erschaffe digitale Erlebnisse, die jeder gerne nutzt.",
-    "Text": "Mit Leidenschaft verbinde ich gutes Design, Technologie und Innovation in all meinen Projekten, die ich gerne von der ersten Idee bis zur Veröffentlichung begleite. Mein Schwerpunkt liegt aktuell auf der Entwicklung responsiver User Interfaces mit React. Ich interessiere mich für JavaScript, User Experience, Accessibility, Clean Code und das Weltall.<br/> Und alles dazwischen."
+  "Header": {
+    "Role": "KI, Frontend & DX Engineering",
+    "Contact": "Projekt starten"
   },
-  "Technologies": {
-    "Title": "Technologien",
-    "Text": "Mit einer Kombination aus modernsten Technologien und zuverlässiger Open-Source-Software erstelle ich benutzerorientierte, leistungsstarke Apps und Websites für Smartphones, Tablets und Desktops."
+  "Hero": {
+    "Kicker": "Unabhängiger Engineer aus Berlin",
+    "Name": "Felix Leupold",
+    "Statement": "Ich entwerfe und entwickle Produkterlebnisse, KI-Agenten und Developer Tools mit Haltung.",
+    "Lead": "Meine Arbeit liegt dort, wo Interface-Gefühl, Systemdesign und Umsetzung zusammenkommen. Ich entwickle schnelle Produktoberflächen, Codegen-Pipelines und Agent-Workflows, die Teams mit Klarheit und Tempo arbeiten lassen.",
+    "Availability": "Verfügbar für ausgewählte Freelance-, Produkt- und Prototyping-Projekte.",
+    "PrimaryCta": "Projekt starten",
+    "SecondaryCta": "GitHub",
+    "ProfileTitle": "Unabhängiger Product Engineer mit Frontend-Gefühl und Systemtiefe.",
+    "ProfileText": "Tief verwurzelt in UI-Handwerk, Accessibility und Interaction Design. Heute zusätzlich fokussiert auf Agent-Workflows, KI-gestützte Tools, SDK-Design und Developer Experience.",
+    "FocusEyebrow": "Aktuell im Fokus",
+    "SignalStrip": [
+      "KI-Agenten & Workflows",
+      "Frontend-Architektur",
+      "SDKs & Code Generation",
+      "Interaction Systems",
+      "Developer Experience"
+    ],
+    "FocusList": [
+      "Agent-Workflows und KI-Produktschnittstellen",
+      "TypeScript, React und moderne Web-Architektur",
+      "SDK-Design, Codegen und Plattform-Ergonomie",
+      "Motion, Accessibility und klare Interfaces"
+    ]
   },
-  "OpenSourceProjects": {
-    "Title": "Open Source",
-    "Text": "Ich bin begeistert von Open Source Software und gebe gerne etwas an andere zurück.",
-    "Projects": [
+  "Capabilities": {
+    "Eyebrow": "Was ich heute baue",
+    "Title": "Frontend-Handwerk für das KI-Zeitalter.",
+    "Text": "Performance, Motion, Accessibility und Interface-Details sind mir nach wie vor extrem wichtig. Neu ist, dass ich dieselbe Sorgfalt heute auch in KI-Produkte, interne Tools, SDKs und Plattformarbeit einbringe.",
+    "Items": [
       {
-        "Headline": "useLocationState / useQueryState",
-        "Description": "store and retrieve state in react from the browsers history using modern hooks",
-        "LinkHref": "https://github.com/xiel/use-location-state"
+        "Title": "KI- & Agent-Engineering",
+        "Text": "Ich entwerfe Agent-Flows, code-aware Tools, Human-in-the-loop-Workflows und Produktoberflächen, die starke Automatisierung verständlich machen."
       },
       {
-        "Headline": "Wheel Gestures",
-        "Description": "wheel gestures and momentum detection",
-        "LinkHref": "https://wheel-gestures.xiel.dev"
+        "Title": "Produkt-UIs & Frontend-Systeme",
+        "Text": "Ich entwickle responsive, belastbare Interfaces mit klarer Informationsarchitektur, schnellen Feedback-Loops und Design-Details, die auch im Alltag bestehen."
       },
       {
-        "Headline": "Wheel Gestures for Embla Carousel",
-        "Description": "This plugin adds wheel interactions to the amazing Embla Carousel",
-        "LinkHref": "https://github.com/xiel/embla-carousel-wheel-gestures"
+        "Title": "Developer Tooling & Plattform-DX",
+        "Text": "Ich verbessere, wie Teams bauen: von CLI-Ergonomie und internen Tools bis zu Code Generation, Component Systems und Workflows, die Reibung entfernen."
       },
       {
-        "Headline": "Outer Hooks",
-        "Description": "develop javascript modules/libs using hooks - outside of react",
-        "LinkHref": "https://github.com/xiel/outer-hooks"
-      },
-      {
-        "Headline": "lionflow",
-        "Description": "i18n framework and l10n workflow for react",
-        "LinkHref": "https://lionflow.io"
+        "Title": "Design-sensible Umsetzung",
+        "Text": "Ich verbinde Produktdenken und Engineering-Handwerk, damit ambitionierte Ideen mit Klarheit, Qualität und technischer Haltbarkeit live gehen."
       }
     ]
   },
-  "ClientsPartners": {
-    "Title": "Kunden & Partner",
-    "Text": "In den vergangenen 10 Jahren konnte ich mit großartigen Teams für spannende Kunden ein breites Spektrum an Projekten umsetzen: von einnehmenden Touch-Interfaces bis zu komplexen Web-Anwendungen."
+  "Projects": {
+    "Eyebrow": "Ausgewählte Arbeit",
+    "Title": "Signale aus Code, Tooling und Open Source.",
+    "Text": "Eine Mischung aus langfristigem Open Source, interaktionsstarken Libraries und neuerer Systemarbeit, die klar in Richtung Produkt-Engineering für die KI-Ära zeigt.",
+    "OpenProject": "Projekt öffnen ↗",
+    "Items": [
+      {
+        "Title": "claude-code",
+        "Tag": "Agent-Tooling-Experiment",
+        "Description": "Ein unabhängiger Python-Feature-Port rund um CLI-Architektur, Workflow-Ergonomie und agentische Developer Tools.",
+        "Href": "https://github.com/xiel/claude-code"
+      },
+      {
+        "Title": "sdk-codegen",
+        "Tag": "Plattform & Code Generation",
+        "Description": "SDK-Generation mit Fokus darauf, komplexe APIs in kohärente, wartbare Developer Experiences zu übersetzen.",
+        "Href": "https://github.com/xiel/sdk-codegen"
+      },
+      {
+        "Title": "embla-carousel-wheel-gestures",
+        "Tag": "Interaction System",
+        "Description": "Ein Plugin für Wheel-Interaktionen, das Bewegungsnuancen und Produktgefühl in wiederverwendbare Infrastruktur verwandelt.",
+        "Href": "https://github.com/xiel/embla-carousel-wheel-gestures"
+      },
+      {
+        "Title": "use-location-state",
+        "Tag": "React State Primitives",
+        "Description": "Hooks zur Synchronisierung von UI-State mit der Browser-History, gebaut für moderne React-Ergonomie und belastbares Produktverhalten.",
+        "Href": "https://github.com/xiel/use-location-state"
+      }
+    ]
+  },
+  "Approach": {
+    "Eyebrow": "Wie ich arbeite",
+    "Title": "Durchdachte Systeme schlagen laute Komplexität.",
+    "Intro": "Die beste Produktentwicklung lässt komplexe Systeme ruhig wirken. Das gilt für KI-Produkte und interne Tools genauso wie für klassische Interfaces.",
+    "StoryEyebrow": "Arbeitsweise",
+    "StoryTitle": "Von Interfaces zu intelligenten Systemen",
+    "StoryText": "Ich habe mit einer starken Fokussierung auf Interaction Design, Animation und Frontend-Klarheit angefangen. Genau dieses Fundament prägt heute auch meine Arbeit an KI-Erlebnissen: klare Informationsarchitektur, ruhige Zustände, verlässliches Verhalten und Tooling mit Respekt für die Menschen, die es nutzen.",
+    "Items": [
+      {
+        "Title": "Schnell prototypisieren, bewusst schärfen",
+        "Text": "Ich bringe Ideen gern zügig in eine greifbare Form und verfeinere dann Struktur, Sprache und Constraints so lange, bis das Produkt unvermeidbar statt zufällig wirkt."
+      },
+      {
+        "Title": "Respekt für die Person am Steuer",
+        "Text": "Ob Kundin, Teammitglied oder Power-User: Ich optimiere auf Klarheit, Vertrauen und Kontrolle statt auf Cleverness um ihrer selbst willen."
+      },
+      {
+        "Title": "Systeme statt Demos ausliefern",
+        "Text": "Wartbarkeit, Edge Cases, Accessibility und Workflow-Fit gehören für mich dazu, damit aus einem starken ersten Prototyp auch ein belastbares Produkt werden kann."
+      }
+    ]
+  },
+  "Contact": {
+    "Eyebrow": "Lass uns bauen",
+    "Title": "Wenn du einen scharfen Produktpartner für KI, Frontend oder Developer Experience brauchst, sollten wir sprechen.",
+    "Text": "Verfügbar für ausgewählte Kollaborationen in Produktdesign, Prototyping, Plattformarbeit und engineering-lastigen Experimenten.",
+    "EmailLabel": "E-Mail schreiben",
+    "GitHubLabel": "GitHub ansehen"
   },
   "Footer": {
-    "Title": "Neues Projekt in Planung?",
+    "Title": "Offen für durchdachte Produktarbeit.",
+    "Text": "KI-Agenten, Frontend-Systeme, Developer Tooling und Produkte, die zugleich Geschmack und technische Tiefe brauchen.",
     "Email": "felix@xiel.de",
     "EmailLabel": "Lass uns sprechen",
     "PrivacyLink": "Datenschutz & Impressum",
