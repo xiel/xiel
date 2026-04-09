@@ -55,41 +55,6 @@ const sectionContainer = css`
   }
 `
 
-const shell = css`
-  position: relative;
-  border: 1px solid rgba(209, 234, 245, 0.1);
-  border-radius: 2rem;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
-    linear-gradient(135deg, rgba(12, 22, 31, 0.82), rgba(8, 17, 24, 0.94));
-  box-shadow: var(--page-shadow);
-  backdrop-filter: blur(22px) saturate(1.1);
-`
-
-const shellGloss = css`
-  &::before {
-    position: absolute;
-    inset: 1px;
-    content: '';
-    border-radius: inherit;
-    background:
-      linear-gradient(130deg, rgba(255, 255, 255, 0.18), transparent 24%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 42%);
-    pointer-events: none;
-  }
-`
-
-const subtlePanel = css`
-  position: relative;
-  border: 1px solid rgba(207, 233, 243, 0.12);
-  border-radius: 1.65rem;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
-    linear-gradient(135deg, rgba(18, 31, 42, 0.7), rgba(10, 18, 27, 0.82));
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(16px) saturate(1.12);
-`
-
 const floatingBeam = css`
   position: absolute;
   inset: auto auto 16% -10%;
@@ -116,40 +81,17 @@ const hero = css`
   }
 `
 
-const heroShell = css`
-  position: relative;
-  overflow: hidden;
-  padding: 1.1rem;
-
-  @media (min-width: 900px) {
-    padding: 1.4rem;
-  }
-`
-
 const heroFrame = css`
   position: relative;
   display: grid;
   gap: 2rem;
-  padding: 1.3rem;
-  border-radius: 1.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background:
-    radial-gradient(circle at 16% 12%, rgba(122, 247, 235, 0.08), transparent 24%),
-    radial-gradient(circle at 88% 14%, rgba(255, 190, 166, 0.09), transparent 22%),
-    linear-gradient(140deg, rgba(6, 16, 24, 0.46), rgba(6, 13, 21, 0.76));
+  padding: 1.5rem 0 0;
 
   @media (min-width: 1024px) {
     grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
     align-items: center;
-    padding: 2rem;
+    padding: 2rem 0 0;
   }
-`
-
-const heroBackdrop = css`
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: inherit;
 `
 
 const heroMain = css`
@@ -157,10 +99,10 @@ const heroMain = css`
   z-index: 1;
   display: grid;
   gap: 1.25rem;
-  padding: 0.2rem 0;
+  padding: 0 0 2rem;
 
   @media (min-width: 1024px) {
-    padding: 2rem 0 2.6rem 1rem;
+    padding: 2rem 0 4rem;
   }
 `
 
@@ -274,6 +216,16 @@ const signalPill = css`
   font-size: 0.88rem;
 `
 
+const heroDivider = css`
+  width: min(12rem, 28vw);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(190, 255, 244, 0.76),
+    rgba(190, 255, 244, 0.08)
+  );
+`
+
 const heroStage = css`
   position: relative;
   z-index: 1;
@@ -290,6 +242,47 @@ const orbScene = css`
   width: 100%;
   min-height: inherit;
   transform-style: preserve-3d;
+`
+
+const stageBackdrop = css`
+  position: absolute;
+  inset: 8% 4% 11% 12%;
+  overflow: hidden;
+  border-radius: 38% 62% 46% 54% / 48% 38% 62% 52%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.03);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 30px 80px rgba(4, 10, 16, 0.24);
+  backdrop-filter: blur(24px) saturate(1.15);
+  transform: rotate(-10deg) translateZ(-18px);
+`
+
+const stageFrame = css`
+  position: absolute;
+  inset: 6% 0 8% 12%;
+  transform: rotateY(-14deg) rotateX(8deg) translateZ(-10px);
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+    border-color: rgba(207, 233, 243, 0.14);
+    border-style: solid;
+  }
+
+  &::before {
+    inset: 0 18% 18% 0;
+    border-width: 1px 0 0 1px;
+    border-top-left-radius: 2.4rem;
+  }
+
+  &::after {
+    inset: 18% 0 0 26%;
+    border-width: 0 1px 1px 0;
+    border-bottom-right-radius: 2.8rem;
+  }
 `
 
 const pearlHalo = css`
@@ -358,71 +351,6 @@ const portraitShell = css`
   }
 `
 
-const profileRibbon = css`
-  position: absolute;
-  left: 4%;
-  bottom: 12%;
-  max-width: min(28rem, 72vw);
-  padding: 1.1rem 1.15rem;
-  transform:
-    rotateX(18deg)
-    rotateY(12deg)
-    translateZ(54px);
-`
-
-const ribbonTitle = css`
-  margin: 0;
-  color: var(--page-ice);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-`
-
-const ribbonText = css`
-  margin: 0.65rem 0 0;
-  color: var(--page-muted-strong);
-  line-height: 1.65;
-`
-
-const focusSheet = css`
-  position: absolute;
-  left: 8%;
-  top: 10%;
-  width: min(16rem, 54vw);
-  padding: 1rem 1.05rem;
-  transform:
-    rotateY(16deg)
-    rotateX(-7deg)
-    translateZ(30px);
-`
-
-const focusList = css`
-  display: grid;
-  gap: 0.65rem;
-  margin: 0.8rem 0 0;
-  padding: 0;
-  list-style: none;
-`
-
-const focusListItem = css`
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.62rem;
-  color: var(--page-muted-strong);
-  line-height: 1.48;
-
-  &::before {
-    content: '';
-    width: 0.48rem;
-    height: 0.48rem;
-    margin-top: 0.46rem;
-    border-radius: 999px;
-    background: linear-gradient(135deg, var(--page-ice), var(--page-violet));
-    box-shadow: 0 0 0 0.3rem rgba(190, 255, 244, 0.09);
-  }
-`
-
 const stageTexture = css`
   position: absolute;
   inset: auto 0 -8% auto;
@@ -468,10 +396,10 @@ const sectionText = css`
 
 const capabilitiesSurface = css`
   position: relative;
-  padding: 1.5rem;
+  padding: 1.6rem 0 0;
 
   @media (min-width: 1024px) {
-    padding: 1.8rem 2rem;
+    padding-top: 2rem;
   }
 `
 
@@ -521,8 +449,8 @@ const itemText = css`
 
 const projectFlow = css`
   position: relative;
-  overflow: hidden;
-  padding: 1.4rem;
+  overflow: visible;
+  padding: 1.6rem 0 0;
 `
 
 const projectGlow = css`
@@ -617,8 +545,8 @@ const projectArrow = css`
 
 const approachLayout = css`
   position: relative;
-  overflow: hidden;
-  padding: 1.45rem;
+  overflow: visible;
+  padding: 1.6rem 0 0;
 `
 
 const approachGlow = css`
@@ -649,10 +577,10 @@ const approachInner = css`
 const storySurface = css`
   position: relative;
   overflow: hidden;
-  padding: 1.5rem;
+  padding: 1.25rem 0 1.4rem;
 
   @media (min-width: 900px) {
-    padding: 1.8rem;
+    padding: 1.45rem 1.25rem 1.8rem 0;
   }
 `
 
@@ -690,10 +618,10 @@ const contactWrap = css`
 const contactSurface = css`
   position: relative;
   overflow: hidden;
-  padding: 1.5rem;
+  padding: 1.8rem 0 0;
 
   @media (min-width: 900px) {
-    padding: 1.8rem 1.9rem;
+    padding-top: 2rem;
   }
 `
 
@@ -713,14 +641,9 @@ const contactActions = css`
   gap: 0.9rem;
 `
 
-const socialCluster = css`
-  margin-top: 1rem;
-`
-
 export default function HomePage() {
   const { t } = useTranslation()
   const heroSignals = t('Hero.SignalStrip', { returnObjects: true }) as string[]
-  const heroFocus = t('Hero.FocusList', { returnObjects: true }) as string[]
   const capabilities = t('Capabilities.Items', {
     returnObjects: true,
   }) as FocusItem[]
@@ -736,77 +659,62 @@ export default function HomePage() {
     <div css={page}>
       <section css={hero}>
         <div css={sectionContainer}>
-          <div css={[shell, shellGloss, heroShell]}>
-            <div css={floatingBeam} />
-            <div css={heroFrame}>
-              <div css={heroBackdrop}>
-                <IridescentCanvas />
+          <div css={floatingBeam} />
+          <div css={heroFrame}>
+            <div css={heroMain}>
+              <p css={eyebrow}>{t('Hero.Kicker')}</p>
+              <h1 css={heroName}>{t('Hero.Name')}</h1>
+              <p css={heroStatement}>{t('Hero.Statement')}</p>
+              <div css={heroDivider} />
+              <p css={heroLead}>{t('Hero.Lead')}</p>
+              <div css={ctaRow}>
+                <a css={[actionLink, primaryAction]} href="mailto:felix@xiel.de">
+                  {t('Hero.PrimaryCta')}
+                </a>
+                <a
+                  css={actionLink}
+                  href="https://github.com/xiel"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {t('Hero.SecondaryCta')}
+                </a>
               </div>
-              <div css={heroMain}>
-                <p css={eyebrow}>{t('Hero.Kicker')}</p>
-                <h1 css={heroName}>{t('Hero.Name')}</h1>
-                <p css={heroStatement}>{t('Hero.Statement')}</p>
-                <p css={heroLead}>{t('Hero.Lead')}</p>
-                <div css={ctaRow}>
-                  <a css={[actionLink, primaryAction]} href="mailto:felix@xiel.de">
-                    {t('Hero.PrimaryCta')}
-                  </a>
-                  <a
-                    css={actionLink}
-                    href="https://github.com/xiel"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {t('Hero.SecondaryCta')}
-                  </a>
-                </div>
-                <p css={availability}>{t('Hero.Availability')}</p>
-                <ul css={signalStrip}>
-                  {heroSignals.map((item) => (
-                    <li css={signalPill} key={item}>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p css={availability}>{t('Hero.Availability')}</p>
+              <ul css={signalStrip}>
+                {heroSignals.map((item) => (
+                  <li css={signalPill} key={item}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-              <div css={heroStage}>
-                <div css={orbScene}>
-                  <div css={pearlHalo} />
-                  <div css={portraitWrap}>
-                    <div css={portraitShell}>
-                      <Image
-                        alt={t('Hero.Name')}
-                        fill
-                        priority
-                        sizes="(min-width: 1024px) 30vw, 82vw"
-                        src={portraitImg}
-                      />
-                    </div>
-                  </div>
-                  <div css={[subtlePanel, focusSheet]}>
-                    <p css={ribbonTitle}>{t('Hero.FocusEyebrow')}</p>
-                    <ul css={focusList}>
-                      {heroFocus.map((item) => (
-                        <li css={focusListItem} key={item}>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div css={[subtlePanel, profileRibbon]}>
-                    <p css={ribbonTitle}>{t('Hero.ProfileTitle')}</p>
-                    <p css={ribbonText}>{t('Hero.ProfileText')}</p>
-                    <SocialLinkList css={socialCluster} />
-                  </div>
-                  <div css={stageTexture}>
+            <div css={heroStage}>
+              <div css={orbScene}>
+                <div css={stageBackdrop}>
+                  <IridescentCanvas />
+                </div>
+                <div css={stageFrame} />
+                <div css={pearlHalo} />
+                <div css={portraitWrap}>
+                  <div css={portraitShell}>
                     <Image
-                      alt=""
+                      alt={t('Hero.Name')}
+                      fill
                       priority
-                      sizes="(min-width: 1024px) 24vw, 60vw"
-                      src={stageImg}
+                      sizes="(min-width: 1024px) 30vw, 82vw"
+                      src={portraitImg}
                     />
                   </div>
+                </div>
+                <div css={stageTexture}>
+                  <Image
+                    alt=""
+                    priority
+                    sizes="(min-width: 1024px) 24vw, 60vw"
+                    src={stageImg}
+                  />
                 </div>
               </div>
             </div>
@@ -822,7 +730,7 @@ export default function HomePage() {
           </div>
           <p css={sectionText}>{t('Capabilities.Text')}</p>
         </div>
-        <div css={[shell, shellGloss, capabilitiesSurface]}>
+        <div css={capabilitiesSurface}>
           <div css={capabilityGrid}>
             {capabilities.map((item) => (
               <article css={capabilityItem} key={item.Title}>
@@ -842,7 +750,7 @@ export default function HomePage() {
           </div>
           <p css={sectionText}>{t('Projects.Text')}</p>
         </div>
-        <div css={[shell, shellGloss, projectFlow]}>
+        <div css={projectFlow}>
           <div css={projectGlow} />
           <div css={projectLayout}>
             <div css={projectRail}>
@@ -891,10 +799,10 @@ export default function HomePage() {
           </div>
           <p css={sectionText}>{t('Approach.Intro')}</p>
         </div>
-        <div css={[shell, shellGloss, approachLayout]}>
+        <div css={approachLayout}>
           <div css={approachGlow} />
           <div css={approachInner}>
-            <article css={[subtlePanel, storySurface]}>
+            <article css={storySurface}>
               <div css={storyBackdrop} />
               <p css={microTag}>{t('Approach.StoryEyebrow')}</p>
               <h3 css={itemTitle}>{t('Approach.StoryTitle')}</h3>
@@ -920,7 +828,7 @@ export default function HomePage() {
 
       <section css={[section, sectionContainer]} id="contact">
         <div css={contactWrap}>
-          <div css={[shell, shellGloss, contactSurface]}>
+          <div css={contactSurface}>
             <IridescentCanvas />
             <div css={contactLayout}>
               <div
