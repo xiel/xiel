@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import React, { forwardRef, SVGProps } from 'react'
+import { forwardRef, SVGProps } from 'react'
 
 import * as Icons from '../components/SVG/icons'
 import VisuallyHidden from './VisuallyHidden'

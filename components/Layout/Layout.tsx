@@ -1,4 +1,4 @@
-import React from 'react'
+import type { ReactNode } from 'react'
 
 import BasesStyles from '../../styles/BaseStyles'
 import FooterSection from '../Footer/FooterSection'
@@ -6,7 +6,7 @@ import Header from '../Header/Header'
 import GridOverlay from './GridOverlay'
 
 interface Props {
-  children: React.ReactNode
+  children: ReactNode
   headerFixed?: boolean
 }
 

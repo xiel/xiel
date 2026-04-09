@@ -1,5 +1,10 @@
 import { css } from '@emotion/react'
-import React, { useMemo } from 'react'
+import {
+  type DetailedHTMLProps,
+  type HTMLAttributes,
+  type ReactNode,
+  useMemo,
+} from 'react'
 
 const ratioBox = css`
   position: relative;
@@ -15,11 +20,8 @@ const ratioBoxContent = css`
 `
 
 export interface Props
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > {
-  children?: React.ReactNode
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  children?: ReactNode
   ratio?: [number, number] | string // "number:number" string
   classNameInner?: string
 }

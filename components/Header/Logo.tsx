@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import Link from 'next/link'
-import React from 'react'
 
 import { VisuallyHidden } from '../../styles/mixins'
 

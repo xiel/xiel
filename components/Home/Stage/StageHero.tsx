@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import Image from 'next/image'
-import React from 'react'
 
 import stageImg from '../../../public/stage/deepspace-stage.jpg'
 import { XTheme } from '../../../styles/theme'

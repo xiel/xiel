@@ -1,4 +1,3 @@
-import React from 'react'
 
 import Richtext from '../atoms/Typo/Richtext'
 import { GridItem, GridRow } from '../components/Layout/Grid'

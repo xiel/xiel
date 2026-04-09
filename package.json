@@ -5,21 +5,24 @@
     "dev": "next dev",
     "build": "next build",
     "prebuild": "yarn build:icons",
-    "build:icons": "svgr --out-dir components/SVG public/svg; eslint components/SVG --fix",
+    "build:icons": "svgr --jsx-runtime automatic --out-dir components/SVG public/svg; eslint components/SVG --fix",
     "start": "next start",
-    "lint": "next lint --max-warnings 0",
-    "lint:fix": "next lint --fix",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
     "test": "DEBUG=pw:webserver playwright test",
     "test:dev": "PWDEBUG=1 playwright test"
   },
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "dependencies": {
-    "@emotion/react": "^11.6.0",
-    "@emotion/styled": "^11.6.0",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
     "embla-carousel-react": "^7.0.0",
     "embla-carousel-wheel-gestures": "^3.0.0",
-    "http-proxy-middleware": "^2.0.7",
+    "http-proxy-middleware": "3.0.5",
     "i18next": "^23.0.0",
-    "next": "15.3.9",
+    "next": "16.2.3",
     "normalize.css": "^8.0.1",
     "polished": "^4.1.3",
     "prettier": "^3.0.0",
@@ -37,8 +40,8 @@
     "@types/node": "22.x",
     "@types/react": "18.3.14",
     "@types/throttle-debounce": "^5.0.0",
-    "eslint": "8.57.1",
-    "eslint-config-next": "15.3.9",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.3",
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "eslint-plugin-unused-imports": "^4.0.0",
     "typescript": "5.7.2"
@@ -49,7 +52,11 @@
     "memo": true
   },
   "resolutions": {
+    "@babel/helpers": "7.29.2",
+    "@babel/runtime": "7.29.2",
+    "@babel/runtime-corejs3": "7.29.2",
     "@babel/traverse": "^7.23.2",
+    "brace-expansion": "1.1.13",
     "minimist": "^1.2.6",
     "minimatch": "^3.1.3",
     "cross-spawn": "^7.0.5",
@@ -57,6 +64,11 @@
     "semver": "^7.5.4",
     "svgo": "^3.3.3",
     "flatted": "^3.4.0",
-    "picomatch": "^2.3.2"
+    "follow-redirects": "1.15.11",
+    "js-yaml": "4.1.1",
+    "micromatch": "4.0.8",
+    "nanoid": "3.3.11",
+    "picomatch": "^2.3.2",
+    "yaml": "1.10.3"
   }
 }

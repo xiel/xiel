@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useQueryState } from 'use-location-state'
 
 import { GridItem, GridRow, useGrid } from './Grid'

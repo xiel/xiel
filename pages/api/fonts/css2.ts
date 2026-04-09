@@ -11,13 +11,15 @@ const proxy = createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/fonts': '' },
   selfHandleResponse: true,
-  onProxyRes: responseInterceptor(async (responseBuffer) => {
-    const response = responseBuffer.toString('utf8')
-    return response.replace(
-      new RegExp('https://fonts.gstatic.com', 'g'),
-      '/api/fonts/static'
-    )
-  }) as any,
+  on: {
+    proxyRes: responseInterceptor(async (responseBuffer) => {
+      const response = responseBuffer.toString('utf8')
+      return response.replace(
+        new RegExp('https://fonts.gstatic.com', 'g'),
+        '/api/fonts/static'
+      )
+    }),
+  },
 })
 
 const handle: NextApiHandler = async (req, res) => {
