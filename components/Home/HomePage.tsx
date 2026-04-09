@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
 
 import SocialLinkList from '../../atoms/SocialLinkList'
-import portraitImg from '../../public/about/BGray Portrait Felix Leupold 2015_square.jpg'
+import portraitImg from '../../public/about/portrait-felix-leupold-2024-square.jpg'
 import stageImg from '../../public/stage/deepspace-stage.jpg'
 
 interface FocusItem {
