@@ -6,12 +6,12 @@ import { XTheme } from './theme'
 
 interface Props {
   theme?: XTheme | ((parent: XTheme) => XTheme)
-  children?: ReactNode
+  children: ReactNode
 }
 
 export default function ThemeProvider({
   theme = defaultTheme,
-  ...restProps
+  children,
 }: Props) {
-  return <EmotionThemeProvider theme={theme} {...restProps} />
+  return <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>
 }
