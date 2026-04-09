@@ -1,13 +1,13 @@
-import { test } from './utils/testFixtures'
+import { expect, test } from '@playwright/test'
 
-test('locale: en / default', async ({ page, queries: q }) => {
+test('locale: en / default', async ({ page }) => {
   await page.goto('/')
-  await q.findByRole('heading', { name: 'Felix Leupold' })
-  await q.findByRole('heading', { name: 'Clients & Partners' })
+  await expect(page.getByRole('heading', { name: 'Felix Leupold' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Clients & Partners' })).toBeVisible()
 })
 
-test('locale: de', async ({ page, queries: q }) => {
+test('locale: de', async ({ page }) => {
   await page.goto('/de')
-  await q.findByRole('heading', { name: 'Felix Leupold' })
-  await q.findByRole('heading', { name: 'Kunden & Partner' })
+  await expect(page.getByRole('heading', { name: 'Felix Leupold' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Kunden & Partner' })).toBeVisible()
 })
