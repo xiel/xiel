@@ -14,7 +14,7 @@ interface Props {
 function SEO({ title: titleProp = '', meta = [], description = `` }: Props) {
   const origin =
     typeof window !== 'undefined' ? window.location.origin : 'https://xiel.dev'
-  const mainTitle = 'FrontEnd Developer · Felix Leupold · XIEL'
+  const mainTitle = 'Product UI, Frontend & Developer Tooling · Felix Leupold · XIEL'
   const title = titleProp ? `${titleProp} | ${mainTitle}` : mainTitle
   const metaDescription = description || ''
 

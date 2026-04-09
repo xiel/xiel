@@ -1,56 +1,132 @@
 {
-  "StageSection": {
-    "Hello": "Felix Leupold",
-    "Intro": "FrontEnd Developer & Consultant"
+  "SEO": {
+    "Title": "Product UI, Frontend & Developer Tooling",
+    "Description": "Independent engineer in Berlin building thoughtful product experiences, frontend systems, and developer tooling with strong interface craft."
   },
-  "Intro": {
-    "Title": "I'm a freelance front-end developer from Berlin who creates digital experiences that everyone likes to use.",
-    "Text": "I passionately combine good design, technology, and innovation in all my projects, which I like to accompany from the first idea to release. Currently, I'm focused on the development of responsive user interfaces with React and I'm interested in JavaScript, Web Technologies, User Experience, Accessibility, Clean Code, and the Universe. And everything in between."
+  "Nav": {
+    "Capabilities": "Capabilities",
+    "Projects": "Projects",
+    "Contact": "Contact"
   },
-  "Technologies": {
-    "Title": "Technologies",
-    "Text": "Using a combination of cutting-edge technologies and reliable open-source software I build user-focused, performant apps and websites for smartphones, tablets, and desktops."
+  "Header": {
+    "Role": "Product UI, Frontend & DX Engineering",
+    "Contact": "Start a project"
   },
-  "OpenSourceProjects": {
-    "Title": "Open Source",
-    "Text": "I am passionate about open source software and like to give back to others.",
-    "Projects": [
+  "Hero": {
+    "Kicker": "Berlin-based independent engineer",
+    "Name": "Felix Leupold",
+    "Statement": "I design and engineer thoughtful product experiences, frontend systems, and developer tools.",
+    "Lead": "My work sits where interface taste, system design, and shipping discipline meet. I build everything from fast product surfaces to design-sensitive systems, SDKs, and tooling that help teams move with confidence.",
+    "Availability": "Available for selected freelance, product, and prototyping collaborations.",
+    "PrimaryCta": "Start a project",
+    "SecondaryCta": "GitHub",
+    "ProfileTitle": "Independent product engineer with frontend taste and systems depth.",
+    "ProfileText": "Deeply grounded in UI craft, accessibility, and interaction design. Today that also includes SDK design, internal tooling, workflow systems, and developer experience.",
+    "FocusEyebrow": "Currently focused on",
+    "SignalStrip": [
+      "Workflow systems",
+      "Frontend architecture",
+      "SDKs & code generation",
+      "Interaction systems",
+      "Developer experience"
+    ],
+    "FocusList": [
+      "Product systems and workflow design",
+      "TypeScript, React, and modern web architecture",
+      "SDK design, codegen, and platform ergonomics",
+      "Motion, accessibility, and interface clarity"
+    ]
+  },
+  "Capabilities": {
+    "Eyebrow": "What I do now",
+    "Title": "Frontend craft, product systems, and tooling.",
+    "Text": "I still care deeply about performance, motion, accessibility, and the fine details of interface design. The difference now is that I bring that same rigor across product surfaces, internal tools, SDKs, and platform work.",
+    "Items": [
       {
-        "Headline": "useLocationState / useQueryState",
-        "Description": "store and retrieve state in react from the browsers history using modern hooks",
-        "LinkHref": "https://github.com/xiel/use-location-state"
+        "Title": "Product Systems & Workflow Design",
+        "Text": "Designing product flows, code-aware tooling, and operational workflows that turn complex systems into clear, usable experiences."
       },
       {
-        "Headline": "Wheel Gestures",
-        "Description": "wheel gestures and momentum detection",
-        "LinkHref": "https://wheel-gestures.xiel.dev"
+        "Title": "Product UI & Frontend Systems",
+        "Text": "Building responsive, resilient interfaces with strong information architecture, fast feedback loops, and design details that hold up in real products."
       },
       {
-        "Headline": "Wheel Gestures for Embla Carousel",
-        "Description": "This plugin adds wheel interactions to the amazing Embla Carousel",
-        "LinkHref": "https://github.com/xiel/embla-carousel-wheel-gestures"
+        "Title": "Developer Tooling & Platform DX",
+        "Text": "Improving how teams build: from CLI ergonomics and internal tools to code generation, component systems, and workflows that remove friction."
       },
       {
-        "Headline": "Outer Hooks",
-        "Description": "develop javascript modules/libs using hooks - outside of react",
-        "LinkHref": "https://github.com/xiel/outer-hooks"
-      },
-      {
-        "Headline": "lionflow",
-        "Description": "i18n framework and l10n workflow for react",
-        "LinkHref": "https://lionflow.io"
+        "Title": "Design-Sensitive Execution",
+        "Text": "Bridging product thinking and engineering craft so that ambitious ideas ship with polish, clarity, and technical durability."
       }
     ]
   },
-  "ClientsPartners": {
-    "Title": "Clients & Partners",
-    "Text": "Over the past 10 years, I've worked with great teams for exciting clients to deliver a wide range of projects: from engaging touch interfaces to complex web applications."
+  "Projects": {
+    "Eyebrow": "Selected work",
+    "Title": "Signals from code, tooling, and open source.",
+    "Text": "A mix of long-running OSS, interaction-focused libraries, and newer systems work that shows the range from interface craft to tooling and platform thinking.",
+    "OpenProject": "Open project ↗",
+    "Items": [
+      {
+        "Title": "claude-code",
+        "Tag": "CLI tooling experiment",
+        "Description": "An independent Python feature-port exploring CLI architecture, workflow ergonomics, and developer tooling patterns.",
+        "Href": "https://github.com/xiel/claude-code"
+      },
+      {
+        "Title": "sdk-codegen",
+        "Tag": "Platform & code generation",
+        "Description": "SDK generation work focused on turning complex APIs into coherent, maintainable developer experiences.",
+        "Href": "https://github.com/xiel/sdk-codegen"
+      },
+      {
+        "Title": "embla-carousel-wheel-gestures",
+        "Tag": "Interaction system",
+        "Description": "A wheel interaction plugin that turns motion nuance and product feel into reusable infrastructure.",
+        "Href": "https://github.com/xiel/embla-carousel-wheel-gestures"
+      },
+      {
+        "Title": "use-location-state",
+        "Tag": "React state primitives",
+        "Description": "Hooks for syncing UI state with browser history, built around modern React ergonomics and durable product behavior.",
+        "Href": "https://github.com/xiel/use-location-state"
+      }
+    ]
+  },
+  "Approach": {
+    "Eyebrow": "How I work",
+    "Title": "Thoughtful systems beat noisy complexity.",
+    "Intro": "The best product engineering makes sophisticated systems feel calm. That applies just as much to internal tools and platform work as it does to consumer-facing interfaces.",
+    "StoryEyebrow": "Working style",
+    "StoryTitle": "From interfaces to intelligent systems",
+    "StoryText": "I started by obsessing over interaction design, animation, and frontend clarity. That foundation still shapes how I build today: clear information architecture, calm states, reliable behavior, and tooling that respects the people using it.",
+    "Items": [
+      {
+        "Title": "Prototype quickly, shape deliberately",
+        "Text": "I like getting to something tangible fast, then refining structure, language, and constraints until the product feels inevitable instead of accidental."
+      },
+      {
+        "Title": "Respect the operator",
+        "Text": "Whether the user is a customer, a teammate, or an internal power user, I optimize for clarity, trust, and control instead of cleverness for its own sake."
+      },
+      {
+        "Title": "Ship systems, not demos",
+        "Text": "I care about maintainability, edge cases, accessibility, and workflow fit so the result can survive beyond the exciting first prototype."
+      }
+    ]
+  },
+  "Contact": {
+    "Eyebrow": "Let's build",
+    "Title": "If you need a sharp product partner for frontend, product systems, or developer experience work, let's talk.",
+    "Text": "Available for select collaborations across product design, prototyping, platform work, and engineering-heavy experiments.",
+    "EmailLabel": "Email me",
+    "GitHubLabel": "See GitHub"
   },
   "Footer": {
-    "Title": "Got a project to discuss?",
+    "Title": "Open for thoughtful product work.",
+    "Text": "Frontend systems, developer tooling, and products that need both taste and technical depth.",
     "Email": "felix@xiel.de",
     "EmailLabel": "Let's talk",
     "PrivacyLink": "Privacy & Imprint",
-    "Copyright": " © {{year}} Berlin"
+    "Copyright": "© {{year}} Berlin"
   }
 }

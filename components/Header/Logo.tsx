@@ -9,8 +9,8 @@ interface Props {
 
 const logo = css`
   position: relative;
-  width: 3rem;
-  height: 3rem;
+  width: 2.45rem;
+  height: 2.45rem;
 
   a {
     position: relative;
@@ -33,7 +33,7 @@ const logo = css`
   }
 
   svg {
-    fill: #d2d2ce;
+    fill: #dce8ec;
   }
 
   path {

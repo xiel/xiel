@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link
-          href="/api/fonts/css2?family=Inter:wght@300;500;600;700&display=optional"
+          href="/api/fonts/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=optional"
           rel="stylesheet"
         />
       </Head>
