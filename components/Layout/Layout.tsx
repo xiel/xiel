@@ -15,7 +15,7 @@ const Layout = ({ children, headerFixed }: Props) => {
     <>
       <BasesStyles />
       <Header
-        siteTitle="XIEL - AI, Frontend & Developer Tooling"
+        siteTitle="XIEL - Product UI, Frontend & Developer Tooling"
         fixed={headerFixed}
       />
       <main>{children}</main>

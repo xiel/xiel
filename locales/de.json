@@ -1,7 +1,7 @@
 {
   "SEO": {
-    "Title": "KI, Frontend & Developer Tooling",
-    "Description": "Unabhängiger Engineer aus Berlin für durchdachte Produkterlebnisse, KI-Agenten und Developer Tooling mit starkem Frontend-Handwerk."
+    "Title": "Produkt-UI, Frontend & Developer Tooling",
+    "Description": "Unabhängiger Engineer aus Berlin für durchdachte Produkterlebnisse, Frontend-Systeme und Developer Tooling mit starkem Interface-Handwerk."
   },
   "Nav": {
     "Capabilities": "Kompetenzen",
@@ -9,29 +9,29 @@
     "Contact": "Kontakt"
   },
   "Header": {
-    "Role": "KI, Frontend & DX Engineering",
+    "Role": "Produkt-UI, Frontend & DX Engineering",
     "Contact": "Projekt starten"
   },
   "Hero": {
     "Kicker": "Unabhängiger Engineer aus Berlin",
     "Name": "Felix Leupold",
-    "Statement": "Ich entwerfe und entwickle Produkterlebnisse, KI-Agenten und Developer Tools mit Haltung.",
-    "Lead": "Meine Arbeit liegt dort, wo Interface-Gefühl, Systemdesign und Umsetzung zusammenkommen. Ich entwickle schnelle Produktoberflächen, Codegen-Pipelines und Agent-Workflows, die Teams mit Klarheit und Tempo arbeiten lassen.",
+    "Statement": "Ich entwerfe und entwickle Produkterlebnisse, Frontend-Systeme und Developer Tools mit Haltung.",
+    "Lead": "Meine Arbeit liegt dort, wo Interface-Gefühl, Systemdesign und Umsetzung zusammenkommen. Ich entwickle schnelle Produktoberflächen ebenso wie design-sensible Systeme, SDKs und Tooling, die Teams mit Klarheit und Tempo arbeiten lassen.",
     "Availability": "Verfügbar für ausgewählte Freelance-, Produkt- und Prototyping-Projekte.",
     "PrimaryCta": "Projekt starten",
     "SecondaryCta": "GitHub",
     "ProfileTitle": "Unabhängiger Product Engineer mit Frontend-Gefühl und Systemtiefe.",
-    "ProfileText": "Tief verwurzelt in UI-Handwerk, Accessibility und Interaction Design. Heute zusätzlich fokussiert auf Agent-Workflows, KI-gestützte Tools, SDK-Design und Developer Experience.",
+    "ProfileText": "Tief verwurzelt in UI-Handwerk, Accessibility und Interaction Design. Heute kommen dazu: SDK-Design, interne Tools, Workflow-Systeme und Developer Experience.",
     "FocusEyebrow": "Aktuell im Fokus",
     "SignalStrip": [
-      "KI-Agenten & Workflows",
+      "Workflow-Systeme",
       "Frontend-Architektur",
       "SDKs & Code Generation",
       "Interaction Systems",
       "Developer Experience"
     ],
     "FocusList": [
-      "Agent-Workflows und KI-Produktschnittstellen",
+      "Produktsysteme und Workflow-Design",
       "TypeScript, React und moderne Web-Architektur",
       "SDK-Design, Codegen und Plattform-Ergonomie",
       "Motion, Accessibility und klare Interfaces"
@@ -39,12 +39,12 @@
   },
   "Capabilities": {
     "Eyebrow": "Was ich heute baue",
-    "Title": "Frontend-Handwerk für das KI-Zeitalter.",
-    "Text": "Performance, Motion, Accessibility und Interface-Details sind mir nach wie vor extrem wichtig. Neu ist, dass ich dieselbe Sorgfalt heute auch in KI-Produkte, interne Tools, SDKs und Plattformarbeit einbringe.",
+    "Title": "Frontend-Handwerk, Produktsysteme und Tooling.",
+    "Text": "Performance, Motion, Accessibility und Interface-Details sind mir nach wie vor extrem wichtig. Heute bringe ich dieselbe Sorgfalt auch in Produktoberflächen, interne Tools, SDKs und Plattformarbeit ein.",
     "Items": [
       {
-        "Title": "KI- & Agent-Engineering",
-        "Text": "Ich entwerfe Agent-Flows, code-aware Tools, Human-in-the-loop-Workflows und Produktoberflächen, die starke Automatisierung verständlich machen."
+        "Title": "Produktsysteme & Workflow-Design",
+        "Text": "Ich entwerfe Produktflüsse, code-aware Tools und operative Workflows, die komplexe Systeme in klare, benutzbare Erlebnisse übersetzen."
       },
       {
         "Title": "Produkt-UIs & Frontend-Systeme",
@@ -63,13 +63,13 @@
   "Projects": {
     "Eyebrow": "Ausgewählte Arbeit",
     "Title": "Signale aus Code, Tooling und Open Source.",
-    "Text": "Eine Mischung aus langfristigem Open Source, interaktionsstarken Libraries und neuerer Systemarbeit, die klar in Richtung Produkt-Engineering für die KI-Ära zeigt.",
+    "Text": "Eine Mischung aus langfristigem Open Source, interaktionsstarken Libraries und neuerer Systemarbeit, die die Spannweite von Interface-Handwerk bis Tooling und Plattformdenken zeigt.",
     "OpenProject": "Projekt öffnen ↗",
     "Items": [
       {
         "Title": "claude-code",
-        "Tag": "Agent-Tooling-Experiment",
-        "Description": "Ein unabhängiger Python-Feature-Port rund um CLI-Architektur, Workflow-Ergonomie und agentische Developer Tools.",
+        "Tag": "CLI-Tooling-Experiment",
+        "Description": "Ein unabhängiger Python-Feature-Port rund um CLI-Architektur, Workflow-Ergonomie und Muster für Developer Tools.",
         "Href": "https://github.com/xiel/claude-code"
       },
       {
@@ -95,10 +95,10 @@
   "Approach": {
     "Eyebrow": "Wie ich arbeite",
     "Title": "Durchdachte Systeme schlagen laute Komplexität.",
-    "Intro": "Die beste Produktentwicklung lässt komplexe Systeme ruhig wirken. Das gilt für KI-Produkte und interne Tools genauso wie für klassische Interfaces.",
+    "Intro": "Die beste Produktentwicklung lässt komplexe Systeme ruhig wirken. Das gilt für interne Tools und Plattformarbeit genauso wie für klassische Interfaces.",
     "StoryEyebrow": "Arbeitsweise",
     "StoryTitle": "Von Interfaces zu intelligenten Systemen",
-    "StoryText": "Ich habe mit einer starken Fokussierung auf Interaction Design, Animation und Frontend-Klarheit angefangen. Genau dieses Fundament prägt heute auch meine Arbeit an KI-Erlebnissen: klare Informationsarchitektur, ruhige Zustände, verlässliches Verhalten und Tooling mit Respekt für die Menschen, die es nutzen.",
+    "StoryText": "Ich habe mit einer starken Fokussierung auf Interaction Design, Animation und Frontend-Klarheit angefangen. Genau dieses Fundament prägt auch heute meine Arbeit: klare Informationsarchitektur, ruhige Zustände, verlässliches Verhalten und Tooling mit Respekt für die Menschen, die es nutzen.",
     "Items": [
       {
         "Title": "Schnell prototypisieren, bewusst schärfen",
@@ -116,14 +116,14 @@
   },
   "Contact": {
     "Eyebrow": "Lass uns bauen",
-    "Title": "Wenn du einen scharfen Produktpartner für KI, Frontend oder Developer Experience brauchst, sollten wir sprechen.",
+    "Title": "Wenn du einen scharfen Produktpartner für Frontend, Produktsysteme oder Developer Experience brauchst, sollten wir sprechen.",
     "Text": "Verfügbar für ausgewählte Kollaborationen in Produktdesign, Prototyping, Plattformarbeit und engineering-lastigen Experimenten.",
     "EmailLabel": "E-Mail schreiben",
     "GitHubLabel": "GitHub ansehen"
   },
   "Footer": {
     "Title": "Offen für durchdachte Produktarbeit.",
-    "Text": "KI-Agenten, Frontend-Systeme, Developer Tooling und Produkte, die zugleich Geschmack und technische Tiefe brauchen.",
+    "Text": "Frontend-Systeme, Developer Tooling und Produkte, die zugleich Geschmack und technische Tiefe brauchen.",
     "Email": "felix@xiel.de",
     "EmailLabel": "Lass uns sprechen",
     "PrivacyLink": "Datenschutz & Impressum",

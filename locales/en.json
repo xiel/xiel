@@ -1,7 +1,7 @@
 {
   "SEO": {
-    "Title": "AI, Frontend & Developer Tooling",
-    "Description": "Independent engineer in Berlin building thoughtful product experiences, AI agents, and developer tooling with strong frontend craft."
+    "Title": "Product UI, Frontend & Developer Tooling",
+    "Description": "Independent engineer in Berlin building thoughtful product experiences, frontend systems, and developer tooling with strong interface craft."
   },
   "Nav": {
     "Capabilities": "Capabilities",
@@ -9,29 +9,29 @@
     "Contact": "Contact"
   },
   "Header": {
-    "Role": "AI, Frontend & DX Engineering",
+    "Role": "Product UI, Frontend & DX Engineering",
     "Contact": "Start a project"
   },
   "Hero": {
     "Kicker": "Berlin-based independent engineer",
     "Name": "Felix Leupold",
-    "Statement": "I design and engineer thoughtful product experiences, AI agents, and developer tools.",
-    "Lead": "My work sits where interface taste, system design, and shipping discipline meet. I build everything from fast product surfaces to code generation pipelines and agent workflows that help teams move with confidence.",
+    "Statement": "I design and engineer thoughtful product experiences, frontend systems, and developer tools.",
+    "Lead": "My work sits where interface taste, system design, and shipping discipline meet. I build everything from fast product surfaces to design-sensitive systems, SDKs, and tooling that help teams move with confidence.",
     "Availability": "Available for selected freelance, product, and prototyping collaborations.",
     "PrimaryCta": "Start a project",
     "SecondaryCta": "GitHub",
     "ProfileTitle": "Independent product engineer with frontend taste and systems depth.",
-    "ProfileText": "Still deeply grounded in UI craft, accessibility, and interaction design. Now also focused on agent workflows, AI-assisted tooling, SDK design, and developer experience.",
+    "ProfileText": "Deeply grounded in UI craft, accessibility, and interaction design. Today that also includes SDK design, internal tooling, workflow systems, and developer experience.",
     "FocusEyebrow": "Currently focused on",
     "SignalStrip": [
-      "AI agents & workflows",
+      "Workflow systems",
       "Frontend architecture",
       "SDKs & code generation",
       "Interaction systems",
       "Developer experience"
     ],
     "FocusList": [
-      "Agent workflows and AI product surfaces",
+      "Product systems and workflow design",
       "TypeScript, React, and modern web architecture",
       "SDK design, codegen, and platform ergonomics",
       "Motion, accessibility, and interface clarity"
@@ -39,12 +39,12 @@
   },
   "Capabilities": {
     "Eyebrow": "What I do now",
-    "Title": "Frontend craft for the AI era.",
-    "Text": "I still care deeply about performance, motion, accessibility, and the fine details of interface design. The difference now is that I bring that same rigor to AI products, internal tools, SDKs, and platform work.",
+    "Title": "Frontend craft, product systems, and tooling.",
+    "Text": "I still care deeply about performance, motion, accessibility, and the fine details of interface design. The difference now is that I bring that same rigor across product surfaces, internal tools, SDKs, and platform work.",
     "Items": [
       {
-        "Title": "AI & Agent Engineering",
-        "Text": "Designing agent flows, code-aware tooling, human-in-the-loop workflows, and product surfaces that make powerful automation feel understandable."
+        "Title": "Product Systems & Workflow Design",
+        "Text": "Designing product flows, code-aware tooling, and operational workflows that turn complex systems into clear, usable experiences."
       },
       {
         "Title": "Product UI & Frontend Systems",
@@ -63,13 +63,13 @@
   "Projects": {
     "Eyebrow": "Selected work",
     "Title": "Signals from code, tooling, and open source.",
-    "Text": "A mix of long-running OSS, interaction-focused libraries, and newer systems work that points toward product engineering for the AI era.",
+    "Text": "A mix of long-running OSS, interaction-focused libraries, and newer systems work that shows the range from interface craft to tooling and platform thinking.",
     "OpenProject": "Open project ↗",
     "Items": [
       {
         "Title": "claude-code",
-        "Tag": "Agent tooling experiment",
-        "Description": "An independent Python feature-port exploring CLI architecture, workflow ergonomics, and agentic developer tooling.",
+        "Tag": "CLI tooling experiment",
+        "Description": "An independent Python feature-port exploring CLI architecture, workflow ergonomics, and developer tooling patterns.",
         "Href": "https://github.com/xiel/claude-code"
       },
       {
@@ -95,10 +95,10 @@
   "Approach": {
     "Eyebrow": "How I work",
     "Title": "Thoughtful systems beat noisy complexity.",
-    "Intro": "The best product engineering makes sophisticated systems feel calm. That applies just as much to AI products and internal tooling as it does to consumer-facing interfaces.",
+    "Intro": "The best product engineering makes sophisticated systems feel calm. That applies just as much to internal tools and platform work as it does to consumer-facing interfaces.",
     "StoryEyebrow": "Working style",
     "StoryTitle": "From interfaces to intelligent systems",
-    "StoryText": "I started by obsessing over interaction design, animation, and frontend clarity. That foundation still shapes how I build AI experiences today: clear information architecture, calm states, reliable behavior, and tooling that respects the people using it.",
+    "StoryText": "I started by obsessing over interaction design, animation, and frontend clarity. That foundation still shapes how I build today: clear information architecture, calm states, reliable behavior, and tooling that respects the people using it.",
     "Items": [
       {
         "Title": "Prototype quickly, shape deliberately",
@@ -116,14 +116,14 @@
   },
   "Contact": {
     "Eyebrow": "Let's build",
-    "Title": "If you need a sharp product partner for AI, frontend, or developer experience work, let's talk.",
+    "Title": "If you need a sharp product partner for frontend, product systems, or developer experience work, let's talk.",
     "Text": "Available for select collaborations across product design, prototyping, platform work, and engineering-heavy experiments.",
     "EmailLabel": "Email me",
     "GitHubLabel": "See GitHub"
   },
   "Footer": {
     "Title": "Open for thoughtful product work.",
-    "Text": "AI agents, frontend systems, developer tooling, and products that need both taste and technical depth.",
+    "Text": "Frontend systems, developer tooling, and products that need both taste and technical depth.",
     "Email": "felix@xiel.de",
     "EmailLabel": "Let's talk",
     "PrivacyLink": "Privacy & Imprint",
