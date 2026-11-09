@@ -14,7 +14,7 @@ export const ActiveLink = ({
   ...props
 }: Props) => {
   const { asPath, locale } = useRouter()
-  const child = Children.only(children) as ReactElement
+  const child = Children.only(children) as ReactElement<{ className?: string }>
   const childClassName = child.props.className || ''
 
   // pages/about.js will be matched via props.href
@@ -29,7 +29,7 @@ export const ActiveLink = ({
   return (
     <Link passHref {...props} legacyBehavior>
       {cloneElement(child, {
-        className: className || null,
+        className: className || undefined,
       })}
     </Link>
   )

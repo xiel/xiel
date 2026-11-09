@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import type { AnchorHTMLAttributes, DetailedHTMLProps } from 'react'
+import type { AnchorHTMLAttributes, DetailedHTMLProps, JSX } from 'react'
 
 type InnerButtonProps = AnchorProps | JSX.IntrinsicElements['button']
 
