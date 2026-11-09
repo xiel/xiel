@@ -25,7 +25,7 @@ export function getI18n(lng: string) {
       lng,
       fallbackLng: 'en',
       returnEmptyString: false,
-      initImmediate: true,
+      initAsync: false,
 
       interpolation: {
         escapeValue: false, // react already safes from xss

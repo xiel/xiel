@@ -57,9 +57,9 @@ export default function OpenSourceProjects() {
     [WheelGesturesPlugin()]
   )
 
-  const projectTexts: ProjectText[] = t('OpenSourceProjects.Projects', {
+  const projectTexts = t('OpenSourceProjects.Projects', {
     returnObjects: true,
-  })
+  }) as unknown as ProjectText[]
 
   return (
     <Section css={sectionCSS}>
