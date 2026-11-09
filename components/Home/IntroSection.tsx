@@ -5,7 +5,7 @@ import { Trans, useTranslation } from 'react-i18next'
 
 import SocialLinkList from '../../atoms/SocialLinkList'
 import Headline from '../../atoms/Typo/Headline'
-import portraitImg from '../../public/about/BGray Portrait Felix Leupold 2015_square.jpg'
+import portraitImg from '../../public/about/portrait-felix-leupold-2024-square.jpg'
 import { XTheme } from '../../styles/theme'
 import { GridItem, GridRow } from '../Layout/Grid'
 import Section from '../Layout/Section'
