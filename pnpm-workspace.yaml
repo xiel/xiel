@@ -17,6 +17,6 @@ overrides:
   'follow-redirects': '1.15.11'
   'js-yaml': '4.1.1'
   'micromatch': '4.0.8'
-  'nanoid': '3.3.11'
+  'nanoid': '3.3.20'
   'picomatch': '^2.3.2'
   'yaml': '1.10.3'
