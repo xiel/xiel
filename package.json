@@ -22,7 +22,7 @@
     "embla-carousel-wheel-gestures": "^8.1.0",
     "http-proxy-middleware": "4.2.1",
     "i18next": "^26.7.2",
-    "next": "16.4.5",
+    "next": "16.4.6",
     "normalize.css": "^8.0.1",
     "polished": "^4.3.1",
     "prettier": "^3.9.10",
@@ -41,7 +41,7 @@
     "@types/react": "19.3.0",
     "@types/throttle-debounce": "^5.0.2",
     "eslint": "10.14.0",
-    "eslint-config-next": "16.4.5",
+    "eslint-config-next": "16.4.6",
     "eslint-plugin-simple-import-sort": "^14.0.0",
     "eslint-plugin-unused-imports": "^4.4.1",
     "typescript": "^6.0.3"
