@@ -37,8 +37,8 @@ export const introTextCSS = css`
     align-items: flex-start;
   }
 `
-export const introText = css`
-  color: hsla(215, 25%, 54%, 1);
+export const introText = (theme: XTheme) => css`
+  color: ${theme.accent};
 `
 
 export const avatarCSS = css`

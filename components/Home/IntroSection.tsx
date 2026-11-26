@@ -15,13 +15,19 @@ import { TriangleSpacer } from './Technologies/Technologies'
 
 const sectionCSS = (theme: XTheme) => css`
   background: ${theme.background};
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    ${rgba(theme.secondaryBackground, 0.1)} 30%,
-    ${rgba(theme.secondaryBackground, 0.8)} 70%,
-    ${rgba(theme.secondaryBackground, 0.99)}
-  );
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 20% 0%,
+      ${rgba(theme.stageGlow, 0.22)},
+      transparent 70%
+    ),
+    linear-gradient(
+      to bottom,
+      ${rgba(theme.stageTint, 0.15)},
+      ${rgba(theme.stageTint, 0.35)} 30%,
+      ${rgba(theme.stageTint, 0.85)} 70%,
+      ${rgba(theme.stageTint, 0.99)}
+    );
 `
 
 export default function IntroSection() {
