@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 
+import useScrollReveal from '../../hooks/useScrollReveal'
 import BasesStyles from '../../styles/BaseStyles'
 import FooterSection from '../Footer/FooterSection'
 import Header from '../Header/Header'
@@ -11,6 +12,8 @@ interface Props {
 }
 
 const Layout = ({ children, headerFixed }: Props) => {
+  useScrollReveal()
+
   return (
     <>
       <BasesStyles />
