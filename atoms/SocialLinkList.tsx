@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import { HTMLAttributes } from 'react'
 
+import { liftOnHover } from '../styles/motion'
 import { XTheme } from '../styles/theme'
 import TextIcon from './TextIcon'
 
@@ -13,6 +14,7 @@ const list = css`
 `
 
 const link = (theme: XTheme) => css`
+  display: inline-block;
   color: ${theme.accent};
   transition: color 400ms;
 
@@ -38,7 +40,12 @@ export default function SocialLinkList(
     <ul css={list} {...props}>
       {socialLinks.map(({ href, icon, title }) => (
         <li key={href}>
-          <a href={href} css={link} target="_blank" rel="noreferrer">
+          <a
+            href={href}
+            css={[link, liftOnHover('-0.15em')]}
+            target="_blank"
+            rel="noreferrer"
+          >
             <TextIcon name={icon} title={title} />
           </a>
         </li>
