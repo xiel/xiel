@@ -39,6 +39,12 @@ export default function Impressum() {
               </p>
             </div>
 
+            <h4>Umsatzsteuer-ID</h4>
+            <p>
+              Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:{' '}
+              DE269371810
+            </p>
+
             <h4>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h4>
             <p>Felix Leupold, Anschrift wie oben</p>
 
