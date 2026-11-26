@@ -39,6 +39,19 @@ const richtextCSS = (theme: XTheme) => css`
   ol {
     margin: 1.5rem 0;
   }
+
+  ul,
+  ol {
+    padding-left: 1.25em;
+  }
+
+  ul > li {
+    list-style-type: disc;
+  }
+
+  ol > li {
+    list-style-type: decimal;
+  }
 `
 
 export default function Richtext(props: Props) {
