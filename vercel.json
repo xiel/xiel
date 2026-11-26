@@ -6,7 +6,7 @@
         { "key": "Referrer-Policy", "value": "no-referrer-when-downgrade" },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; img-src piwik.xiel.de data: 'self'; script-src piwik.xiel.de 'self' 'unsafe-inline'; frame-src piwik.xiel.de 'self'; style-src 'self' 'unsafe-inline'; font-src data: 'self';"
+          "value": "default-src 'self'; img-src data: 'self'; script-src 'self' 'unsafe-inline'; frame-src 'self'; style-src 'self' 'unsafe-inline'; font-src data: 'self';"
         },
         {
           "key": "Feature-Policy",

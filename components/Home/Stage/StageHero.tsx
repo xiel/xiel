@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import Image from 'next/image'
 
 import stageImg from '../../../public/stage/deepspace-stage.jpg'
+import { driftSlowly } from '../../../styles/motion'
 import { XTheme } from '../../../styles/theme'
 
 export const image = css`
@@ -39,7 +40,7 @@ const imageWrapper = (_theme: XTheme) => css`
 
 export default function StageHero() {
   return (
-    <div css={imageWrapper}>
+    <div css={[imageWrapper, driftSlowly]}>
       <Image
         src={stageImg}
         css={image}

@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import type { ComponentType, ElementType, HTMLAttributes } from 'react'
 
+import { drawUnderlineOnScroll } from '../../styles/motion'
 import { XTheme } from '../../styles/theme'
 
 const heading = css`
@@ -69,7 +70,12 @@ export default function Headline({
 
   return (
     <Component
-      css={(theme) => [levelStyles(theme), line && lineStyle]}
+      css={(theme) => [
+        levelStyles(theme),
+        line && lineStyle,
+        line && drawUnderlineOnScroll,
+      ]}
+      data-reveal={line ? '' : undefined}
       {...restProps}
     />
   )

@@ -33,6 +33,15 @@ export const opaqueSeparator = '#fff'
 // Text that functions as a link
 export const link = '#fff'
 
+// Accent for subtitles and icon links: a light tint of the brand violet
+// (see the headline underline gradient) with AAA contrast on `background`
+export const accent = 'hsl(265, 70%, 78%)'
+export const accentHover = 'hsl(285, 80%, 85%)'
+
+// Deep brand violet for the stage: the intro fades the starfield into it
+export const stageTint = 'hsl(262, 45%, 7%)'
+export const stageGlow = 'hsl(270, 70%, 45%)'
+
 // The color for the main background of your interface.
 export const background = 'hsla(259, 10%, 11%, 1)'
 
