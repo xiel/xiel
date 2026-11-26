@@ -63,12 +63,18 @@ export default function Technologies() {
       </GridRow>
       <Spacer />
       <GridRow justify="center" component="ul">
-        <TechTeaser label={'TypeScript / ES6'} iconName="TechTypescript" />
+        <TechTeaser label={'TypeScript'} iconName="TechTypescript" />
         <TechTeaser label={'React (Native)'} iconName="TechReact" />
-        <TechTeaser label={'HTML5'} iconName="TechHtml5" />
-        <TechTeaser label={'CSS3 + SASS'} iconName="TechSass" />
-        <TechTeaser label={'NodeJS'} iconName="TechNodejs" />
+        <TechTeaser label={'Next.js'} iconName="TechNextjs" />
+        <TechTeaser label={'Node.js'} iconName="TechNodejs" />
         <TechTeaser label={'GraphQL'} iconName="TechGraphql" />
+        <TechTeaser label={'PostgreSQL'} iconName="TechPostgresql" />
+        <TechTeaser label={'AI Agents & LLMs'} iconName="TechAi" />
+        <TechTeaser label={'Google Cloud'} iconName="TechGooglecloud" />
+        <TechTeaser label={'Docker / Kubernetes'} iconName="TechDocker" />
+        <TechTeaser label={'Tailwind CSS'} iconName="TechTailwindcss" />
+        <TechTeaser label={'Storybook'} iconName="TechStorybook" />
+        <TechTeaser label={'Playwright'} iconName="TechPlaywright" />
       </GridRow>
       <TriangleSpacer />
       <Triangle css={triangle} />
