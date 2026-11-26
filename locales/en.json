@@ -1,11 +1,15 @@
 {
+  "SEO": {
+    "Title": "Felix Leupold · Senior Full-Stack Engineer · XIEL",
+    "Description": "Freelance senior full-stack engineer in Berlin. I build web products and AI systems with React, Next.js, Node.js and TypeScript."
+  },
   "StageSection": {
     "Hello": "Felix Leupold",
-    "Intro": "FrontEnd Developer & Consultant"
+    "Intro": "Senior Full-Stack Engineer · AI Systems"
   },
   "Intro": {
-    "Title": "I'm a freelance front-end developer from Berlin who creates digital experiences that everyone likes to use.",
-    "Text": "I passionately combine good design, technology, and innovation in all my projects, which I like to accompany from the first idea to release. Currently, I'm focused on the development of responsive user interfaces with React and I'm interested in JavaScript, Web Technologies, User Experience, Accessibility, Clean Code, and the Universe. And everything in between."
+    "Title": "I'm a freelance full-stack engineer from Berlin. I build fast, accessible products, from the first idea to release.",
+    "Text": "For more than 15 years, I have built web products for German and international companies. Most recently, I built AI systems that thousands of people use every day. I work end to end, from architecture and backend to the last detail of the interface. I care about user experience, accessibility and clean code. And the universe. And everything in between."
   },
   "Technologies": {
     "Title": "Technologies",
@@ -16,35 +20,35 @@
     "Text": "I am passionate about open source software and like to give back to others.",
     "Projects": [
       {
-        "Headline": "useLocationState / useQueryState",
-        "Description": "store and retrieve state in react from the browsers history using modern hooks",
-        "LinkHref": "https://github.com/xiel/use-location-state"
-      },
-      {
         "Headline": "Wheel Gestures",
-        "Description": "wheel gestures and momentum detection",
+        "Description": "Detects mouse-wheel gestures and momentum on the web. About 2M npm downloads per week.",
         "LinkHref": "https://wheel-gestures.xiel.dev"
       },
       {
         "Headline": "Wheel Gestures for Embla Carousel",
-        "Description": "This plugin adds wheel interactions to the amazing Embla Carousel",
+        "Description": "Adds wheel and trackpad interactions to Embla Carousel.",
         "LinkHref": "https://github.com/xiel/embla-carousel-wheel-gestures"
       },
       {
+        "Headline": "useLocationState / useQueryState",
+        "Description": "React hooks that store state in the URL and browser history.",
+        "LinkHref": "https://github.com/xiel/use-location-state"
+      },
+      {
         "Headline": "Outer Hooks",
-        "Description": "develop javascript modules/libs using hooks - outside of react",
+        "Description": "Use hooks to build JavaScript modules outside of React.",
         "LinkHref": "https://github.com/xiel/outer-hooks"
       },
       {
         "Headline": "lionflow",
-        "Description": "i18n framework and l10n workflow for react",
+        "Description": "Type-safe i18n framework and localization workflow for React (R&D).",
         "LinkHref": "https://lionflow.io"
       }
     ]
   },
   "ClientsPartners": {
     "Title": "Clients & Partners",
-    "Text": "Over the past 10 years, I've worked with great teams for exciting clients to deliver a wide range of projects: from engaging touch interfaces to complex web applications."
+    "Text": "Over the past 15 years, I've worked with great teams for clients such as FGS Global, Deutsche Bahn, Flix, Daimler, Lufthansa and ZDF: from AI assistants and identity platforms to engaging touch interfaces."
   },
   "Footer": {
     "Title": "Got a project to discuss?",
