@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import { HTMLAttributes } from 'react'
 
+import { XTheme } from '../styles/theme'
 import TextIcon from './TextIcon'
 
 const list = css`
@@ -11,51 +12,37 @@ const list = css`
   grid-auto-flow: column;
 `
 
-const link = css`
-  color: hsla(215, 25%, 50%, 0.9);
+const link = (theme: XTheme) => css`
+  color: ${theme.accent};
   transition: color 400ms;
 
   &:hover,
   &:focus {
-    color: hsla(215, 80%, 60%, 1);
+    color: ${theme.accentHover};
   }
 `
 
+const socialLinks = [
+  {
+    href: 'https://www.linkedin.com/in/felix-leupold-berlin',
+    icon: 'linkedin',
+    title: 'LinkedIn',
+  },
+  { href: 'https://github.com/xiel', icon: 'github', title: 'GitHub' },
+]
+
 export default function SocialLinkList(
-  props: HTMLAttributes<HTMLUListElement>
+  props: HTMLAttributes<HTMLUListElement>,
 ) {
   return (
     <ul css={list} {...props}>
-      <li>
-        <a
-          href="http://twitter.com/xiel"
-          css={link}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <TextIcon name={'twitter'} title={'Twitter'} />
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://instagram.com/xiel"
-          css={link}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <TextIcon name={'instagram'} title={'Instagram'} />
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://github.com/xiel"
-          css={link}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <TextIcon name={'github'} title={'Github'} />
-        </a>
-      </li>
+      {socialLinks.map(({ href, icon, title }) => (
+        <li key={href}>
+          <a href={href} css={link} target="_blank" rel="noreferrer">
+            <TextIcon name={icon} title={title} />
+          </a>
+        </li>
+      ))}
     </ul>
   )
 }
