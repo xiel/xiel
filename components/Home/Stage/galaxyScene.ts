@@ -4,7 +4,6 @@ import {
   BufferGeometry,
   Color,
   Group,
-  NormalBlending,
   PerspectiveCamera,
   Points,
   Scene,
@@ -13,9 +12,9 @@ import {
 } from 'three'
 
 /**
- * A procedural spiral galaxy: stars, glowing dust, dark dust lanes, a bright
- * core and a distant starfield. Everything is GPU points with one soft-sprite
- * shader, so it stays cheap enough to run behind the page.
+ * A procedural spiral galaxy: stars, glowing dust, a bright core and a
+ * distant starfield. Everything is GPU points with one soft-sprite shader,
+ * so it stays cheap enough to run behind the page.
  */
 
 export interface GalaxyOptions {
@@ -98,7 +97,7 @@ function makeLayer(count: number): Layer {
 function makePoints(
   layer: Layer,
   uniforms: Record<string, { value: number }>,
-  blending: typeof AdditiveBlending | typeof NormalBlending,
+  blending: typeof AdditiveBlending,
 ) {
   const geometry = new BufferGeometry()
   geometry.setAttribute('position', new BufferAttribute(layer.positions, 3))
@@ -263,41 +262,6 @@ export function createGalaxy(
   )
   galaxy.add(glowPoints)
 
-  // --- Dark dust lanes: absorb light on the inner edge of each arm -------
-  const laneCount = small ? 2000 : 4000
-  const lanes = makeLayer(laneCount)
-  for (let i = 0; i < laneCount; i++) {
-    const r = 1.6 + Math.sqrt(rand()) * (RADIUS * 0.85 - 1.6)
-    const arm = Math.floor(rand() * ARMS)
-    // trail the arm slightly so the lane hugs its inner edge
-    const angle = (arm / ARMS) * Math.PI * 2 + r * SPIN - 0.22
-    const jitter = () => gaussian(rand) * 0.3 * (0.4 + r * 0.15)
-    lanes.positions.set(
-      [
-        Math.cos(angle) * r + jitter(),
-        gaussian(rand) * 0.03,
-        Math.sin(angle) * r + jitter(),
-      ],
-      i * 3,
-    )
-    lanes.colors.set([0.02, 0.008, 0.035], i * 3)
-    lanes.sizes[i] = 8 + rand() * 16
-    lanes.seeds[i] = rand()
-  }
-  const lanePoints = makePoints(
-    lanes,
-    {
-      ...shared,
-      uTime: { value: 0 },
-      uOpacity: { value: 0.08 },
-      uFalloff: { value: 2.5 },
-      uTwinkle: { value: 0 },
-    },
-    NormalBlending,
-  )
-  lanePoints.renderOrder = 1
-  galaxy.add(lanePoints)
-
   // --- Core glow ---------------------------------------------------------
   const core = makeLayer(3)
   const coreSizes = [220, 80, 26]
@@ -355,7 +319,7 @@ export function createGalaxy(
   )
   scene.add(fieldPoints)
 
-  const timed = [starPoints, glowPoints, lanePoints, corePoints, fieldPoints]
+  const timed = [starPoints, glowPoints, corePoints, fieldPoints]
 
   // --- Layout ------------------------------------------------------------
   let cameraZ = 11
@@ -397,7 +361,6 @@ export function createGalaxy(
     starPoints.rotation.y = introSpin + time * 0.025
     corePoints.rotation.y = introSpin + time * 0.025
     glowPoints.rotation.y = introSpin + time * 0.022
-    lanePoints.rotation.y = introSpin + time * 0.024
     fieldPoints.rotation.y = time * 0.002
     for (const p of timed) {
       ;(p.material as ShaderMaterial).uniforms.uTime.value = time
