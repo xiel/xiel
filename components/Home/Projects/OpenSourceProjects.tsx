@@ -22,8 +22,8 @@ const sectionCSS = (theme: XTheme) => css`
   background: linear-gradient(180deg, var(--band-top), var(--band-bottom));
 
   ${theme.darkModeQuery} {
-    --band-top: hsl(205, 20%, 12%);
-    --band-bottom: hsl(250, 8%, 13%);
+    --band-top: hsl(267, 66%, 7.4%);
+    --band-bottom: hsl(267, 65%, 3.7%);
   }
 `
 
