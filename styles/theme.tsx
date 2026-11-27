@@ -42,6 +42,10 @@ export const accentHover = 'hsl(285, 80%, 85%)'
 export const stageTint = 'hsl(262, 45%, 7%)'
 export const stageGlow = 'hsl(270, 70%, 45%)'
 
+// Near-black violet for the light content bands when the OS is in dark mode
+export const darkBand = 'hsl(262, 35%, 4%)'
+export const darkModeQuery = '@media (prefers-color-scheme: dark)'
+
 // The color for the main background of your interface.
 export const background = 'hsla(259, 10%, 11%, 1)'
 

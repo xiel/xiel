@@ -10,10 +10,17 @@ import Spacer from '../../Layout/Spacer'
 import Triangle from '../../SVG/Triangle'
 import TechTeaser from './TechTeaser'
 
-const sectionCSS = css`
-  background: #eee;
-  color: #000;
+const sectionCSS = (theme: XTheme) => css`
+  --band-bg: #eee;
+  --band-fg: #000;
+  background: var(--band-bg);
+  color: var(--band-fg);
   z-index: 1;
+
+  ${theme.darkModeQuery} {
+    --band-bg: ${theme.darkBand};
+    --band-fg: ${theme.label};
+  }
 `
 
 const triangleTop = (_theme: XTheme) => css`
@@ -22,7 +29,7 @@ const triangleTop = (_theme: XTheme) => css`
   left: 0;
   width: 100%;
   height: 7vmin;
-  fill: #eee;
+  fill: var(--band-bg);
   transform: translateY(-100%);
 `
 
@@ -32,7 +39,7 @@ const triangle = (_theme: XTheme) => css`
   bottom: 1px;
   width: 100%;
   height: 7vmin;
-  fill: #eee;
+  fill: var(--band-bg);
   transform: translateY(100%) scale(-1);
 `
 
@@ -49,7 +56,7 @@ export default function Technologies() {
           <Headline
             level="h2"
             css={css`
-              color: #000;
+              color: var(--band-fg);
             `}
             line
           >

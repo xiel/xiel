@@ -7,10 +7,17 @@ import { GridItem } from '../../Layout/Grid'
 import RatioBox from '../../Layout/RatioBox'
 import { spaceTop } from '../../Layout/Spacer'
 
-const techTeaserInner = (_theme: XTheme) => css`
+const techTeaserInner = (theme: XTheme) => css`
   border-radius: 2rem;
   background: #f7f7f7;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+
+  ${theme.darkModeQuery} {
+    background: hsl(260, 12%, 90%);
+    box-shadow:
+      0 1rem 1.5rem rgba(0, 0, 0, 0.5),
+      0 0 2rem -0.5rem ${theme.stageGlow};
+  }
 
   &:hover h5 {
     display: block;
