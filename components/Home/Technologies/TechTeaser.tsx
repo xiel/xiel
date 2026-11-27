@@ -18,12 +18,13 @@ const techTeaserInner = (theme: XTheme) => css`
       inset 0 0 0 1px ${theme.separator},
       0 1rem 1.5rem rgba(0, 0, 0, 0.35);
 
-    /* lift the near-black parts of brand logos off the dark card */
+    /* Node.js: lift the near-black lettering off the dark card */
     [fill='#2D2E2B'] {
       fill: hsl(0, 0%, 92%);
     }
+    /* Playwright: keep its shadow shapes darker than the card */
     [fill='#2D4552'] {
-      fill: hsl(200, 20%, 72%);
+      fill: hsl(259, 12%, 9%);
     }
   }
 
