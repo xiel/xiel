@@ -13,11 +13,18 @@ import Spacer from '../../Layout/Spacer'
 import { Triangle } from '../../SVG'
 import OpenSourceProjectTeaser from './OpenSourceProjectTeaser'
 
-const sectionCSS = css`
+const sectionCSS = (theme: XTheme) => css`
+  --band-top: #222d35;
+  --band-bottom: #26262c;
   color: #eee;
   z-index: 1;
   padding-top: 7rem;
-  background: linear-gradient(180deg, #222d35, #26262c);
+  background: linear-gradient(180deg, var(--band-top), var(--band-bottom));
+
+  ${theme.darkModeQuery} {
+    --band-top: hsl(267, 66%, 7.4%);
+    --band-bottom: hsl(267, 65%, 3.7%);
+  }
 `
 
 const triangleTop = (_theme: XTheme) => css`
@@ -26,7 +33,7 @@ const triangleTop = (_theme: XTheme) => css`
   left: 0;
   width: 100%;
   height: 3.5vmin;
-  fill: #222d35;
+  fill: var(--band-top);
   transform: translateY(-100%) scaleX(-1);
 `
 
@@ -36,7 +43,7 @@ const triangle = (_theme: XTheme) => css`
   bottom: 1px;
   width: 100%;
   height: 7vmin;
-  fill: #26262c;
+  fill: var(--band-bottom);
   transform: translateY(100%) scale(-1);
 `
 
@@ -54,7 +61,7 @@ export default function OpenSourceProjects() {
       align: 'start',
       containScroll: 'trimSnaps',
     },
-    [WheelGesturesPlugin()]
+    [WheelGesturesPlugin()],
   )
 
   const projectTexts = t('OpenSourceProjects.Projects', {
