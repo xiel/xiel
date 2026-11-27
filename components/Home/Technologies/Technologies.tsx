@@ -18,7 +18,7 @@ const sectionCSS = (theme: XTheme) => css`
   z-index: 1;
 
   ${theme.darkModeQuery} {
-    --band-bg: ${theme.darkBand};
+    --band-bg: ${theme.background};
     --band-fg: ${theme.label};
   }
 `
