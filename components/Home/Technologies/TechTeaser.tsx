@@ -13,10 +13,18 @@ const techTeaserInner = (theme: XTheme) => css`
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
 
   ${theme.darkModeQuery} {
-    background: hsl(260, 12%, 90%);
+    background: hsl(259, 10%, 16%);
     box-shadow:
-      0 1rem 1.5rem rgba(0, 0, 0, 0.5),
-      0 0 2rem -0.5rem ${theme.stageGlow};
+      inset 0 0 0 1px ${theme.separator},
+      0 1rem 1.5rem rgba(0, 0, 0, 0.35);
+
+    /* lift the near-black parts of brand logos off the dark card */
+    [fill='#2D2E2B'] {
+      fill: hsl(0, 0%, 92%);
+    }
+    [fill='#2D4552'] {
+      fill: hsl(200, 20%, 72%);
+    }
   }
 
   &:hover h5 {
