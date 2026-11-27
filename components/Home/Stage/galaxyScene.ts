@@ -118,6 +118,7 @@ function makePoints(
 }
 
 const ARMS = 2
+const INTRO_SECONDS = 4
 const RADIUS = 6
 const SPIN = 0.85
 
@@ -357,13 +358,15 @@ export function createGalaxy(
   const timed = [starPoints, glowPoints, lanePoints, corePoints, fieldPoints]
 
   // --- Layout ------------------------------------------------------------
+  let cameraZ = 11
   function resize() {
     const w = canvas.clientWidth || window.innerWidth
     const h = canvas.clientHeight || window.innerHeight
     renderer.setSize(w, h, false)
     camera.aspect = w / h
     // keep the galaxy filling the width on portrait screens
-    camera.position.set(0, 0, w / h < 1 ? 18 : 11)
+    cameraZ = w / h < 1 ? 18 : 11
+    camera.position.set(0, 0, cameraZ)
     camera.updateProjectionMatrix()
     // point sizes scale with the viewport height, like the scene does
     shared.uScale.value = h / 60
@@ -384,11 +387,17 @@ export function createGalaxy(
     last = now
     time += dt
 
+    // entrance: the camera glides in while the disc spins in and settles
+    const intro = reducedMotion ? 1 : Math.min(time / INTRO_SECONDS, 1)
+    const settle = 1 - Math.pow(1 - intro, 3)
+    const introSpin = (1 - settle) * -1.1
+    camera.position.z = cameraZ * (1 + 0.7 * (1 - settle))
+
     // slow rigid spin, dust a touch slower for a little depth
-    starPoints.rotation.y = time * 0.025
-    corePoints.rotation.y = time * 0.025
-    glowPoints.rotation.y = time * 0.022
-    lanePoints.rotation.y = time * 0.024
+    starPoints.rotation.y = introSpin + time * 0.025
+    corePoints.rotation.y = introSpin + time * 0.025
+    glowPoints.rotation.y = introSpin + time * 0.022
+    lanePoints.rotation.y = introSpin + time * 0.024
     fieldPoints.rotation.y = time * 0.002
     for (const p of timed) {
       ;(p.material as ShaderMaterial).uniforms.uTime.value = time
