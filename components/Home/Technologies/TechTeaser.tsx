@@ -7,10 +7,26 @@ import { GridItem } from '../../Layout/Grid'
 import RatioBox from '../../Layout/RatioBox'
 import { spaceTop } from '../../Layout/Spacer'
 
-const techTeaserInner = (_theme: XTheme) => css`
+const techTeaserInner = (theme: XTheme) => css`
   border-radius: 2rem;
   background: #f7f7f7;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+
+  ${theme.darkModeQuery} {
+    background: hsl(259, 10%, 16%);
+    box-shadow:
+      inset 0 0 0 1px ${theme.separator},
+      0 1rem 1.5rem rgba(0, 0, 0, 0.35);
+
+    /* Node.js: lift the near-black lettering off the dark card */
+    [fill='#2D2E2B'] {
+      fill: hsl(0, 0%, 92%);
+    }
+    /* Playwright: keep its shadow shapes darker than the card */
+    [fill='#2D4552'] {
+      fill: hsl(259, 12%, 9%);
+    }
+  }
 
   &:hover h5 {
     display: block;
